@@ -1,10 +1,10 @@
 import React from "react"
-import StudentsTable from "./Components/LecturerPage/StudentTable"
+import StudentTable from "./Components/LecturerPage/StudentTable"
 
 export default function App() {
   return (
       <div>
-        <StudentsTable />
+        <StudentTable />
       </div>  
   )
 }
