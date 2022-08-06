@@ -1,1 +1,0 @@
-console.log("Lecturer's page")
