@@ -1,0 +1,219 @@
+.login_page {
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login_page .bg_img {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  z-index: -10;
+}
+
+.login_page .bg_img_shade {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.336);
+  z-index: -9;
+}
+
+.login_page .login_form {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: rgba(8, 8, 8, 0.822);
+  padding: 25px 20px;
+  border-radius: 20px;
+  -webkit-box-shadow: 0 0 8px rgba(223, 62, 210, 0.664);
+          box-shadow: 0 0 8px rgba(223, 62, 210, 0.664);
+}
+
+@media screen and (max-width: 768px) {
+  .login_page .login_form {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.login_page .login_form .app_name {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  font-size: 200%;
+  color: white;
+  text-shadow: 0 0 4px rgba(223, 62, 210, 0.664);
+}
+
+.login_page .login_form .welcome_text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 150%;
+  font-weight: bold;
+  color: white;
+  padding: 5px 20px 5px 10px;
+  margin-right: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .login_page .login_form .welcome_text {
+    border-width: 0 1px 0 0;
+    border-style: solid;
+    border-color: white;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .login_page .login_form .welcome_text {
+    margin-bottom: 20px;
+  }
+}
+
+.login_page .login_form .login_btns .lecturer_login_btn,
+.login_page .login_form .login_btns .student_login_btn {
+  width: 100%;
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-size: 110%;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  background-color: #990a81;
+  border-color: #990a81;
+  -webkit-transition: 300ms background-color;
+  transition: 300ms background-color;
+}
+
+.login_page .login_form .login_btns .lecturer_login_btn:hover,
+.login_page .login_form .login_btns .student_login_btn:hover {
+  background-color: white;
+  color: #990a81;
+}
+
+.login_page .login_form .login_btns .lecturer_login_btn:focus,
+.login_page .login_form .login_btns .student_login_btn:focus {
+  -webkit-box-shadow: 0 0 0 black;
+          box-shadow: 0 0 0 black;
+}
+
+.login_page .login_form .login_btns .student_login_btn {
+  margin-top: 15px;
+}
+
+.login_modal {
+  position: fixed;
+  top: 30%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.login_modal .header {
+  position: relative;
+  font-weight: bold;
+  font-size: 120%;
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
+
+.login_modal .header .close_btn {
+  position: absolute;
+  top: 55%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  right: 10px;
+  border-radius: 50%;
+  background-color: white;
+  border-color: #990a81;
+  border-width: 2px;
+  color: #990a81;
+  font-weight: bolder;
+}
+
+.login_modal .header .close_btn:hover {
+  background-color: #990a81;
+  color: white;
+}
+
+.login_modal .header .close_btn:active {
+  background-color: white;
+  color: #990a81;
+}
+
+.login_modal .field {
+  padding: 0 10px;
+}
+
+.login_modal .field.f1 {
+  margin-bottom: 10px;
+}
+
+.login_modal .field label {
+  font-weight: bold;
+}
+
+.login_modal .field #username,
+.login_modal .field #password {
+  margin-top: -3px;
+}
+
+.login_modal .field #username:focus,
+.login_modal .field #password:focus {
+  -webkit-box-shadow: 0 0 5px 1px #990a81;
+          box-shadow: 0 0 5px 1px #990a81;
+  border-color: #e2dfdf;
+}
+
+.login_modal .login_btn {
+  margin: 15px 10px 10px 10px;
+  padding: 10px 25px;
+  width: 96%;
+  border-radius: 25px;
+  border-color: #990a81;
+  background-color: #990a81;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.login_modal .login_btn:hover {
+  background-color: white;
+  color: #990a81;
+}
+
+.login_modal .login_btn:active {
+  background-color: #990a81;
+  color: white;
+}
+
+.login_modal .login_btn:focus {
+  -webkit-box-shadow: 0 0 0 black;
+          box-shadow: 0 0 0 black;
+}
+/*# sourceMappingURL=login.css.map */

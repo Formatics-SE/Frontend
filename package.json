@@ -1,9 +1,10 @@
 {
   "name": "frontend-formatics",
   "version": "0.1.0",
-  "private": true,
+  "main": "index.js",
   "dependencies": {
     "react": "^18.2.0",
+    "react-bootstrap": "2.1.2",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1"
   },
