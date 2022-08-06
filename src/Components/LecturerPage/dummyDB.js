@@ -162,6 +162,111 @@ let data = [
         index: "889",
         mark: 20,
         cwa: 69
-    }
+    },
+    {
+        id: 21,
+        firstName: "Manu ",
+        lastName: "Christabel",
+        index: "901",
+        mark: 10,
+        cwa: 69
+    },
+    {
+        id: 22,
+        firstName: "Issifu ",
+        lastName: "Christabel",
+        index: "902",
+        mark: 0,
+        cwa: 45
+    },
+    {
+        id: 23,
+        firstName: "Manu ",
+        lastName: "Isaac",
+        index: "903",
+        mark: 0,
+        cwa: 45
+    },
+    {
+        id: 24,
+        firstName: "Enock",
+        lastName: "Kwaku",
+        index: "904",
+        mark: 1,
+        cwa: 88
+    },
+    {
+        id: 25,
+        firstName: "Manu ",
+        lastName: "Chris",
+        index: "905",
+        mark: 19,
+        cwa: 76
+    },
+    {
+        id: 26,
+        firstName: "Yeboah",
+        lastName: "Sandra",
+        index: "906",
+        mark: 23,
+        cwa: 68
+    },
+    {
+        id: 27,
+        firstName: "Serwaa",
+        lastName: "Akoto",
+        index: "907",
+        mark: 11,
+        cwa: 80
+    },
+    {
+        id: 28,
+        firstName: "Kwadwo",
+        lastName: "Rudolf",
+        index: "908",
+        mark: 14,
+        cwa: 71
+    },
+    {
+        id: 29,
+        firstName: "Afia",
+        lastName: "Paulina",
+        index: "909",
+        mark: 10,
+        cwa: 69
+    },
+    {
+        id: 30,
+        firstName: "Manu ",
+        lastName: "Christabel",
+        index: "510",
+        mark: 10,
+        cwa: 70
+    },
+    {
+        id: 31,
+        firstName: "Israel ",
+        lastName: "Chris",
+        index: "511",
+        mark: 10,
+        cwa: 46
+    },
+    {
+        id: 32,
+        firstName: "Manu ",
+        lastName: "Christabel",
+        index: "512",
+        mark: 10,
+        cwa: 58
+    },
+    {
+        id: 33,
+        firstName: "Mensah",
+        lastName: "Victor",
+        index: "513",
+        mark: 10,
+        cwa: 65
+    },
+    
 ]
 export default data
