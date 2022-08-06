@@ -1,9 +1,10 @@
 import React from "react";
-import StudentsDetails from "./StudentsDetails";
+import StudentsDetails from "./StudentDetails";
 import data from "./dummyDB";
 import "./StudentTable.css";
 
 export default function StudentsTable(){
+
     const students = data.map(item =>{
         return(
             <StudentsDetails
@@ -13,17 +14,40 @@ export default function StudentsTable(){
             />
         )
     })
+    const [swit,setSwit] = React.useState(true)
+
+    function handleSwitch(){
+                setSwit(prev => !prev)
+            }
+
 
     
 
     return(
         <section>
             <div className="search-marks">
-                <input type="search" placeholder="Search" name="search_sname" className="table-search"/>
+            <div>
+                <input type="search" placeholder="Search" name="search_sname" className="table-search"/> 
+            </div>
                 <div>
-                    <label htmlFor="input_marks" className="label-for-marks">Enter marks here:</label>
-                    <input type="number" id="input_marks"  name="input_marks" className="table-marks"/>
+                    {swit?
+                        <button type="number" id="input_marks"  name="input_marks" className="confirm-group" onClick={handleSwitch}>
+                            Switch to All students
+                        </button>:
+                        <button type="number" id="input_marks"  name="input_marks" className="confirm-group" onClick={handleSwitch}>
+                            Switch to Individual
+                        </button>
+
+                        }
                 </div>
+                {swit?
+                    <button type="number" id="input_marks"  name="input_marks" className="confirm-individual">Confirm</button>
+                    :
+                    <div className="all-students">
+                        <input type="number" className="marks"/>
+                        <button type="number" id="input_marks"  name="input_marks" className="confirm-individual">Confirm</button>
+                    </div>
+                }
             </div>
             <div className="table-container">
                 <table>

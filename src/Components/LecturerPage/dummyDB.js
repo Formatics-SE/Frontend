@@ -55,7 +55,7 @@ let data = [
         id: 7,
         firstName: "Enock",
         lastName: "Boadi",
-        index: "831",
+        index: "931",
         mark: 0,
         cwa: 100
     },
@@ -127,7 +127,7 @@ let data = [
         id: 16,
         firstName: "Sammy ",
         lastName: "Nyame",
-        index: "885",
+        index: "890",
         mark: 30,
         cwa: 57
     },

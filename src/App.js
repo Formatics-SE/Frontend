@@ -1,5 +1,5 @@
 import React from "react"
-import StudentsTable from "./Components/AssignMarksPage/StudentTable"
+import StudentsTable from "./Components/LecturerPage/StudentTable"
 
 export default function App() {
   return (
