@@ -13,7 +13,10 @@ export default function StudentsDetails(props){
             <td>{props.item.firstName} {props.item.lastName}</td>
             <td>{props.item.index}</td>
             <td>{props.item.mark}</td>
-            <td><input type="number" className="marks-entry" onClick={handleChange} id={props.item.index} /></td> 
+            {props.show?
+            <td><input type="number" className="marks-entry" onClick={handleChange} id={props.item.index} /></td>:
+            <td>-</td>
+            }
         </tr>
     )
 }

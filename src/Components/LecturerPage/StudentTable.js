@@ -4,22 +4,52 @@ import data from "./dummyDB";
 import "./StudentTable.css";
 
 export default function StudentsTable(){
-
-    const students = data.map(item =>{
-        return(
-            <StudentsDetails
-                key= {item.key}
-                item ={item}
-                
-            />
-        )
-    })
+    const [students, setStudents] = React.useState(data)
+    
     const [swit,setSwit] = React.useState(true)
+    console.log(swit)
 
     function handleSwitch(){
                 setSwit(prev => !prev)
             }
-
+    function handleClick(){
+        if(swit){
+            setStudents(prev=>{
+                return prev.map(student=>{
+                    const point = document.getElementById(student.index).value
+                    const total = Number(point) + Number(student.mark)
+                    document.getElementById(student.index).value =0;
+                    return{
+                        ...student,
+                        mark: total
+                    }
+                })
+            })
+        }
+        else{
+            setStudents(prev=>{
+                return prev.map(student=>{
+                    const point = document.getElementById("group").value
+                    const total = Number(student.mark) + Number(point)
+                    return{
+                        ...student,
+                        mark: total
+                    }
+                })
+            })
+        }
+        
+    }
+    const student_list = students.map(item =>{
+        return(
+            <StudentsDetails
+                key= {item.key}
+                item ={item}
+                show ={swit}
+                
+            />
+        )
+    })
 
     
 
@@ -41,11 +71,23 @@ export default function StudentsTable(){
                         }
                 </div>
                 {swit?
-                    <button type="number" id="input_marks"  name="input_marks" className="confirm-individual">Confirm</button>
+                    <button type="number"
+                             id="input_marks" 
+                             name="input_marks" 
+                             onClick={handleClick}
+                             className="confirm-individual">
+                             Confirm
+                    </button>
                     :
                     <div className="all-students">
-                        <input type="number" className="marks"/>
-                        <button type="number" id="input_marks"  name="input_marks" className="confirm-individual">Confirm</button>
+                        <input type="number" className="marks" id="group"/>
+                        <button type="number"
+                                id="input_marks" 
+                                name="input_marks" 
+                                onClick={handleClick}
+                                className="confirm-individual">
+                                Confirm
+                        </button>
                     </div>
                 }
             </div>
@@ -60,7 +102,7 @@ export default function StudentsTable(){
                         </tr>
                     </thead>
                     <tbody>
-                        {students}
+                        {student_list}
                     </tbody>
                 </table>
             </div>
