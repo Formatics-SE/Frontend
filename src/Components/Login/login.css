@@ -12,6 +12,23 @@
           align-items: center;
 }
 
+.login_page .toast {
+  position: absolute;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  top: 20px;
+  left: 50%;
+  z-index: 1051;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  font-weight: 500;
+  font-size: 110%;
+  color: white;
+  padding: 5px 30px;
+  text-align: center;
+}
+
 .login_page .bg_img {
   width: 100%;
   height: 100%;
@@ -81,6 +98,12 @@
   color: white;
   padding: 5px 20px 5px 10px;
   margin-right: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .login_page .login_form .welcome_text {
+    text-align: center;
+  }
 }
 
 @media screen and (min-width: 770px) {
