@@ -4,13 +4,18 @@ import "./RandomGroup.css"
 
 
 export default function RandomGroup(){
-    const students = data;
-
-    const [value, setValue] = React.useState({
-        division: "",
+     const [value, setValue] = React.useState({
+        division: 2,
         view: ""
-
     })
+    const student_list = data.map(student=>{
+        return(
+            <li key={student.id}>{`${student.firstName} ${student.lastName}`}</li>
+    )
+    })
+
+    const [display, setDisplay] = React.useState(student_list)
+   
     function handleChange(event){
         const {name, value}= event.target
         setValue(prev=>{
@@ -20,7 +25,7 @@ export default function RandomGroup(){
             }
         })
     }
-
+    
 
     
     function ShuffleList(list){   // a function to shuffle the list for random grouping
@@ -35,75 +40,48 @@ export default function RandomGroup(){
         
     }
     function handleClick(){
-        let classList = students.map(student=>{
-            return `${student.firstName} ${student.lastName}`
-        })
-        ShuffleList(classList)
-         let studentsPerGroup = Number(value.division)
-         let randomGroups = []
-         for(let i=0; i<classList.length;i= i + studentsPerGroup){
-            randomGroups.push(classList.slice(i,i+studentsPerGroup))
-         }
-       return randomGroups  
+            let classList = data.map(student=>{
+                return `${student.firstName} ${student.lastName}`
+            })
+            ShuffleList(classList)
+            let studentsPerGroup = Number(value.division)
+            let randomGroups = []
+            for(let i=0; i<classList.length;i= i + studentsPerGroup){
+                randomGroups.push(classList.slice(i,i+studentsPerGroup))
+            }
+            const random_list = randomGroups.map(item=>{
+               return(
+                <div>
+                    <h2>GROUP {randomGroups.indexOf(item) + 1}</h2>
+                        <ol>
+                            {item.map(sub=>{
+                              return(
+                               <li>{sub}</li>
+                            )
+                    })}
+                    </ol>
+                
+                </div>
+               )
+            })
+            setDisplay(random_list)  
     }
-
-    const group = handleClick();
-    
-    const random_list = group.map(item=>{
-       return(
-        <div>
-            <h2>GROUP {group.indexOf(item)}</h2>
-                <ol>
-                    {item.map(sub=>{
-                      return(
-                       <li>{sub}</li>
-                    )
-            })}
-            </ol>
-        
-        </div>
-       )
-    })
-
-    const student_list = students.map(student=>{
-        return(
-            <li key={student.id}>{`${student.firstName} ${student.lastName}`}</li>
-    )
-    })
-    
     
     return(
-        <section>
+    <section>
             <div className="container-outer">    
                 <div className="container-inner">
                     <label htmlFor="division" className="label">GROUPS OF:</label>
-                    <input type="number" id="division" name="division" className="division-box" min={2} max={10} onChange={handleChange}/>
-                    <div className="view-list-group">
-                            <span><input 
-                                    type="radio" 
-                                    className="class-list" 
-                                    name="view"  
-                                    value="List"
-                                    onChange={handleChange}/> 
-                                    view class List 
-                            </span> 
-
-                            <span><input 
-                                    type="radio" 
-                                    className="class-list"
-                                    name="view" 
-                                    value="Random"
-                                    onChange={handleChange}/>
-                                    view random groups 
-                            </span>
-                    </div>
+                    <input type="number" id="division" name="division" value={value.division} className="division-box" min={2} max={10} onChange={handleChange}/>
                 </div>
-                <input type="submit" className="submit-button" placeholder="Submit" onClick={handleClick}/>
+                <div>
+                    <button className="submit-button1" onClick={handleClick}>Shuffle</button>
+                    <input type="submit" className="submit-button" placeholder="submit" />
+                </div>
+
             </div>
             <div className="container-list-random">
-             
-               {random_list}
-             
+                {display}
             </div>
     </section>
     )
