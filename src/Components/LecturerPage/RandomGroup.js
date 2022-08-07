@@ -39,7 +39,7 @@ export default function RandomGroup(){
         
         
     }
-    function handleClick(){
+    function handleShuffle(){
             let classList = data.map(student=>{
                 return `${student.firstName} ${student.lastName}`
             })
@@ -75,7 +75,7 @@ export default function RandomGroup(){
                     <input type="number" id="division" name="division" value={value.division} className="division-box" min={2} max={10} onChange={handleChange}/>
                 </div>
                 <div>
-                    <button className="submit-button1" onClick={handleClick}>Shuffle</button>
+                    <button className="submit-button1" onClick={handleShuffle}>Shuffle</button>
                     <input type="submit" className="submit-button" placeholder="submit" />
                 </div>
 
