@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+.table-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 1rem;
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td{
+    border: 1px solid white;
+    text-align: left;
+    padding: 8px;
+    font-size: 20px;
+}
+th{
+    background-color: rgb(117,201,250);
+    font-family: "Poppins";
+
+}
+td{
+    background-color: rgb(205,235,253);
+
+}
+.search-marks{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    margin-top: 30px;
+    transition: 0.4s;
+
+}
+.table-search{
+    margin-left: 18px;
+    width: 350px;
+    height: 35px;
+    border-radius: 6px;
+    background-color: #BCC5CE;
+    color: black;
+    font-size: 18px;
+    text-indent: 10px;
+    transition: 0.4s;
+}
+.table-marks{
+    height: 30px;
+    width: 100px;
+    background-color: #BCC5CE;
+    border-radius: 6px;
+    font-size: 20px;
+    margin-right: 20px;
+}
+.confirm-individual{
+    margin-left:20px;
+    width: 100px;
+    margin-right: 10px;
+    font-family: "Poppins";
+    margin-right: 13px;
+    height: 35px;
+    border-radius: 6px;
+    background-color: #BCC5CE;
+    color: black;
+    font-size: 18px;
+    transition: 0.4s;
+}
+.confirm-group{
+    margin-left:20px;
+    width: 250px;
+    margin-right: 10px;
+    font-family: "Poppins";
+    margin-right: 13px;
+    height: 35px;
+    border-radius: 6px;
+    background-color: #BCC5CE;
+    color: black;
+    font-size: 18px;
+    transition: 0.4s;
+
+}
+.all-students{
+    display: inline;  
+    
+}
+
+.label-for-marks{
+    font-size: 20px;
+    font-family: 'Poppins'
+}
+.marks-entry, .marks{
+    height: 20px;
+    width: 50px;
+    background-color: #BCC5CE;
+    color: black;
+    border-radius: 2px;
+    transition: 0.4s;
+}
+.marks{
+    height: 25px;
+}
+.marks-entry:hover{
+    background-color: white;
+    color: black;
+}
+.table-search:hover{
+    background-color: white;
+    color: black;
+}
+.confirm-individual:hover{
+    background-color: white;
+    color: black;
+}
+.confirm-group:hover{
+    background-color: white;
+    color: black;
+}
+.table-search:hover{
+    background-color: white;
+    color: black;
+}

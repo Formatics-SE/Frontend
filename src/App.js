@@ -21,5 +21,6 @@ export default function App() {
       <Route path='/lecturer' element={<LecturerPage />} />
       <Route path='/student' element={<StudentPage />} />
     </Routes>
+
   )
 }
