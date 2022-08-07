@@ -44,6 +44,7 @@ export default function Login() {
             {/* modal to take login credentials */}
             <Modal onHide={() => setShowModal(false)}
                 show={showModal}
+                backdrop='static'
                 className='login_modal'
             >
                 <Modal.Body>

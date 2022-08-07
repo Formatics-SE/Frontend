@@ -39,7 +39,8 @@
   display: flex;
   background-color: rgba(8, 8, 8, 0.822);
   padding: 25px 20px;
-  border-radius: 20px;
+  border-radius: 7px;
+  margin: 0 20px;
   -webkit-box-shadow: 0 0 8px rgba(223, 62, 210, 0.664);
           box-shadow: 0 0 8px rgba(223, 62, 210, 0.664);
 }
@@ -61,6 +62,7 @@
           transform: translateX(-50%);
   font-size: 200%;
   color: white;
+  text-align: center;
   text-shadow: 0 0 4px rgba(223, 62, 210, 0.664);
 }
 
@@ -81,7 +83,7 @@
   margin-right: 20px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 770px) {
   .login_page .login_form .welcome_text {
     border-width: 0 1px 0 0;
     border-style: solid;
@@ -92,6 +94,7 @@
 @media screen and (max-width: 768px) {
   .login_page .login_form .welcome_text {
     margin-bottom: 20px;
+    margin-right: 0;
   }
 }
 
@@ -103,8 +106,8 @@
   font-size: 110%;
   font-weight: 500;
   letter-spacing: 0.05em;
-  background-color: #990a81;
-  border-color: #990a81;
+  background-color: #a3178c;
+  border-color: #a3178c;
   -webkit-transition: 300ms background-color;
   transition: 300ms background-color;
 }
@@ -112,7 +115,7 @@
 .login_page .login_form .login_btns .lecturer_login_btn:hover,
 .login_page .login_form .login_btns .student_login_btn:hover {
   background-color: white;
-  color: #990a81;
+  color: #a3178c;
 }
 
 .login_page .login_form .login_btns .lecturer_login_btn:focus,
@@ -127,7 +130,7 @@
 
 .login_modal {
   position: fixed;
-  top: 30%;
+  top: 28%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   left: 50%;
@@ -138,7 +141,7 @@
 .login_modal .header {
   position: relative;
   font-weight: bold;
-  font-size: 120%;
+  font-size: 125%;
   padding-left: 10px;
   margin-bottom: 20px;
 }
@@ -151,20 +154,20 @@
   right: 10px;
   border-radius: 50%;
   background-color: white;
-  border-color: #990a81;
+  border-color: #a3178c;
   border-width: 2px;
-  color: #990a81;
+  color: #a3178c;
   font-weight: bolder;
 }
 
 .login_modal .header .close_btn:hover {
-  background-color: #990a81;
+  background-color: #a3178c;
   color: white;
 }
 
 .login_modal .header .close_btn:active {
   background-color: white;
-  color: #990a81;
+  color: #a3178c;
 }
 
 .login_modal .field {
@@ -176,18 +179,20 @@
 }
 
 .login_modal .field label {
+  font-size: 110%;
   font-weight: bold;
 }
 
 .login_modal .field #username,
 .login_modal .field #password {
   margin-top: -3px;
+  font-size: 103%;
 }
 
 .login_modal .field #username:focus,
 .login_modal .field #password:focus {
-  -webkit-box-shadow: 0 0 5px 1px #990a81;
-          box-shadow: 0 0 5px 1px #990a81;
+  -webkit-box-shadow: 0 0 5px 1px #a3178c;
+          box-shadow: 0 0 5px 1px #a3178c;
   border-color: #e2dfdf;
 }
 
@@ -196,19 +201,20 @@
   padding: 10px 25px;
   width: 96%;
   border-radius: 25px;
-  border-color: #990a81;
-  background-color: #990a81;
+  border-color: #a3178c;
+  background-color: #a3178c;
+  font-size: 103%;
   font-weight: 500;
   letter-spacing: 0.05em;
 }
 
 .login_modal .login_btn:hover {
   background-color: white;
-  color: #990a81;
+  color: #a3178c;
 }
 
 .login_modal .login_btn:active {
-  background-color: #990a81;
+  background-color: #a3178c;
   color: white;
 }
 
