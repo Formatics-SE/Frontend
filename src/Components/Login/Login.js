@@ -33,7 +33,8 @@ export default function Login() {
             setToastMessage(toastMessages[0]);  // message: please fill in all fields
             setShowToast('true');
         }
-        else handleSubmit(username, password);
+        // call handle submit if all inputs are filled
+        else handleSubmit(username, password);  
     }
 
     async function handleSubmit(username, password) {
