@@ -13,7 +13,7 @@ import Poll from './Components/LecturerPage/Poll/Poll'
 
 import StudentPage from './Components/StudentPage/StudentPage'
 
-import RandomGroup from './Components/LecturerPage/RandomGroup'
+import StudentsTable from "./Components/LecturerPage/StudentTable";
 
 export default function App() {
 
