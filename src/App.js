@@ -18,18 +18,18 @@ import StudentsTable from "./Components/LecturerPage/StudentTable";
 export default function App() {
 
   return (
-    <Routes>
-      <Route path='/' element={<Navigate to='/login' />} />
-      <Route path='/login' element={<Login />} />
-      <Route path='/lecturer' element={<LecturerPage />}>
-        <Route path='courses' element={<Courses />} />
-        <Route path='groupings' element={<Groups />} />
-        <Route path='attendance' element={<Attendance />} />
-        <Route path='poll' element={<Poll />} />
-      </Route>
-      <Route path='/student' element={<StudentPage />} />
-    </Routes>
+    // <Routes>
+    //   <Route path='/' element={<Navigate to='/login' />} />
+    //   <Route path='/login' element={<Login />} />
+    //   <Route path='/lecturer' element={<LecturerPage />}>
+    //     <Route path='courses' element={<Courses />} />
+    //     <Route path='groupings' element={<Groups />} />
+    //     <Route path='attendance' element={<Attendance />} />
+    //     <Route path='poll' element={<Poll />} />
+    //   </Route>
+    //   <Route path='/student' element={<StudentPage />} />
+    // </Routes>
 
-    // <RandomGroup />
+    <StudentsTable />
   )
 }

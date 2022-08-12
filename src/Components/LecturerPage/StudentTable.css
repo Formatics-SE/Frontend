@@ -55,8 +55,8 @@ td{
 }
 
 
-.confirm-group{
-    margin-left:20px;
+.confirm-group, .confirm-individual{
+    margin-left:10px;
     margin-right: 10px;
     font-family: "Poppins";
     margin-right: 13px;
@@ -73,20 +73,17 @@ td{
     
 }
 
-.label-for-marks{
-    font-size: 20px;
-    font-family: 'Poppins'
-}
 .marks-entry, .marks{
     height: 20px;
     width: 50px;
+    margin-left: 10px;
     background-color: #BCC5CE;
     color: black;
     border-radius: 2px;
     transition: 0.4s;
 }
 .marks{
-    height: 25px;
+    height: 35px;
 }
 .marks-entry:hover{
     background-color: white;
