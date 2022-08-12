@@ -50,8 +50,8 @@ export default function StudentsTable(){
 
     return(
         <section>
-            <div className="search-marks">
-                <div>
+            <div className="input-container">
+               <div>
                     <input type="search" placeholder="Search" name="search_sname" className="table-search"/> 
                     <input type="number" className = "marks" id="individual" />
                     <button type="number"
@@ -60,21 +60,21 @@ export default function StudentsTable(){
                                 onClick={handleClick}
                                 className="confirm-individual">
                                 Assign
-                        </button>
+                    </button>
 
                 </div>
                 
                     
-                    <div className="all-students">
-                        <input type="number" className="marks" id="group"/>
-                        <button type="number"
-                                id="input_marks" 
-                                name="input_marks" 
-                                onClick={handleClick}
-                                className="confirm-group">
+                 <div className="all-students">
+                    <input type="number" className="marks" id="group"/>
+                    <button type="number"
+                            id="input_marks" 
+                            name="input_marks" 
+                            onClick={handleClick}
+                            className="confirm-group">
                                 Assign to all
-                        </button>
-                    </div>
+                    </button>
+                 </div>
             
             </div>
             <div className="table-container">

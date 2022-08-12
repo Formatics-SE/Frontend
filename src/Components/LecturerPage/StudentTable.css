@@ -24,7 +24,7 @@ td{
     background-color: rgb(205,235,253);
 
 }
-.search-marks{
+.input-container{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -45,35 +45,25 @@ td{
     text-indent: 10px;
     transition: 0.4s;
 }
-.table-marks{
-    height: 30px;
-    width: 100px;
-    background-color: #BCC5CE;
-    border-radius: 6px;
-    font-size: 20px;
-    margin-right: 20px;
+.table-search:hover{
+    background-color: white;
+    color: black;
 }
-
-
 .confirm-group, .confirm-individual{
+    position: relative;
     margin-left:10px;
     margin-right: 10px;
     font-family: "Poppins";
     margin-right: 13px;
     height: 35px;
     border-radius: 6px;
-    background-color: #BCC5CE;
+    background-color: white;
     color: black;
     font-size: 18px;
     transition: 0.4s;
 
 }
-.all-students{
-    display: inline;  
-    
-}
-
-.marks-entry, .marks{
+.marks-entry , .marks{
     height: 20px;
     width: 50px;
     margin-left: 10px;
@@ -93,15 +83,31 @@ td{
     background-color: white;
     color: black;
 }
-.confirm-individual:hover{
-    background-color: white;
-    color: black;
+.confirm-group::before , .confirm-individual::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background: grey;
+    transition: transform 500ms ease-in-out;
+    transform: scaleX(0);
+    transform-origin: left;
+    
 }
-.confirm-group:hover{
-    background-color: white;
-    color: black;
+.confirm-group:hover::before,
+.confirm-group:focus::before,
+.confirm-individual:hover::before,
+.confirm-individual:focus::before{
+    transform: scaleX(1);
 }
-.table-search:hover{
-    background-color: white;
-    color: black;
+
+.confirm-group, .confirm-individual{
+    z-index: 1;
+}
+
+.confirm-group:hover , .confirm-individual:hover{
+    color: white;
 }
