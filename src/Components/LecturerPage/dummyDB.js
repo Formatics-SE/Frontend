@@ -70,7 +70,7 @@ let data = [
     {
         id: 9,
         firstName: "Agyei ",
-        lastName: "Evan",
+        lastName: "Evans",
         index: "879",
         mark: 10,
         cwa: 76

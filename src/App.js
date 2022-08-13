@@ -23,7 +23,7 @@ export default function App() {
     //   <Route path='/login' element={<Login />} />
     //   <Route path='/lecturer' element={<LecturerPage />}>
     //     <Route path='courses' element={<Courses />} />
-    //     <Route path='groupings' element={<Groups />} />
+    //     <Route path='groups' element={<Groups />} />
     //     <Route path='attendance' element={<Attendance />} />
     //     <Route path='poll' element={<Poll />} />
     //   </Route>
