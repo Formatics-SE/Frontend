@@ -14,6 +14,7 @@ import Poll from './Components/LecturerPage/Poll/Poll'
 import StudentPage from './Components/StudentPage/StudentPage'
 
 import StudentsTable from "./Components/LecturerPage/StudentTable";
+import RandomGroup from "./Components/LecturerPage/RandomGroup";
 
 export default function App() {
 
@@ -30,6 +31,7 @@ export default function App() {
     //   <Route path='/student' element={<StudentPage />} />
     // </Routes>
 
-    <Groups />
+    //<Groups />
+    <RandomGroup/>
   )
 }
