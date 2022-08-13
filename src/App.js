@@ -30,6 +30,6 @@ export default function App() {
     //   <Route path='/student' element={<StudentPage />} />
     // </Routes>
 
-    <StudentsTable />
+    <Groups />
   )
 }
