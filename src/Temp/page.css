@@ -12,6 +12,9 @@
     background: lightcyan;
     border-radius: 6px;
     font-family: sans-serif;
-    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
 }
