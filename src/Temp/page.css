@@ -30,3 +30,12 @@
 .popup label{
     font-size: large;
 }
+.add_option{
+    min-width: 400px;
+    min-height: 250px;
+    background: lightcyan;
+    border-radius: 6px;
+    font-family: sans-serif;
+    text-align: center;
+    position: absolute;
+}
