@@ -159,9 +159,10 @@
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+  max-width: 95vw;
 }
 
-.login_modal .header {
+.login_modal .modal_header {
   position: relative;
   font-weight: bold;
   font-size: 125%;
@@ -169,12 +170,12 @@
   margin-bottom: 20px;
 }
 
-.login_modal .header .close_btn {
+.login_modal .modal_header .close_btn {
   position: absolute;
   top: 55%;
+  right: 10px;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
-  right: 10px;
   border-radius: 50%;
   background-color: white;
   border-color: #a3178c;
@@ -183,12 +184,12 @@
   font-weight: bolder;
 }
 
-.login_modal .header .close_btn:hover {
+.login_modal .modal_header .close_btn:hover {
   background-color: #a3178c;
   color: white;
 }
 
-.login_modal .header .close_btn:active {
+.login_modal .modal_header .close_btn:active {
   background-color: white;
   color: #a3178c;
 }
