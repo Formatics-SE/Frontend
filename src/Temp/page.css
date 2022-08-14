@@ -39,3 +39,11 @@
     text-align: center;
     position: absolute;
 }
+.add_option input{
+    margin: 8px auto;
+    min-width: 250px;
+    padding: 6px;
+}
+.option input{
+    min-width: 10px;
+}
