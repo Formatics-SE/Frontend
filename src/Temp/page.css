@@ -25,7 +25,17 @@
     min-width: 250px;
     padding: 6px;
 }
+.done input{
+    min-width: 10px;
+    position: absolute;
+    right: 25%;
 
+}
+.option input{
+    min-width: 10px;
+    position: absolute;
+    left: 25%;
+}
 .popup label{
     font-size: large;
 }
