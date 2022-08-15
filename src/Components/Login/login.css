@@ -129,7 +129,7 @@
   font-size: 110%;
   font-weight: 500;
   letter-spacing: 0.05em;
-  background: linear-gradient(150deg, #a3178c, rgba(34, 23, 182, 0.726));
+  background: linear-gradient(145deg, #a3178c, rgba(34, 23, 182, 0.726));
   border-color: #a3178c;
   -webkit-transition: 300ms background-color;
   transition: 300ms background-color;

@@ -1,7 +1,7 @@
 .header {
   position: relative;
   width: 100vw;
-  padding: 10px 30px;
+  padding: 5px 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -18,7 +18,7 @@
 .header .filter1,
 .header .filter2 {
   position: absolute;
-  height: 50px;
+  height: 40px;
   top: 0;
   z-index: -1;
   -webkit-filter: blur(1px);
@@ -138,7 +138,7 @@
 
 .header .menu {
   position: fixed;
-  top: 50px;
+  top: 40px;
   right: -170px;
   z-index: 20;
   background-color: rgba(34, 23, 182, 0.897);

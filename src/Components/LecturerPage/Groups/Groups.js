@@ -5,6 +5,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Group.css";
 
+// import FloatingNav from '../../FloatingNav_Lect/FloatingNav_Lect'
+
 export default function Groups() {
 
   const [showModal, setShowModal] = useState(false);
@@ -65,6 +67,7 @@ export default function Groups() {
           </div>
         </Modal.Body>
       </Modal>
+
     </div>
   );
 }

@@ -5,7 +5,7 @@ $menu_bg: rgba(34, 23, 182, 0.897);
 .header {
     position: relative;
     width: 100vw;
-    padding: 10px 30px;
+    padding: 5px 30px;
     display: flex;
     justify-content: space-between;
     font-size: 125%;
@@ -16,7 +16,7 @@ $menu_bg: rgba(34, 23, 182, 0.897);
     .filter1,
     .filter2 {
         position: absolute;
-        height: 50px;
+        height: 40px;
         top: 0;
         z-index: -1;
         filter: blur(1px);
@@ -91,7 +91,7 @@ $menu_bg: rgba(34, 23, 182, 0.897);
     }
     .menu {
         position: fixed;
-        top: 50px;
+        top: 40px;
         right: -170px;
         z-index: 20;
         background-color: $menu_bg;

@@ -1,0 +1,23 @@
+.floating_nav {
+    position: fixed;
+    background-color: rgb(92, 66, 240);
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 30px;
+    display: flex;
+    gap: 10px;
+    padding: 5px 25px;
+    border-radius: 25px;
+    font-size: 110%;
+    color: white;
+    letter-spacing: 0.02em;
+    & > div > span {
+        border-width: 0 1px 0 0;
+        border-style: solid;
+        border-color: white;
+        padding-right: 10px;
+    }
+    & > div:last-child > span {
+        border-width: 0;
+    }
+}
