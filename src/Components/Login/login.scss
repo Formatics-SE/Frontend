@@ -125,8 +125,9 @@ $shadow_color: rgba(223, 62, 210, 0.664);
     transform: translateY(-50%);
     left: 50%;
     transform: translateX(-50%);
+    max-width: 95vw;
 
-    .header {
+    .modal_header {
         position: relative;
         font-weight: bold;
         font-size: 125%;
@@ -135,8 +136,8 @@ $shadow_color: rgba(223, 62, 210, 0.664);
         .close_btn {
             position: absolute;
             top: 55%;
-            transform: translateY(-50%);
             right: 10px;
+            transform: translateY(-50%);
             border-radius: 50%;
             background-color: white;
             border-color: $btn_bg_color;

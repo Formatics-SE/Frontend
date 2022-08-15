@@ -7,3 +7,7 @@
     font-family: "notes";
     src: url("./fonts/notes.otf");
 }
+
+* {
+    font-family: 'noto sans'!important;
+}
