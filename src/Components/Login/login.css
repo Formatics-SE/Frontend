@@ -129,7 +129,7 @@
   font-size: 110%;
   font-weight: 500;
   letter-spacing: 0.05em;
-  background-color: #a3178c;
+  background: linear-gradient(150deg, #a3178c, rgba(34, 23, 182, 0.726));
   border-color: #a3178c;
   -webkit-transition: 300ms background-color;
   transition: 300ms background-color;
@@ -137,7 +137,7 @@
 
 .login_page .login_form .login_btns .lecturer_login_btn:hover,
 .login_page .login_form .login_btns .student_login_btn:hover {
-  background-color: white;
+  background: white;
   color: #a3178c;
 }
 
@@ -226,14 +226,14 @@
   width: 96%;
   border-radius: 25px;
   border-color: #a3178c;
-  background-color: #a3178c;
+  background: linear-gradient(120deg, #a3178c, rgba(34, 23, 182, 0.726));
   font-size: 103%;
   font-weight: 500;
   letter-spacing: 0.05em;
 }
 
 .login_modal .login_btn:hover {
-  background-color: white;
+  background: white;
   color: #a3178c;
 }
 

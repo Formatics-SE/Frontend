@@ -10,23 +10,21 @@ section {
 }
 
 .modal_toggle_btn {
-    background-color: rgb(163, 23, 140);
+    background: linear-gradient(120deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
     border-color: rgb(163, 23, 140);
     padding: 5px 25px;
     border-radius: 25px;
     font-size: 103%;
 }
 .modal_toggle_btn:focus {
-    background-color: rgb(163, 23, 140);
     border-color: rgb(163, 23, 140);
     box-shadow: 0 0 0 rgb(163, 23, 140);
 }
 .modal_toggle_btn:hover {
-    background-color: white;
+    background: white;
     border-color: rgb(163, 23, 140);
     color: rgb(163, 23, 140);
 }
-
 
 h4 {
     position: relative;
@@ -151,17 +149,17 @@ h4 {
     width: 96%;
     border-radius: 25px;
     border-color: rgb(163, 23, 140);
-    background-color: rgb(163, 23, 140);
+    background: linear-gradient(120deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
     font-size: 103%;
     font-weight: 500;
     letter-spacing: 0.05em;
 }
 #modal #confirm_btn:hover {
-    background-color: white;
+    background: white;
     color: rgb(163, 23, 140);
 }
 #modal #confirm_btn:active {
-    background-color: rgb(163, 23, 140);
+    background: linear-gradient(120deg, rgba(34, 23, 182, 0.726), rgb(163, 23, 140));
     color: white;
 }
 #modal #confirm_btn:focus {

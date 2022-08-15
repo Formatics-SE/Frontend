@@ -23,7 +23,6 @@ $shadow_color: rgba(223, 62, 210, 0.664);
         padding: 5px 30px;
         text-align: center;
         // letter-spacing: 0.03em;
-
     }
 
     .bg_img {
@@ -100,11 +99,11 @@ $shadow_color: rgba(223, 62, 210, 0.664);
                 font-size: 110%;
                 font-weight: 500;
                 letter-spacing: 0.05em;
-                background-color: $btn_bg_color;
+                background: linear-gradient(150deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
                 border-color: $btn_bg_color;
                 transition: 300ms background-color;
                 &:hover {
-                    background-color: white;
+                    background: white;
                     color: $btn_bg_color;
                 }
                 &:focus {
@@ -184,12 +183,14 @@ $shadow_color: rgba(223, 62, 210, 0.664);
         width: 96%;
         border-radius: 25px;
         border-color: $btn_bg_color;
-        background-color: $btn_bg_color;
+        // background-color: $btn_bg_color;
+        background: linear-gradient(120deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+
         font-size: 103%;
         font-weight: 500;
         letter-spacing: 0.05em;
         &:hover {
-            background-color: white;
+            background: white;
             color: $btn_bg_color;
         }
         &:active {
