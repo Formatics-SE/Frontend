@@ -9,32 +9,35 @@
 </head>
 <body class="container">
     <div class="button">
-        <input type="button" value="Create a Poll" id="poll button">
+        <input type="submit" value="Create a Poll" id="poll button">
     </div>
     <div class="popup" id="popup">
         <label for="question">Poll</label><br>
-        <input type="text" id="question" placeholder="Type your question..."><br><br>
+        <input type="username" id="question" placeholder="Type your question..." required><br><br>
         <label for="">Options</label><br>
-        <input type="text"  id="option 1" placeholder="Option..."><br><br>
-        <input type="text"  id="option 2" placeholder="Option..."><br><br>
+        <input type="username"  id="option 1" placeholder="Option..."><br><br>
+        <input type="username"  id="option 2" placeholder="Option..."><br><br>
         <div class="option">
             <input type="button" value="Add options" id="options">
         </div>
-    </div>
-    <div class="add_option">
-        <input type="text"  id="option 1" placeholder="Option..."><br><br>
-        <input type="text"  id="option 1" placeholder="Option..."><br><br>
-        <input type="text"  id="option 1" placeholder="Option..."><br><br>
-        <input type="text"  id="option 1" placeholder="Option..."><br><br>
-        <input type="text"  id="option 1" placeholder="Option..."><br><br>
-        <input type="text"  id="option 1" placeholder="Option..."><br><br>
-        <input type="text"  id="option 1" placeholder="Option..."><br><br>
-        <input type="text"  id="option 1" placeholder="Option..."><br><br>
-        <div class="option">
-            <input type="button" value="Add options" id="options">
+        <div class="done">
+            <input type="button" value="Done" id="done">
         </div>
-
     </div>
+    <div class="add_option" id="add_option">
+        <input type="text"  id="option 1" placeholder="Option..."><br><br>
+        <input type="text"  id="option 1" placeholder="Option..."><br><br>
+        <input type="text"  id="option 1" placeholder="Option..."><br><br>
+        <input type="text"  id="option 1" placeholder="Option..."><br><br>
+        <input type="text"  id="option 1" placeholder="Option..."><br><br>
+        <input type="text"  id="option 1" placeholder="Option..."><br><br>
+        <input type="text"  id="option 1" placeholder="Option..."><br><br>
+        <input type="text"  id="option 1" placeholder="Option..."><br><br>
+        <div class="option_2">
+            <input type="submit" value="Add" id="options">
+        </div>
+    </div>
+    <script src="poll.js"></script>
     
 </body>
 </html>

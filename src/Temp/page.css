@@ -1,6 +1,6 @@
 .container{
     max-width: 100%;
-    
+    background-color: orange;
 }
 .button input{
     position: absolute;
@@ -9,8 +9,8 @@
 }
 .popup{
     min-width: 400px;
-    min-height: 250px;
-    background: lightcyan;
+    min-height: 290px;
+    background: white;
     border-radius: 6px;
     font-family: sans-serif;
     text-align: center;
@@ -18,32 +18,32 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    visibility: hidden;
 }
 .popup input{
     margin: 8px auto;
     min-width: 250px;
     padding: 6px;
 }
-.option input{
-    min-width: 10px;
-}
+
 .popup label{
     font-size: large;
 }
 .add_option{
     min-width: 400px;
     min-height: 250px;
-    background: lightcyan;
     border-radius: 6px;
     font-family: sans-serif;
-    text-align: center;
+    background: white;
     position: absolute;
+    text-align: center;
+    visibility: hidden;
 }
 .add_option input{
     margin: 8px auto;
     min-width: 250px;
     padding: 6px;
 }
-.option input{
+.option_2 input{
     min-width: 10px;
 }
