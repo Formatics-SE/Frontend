@@ -10,7 +10,7 @@
 .popup{
     min-width: 400px;
     min-height: 290px;
-    background: white;
+    background: rgba(0, 0, 0, 0.6);
     border-radius: 6px;
     font-family: sans-serif;
     text-align: center;
@@ -40,12 +40,12 @@
     font-size: large;
 }
 .add_option{
-    min-width: 400px;
-    min-height: 250px;
+    max-width: 400px;
     border-radius: 6px;
     font-family: sans-serif;
-    background: white;
+    background: rgba(0, 0, 0, 0.6);
     position: absolute;
+    top: 40px;
     text-align: center;
     visibility: hidden;
 }
