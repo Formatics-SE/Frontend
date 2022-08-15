@@ -9,6 +9,25 @@ section {
     padding-top: 40px;
 }
 
+.modal_toggle_btn {
+    background-color: rgb(163, 23, 140);
+    border-color: rgb(163, 23, 140);
+    padding: 5px 25px;
+    border-radius: 25px;
+    font-size: 103%;
+}
+.modal_toggle_btn:focus {
+    background-color: rgb(163, 23, 140);
+    border-color: rgb(163, 23, 140);
+    box-shadow: 0 0 0 rgb(163, 23, 140);
+}
+.modal_toggle_btn:hover {
+    background-color: white;
+    border-color: rgb(163, 23, 140);
+    color: rgb(163, 23, 140);
+}
+
+
 h4 {
     position: relative;
     width: 700px;
@@ -128,7 +147,7 @@ h4 {
 }
 #modal #confirm_btn {
     margin: 15px 10px 10px 10px;
-    padding: 10px 25px;
+    padding: 7px 25px;
     width: 96%;
     border-radius: 25px;
     border-color: rgb(163, 23, 140);

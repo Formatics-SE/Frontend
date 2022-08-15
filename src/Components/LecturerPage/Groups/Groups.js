@@ -13,9 +13,9 @@ export default function Groups() {
     <div className="noCoursePage">
       <section className="bodyContent">
         <div>
-          {/* <h4>No groups have been created for this course</h4> */}
+          <h4>No groups have been created for this course</h4>
         </div>
-        <Button onClick={() => setShowModal(true)}>Create Groups</Button>
+        <Button onClick={() => setShowModal(true)} className='modal_toggle_btn'>Create Groups</Button>
       </section>
 
       <footer className="footer">
@@ -32,7 +32,7 @@ export default function Groups() {
                 <a href="#">Contact Us</a>
               </li>
               <li>
-                <a href="#">Terms</a>
+                <a href="#">Terms & Conditions Apply</a>
               </li>
             </ul>
           </div>

@@ -1,6 +1,8 @@
 import React from "react"
 import data from "./dummyDB"
 import "./RandomGroup.css"
+import {Card, Button, Navbar} from "react-bootstrap"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 
 export default function RandomGroup(){
@@ -51,17 +53,22 @@ export default function RandomGroup(){
             }
             const random_list = randomGroups.map(item=>{
                return(
-                <div>
-                    <h2>GROUP {randomGroups.indexOf(item) + 1}</h2>
-                        <ol>
+                <Card className="cards-container">
+                    <Card.Body className="cards-body">
+                        <Card.Title className="cards-title">GROUP {randomGroups.indexOf(item) + 1}</Card.Title>
+                        <Card.Text>
                             {item.map(sub=>{
                               return(
                                <li>{sub}</li>
                             )
                     })}
-                    </ol>
+                        </Card.Text>
+                        <div className="cards-button">
+                            <Button variant="secondary" size="sm">Open</Button>
+                        </div>
+                    </Card.Body>
                 
-                </div>
+                </Card>
                )
             })
             setDisplay(random_list)  
@@ -69,20 +76,22 @@ export default function RandomGroup(){
     
     return(
     <section>
+        <Navbar variant="secondary">
             <div className="container-outer">    
                 <div className="container-inner">
                     <label htmlFor="division" className="label">GROUPS OF:</label>
                     <input type="number" id="division" name="division" value={value.division} className="division-box" min={2} max={10} onChange={handleChange}/>
                 </div>
                 <div>
-                    <button className="submit-button1" onClick={handleShuffle}>Shuffle</button>
-                    <input type="submit" className="submit-button" placeholder="submit" />
+                    <Button variant="light" className="submit-button1" onClick={handleShuffle}>Shuffle</Button>
+                    <Button variant="light" type="submit" className="submit-button" placeholder="submit">Submit</Button>
                 </div>
+            </div>
+        </Navbar>
 
-            </div>
-            <div className="container-list-random">
-                {display}
-            </div>
+        <div className="container-list-random">
+            {display}
+        </div>
     </section>
     )
 }

@@ -19,20 +19,21 @@ import RandomGroup from "./Components/LecturerPage/RandomGroup";
 export default function App() {
 
   return (
-    // <Routes>
-    //   <Route path='/' element={<Navigate replace to='/login' />} />
-    //   <Route path='/login' element={<Login />} />
-    //   <Route path='/lecturer' element={<LecturerPage />}>
-    //     <Route path='courses' element={<Courses />} />
-    //     <Route path='groups' element={<Groups />} />
-    //     <Route path='attendance' element={<Attendance />} />
-    //     <Route path='poll' element={<Poll />} />
-    //   </Route>
-    //   <Route path='/student' element={<StudentPage />} />
-    // </Routes>
+    <Routes>
+      <Route path='/' element={<Navigate replace to='/login' />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/lecturer' element={<LecturerPage />}>
+        <Route path='courses' element={<Courses />} />
+        <Route path='groups' element={<Groups />} />
+        <Route path='attendance' element={<Attendance />} />
+        <Route path='poll' element={<Poll />} />
+      </Route>
+      <Route path='/student' element={<StudentPage />} />
+    </Routes>
 
     // <Groups />
 
-    <RandomGroup />
+    // <RandomGroup />
+
   )
 }

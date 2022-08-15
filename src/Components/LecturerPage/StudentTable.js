@@ -2,6 +2,8 @@ import React from "react";
 import StudentsDetails from "./StudentDetails";
 import data from "./dummyDB";
 import "./StudentTable.css";
+import {Table} from "react-bootstrap"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 export default function StudentsTable(){
     const [students, setStudents] = React.useState(data)
@@ -78,7 +80,7 @@ export default function StudentsTable(){
             
             </div>
             <div className="table-container">
-                <table>
+                <Table striped bordered hover size="sm" variant="secondary" responsive>
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -89,7 +91,7 @@ export default function StudentsTable(){
                     <tbody>
                         {student_list}
                     </tbody>
-                </table>
+                </Table>
             </div>
         </section>
     )
