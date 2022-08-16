@@ -1,41 +1,22 @@
-import React from 'react'
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Dropdown from 'react-bootstrap/Dropdown';
 
-export default function Courses() {
+function Courses() {
   return (
-    <div>
-      <div class="course1">
-        <select>
-          <option>Groups</option>
-          <option>Take Attendace</option>
-          <option>create a poll</option>
-          <div class="allocate">
-            <select>
-              <option> Individuals</option>
-              <option>Groups</option>
-            </select>
-          </div>
-        </select>
+    <Dropdown as={ButtonGroup}>
+      <Button variant="success">Course1</Button>
 
+      <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
 
-
-      </div>
-      <div class="course1">
-        <select>
-          <option>Groups</option>
-          <option>Take Attendace</option>
-          <option>create a poll</option>
-          <div class="allocate">
-            <select>
-              <option> Individuals</option>
-              <option>Groups</option>
-            </select>
-          </div>
-        </select>
-
-
-
-      </div>
-    </div>
-
-  )
+      <Dropdown.Menu>
+        <Dropdown.Item href="">Groups</Dropdown.Item>
+        <Dropdown.Item href="">Take Attendance</Dropdown.Item>
+        <Dropdown.Item href="">Create a Poll</Dropdown.Item>
+        <Dropdown.Item href="">Allocate Marks</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  );
 }
+
+export default  Courses;
