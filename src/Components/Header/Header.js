@@ -29,7 +29,7 @@ export default function Header() {
                 {menuActive ? <AiOutlineClose />: <AiOutlineMenu />}
             </div>
             <div className='app_name'>
-                App Name
+                App Name 
             </div>
             <div className='name_and_signout'>
                 <div className='name d-none d-md-block'>
