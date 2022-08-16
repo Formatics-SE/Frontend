@@ -1,23 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from "react-bootstrap/Modal";
+import FormLabel from "react-bootstrap/FormLabel";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import "./Group.css";
 
+// import FloatingNav from '../../FloatingNav_Lect/FloatingNav_Lect'
+
 export default function Groups() {
+
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div className="noCoursePage">
       <section className="bodyContent">
         <div>
           <h4>No groups have been created for this course</h4>
         </div>
-        <button
-          type="submit"
-          className="btn btn-primary"
-          data-bs-toggle="confirm"
-          data-bs-target="#groupConfirm"
-          id="confirmButton"
-          onchange="getInputValue()"
-        >
-          Create Groups
-        </button>
+        <Button onClick={() => setShowModal(true)} className='modal_toggle_btn'>Create Groups</Button>
       </section>
 
       <footer className="footer">
@@ -43,6 +43,31 @@ export default function Groups() {
           Copyright &copy; 2022 Formatics. All rights reserved
         </div>
       </footer>
+
+      {/* modal to take group input*/}
+      <Modal onHide={() => setShowModal(false)}
+        show={showModal}
+        backdrop='static'
+        id='modal'
+      >
+        <Modal.Body>
+          <div id='modal_header'>
+            <Button id='close_btn' onClick={() => setShowModal(false)}>&times;</Button>
+            Groups
+          </div>
+          <div>
+            <div id='field'>
+              <FormLabel htmlFor='input'>Create groups of:</FormLabel>
+              <Form.Control type='number' id='input' />
+
+            </div>
+            <div>
+              <Button id='confirm_btn'>Confirm</Button>
+            </div>
+          </div>
+        </Modal.Body>
+      </Modal>
+
     </div>
   );
 }

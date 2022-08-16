@@ -131,7 +131,7 @@ export default function Login() {
                 className='login_modal'
             >
                 <Modal.Body>
-                    <div className='header'>
+                    <div className='modal_header'>
                         <Button className='close_btn' onClick={() => setShowModal(false)}>&times;</Button>
                         {user === 'L' ? 'Lecturer Login' : 'Student Login'}
                     </div>
