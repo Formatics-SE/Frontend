@@ -120,7 +120,7 @@ $shadow_color: rgba(223, 62, 210, 0.664);
 // stylying for login modal
 .login_modal {
     position: fixed;
-    top: 28%;
+    top: 22%;
     transform: translateY(-50%);
     left: 50%;
     transform: translateX(-50%);
@@ -156,10 +156,6 @@ $shadow_color: rgba(223, 62, 210, 0.664);
     // label and text input group
     .field {
         padding: 0 10px;
-        &.f1 {
-            // username field
-            margin-bottom: 10px;
-        }
 
         label {
             font-size: 110%;

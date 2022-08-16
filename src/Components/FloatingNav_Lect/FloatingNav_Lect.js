@@ -4,6 +4,7 @@ import './floating_nav_lect.css'
 export default function FloatingNav() {
     return (
         <div className='floating_nav'>
+            {/* <div className='mark'></div> */}
             <div className='nav_attendance'>
                 <span>Attendance</span>
             </div>

@@ -34,7 +34,7 @@ export default function Login() {
             setShowToast('true');
         }
         // call handle submit if all inputs are filled
-        else handleSubmit(username, password);  
+        else handleSubmit(username, password);
     }
 
     async function handleSubmit(username, password) {
@@ -136,14 +136,20 @@ export default function Login() {
                         {user === 'L' ? 'Lecturer Login' : 'Student Login'}
                     </div>
                     <div>
-                        <div className='field f1'>  {/* f1 marks the username field */}
-                            <FormLabel htmlFor='username'>{user === 'L' ? 'Staff ID' : 'Username'}</FormLabel>
+                        <div className='field mb-2'>
+                            <FormLabel htmlFor='username'>Username</FormLabel>
                             <Form.Control placeholder='Uzumaki Naruto' id='username' />
                         </div>
-                        <div className='field'>
+                        <div className='field mb-2'>
                             <FormLabel htmlFor='password'>Password</FormLabel>
                             <Form.Control type='password' placeholder='####' id='password' />
                         </div>
+                        {user === 'L' ?
+                            <div className='field'>
+                                <FormLabel htmlFor='staff_id'>Staff ID</FormLabel>
+                                <Form.Control placeholder='####' id='staff_id' />
+                            </div> : ''
+                        }
                         <div>
                             <Button className='login_btn' onClick={validateInputs}>Submit</Button>
                         </div>

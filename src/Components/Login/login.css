@@ -153,7 +153,7 @@
 
 .login_modal {
   position: fixed;
-  top: 28%;
+  top: 22%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   left: 50%;
@@ -196,10 +196,6 @@
 
 .login_modal .field {
   padding: 0 10px;
-}
-
-.login_modal .field.f1 {
-  margin-bottom: 10px;
 }
 
 .login_modal .field label {

@@ -1,29 +1,53 @@
 .floating_nav {
   position: fixed;
-  background-color: #5c42f0;
+  background-color: rgba(34, 23, 182, 0.808);
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  bottom: 30px;
+  bottom: 35px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 10px;
-  padding: 5px 25px;
+  padding: 15px 25px;
   border-radius: 25px;
   font-size: 110%;
   color: white;
   letter-spacing: 0.02em;
 }
 
-.floating_nav > div > span {
+.floating_nav:hover {
+  cursor: pointer;
+}
+
+.floating_nav > div {
   border-width: 0 1px 0 0;
   border-style: solid;
   border-color: white;
   padding-right: 10px;
 }
 
-.floating_nav > div:last-child > span {
+.floating_nav > div:hover {
+  color: rgba(163, 23, 140, 0.897);
+}
+
+.floating_nav > div:last-child {
   border-width: 0;
 }
-/*# sourceMappingURL=floating_nav.css.map */
+
+.floating_nav .mark {
+  position: absolute;
+  padding: 0;
+  width: 40px;
+  height: 5px;
+  border-radius: 10px;
+  top: 7px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background-color: rgba(163, 23, 140, 0.897);
+}
+/*# sourceMappingURL=floating_nav_lect.css.map */

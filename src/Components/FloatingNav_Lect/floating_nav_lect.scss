@@ -1,23 +1,41 @@
 .floating_nav {
     position: fixed;
-    background-color: rgb(92, 66, 240);
+    background-color: rgba(34, 23, 182, 0.808);
     left: 50%;
     transform: translateX(-50%);
-    bottom: 30px;
+    bottom: 35px;
     display: flex;
+    justify-content: center;
     gap: 10px;
-    padding: 5px 25px;
+    padding: 15px 25px;
     border-radius: 25px;
     font-size: 110%;
     color: white;
     letter-spacing: 0.02em;
-    & > div > span {
+    &:hover {
+        cursor: pointer;
+    }
+    & > div  {
         border-width: 0 1px 0 0;
         border-style: solid;
         border-color: white;
         padding-right: 10px;
+        &:hover {
+            color: rgba(163, 23, 140, 0.897);
+        }
     }
-    & > div:last-child > span {
+    & > div:last-child {
         border-width: 0;
+    }
+    .mark {
+        position: absolute;
+        padding: 0;
+        width: 40px;
+        height: 5px;
+        border-radius: 10px;
+        top: 7px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(163, 23, 140, 0.897);
     }
 }

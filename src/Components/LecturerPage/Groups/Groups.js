@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Group.css";
 
-// import FloatingNav from '../../FloatingNav_Lect/FloatingNav_Lect'
+import FloatingNav from '../../FloatingNav_Lect/FloatingNav_Lect'
 
 export default function Groups() {
 
@@ -15,7 +15,7 @@ export default function Groups() {
     <div className="noCoursePage">
       <section className="bodyContent">
         <div>
-          <h4>No groups have been created for this course</h4>
+          {/* <h4>No groups have been created for this course</h4> */}
         </div>
         <Button onClick={() => setShowModal(true)} className='modal_toggle_btn'>Create Groups</Button>
       </section>
@@ -67,6 +67,8 @@ export default function Groups() {
           </div>
         </Modal.Body>
       </Modal>
+
+      <FloatingNav />
 
     </div>
   );
