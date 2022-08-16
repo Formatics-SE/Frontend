@@ -15,7 +15,7 @@ export default function Groups() {
     <div className="noCoursePage">
       <section className="bodyContent">
         <div>
-          {/* <h4>No groups have been created for this course</h4> */}
+          <h4>No groups have been created for this course</h4>
         </div>
         <Button onClick={() => setShowModal(true)} className='modal_toggle_btn'>Create Groups</Button>
       </section>
