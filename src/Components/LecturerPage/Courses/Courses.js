@@ -1,4 +1,4 @@
-import Button from 'react-bootstrap/Button';
+ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 
@@ -19,4 +19,4 @@ function Courses() {
   );
 }
 
-export default  Courses;
+export default  Courses; 
