@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
@@ -22,7 +22,7 @@ export default function Login() {
     const [showToast, setShowToast] = useState(false);
     const [toastMessage, setToastMessage] = useState('');
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     // check if all fields are filled in
     function validateInputs(e) {
@@ -38,49 +38,51 @@ export default function Login() {
     }
 
     async function handleSubmit(username, password) {
-        try {
-            const userURL = user === 'L' ? 'lecturerlogin' : 'studentlogin';
-            const response = await fetch(`${URL}/${userURL}`, {
-                method: 'POST',
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify({
-                    username: username,
-                    password: password
-                })
-            });
-            const data = await response.json();
+        // try {
+        //     const userURL = user === 'L' ? 'lecturerlogin' : 'studentlogin';
+        //     const response = await fetch(`${URL}/${userURL}`, {
+        //         method: 'POST',
+        //         headers: { 'content-type': 'application/json' },
+        //         body: JSON.stringify({
+        //             username: username,
+        //             password: password
+        //         })
+        //     });
+        //     const data = await response.json();
 
-            // if user = Lecturer, the lecturer's assigned courses are returned
-            if (user === 'L') {
-                const assignedCourses = data.assignedCourses;
-                if (!assignedCourses) {
-                    sessionStorage.setItem('assignedCourses', JSON.stringify(assignedCourses));
-                    navigate('/lecturer');
-                }
-                else {  // invalid details
-                    setToastMessage(toastMessages[1]);  // message: invalid id or password
-                    setShowToast(true);
-                }
-            }
-            // if user = Student, the student's 'indexNumber' and 'registeredCourses' are returned in 'studentData' object
-            else {
-                const studentData = data.studentData;
-                if (!studentData) {
-                    const indexNumber = studentData.indexNumber;
-                    const registeredCourses = studentData.registeredCourses;
-                    sessionStorage.setItem('indexNumber', indexNumber);
-                    sessionStorage.setItem('registeredCourses', registeredCourses);
-                    navigate('/student');
-                }
-                else {  // invalid details
-                    setToastMessage(toastMessages[1]);  // message: invalid id or password
-                    setShowToast(true);
-                }
-            }
+        //     // if user = Lecturer, the lecturer's assigned courses are returned
+        //     if (user === 'L') {
+        //         const assignedCourses = data.assignedCourses;
+        //         if (!assignedCourses) {
+        //             sessionStorage.setItem('assignedCourses', JSON.stringify(assignedCourses));
+        //             navigate('/lecturer');
+        //         }
+        //         else {  // invalid details
+        //             setToastMessage(toastMessages[1]);  // message: invalid id or password
+        //             setShowToast(true);
+        //         }
+        //     }
+        //     // if user = Student, the student's 'indexNumber' and 'registeredCourses' are returned in 'studentData' object
+        //     else {
+        //         const studentData = data.studentData;
+        //         if (!studentData) {
+        //             const indexNumber = studentData.indexNumber;
+        //             const registeredCourses = studentData.registeredCourses;
+        //             sessionStorage.setItem('indexNumber', indexNumber);
+        //             sessionStorage.setItem('registeredCourses', registeredCourses);
+        //         }
+        //         else {  // invalid details
+        //             setToastMessage(toastMessages[1]);  // message: invalid id or password
+        //             setShowToast(true);
+        //         }
+        //     }
 
-        } catch (error) {
-            console.log(error.message);
-        }
+        // } catch (error) {
+        //     console.log(error.message);
+        // }
+
+        sessionStorage.setItem('currentPage', 'C');
+        navigate('/lecturer/groups')
     }
 
     return (

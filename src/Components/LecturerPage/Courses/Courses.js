@@ -2,8 +2,11 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 
+import FloatingNav from '../../FloatingNav_Lect/FloatingNav_Lect';
+
 function Courses() {
   return (
+    <>
     <Dropdown as={ButtonGroup}>
       <Button variant="success">Course1</Button>
 
@@ -16,7 +19,10 @@ function Courses() {
         <Dropdown.Item href="">Allocate Marks</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
+
+    <FloatingNav />
+    </>
   );
 }
 
-export default  Courses;
+export default Courses;

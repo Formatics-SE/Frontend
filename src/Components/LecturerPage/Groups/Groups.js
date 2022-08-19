@@ -11,11 +11,13 @@ export default function Groups() {
 
   const [showModal, setShowModal] = useState(false);
 
+  const [pageID, setPageID] = useState('G');
+
   return (
     <div className="noCoursePage">
       <section className="bodyContent">
         <div>
-          <h4>No groups have been created for this course</h4>
+          {/* <h4>No groups have been created for this course</h4> */}
         </div>
         <Button onClick={() => setShowModal(true)} className='modal_toggle_btn'>Create Groups</Button>
       </section>
@@ -44,7 +46,7 @@ export default function Groups() {
         </div>
       </footer>
 
-      {/* modal to take group input*/}
+      {/* modal to take group input */}
       <Modal onHide={() => setShowModal(false)}
         show={showModal}
         backdrop='static'
@@ -67,6 +69,8 @@ export default function Groups() {
           </div>
         </Modal.Body>
       </Modal>
+
+
 
       <FloatingNav />
 

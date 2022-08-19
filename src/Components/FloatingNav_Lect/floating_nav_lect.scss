@@ -1,41 +1,86 @@
+$font_hover_color: rgba(163, 23, 140, 0.897);
+$icon_color: rgba(163, 23, 140, 0.897);
+$border_color: rgba(34, 23, 182, 0.897);
+// $background_color: rgb(243, 239, 239);
+
 .floating_nav {
     position: fixed;
-    background-color: rgba(34, 23, 182, 0.808);
     left: 50%;
     transform: translateX(-50%);
-    bottom: 35px;
+    bottom: 20px;
     display: flex;
     justify-content: center;
     gap: 10px;
-    padding: 15px 25px;
-    border-radius: 25px;
+    padding: 10px 25px;
+    border-radius: 20px;
     font-size: 110%;
-    color: white;
+    color: $border_color;
+    font-weight: bold;
     letter-spacing: 0.02em;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $border_color;
+    box-shadow: 0 0 3px 1px #666;
+    // background-color: $background_color;
     &:hover {
         cursor: pointer;
     }
-    & > div  {
+    & > div {
         border-width: 0 1px 0 0;
         border-style: solid;
-        border-color: white;
+        border-color: $border_color;
         padding-right: 10px;
         &:hover {
-            color: rgba(163, 23, 140, 0.897);
+            color: $font_hover_color;
+            .icon {
+                animation: 300ms animate ease-in-out;
+                @keyframes animate {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+                    25% {
+                        transform: rotate(15deg);
+                    }
+                    50% {
+                        transform: rotate(30deg);
+                    }
+                    75% {
+                        transform: rotate(15deg);
+                    }
+                    100% {
+                        transform: rotate(0deg);
+                    }
+                }
+            }
+        }
+        span.active {
+            color: $font_hover_color;
+            border-style: solid;
+            border-color: $icon_color;
+            border-width: 0 0 4px 0;
+        }
+        .icon {
+            color: $icon_color;
+            font-size: 140%;
+            margin: 0 6px 2px 0;
+            &.active {
+                color: $border_color;
+            }
         }
     }
     & > div:last-child {
         border-width: 0;
     }
-    .mark {
-        position: absolute;
-        padding: 0;
-        width: 40px;
-        height: 5px;
-        border-radius: 10px;
-        top: 7px;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: rgba(163, 23, 140, 0.897);
+    @media screen and (max-width: 768px) {
+        min-width: 70%;
+        justify-content: space-evenly;
+        & > div .icon {
+            font-size: 150%;
+            margin-right: 0;
+        }
+        & > div {
+            padding-right: 0;
+            border-width: 0;
+        }
     }
 }

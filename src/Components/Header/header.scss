@@ -1,41 +1,44 @@
 $gradient_color_1: rgba(163, 23, 140, 0.897);
 $gradient_color_2: rgba(34, 23, 182, 0.897);
-$menu_bg: rgba(34, 23, 182, 0.897);
 
 .header {
     position: relative;
     width: 100vw;
-    padding: 5px 30px;
+    padding: 8px 30px;
     display: flex;
     justify-content: space-between;
     font-size: 125%;
-    color: white;
-    background: linear-gradient(160deg, $gradient_color_1, $gradient_color_2);
-    box-shadow: 0 3px 5px rgb(117, 117, 117);
+    color: $gradient_color_1;
+    // background: linear-gradient(160deg, $gradient_color_1, $gradient_color_2);
+    box-shadow: 0 2px 2px rgb(187, 184, 184);
+    border-width: 0 0 2px 0;
+    border-style: solid;
+    border-color: linear-gradient(160deg, $gradient_color_1, $gradient_color_2);
+    // border-color: $gradient_color_1;
 
-    .filter1,
-    .filter2 {
-        position: absolute;
-        height: 40px;
-        top: 0;
-        z-index: -1;
-        filter: blur(1px);
-        &.filter1 {
-            left: 0;
-            width: 250px;
-            border-radius: 0 150% 0 0;
-            background-color: $gradient_color_2;
-            @media screen and (max-width: 768px) {
-                width: 140px;
-            }
-        }
-        &.filter2 {
-            right: 0;
-            width: 280px;
-            border-radius: 150% 0 0 0;
-            background-color: $gradient_color_1;
-        }
-    }
+    // .filter1,
+    // .filter2 {
+    //     position: absolute;
+    //     height: 46px;
+    //     top: 0;
+    //     z-index: -1;
+    //     filter: blur(1px);
+    //     &.filter1 {
+    //         left: 0;
+    //         width: 250px;
+    //         border-radius: 0 150% 0 0;
+    //         background-color: $gradient_color_2;
+    //         @media screen and (max-width: 768px) {
+    //             width: 140px;
+    //         }
+    //     }
+    //     &.filter2 {
+    //         right: 0;
+    //         width: 280px;
+    //         border-radius: 150% 0 0 0;
+    //         background-color: $gradient_color_1;
+    //     }
+    // }
 
     .menu_icon {
         position: absolute;
@@ -46,6 +49,7 @@ $menu_bg: rgba(34, 23, 182, 0.897);
 
     .app_name {
         font-weight: bold;
+        font-size: 110%;
     }
     .name_and_signout {
         display: flex !important;
@@ -59,7 +63,7 @@ $menu_bg: rgba(34, 23, 182, 0.897);
             &:hover {
                 cursor: pointer;
                 .signout_icon {
-                    color: white;
+                    color: $gradient_color_2;
                     animation: 400ms animate ease-in-out;
                     @keyframes animate {
                         0% {
@@ -91,17 +95,40 @@ $menu_bg: rgba(34, 23, 182, 0.897);
     }
     .menu {
         position: fixed;
-        top: 40px;
+        top: 0;
         right: -170px;
         z-index: 20;
-        background-color: $menu_bg;
+        background-color: white;
         padding: 15px 15px 15px 20px;
         transition: 250ms;
+        border-color: $gradient_color_1;
+        border-style: solid;
+        border-width: 0 0 2px 2px;
+        
+        button {
+            color: rgb(163, 23, 140);
+            background-color: white;
+            border-radius: 50%;
+            border-color: rgb(163, 23, 140);
+            border-width: 2px;
+            font-weight: bolder;
+            margin-bottom: 10px;
+            &:hover {
+                background-color: rgb(163, 23, 140);
+                color: white;
+            }
+            &:active {
+                background-color: white;
+                color: rgb(163, 23, 140);
+            }
+        }
+
         &.menu ul {
             padding: 0;
             margin: 0;
         }
-        &.menu ul li:first-child {  // username
+        &.menu ul li:first-child {
+            // username
             margin-bottom: 7px;
         }
         &.menu ul li .user_icon {
@@ -114,7 +141,7 @@ $menu_bg: rgba(34, 23, 182, 0.897);
             &:hover {
                 cursor: pointer;
                 .signout_icon {
-                    color: white;
+                    color: $gradient_color_2;
                     animation: 400ms animate ease-in-out;
                     @keyframes animate {
                         0% {
