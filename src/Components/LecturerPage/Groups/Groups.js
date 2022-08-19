@@ -12,11 +12,9 @@ export default function Groups() {
   const [showModal, setShowModal] = useState(false);
 
   const [value, setValue] = React.useState(0);
-
-  function inputGroupsOf (event) {
+  function checkInputGroupsOf (event) {
     setValue(event.target.value ? Number(event.target.value) : event.target.value) }
   
-
   return (
     <div className="noCoursePage">
       <section className="bodyContent">
@@ -40,7 +38,7 @@ export default function Groups() {
           <div>
             <div id='field'>
               <FormLabel htmlFor='input' >Create groups of:</FormLabel>
-              <Form.Control type='number' id='input' value={value && Math.max(0,value)} onChange={inputGroupsOf} 
+              <Form.Control type='number' id='input' value={value && Math.max(0,value)} onChange={checkInputGroupsOf} 
               />
 
             </div>

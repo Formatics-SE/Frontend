@@ -10,7 +10,7 @@ section {
 }
 
 .modal_toggle_btn {
-    background: linear-gradient(145deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+    background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
     border-color: rgb(163, 23, 140);
     padding: 7px 25px;
     border-radius: 25px;
@@ -149,7 +149,7 @@ h4 {
     width: 96%;
     border-radius: 25px;
     border-color: rgb(163, 23, 140);
-    background: linear-gradient(120deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+    background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
     font-size: 103%;
     font-weight: 500;
     letter-spacing: 0.05em;

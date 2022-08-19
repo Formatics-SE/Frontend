@@ -1,7 +1,7 @@
 .header {
   position: relative;
   width: 100vw;
-  padding: 5px 30px;
+  padding: 8px 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9,43 +9,12 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   font-size: 125%;
-  color: white;
-  background: linear-gradient(160deg, rgba(163, 23, 140, 0.897), rgba(34, 23, 182, 0.897));
-  -webkit-box-shadow: 0 3px 5px #757575;
-          box-shadow: 0 3px 5px #757575;
-}
-
-.header .filter1,
-.header .filter2 {
-  position: absolute;
-  height: 40px;
-  top: 0;
-  z-index: -1;
-  -webkit-filter: blur(1px);
-          filter: blur(1px);
-}
-
-.header .filter1.filter1,
-.header .filter2.filter1 {
-  left: 0;
-  width: 250px;
-  border-radius: 0 150% 0 0;
-  background-color: rgba(34, 23, 182, 0.897);
-}
-
-@media screen and (max-width: 768px) {
-  .header .filter1.filter1,
-  .header .filter2.filter1 {
-    width: 140px;
-  }
-}
-
-.header .filter1.filter2,
-.header .filter2.filter2 {
-  right: 0;
-  width: 280px;
-  border-radius: 150% 0 0 0;
-  background-color: rgba(163, 23, 140, 0.897);
+  color: rgba(163, 23, 140, 0.897);
+  -webkit-box-shadow: 0 2px 2px #bbb8b8;
+          box-shadow: 0 2px 2px #bbb8b8;
+  border-width: 0 0 2px 0;
+  border-style: solid;
+  border-color: linear-gradient(160deg, rgba(163, 23, 140, 0.897), rgba(34, 23, 182, 0.897));
 }
 
 .header .menu_icon {
@@ -58,6 +27,7 @@
 
 .header .app_name {
   font-weight: bold;
+  font-size: 110%;
 }
 
 .header .name_and_signout {
@@ -83,7 +53,7 @@
 }
 
 .header .name_and_signout .signout:hover .signout_icon {
-  color: white;
+  color: rgba(34, 23, 182, 0.897);
   -webkit-animation: 400ms animate ease-in-out;
           animation: 400ms animate ease-in-out;
 }
@@ -138,13 +108,36 @@
 
 .header .menu {
   position: fixed;
-  top: 40px;
+  top: 0;
   right: -170px;
   z-index: 20;
-  background-color: rgba(34, 23, 182, 0.897);
+  background-color: white;
   padding: 15px 15px 15px 20px;
   -webkit-transition: 250ms;
   transition: 250ms;
+  border-color: rgba(163, 23, 140, 0.897);
+  border-style: solid;
+  border-width: 0 0 2px 2px;
+}
+
+.header .menu button {
+  color: #a3178c;
+  background-color: white;
+  border-radius: 50%;
+  border-color: #a3178c;
+  border-width: 2px;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+
+.header .menu button:hover {
+  background-color: #a3178c;
+  color: white;
+}
+
+.header .menu button:active {
+  background-color: white;
+  color: #a3178c;
 }
 
 .header .menu.menu ul {
@@ -169,7 +162,7 @@
 }
 
 .header .menu.menu ul li .signout:hover .signout_icon {
-  color: white;
+  color: rgba(34, 23, 182, 0.897);
   -webkit-animation: 400ms animate ease-in-out;
           animation: 400ms animate ease-in-out;
 }
