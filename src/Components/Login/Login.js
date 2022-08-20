@@ -26,63 +26,85 @@ export default function Login() {
 
     // check if all fields are filled in
     function validateInputs(e) {
-        const username = document.querySelector('#username').value;
-        const password = document.querySelector('#password').value;
+        let username = document.querySelector('#username').value;
+        let password = document.querySelector('#password').value;
+        let staff_id;
+        if (user === 'L')
+            staff_id = document.querySelector('#staff_id').value;
 
-        if (!username || !password) {
+        if ((user === 'L' && (!username || !password || !staff_id)) ||
+            (user === 'S' && (!username || !password))) {
             setToastMessage(toastMessages[0]);  // message: please fill in all fields
             setShowToast('true');
         }
         // call handle submit if all inputs are filled
-        else handleSubmit(username, password);
+        else {
+            if (user === 'L')
+                handleLecturerSubmit(username, password, staff_id);
+            else
+                handleStudentSubmit(username, password);
+        }
     }
 
-    async function handleSubmit(username, password) {
-        // try {
-        //     const userURL = user === 'L' ? 'lecturerlogin' : 'studentlogin';
-        //     const response = await fetch(`${URL}/${userURL}`, {
-        //         method: 'POST',
-        //         headers: { 'content-type': 'application/json' },
-        //         body: JSON.stringify({
-        //             username: username,
-        //             password: password
-        //         })
-        //     });
-        //     const data = await response.json();
+    async function handleLecturerSubmit(username, password, staff_id) {
+        try {
+            const response = await fetch(`$URL/lecturerlogin`, {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                    staff_id: staff_id
+                })
+            });
 
-        //     // if user = Lecturer, the lecturer's assigned courses are returned
-        //     if (user === 'L') {
-        //         const assignedCourses = data.assignedCourses;
-        //         if (!assignedCourses) {
-        //             sessionStorage.setItem('assignedCourses', JSON.stringify(assignedCourses));
-        //             navigate('/lecturer');
-        //         }
-        //         else {  // invalid details
-        //             setToastMessage(toastMessages[1]);  // message: invalid id or password
-        //             setShowToast(true);
-        //         }
-        //     }
-        //     // if user = Student, the student's 'indexNumber' and 'registeredCourses' are returned in 'studentData' object
-        //     else {
-        //         const studentData = data.studentData;
-        //         if (!studentData) {
-        //             const indexNumber = studentData.indexNumber;
-        //             const registeredCourses = studentData.registeredCourses;
-        //             sessionStorage.setItem('indexNumber', indexNumber);
-        //             sessionStorage.setItem('registeredCourses', registeredCourses);
-        //         }
-        //         else {  // invalid details
-        //             setToastMessage(toastMessages[1]);  // message: invalid id or password
-        //             setShowToast(true);
-        //         }
-        //     }
+            const data = await response.json();
+            const assignedCourses = data.assignedCourses;
 
-        // } catch (error) {
-        //     console.log(error.message);
-        // }
+            if (!assignedCourses) {
+                localStorage.setItem('staff_id', staff_id);
+                localStorage.setItem('assignedCourses', JSON.stringify(assignedCourses));
+                navigate('/lecturer/courses');
+            }
+            else {  // invalid details
+                setToastMessage(toastMessages[1]);  // message: invalid id or password
+                setShowToast(true);
+            }
 
-        sessionStorage.setItem('currentPage', 'C');
-        navigate('/lecturer/groups')
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
+    async function handleStudentSubmit(username, password) {
+        const response = await fetch(`$URL/sttudentlogin`, {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({
+                username: username,
+                password: password
+            })
+        });
+
+        const data = await response.json();
+        const studentData = data.studentData;
+
+        if (!studentData) {
+            const indexNumber = studentData.indexNumber;
+            const registeredCourses = studentData.registeredCourses;
+            localStorage.setItem('indexNumber', indexNumber);
+            localStorage.setItem('registeredCourses', JSON.stringify(registeredCourses));
+            navigate('/student/courses');
+        }
+        else {  // invalid details
+            setToastMessage(toastMessages[1]);  // message: invalid id or password
+            setShowToast(true);
+        }
+
+
+        // sessionStorage.setItem('currentPage', 'C');
+        // navigate('/lecturer/courses')
+
     }
 
     return (

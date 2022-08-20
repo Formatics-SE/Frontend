@@ -1,8 +1,9 @@
- import Button from 'react-bootstrap/Button';
+import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 function Courses() {
+
   return (
     <Dropdown as={ButtonGroup}>
       <Button variant="success">Course1</Button>
@@ -15,9 +16,12 @@ function Courses() {
         <Dropdown.Item href="">Create a Poll</Dropdown.Item>
         <Dropdown.Item href="">Allocate Marks</Dropdown.Item>
       </Dropdown.Menu>
+
+      {/*test */}
+      {/* <button onClick={() => localStorage.setItem('currentPage', 'G')}>click</button> */}
     </Dropdown>
     
   );
 }
 
-export default  Courses; 
+export default Courses; 

@@ -76,7 +76,7 @@ export default function Groups() {
       </footer>
       
 
-      <FloatingNav />
+      {/* <FloatingNav /> */}
 
     </div>
   );
