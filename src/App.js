@@ -33,27 +33,26 @@ import FloatingNav_Stud from './Components/FloatingNav_Stud/FloatingNav_Stud';
 export default function App() {
 
   return (
-      <Routes>
-        <Route path='/' element={<Navigate replace to='/login' />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/lecturer' element={[<LecturerPage />, <FloatingNav_Lect />]}>
-          <Route path='courses' element={<Courses_L />} />
-          <Route path='groups' element={<Groups_L />} />
-          <Route path='rollcall' element={<Attendance />} />
-          <Route path='polls' element={<Polls_L />} />
-          <Route path='marks' element={<Marks_L />} />
-        </Route>
-        <Route path='/student' element={<StudentPage />}>
+    <Routes>
+      <Route path='/' element={<Navigate replace to='/login' />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/lecturer' element={[<LecturerPage />, <FloatingNav_Lect />]}>
+        <Route path='courses' element={<Courses_L />} />
+        <Route path='groups' element={<Groups_L />} />
+        <Route path='rollcall' element={<Attendance />} />
+        <Route path='polls' element={<Polls_L />} />
+        <Route path='marks' element={<Marks_L />} />
+      </Route>
+      <Route path='/student' element={<StudentPage />}>
         <Route path='polls' element={<Polls />} />
         <Route path='groups' element={<Groups />} />
         <Route path='courses' element={<Courses />} />
         <Route path='marks' element={<Marks />} />
+      </Route>
+    </Routes>
 
-        </Route>
-      </Routes>
+    //<Groups /> 
 
-      //<Groups /> 
-
-      //<RandomGroup /> 
+    //<RandomGroup /> 
   )
 }
