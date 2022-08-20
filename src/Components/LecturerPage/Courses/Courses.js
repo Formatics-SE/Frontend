@@ -16,9 +16,11 @@ function Courses() {
         <Dropdown.Item href="">Create a Poll</Dropdown.Item>
         <Dropdown.Item href="">Allocate Marks</Dropdown.Item>
       </Dropdown.Menu>
-      <button onClick={() => sessionStorage.setItem('currentPage', 'G')}>click</button>
+
+      {/*test */}
+      {/* <button onClick={() => localStorage.setItem('currentPage', 'G')}>click</button> */}
     </Dropdown>
   );
 }
 
-export default Courses;
+export default Courses; 

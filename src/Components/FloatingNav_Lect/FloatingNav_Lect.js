@@ -21,9 +21,9 @@ export default function FloatingNav() {
 
     const [currentPage, setCurrentPage] = useState('');
 
-    /* rewriting sessionStorage's setItem method in order to get current page 
+    /* rewriting localStorage's setItem method in order to get current page 
      * value whenever it changes */
-    sessionStorage.setItem = (key, value) => {
+    localStorage.setItem = (key, value) => {
         const event = new Event('monitorItemChange');
         event.key = key;
         event.value = value;
@@ -36,13 +36,13 @@ export default function FloatingNav() {
 
     // on refresh or page load, get the current page from local storage
     useEffect(() => {
-        setCurrentPage(localStorage.getItem('currentPage'));
+        setCurrentPage(sessionStorage.getItem('currentPage'));
     }, [])
   
     /* save current page value whenever it changes
      * hide floating nav in course selection page */
     useEffect(() => {
-        localStorage.setItem('currentPage', currentPage);
+        sessionStorage.setItem('currentPage', currentPage);
         const floating_nav = document.querySelector('.floating_nav');
         if (currentPage === 'C')
             floating_nav.style.bottom = '-80px';
@@ -68,9 +68,9 @@ export default function FloatingNav() {
                 <HiUserGroup className={`icon groups_icon ${currentPage === 'G' ? 'active' : ''}`} />
                 <span className={`d-none d-md-inline group_span ${currentPage === 'G' ? 'active' : ''}`}>Groups</span>
             </div>
-            <div className='nav_poll' onClick={() => { setCurrentPage('P'); navigate('/lecturer/poll') }}>
+            <div className='nav_poll' onClick={() => { setCurrentPage('P'); navigate('/lecturer/polls') }}>
                 <FaPoll className={`icon poll_icon ${currentPage === 'P' ? 'active' : ''}`} />
-                <span className={`d-none d-md-inline poll_span ${currentPage === 'P' ? 'active' : ''}`}>Poll</span>
+                <span className={`d-none d-md-inline poll_span ${currentPage === 'P' ? 'active' : ''}`}>Polls</span>
             </div>
         </div>
     )
