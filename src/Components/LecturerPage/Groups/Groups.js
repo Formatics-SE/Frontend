@@ -35,6 +35,7 @@ export default function Groups() {
             <Button id='close_btn' onClick={() => setShowModal(false)}>&times;</Button>
             CREATE GROUPS
           </div>
+          <hr></hr>
           <div>
             <div id='field'>
               <FormLabel htmlFor='input' >Create groups of:</FormLabel>
@@ -42,6 +43,7 @@ export default function Groups() {
               />
 
             </div>
+            <hr></hr>
             <div>
               <Button id='confirm_btn'>Continue</Button>
             </div>
