@@ -24,7 +24,7 @@ const Courses = ()=> {
           <Dropdown.Item eventKey="2">Take Attendance</Dropdown.Item>
           <Dropdown.Item eventKey="3">Create a Poll</Dropdown.Item>
           <Dropdown.Item eventKey="4">Allocate Marks</Dropdown.Item>
-          
+    
  
         </DropdownButton>
       ),
