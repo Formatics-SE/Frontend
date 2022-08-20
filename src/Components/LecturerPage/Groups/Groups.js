@@ -72,7 +72,7 @@ export default function Groups() {
 
 
 
-      <FloatingNav />
+      {/* <FloatingNav /> */}
 
     </div>
   );
