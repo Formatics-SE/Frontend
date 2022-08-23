@@ -111,8 +111,8 @@ h4 {
 }
 #modal #modal_header #close_btn {
     position: absolute;
-    top: 32px;
-    right: 27px;
+    top: 30px;
+    right: 20px;
     transform: translateY(-50%);
     border-radius: 50%;
     background-color: white;
@@ -135,28 +135,31 @@ h4 {
     padding: 0 10px;
 }
 #modal #field #label {
-    font-size: 110%;
+    font-size: 120%;
     width: 50%;
     font-weight: bold;
 }
 #modal #field input {
-    margin-left: 10px;
-    width: 50%;
+    margin-left: 20px;
+    width: 60%;
 }
 #modal #confirm_btn {
-    margin: 15px 10px 10px 10px;
+    margin: 5px 10px 10px 10px;
     padding: 7px 25px;
-    width: 96%;
+    width: 40%;
+    margin-left: 60%;
     border-radius: 25px;
     border-color: rgb(163, 23, 140);
     background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
     font-size: 103%;
     font-weight: 500;
     letter-spacing: 0.05em;
+
 }
 #modal #confirm_btn:hover {
-    background: white;
-    color: rgb(163, 23, 140);
+    text-decoration: antiquewhite;
+    background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726)) border-box;
+    border: 3px solid transparent;
 }
 #modal #confirm_btn:active {
     background: linear-gradient(120deg, rgba(34, 23, 182, 0.726), rgb(163, 23, 140));

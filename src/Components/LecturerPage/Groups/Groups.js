@@ -36,11 +36,13 @@ export default function Groups() {
             <Button id='close_btn' onClick={() => setShowModal(false)}>&times;</Button>
             Create Groups
           </div>
+          <hr></hr>
           <div>
             <div id='field'>
               <FormLabel htmlFor='input' >Create groups of:</FormLabel>
               <Form.Control type='number' id='input' value={value && Math.max(2,value)} onChange={checkInputGroupsOf} />
             </div>
+            <hr></hr>
             <div>
               <Button id='confirm_btn'>Continue</Button>
             </div>
