@@ -24,6 +24,7 @@
           box-shadow: 0 0 3px 1px #666;
   -webkit-transition: 200ms bottom ease-in-out;
   transition: 200ms bottom ease-in-out;
+  background-color: white;
 }
 
 .floating_nav:hover {

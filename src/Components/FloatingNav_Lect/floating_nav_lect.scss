@@ -22,7 +22,7 @@ $border_color: rgba(34, 23, 182, 0.897);
     border-color: $border_color;
     box-shadow: 0 0 3px 1px #666;
     transition: 200ms bottom ease-in-out;
-    // background-color: $background_color;
+    background-color: white;
     &:hover {
         cursor: pointer;
     }

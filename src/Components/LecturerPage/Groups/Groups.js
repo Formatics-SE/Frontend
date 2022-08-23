@@ -11,9 +11,10 @@ export default function Groups() {
 
   const [showModal, setShowModal] = useState(false);
 
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(2);
   function checkInputGroupsOf (event) {
-    setValue(event.target.value ? Number(event.target.value) : event.target.value) }
+    setValue(event.target.value ? Number(event.target.value) : event.target.value) 
+  }
   
   return (
     <div className="noCoursePage">
@@ -33,14 +34,12 @@ export default function Groups() {
         <Modal.Body>
           <div id='modal_header'>
             <Button id='close_btn' onClick={() => setShowModal(false)}>&times;</Button>
-            CREATE GROUPS
+            Create Groups
           </div>
           <div>
             <div id='field'>
               <FormLabel htmlFor='input' >Create groups of:</FormLabel>
-              <Form.Control type='number' id='input' value={value && Math.max(0,value)} onChange={checkInputGroupsOf} 
-              />
-
+              <Form.Control type='number' id='input' value={value && Math.max(2,value)} onChange={checkInputGroupsOf} />
             </div>
             <div>
               <Button id='confirm_btn'>Continue</Button>

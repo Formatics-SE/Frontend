@@ -11,3 +11,9 @@
 * {
     font-family: 'noto sans'!important;
 }
+
+body {
+    /* overflow: hidden; */
+    scrollbar-width: 2px;
+
+}
