@@ -2,7 +2,7 @@ import React from "react";
 import StudentsDetails from "./StudentDetails";
 import data from "./dummyDB";
 import "./StudentTable.css";
-import {Table} from "react-bootstrap"
+import {Table, Button} from "react-bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 export default function StudentsTable(){
@@ -53,6 +53,7 @@ export default function StudentsTable(){
             return val
         }
     }
+
     ).map(item =>{
         return(
             <StudentsDetails
@@ -78,7 +79,7 @@ export default function StudentsTable(){
                     <button type="number"
                                 id="input_marks" 
                                 name="input_marks" 
-                                onClick={handleClick}
+                                //onClick={handleClick}
                                 className="confirm-individual">
                                 Assign
                     </button>
