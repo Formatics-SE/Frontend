@@ -8,8 +8,14 @@ import "bootstrap/dist/css/bootstrap.min.css"
 export default function StudentsTable(){
     const [students, setStudents] = React.useState(data)
     
-    const [swit,setSwit] = React.useState(true)
+    const [match,setMatch] = React.useState('')
+    const [swit, setSwit] = React.useState(true)
 
+    function handleSearch(event){
+        setMatch(event.target.value)
+    }
+
+    console.log(match)
 
     function handleClick(){
         if(!swit){
@@ -39,14 +45,22 @@ export default function StudentsTable(){
         }
         
     }
-    const student_list = students.map(item =>{
+    const student_list = students.filter((val)=>{
+        if(match === ""){
+            return val
+        }
+        else if(val.firstName.toLowerCase().includes(match.toLowerCase()) || val.lastName.toLowerCase().includes(match.toLowerCase())){
+            return val
+        }
+    }
+    ).map(item =>{
         return(
             <StudentsDetails
                 key= {item.id}
                 item ={item}
             />
         )
-    })
+    }) 
 
     
 
@@ -54,7 +68,12 @@ export default function StudentsTable(){
         <section>
             <div className="input-container">
                <div>
-                    <input type="search" placeholder="Search" name="search_sname" className="table-search"/> 
+                    <input type="search" 
+                           placeholder="Search" 
+                           name="search_sname" 
+                           className="table-search" 
+                           value={match} 
+                           onChange={handleSearch}/> 
                     <input type="number" className = "marks" id="individual" />
                     <button type="number"
                                 id="input_marks" 
