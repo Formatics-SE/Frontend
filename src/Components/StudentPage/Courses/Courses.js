@@ -1,5 +1,3 @@
- 
-import './App.css';
 import Dropdown from 'react-bootstrap/Dropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DropdownButton from 'react-bootstrap/DropdownButton';
@@ -24,11 +22,8 @@ const App = ()=> {
           title={variant}
         >
           <Dropdown.Item eventKey="1">Groups</Dropdown.Item>
-          <Dropdown.Item eventKey="2">Take Attendance</Dropdown.Item>
-          <Dropdown.Item eventKey="3">Create a Poll</Dropdown.Item>
-          <Dropdown.Item eventKey="4">Allocate Marks</Dropdown.Item>
-          
- 
+          <Dropdown.Item eventKey="3">Polls</Dropdown.Item>
+          <Dropdown.Item eventKey="4">Marks</Dropdown.Item>
         </DropdownButton>
       ),
     )}
