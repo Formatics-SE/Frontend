@@ -157,3 +157,82 @@
           box-shadow: 0 0 0 black;
 }
 
+#modal .options_container {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  max-height: 280px;
+  overflow: auto;
+  padding: 0 0 8px 0;
+}
+
+#modal .options_container .option {
+  position: relative;
+  padding: 0 10px;
+  margin-top: 7px;
+}
+
+#modal .options_container .option input {
+  padding-right: 38px;
+  font-size: 103%;
+}
+
+#modal .options_container .option input:focus {
+  -webkit-box-shadow: 0 0 5px 1px #a3178c;
+          box-shadow: 0 0 5px 1px #a3178c;
+  border-color: #e2dfdf;
+}
+
+#modal .options_container .option .remove_option_btn {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  right: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #c5c1c1;
+}
+
+#modal .options_container .option .remove_option_btn:hover {
+  cursor: pointer;
+}
+
+#modal .confirm_btn {
+  margin: 15px 10px 10px 10px;
+  padding: 5px 25px;
+  width: 96%;
+  border-radius: 25px;
+  border-color: #a3178c;
+  background: linear-gradient(120deg, #a3178c, rgba(34, 23, 182, 0.726));
+  font-size: 103%;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+#modal .confirm_btn:hover {
+  background: white;
+  color: #a3178c;
+}
+
+#modal .confirm_btn:active {
+  background-color: #a3178c;
+  color: white;
+}
+
+#modal .confirm_btn:focus {
+  -webkit-box-shadow: 0 0 0 black;
+          box-shadow: 0 0 0 black;
+}
+/*# sourceMappingURL=polls.css.map */
