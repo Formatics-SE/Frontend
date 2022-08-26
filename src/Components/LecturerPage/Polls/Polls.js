@@ -30,3 +30,37 @@ export default function Polls() {
 
         setOptionsCount(prevCount => prevCount + 1);
     }
+
+    function removeOption(e) {
+        // let tempArray = options.filter((option) => 
+        //     option.props.children[1].props.className.split(' ')[1] !=
+        //     e.target.className.split(' ')[1]
+        // )
+        options.forEach((option) => 
+        console.log(option.props.children[1].props.className.split(' ')[1]) 
+    )
+
+        // setOptions(tempArray)
+    }
+
+    // adds two default inputs on refresh or when a poll is being created
+    function addFirstTwoOptions() {
+        let tempOps = []
+        for (let i = 1; i <= 2; i++) {
+            tempOps.push(
+                <div className='option'>
+                    <Form.Control />
+                    <div className={`remove_option_btn ${i}`}
+                        onClick={(e) => removeOption(e)}>&times;</div>
+                </div>
+            )
+        }
+        setOptions(tempOps)
+    }
+
+    useEffect(() => {
+        addFirstTwoOptions()
+    }, [])
+
+   
+
