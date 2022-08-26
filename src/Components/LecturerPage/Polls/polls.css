@@ -1,0 +1,90 @@
+.polls {
+  width: 75%;
+  height: calc(100vh - 51px);
+  min-height: 500px;
+  margin: 0 auto;
+  padding: 10px 30px;
+  -webkit-box-shadow: 0 0 4px 2px #bbb8b8;
+          box-shadow: 0 0 4px 2px #bbb8b8;
+}
+
+@media screen and (max-width: 768px) {
+  .polls {
+    width: 100%;
+    -webkit-box-shadow: 0 0 0 #bbb8b8;
+            box-shadow: 0 0 0 #bbb8b8;
+    padding: 10px 10px;
+  }
+}
+
+.polls .create_polls_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 10px 10px 10px;
+  -webkit-box-shadow: 0 2px 3px -2px #bbb8b8;
+          box-shadow: 0 2px 3px -2px #bbb8b8;
+}
+
+.polls .create_polls_header div .create_poll_btn {
+  background: linear-gradient(140deg, #a3178c, rgba(34, 23, 182, 0.726));
+  border-color: #a3178c;
+  padding: 7px 25px;
+  border-radius: 25px;
+  font-size: 103%;
+}
+
+.polls .create_polls_header div .create_poll_btn:focus {
+  border-color: #a3178c;
+  -webkit-box-shadow: 0 0 0 #a3178c;
+          box-shadow: 0 0 0 #a3178c;
+}
+
+.polls .create_polls_header div .create_poll_btn:hover {
+  background: white;
+  border-color: #a3178c;
+  color: #a3178c;
+}
+
+.polls .create_polls_header .total_polls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 110%;
+}
+
+.polls .created_polls_container {
+  padding: 10px 10px 70px 10px;
+  width: 100%;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+  max-height: calc(100% - 61px);
+  overflow-y: auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(48%, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
+  -webkit-column-gap: clamp(15px, 15px, 20px);
+          column-gap: clamp(15px, 15px, 20px);
+  row-gap: clamp(15px, 15px, 20px);
+}
+
+@media screen and (max-width: 768px) {
+  .polls .created_polls_container {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+}
+
+#modal {
+  min-width: 30%;
+  top: 100px;
+}
+
