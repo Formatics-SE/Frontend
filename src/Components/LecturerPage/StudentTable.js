@@ -18,20 +18,19 @@ export default function StudentsTable(){
     console.log(match)
 
     function handleClick(){
-        if(!swit){
-            setStudents(prev=>{
-                return prev.map(student=>{
-                    const point = document.getElementById(student.index).value
-                    const total = Number(point) + Number(student.mark)
-                    document.getElementById(student.index).value =0;
-                    return{
-                        ...student,
-                        mark: total
-                    }
-                })
-            })
-        }
-        else{
+            // setStudents(prev=>{
+            //     return prev.map(student=>{
+            //         const point = document.getElementById(student.index).value
+            //         const total = Number(point) + Number(student.mark)
+            //         document.getElementById(student.index).value =0;
+            //         return{
+            //             ...student,
+            //             mark: total
+            //         }
+            //     })
+            // })
+        
+        
             setStudents(prev=>{
                 return prev.map(student=>{
                     const point = document.getElementById("group").value
@@ -44,12 +43,14 @@ export default function StudentsTable(){
             })
         }
         
-    }
+    
     const student_list = students.filter((val)=>{
         if(match === ""){
             return val
         }
-        else if(val.firstName.toLowerCase().includes(match.toLowerCase()) || val.lastName.toLowerCase().includes(match.toLowerCase())){
+        else if(val.firstName.toLowerCase().includes(match.toLowerCase()) || 
+                val.lastName.toLowerCase().includes(match.toLowerCase())||
+                val.index.toLowerCase().includes(match.toLowerCase())){
             return val
         }
     }
@@ -99,6 +100,7 @@ export default function StudentsTable(){
                  </div>
             
             </div>
+            <div className="main-container">
             <div className="table-container">
                 <Table striped bordered hover size="sm" variant="secondary" responsive>
                     <thead>
@@ -112,6 +114,7 @@ export default function StudentsTable(){
                         {student_list}
                     </tbody>
                 </Table>
+            </div>
             </div>
         </section>
     )

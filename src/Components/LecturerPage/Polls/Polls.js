@@ -129,10 +129,10 @@ export default function Polls() {
             </div>
             <div className='created_polls_container'>
                 {polls}
-                {/* <PollInstance />
                 <PollInstance />
                 <PollInstance />
-                <PollInstance /> */}
+                <PollInstance />
+                <PollInstance />
             </div>
 
             <Modal onHide={() => setShowModal(false)}
