@@ -88,3 +88,72 @@
   top: 100px;
 }
 
+@media screen and (max-width: 768px) {
+  #modal {
+    min-width: 95%;
+  }
+}
+
+#modal .field {
+  padding: 0 10px;
+}
+
+#modal .field label {
+  font-size: 110%;
+  font-weight: bold;
+}
+
+#modal .field input {
+  margin-top: -3px;
+  font-size: 103%;
+}
+
+#modal .field input:focus {
+  -webkit-box-shadow: 0 0 5px 1px #a3178c;
+          box-shadow: 0 0 5px 1px #a3178c;
+  border-color: #e2dfdf;
+}
+
+#modal .options_label_and_add_options_btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 8px;
+}
+
+#modal .options_label_and_add_options_btn .options_label {
+  padding: 0 10px;
+  font-size: 110%;
+  font-weight: bold;
+}
+
+#modal .options_label_and_add_options_btn .add_options_btn {
+  margin-right: 10px;
+  border-radius: 50%;
+  border-color: #a3178c;
+  background-color: gray;
+  font-weight: bold;
+  border-color: gray;
+}
+
+#modal .options_label_and_add_options_btn .add_options_btn:hover {
+  background: white;
+  color: gray;
+}
+
+#modal .options_label_and_add_options_btn .add_options_btn:active {
+  background-color: gray;
+  color: white;
+}
+
+#modal .options_label_and_add_options_btn .add_options_btn:focus {
+  -webkit-box-shadow: 0 0 0 black;
+          box-shadow: 0 0 0 black;
+}
+
