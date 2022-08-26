@@ -1,0 +1,52 @@
+$border_color: rgb(163, 23, 140);
+$fill_color: rgba(34, 23, 182, 0.63);
+
+.poll_instance {
+    border: 1px solid $border_color;
+    border-radius: 10px;
+    box-shadow: 0px 0px 4px 1px rgb(187, 184, 184);
+
+    .title {
+        padding: 5px 10px;
+        border-width: 0 0 1px 0;
+        border-style: solid;
+        border-color: $border_color;
+        font-weight: bold;
+    }
+
+    .options {
+        padding: 8px 10px;
+
+        .option_and_percent_votes {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 5px;
+            .option {
+            }
+            .percent_votes {
+            }
+        }
+
+        .progressbar {
+            position: relative;
+            width: 100%;
+            height: 10px;
+            background-color: rgb(224, 222, 222);
+            margin-bottom: 3px;
+            .progressbar_fill {
+                transition: 300ms width ease-in-out;
+                width: 0%;
+                height: 10px;
+                background-color: $fill_color;
+            }
+        }
+    }
+
+    .totalVotesCast {
+        border-width: 1px 0 0 0;
+        border-style: solid;
+        border-color: $border_color;
+        padding: 5px 10px;
+        border-radius: 0 0 10px 10px;
+    }
+}
