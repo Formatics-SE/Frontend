@@ -125,4 +125,66 @@ $btn_bg_color: rgb(163, 23, 140);
         }
     }
 
-   
+    .options_container {
+        height: fit-content;
+        max-height: 280px;
+        overflow: auto;
+        padding: 0 0 8px 0;
+        .option {
+            position: relative;
+            padding: 0 10px;
+            margin-top: 7px;
+            input {
+                padding-right: 38px;
+                font-size: 103%;
+                &:focus {
+                    box-shadow: 0 0 5px 1px $btn_bg_color;
+                    border-color: rgb(226, 223, 223);
+                }
+            }
+            .remove_option_btn {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background-color: rgb(197, 193, 193);
+                &:hover {
+                    cursor: pointer;
+                }
+                // padding: 2px;
+            }
+        }
+    }
+
+    .confirm_btn {
+        margin: 15px 10px 10px 10px;
+        padding: 5px 25px;
+        width: 96%;
+        border-radius: 25px;
+        border-color: $btn_bg_color;
+        // background-color: $btn_bg_color;
+        background: linear-gradient(120deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+
+        font-size: 103%;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        &:hover {
+            background: white;
+            color: $btn_bg_color;
+        }
+        &:active {
+            background-color: $btn_bg_color;
+            color: white;
+        }
+        &:focus {
+            box-shadow: 0 0 0 black;
+        }
+    }
+}
