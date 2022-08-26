@@ -4,6 +4,7 @@
     flex-direction: column;
     gap: 10px;
     padding: 1rem;
+    
 }
 table{
     border-collapse: collapse;
@@ -14,6 +15,7 @@ th, td{
     text-align: left;
     padding: 8px;
     font-size: 20px;
+
 }
 th{
     background-color: rgb(117,201,250);
@@ -22,6 +24,7 @@ th{
 }
 td{
     background-color: rgb(205,235,253);
+    
 
 }
 .input-container{
