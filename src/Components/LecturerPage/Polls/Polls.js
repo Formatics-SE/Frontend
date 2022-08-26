@@ -62,5 +62,89 @@ export default function Polls() {
         addFirstTwoOptions()
     }, [])
 
-   
+    useEffect(() => {
+        // const polls = sessionStorage.getItem('polls') // array of poll objects
+        // setPolls(polls)
+
+        // polls?.map(obj => {
+        //     return <PollInstance
+        //         title={obj?.title}
+        //         totalVotesCast={obj?.totalVotesCast}
+        //         options={obj.options}
+        //     />
+        // });
+
+        // <PollInstance
+        //     poll = "What's ur favorite anime"
+        //     totalVotesCast = '32'
+        //     // options = {[{ option: 'Demon Slayer', votes: 23 }, { option: 'One Piece', votes: 10 }]}
+        // />
+
+    }, [])
+
+    return (
+        <div className='polls'>
+            <div className='create_polls_header'>
+                <div><Button className='create_poll_btn' onClick={() => { addFirstTwoOptions(); setShowModal(true) }}>Create Poll</Button></div>
+                <div className='total_polls'>Total Polls: {polls?.length}</div>
+            </div>
+            <div className='created_polls_container'>
+                <PollInstance />
+                <PollInstance />
+                <PollInstance />
+                <PollInstance />
+            </div>
+
+            <Modal onHide={() => setShowModal(false)}
+                show={showModal}
+                backdrop='static'
+                id='modal'
+            >
+                <Modal.Body>
+                    <div id='modal_header'>
+                        Poll
+                        <Button id='close_btn'
+                            onClick={() => { setOptions(); setOptionsCount(2); setShowModal(false) }}
+                        >
+                            &times;
+                        </Button>
+                    </div>
+                    <div>
+                        <div className='field mb-2'>
+                            <FormLabel htmlFor='title'>Title</FormLabel>
+                            <Form.Control id='title' />
+                        </div>
+                        <div className='options_label_and_add_options_btn'>
+                            <div className='options_label'>Options</div>
+                            <div><Button className='add_options_btn' onClick={addOption}>+</Button></div>
+                        </div>
+                        <div className='options_container'>
+                            {
+                                options
+                            }
+                        </div>
+                        <div>
+                            <Button className='confirm_btn'>Confirm</Button>
+                        </div>
+                    </div>
+
+                </Modal.Body>
+            </Modal>
+        </div>
+    )
+}
+
+
+function Option() {
+    return (
+        <div className='option'>
+            <div className=''>
+                <div className='remove_option_btn'>
+                    <Button>&times;</Button>
+                </div>
+            </div>
+        </div>
+    )
+}
+
 
