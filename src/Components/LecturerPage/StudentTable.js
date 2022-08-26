@@ -2,7 +2,9 @@ import React from "react";
 import StudentsDetails from "./StudentDetails";
 import data from "./dummyDB";
 import "./StudentTable.css";
-import {Table, Button} from "react-bootstrap"
+import Modal from 'react-bootstrap/Modal'
+import Table from "react-bootstrap/Table"
+import Button from "react-bootstrap/Button"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 export default function StudentsTable(){
@@ -12,10 +14,29 @@ export default function StudentsTable(){
         individual_marks: 0,
         group_marks : 0
     })
+    const [showModal, setShowModal] = React.useState(false);
+    const [specifiedStudent, setSpecifiedStudent] = React.useState('No match')
+
+    let student_list = students.filter(val=>{
+        if(match===""){
+            return val
+            }
+        else if(val.index.includes(match)){
+            return val
+        }}).map(item=> {
+                return(
+                    <StudentsDetails 
+                    key={item.id}
+                    item ={item}
+                    />
+                )}
+            
+        )
+    
+    
 
     function handleSearch(event){
         setMatch(event.target.value)
-        
     }
     function handleMarksEntry(event){
         setMarks(prev=>{
@@ -25,57 +46,6 @@ export default function StudentsTable(){
             }
         })
 
-    }
-
-    function demo(){
-        const demo_list = students.filter((val)=>{
-        if(match === ""){
-            return val
-        }
-        else if(val.index.includes(match)){
-            return val
-        }
-        }).map(item =>{
-        return(
-            <StudentsDetails
-                key= {item.id}
-                item ={item}
-            />
-        )
-         }) 
-         return demo_list
-        }
-    
-        let student_list = demo()
-
-
-    function handleIndividual(){
-
-            setStudents(prev=>{
-                return prev.map(student=>{
-                    if(student.index.includes(match)){
-                        const total = Number(student.mark) + Number(marks.individual_marks)
-                        return {
-                            ...student,
-                            mark: total
-                        }
-                    }
-                    
-                })})
-                
-
-            // setStudents(prev=>{
-            //     return prev.map(student=>{
-            //         const point = document.getElementById(student.index).value
-            //         const total = Number(point) + Number(student.mark)
-            //         document.getElementById(student.index).value =0;
-            //         return{
-            //             ...student,
-            //             mark: total
-            //         }
-            //     })
-            // })
-            
     }
 
     function handleAll(){
@@ -88,6 +58,9 @@ export default function StudentsTable(){
                     }
                 })
             })
+
+        setShowModal(prev=>!prev)
+        setSpecifiedStudent(`Assigned ${marks.group_marks} to all students`)
         setMarks(prev=>{
             return{
                 ...prev,
@@ -96,7 +69,44 @@ export default function StudentsTable(){
         })
     }   
     
-    console.log(marks)
+    function handleIndividual(){
+        setStudents(prev=>{
+            return prev.map(student=>{
+                if(student.index === match){
+                    setShowModal(prev=>!prev)
+                    let total = Number(student.mark)
+                    total = Number(student.mark) + Number(marks.individual_marks)
+                    setSpecifiedStudent(`Assigned ${marks.individual_marks} to ${student.firstName} ${student.lastName}`)
+                     return{
+                        ...student,
+                        mark: total
+                        }
+                    }
+                else{
+                    setShowModal(prev=>!prev)
+                    return student
+                }
+            })
+        })
+        setSpecifiedStudent("Oops, no match!!!")
+        setMatch("")
+        // student_list = students.map(item=>{
+        //     return(
+        //         <StudentsDetails 
+        //             key={item.id}
+        //             item={item}
+        //         />
+        //     )
+        // })
+        setMarks(prev=>{
+            return{
+                ...prev,
+                individual_marks: 0
+            }
+        })
+
+
+    }
 
     return(
         <section>
@@ -155,6 +165,21 @@ export default function StudentsTable(){
                         {student_list}
                     </tbody>
                 </Table>
+                <Modal 
+                    onHide={() => setShowModal(false)}
+                    show={showModal}
+                    backdrop='static'
+                    className='modal-main-container' >
+                    <Modal.Header closeButton>
+                        <Modal.Title className="modal-title">Confirm</Modal.Title>      
+                   </Modal.Header>
+                    <Modal.Body className = "modal-body">
+                        <div>{specifiedStudent}</div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button  className="closeButton" onClick={() => setShowModal(prev=>!prev)}>Close</Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
             </div>
         </section>

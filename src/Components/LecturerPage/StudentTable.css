@@ -67,8 +67,8 @@ td{
     font-family: "Poppins";
     height: 35px;
     border-radius: 6px;
-    background-color: white;
-    color: black;
+    background: rgba(34, 23, 182, 0.726);
+    color: white;
     font-size: 18px;
     transition: 0.4s;
 
@@ -93,31 +93,23 @@ td{
     background-color: white;
     color: black;
 }
-.confirm-group::before , .confirm-individual::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: -1;
-    background: grey;
-    transition: transform 500ms ease-in-out;
-    transform: scaleX(0);
-    transform-origin: left;
+.modal-main-container{
+    margin-top: 200px;
+}
+.modal-title{
+    font-family: "Poppins";
+    color:  rgb(163, 23, 140);
     
 }
-.confirm-group:hover::before,
-.confirm-group:focus::before,
-.confirm-individual:hover::before,
-.confirm-individual:focus::before{
-    transform: scaleX(1);
+.modal-body{
+    color: rgba(34, 23, 182, 0.726);
+    text-align: center;
+    font-family: "Poppins";
+    font-size: 20px;
+}
+.closeButton{
+    background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
 }
 
-.confirm-group, .confirm-individual{
-    z-index: 1;
-}
 
-.confirm-group:hover , .confirm-individual:hover{
-    color: white;
-}
+
