@@ -1,0 +1,63 @@
+.poll_instance {
+  -webkit-box-shadow: 0px 0px 4px 1px #bbb8b8;
+          box-shadow: 0px 0px 4px 1px #bbb8b8;
+}
+
+.poll_instance .title {
+  padding: 5px 15px;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: #a3178c;
+  font-weight: bold;
+  background-color: #e1e1e2f3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: none;
+}
+
+.poll_instance .options {
+  padding: 8px 10px;
+}
+
+.poll_instance .options .option_and_percent_votes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-column-gap: 5px;
+          column-gap: 5px;
+  padding: 0 5px;
+}
+
+.poll_instance .options .option_and_percent_votes .option {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: none;
+}
+
+.poll_instance .options .progressbar {
+  position: relative;
+  width: 100%;
+  height: 10px;
+  background-color: #e0dede;
+  margin-bottom: 3px;
+}
+
+.poll_instance .options .progressbar .progressbar_fill {
+  -webkit-transition: 300ms width ease-in-out;
+  transition: 300ms width ease-in-out;
+  width: 0%;
+  height: 10px;
+  background-color: #5e57c0;
+}
+
+.poll_instance .totalVotesCast {
+  border-width: 1px 0 0 0;
+  border-style: solid;
+  border-color: #a3178c;
+  padding: 5px 10px;
+  border-radius: 0 0 10px 10px;
+}
+/*# sourceMappingURL=poll_instance.css.map */

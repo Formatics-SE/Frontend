@@ -9,12 +9,12 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   font-size: 125%;
-  color: rgba(163, 23, 140, 0.897);
+  color: white;
+  background-color: #860c72;
   -webkit-box-shadow: 0 2px 2px #bbb8b8;
           box-shadow: 0 2px 2px #bbb8b8;
   border-width: 0 0 2px 0;
   border-style: solid;
-  border-color: linear-gradient(160deg, rgba(163, 23, 140, 0.897), rgba(34, 23, 182, 0.897));
 }
 
 .header .menu_icon {
@@ -41,7 +41,12 @@
 }
 
 .header .name_and_signout .name {
+  text-align: right;
   margin-right: 30px;
+  width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: normal;
 }
 
 .header .name_and_signout .signout {
@@ -53,7 +58,6 @@
 }
 
 .header .name_and_signout .signout:hover .signout_icon {
-  color: rgba(34, 23, 182, 0.897);
   -webkit-animation: 400ms animate ease-in-out;
           animation: 400ms animate ease-in-out;
 }
@@ -103,7 +107,7 @@
 
 .header .name_and_signout .signout .signout_icon {
   margin-right: 4px;
-  color: #c022a6;
+  color: #eb08c5;
 }
 
 .header .menu {
@@ -111,7 +115,7 @@
   top: 0;
   right: -170px;
   z-index: 20;
-  background-color: white;
+  background-color: #860c72;
   padding: 15px 15px 15px 20px;
   -webkit-transition: 250ms;
   transition: 250ms;
@@ -120,22 +124,25 @@
   border-width: 0 0 2px 2px;
 }
 
-.header .menu button {
-  color: #a3178c;
-  background-color: white;
-  border-radius: 50%;
-  border-color: #a3178c;
-  border-width: 2px;
-  font-weight: bolder;
-  margin-bottom: 10px;
+.header .menu .menu_close_btn {
+  color: white;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin: -10px 0 10px 0;
+  padding: 0;
+  font-size: 160%;
 }
 
-.header .menu button:hover {
+.header .menu .menu_close_btn:hover {
   background-color: #a3178c;
   color: white;
 }
 
-.header .menu button:active {
+.header .menu .menu_close_btn:active {
   background-color: white;
   color: #a3178c;
 }
@@ -150,11 +157,12 @@
 }
 
 .header .menu.menu ul li .user_icon {
-  color: #c022a6;
+  color: #eb08c5;
 }
 
 .header .menu.menu ul li span {
   margin-left: 8px;
+  color: white;
 }
 
 .header .menu.menu ul li .signout:hover {
@@ -192,7 +200,7 @@
 }
 
 .header .menu.menu ul li .signout .signout_icon {
-  color: #c022a6;
+  color: #eb08c5;
 }
 
 .header .menu.active {
