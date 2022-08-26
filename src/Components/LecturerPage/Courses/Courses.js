@@ -1,13 +1,13 @@
+import React from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
-const Courses = ()=> {
-  
-  return (
-    <>
-    {['course1', 'course2' ].map( 
+function Courses ()
+{
+  return(<>
+    {['course1','course2'].map( 
       (variant) => (
         <DropdownButton
           as={ButtonGroup}
@@ -24,9 +24,8 @@ const Courses = ()=> {
  
         </DropdownButton>
       ),
-    )}
-  </>
-);
+    )}</>
+  )
 }
 
 
