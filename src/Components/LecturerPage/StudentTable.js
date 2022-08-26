@@ -7,17 +7,63 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 export default function StudentsTable(){
     const [students, setStudents] = React.useState(data)
-    
     const [match,setMatch] = React.useState('')
-    const [swit, setSwit] = React.useState(true)
+    const [marks, setMarks] = React.useState({
+        individual_marks: 0,
+        group_marks : 0
+    })
 
     function handleSearch(event){
         setMatch(event.target.value)
+        
+    }
+    function handleMarksEntry(event){
+        setMarks(prev=>{
+            return{
+                ...prev,
+                [event.target.name] : event.target.value
+            }
+        })
+
     }
 
-    console.log(match)
+    function demo(){
+        const demo_list = students.filter((val)=>{
+        if(match === ""){
+            return val
+        }
+        else if(val.index.includes(match)){
+            return val
+        }
+        }).map(item =>{
+        return(
+            <StudentsDetails
+                key= {item.id}
+                item ={item}
+            />
+        )
+         }) 
+         return demo_list
+        }
+    
+        let student_list = demo()
 
-    function handleClick(){
+
+    function handleIndividual(){
+
+            setStudents(prev=>{
+                return prev.map(student=>{
+                    if(student.index.includes(match)){
+                        const total = Number(student.mark) + Number(marks.individual_marks)
+                        return {
+                            ...student,
+                            mark: total
+                        }
+                    }
+                    
+                })})
+                
+
             // setStudents(prev=>{
             //     return prev.map(student=>{
             //         const point = document.getElementById(student.index).value
@@ -29,58 +75,49 @@ export default function StudentsTable(){
             //         }
             //     })
             // })
-        
-        
-            setStudents(prev=>{
+            
+    }
+
+    function handleAll(){
+        setStudents(prev=>{
                 return prev.map(student=>{
-                    const point = document.getElementById("group").value
-                    const total = Number(student.mark) + Number(point)
+                    const total = Number(student.mark) + Number(marks.group_marks)
                     return{
                         ...student,
                         mark: total
                     }
                 })
             })
-        }
-        
+        setMarks(prev=>{
+            return{
+                ...prev,
+                group_marks: 0
+            }
+        })
+    }   
     
-    const student_list = students.filter((val)=>{
-        if(match === ""){
-            return val
-        }
-        else if(val.firstName.toLowerCase().includes(match.toLowerCase()) || 
-                val.lastName.toLowerCase().includes(match.toLowerCase())||
-                val.index.toLowerCase().includes(match.toLowerCase())){
-            return val
-        }
-    }
-
-    ).map(item =>{
-        return(
-            <StudentsDetails
-                key= {item.id}
-                item ={item}
-            />
-        )
-    }) 
-
-    
+    console.log(marks)
 
     return(
         <section>
             <div className="input-container">
                <div>
                     <input type="search" 
-                           placeholder="Search" 
+                           placeholder="Search with index numbers...." 
                            name="search_sname" 
                            className="table-search" 
                            value={match} 
                            onChange={handleSearch}/> 
-                    <input type="number" className = "marks" id="individual" />
-                    <button type="number"
-                                id="input_marks" 
-                                name="input_marks" 
-                                //onClick={handleClick}
+                    <input type="number" 
+                           className= "marks" 
+                           id="individual" 
+                           name="individual_marks"  
+                           value={marks.individual_marks}
+                           onChange ={handleMarksEntry}
+                           />
+                    <button type="submit"
+                                id="input_marks"  
+                                onClick={handleIndividual}
                                 className="confirm-individual">
                                 Assign
                     </button>
@@ -89,11 +126,15 @@ export default function StudentsTable(){
                 
                     
                  <div className="all-students">
-                    <input type="number" className="marks" id="group"/>
-                    <button type="number"
+                    <input type="number" 
+                           className="marks" 
+                            id="group"
+                            name="group_marks" 
+                            value={marks.group_marks} 
+                            onChange ={handleMarksEntry}/>
+                    <button type="submit"
                             id="input_marks" 
-                            name="input_marks" 
-                            onClick={handleClick}
+                            onClick={handleAll}
                             className="confirm-group">
                                 Assign to all
                     </button>
