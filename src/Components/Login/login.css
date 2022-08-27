@@ -168,11 +168,14 @@
   font-size: 125%;
   padding-left: 10px;
   margin-bottom: 20px;
+<<<<<<< HEAD
   color: #a3178c;
 }
 
 .login_modal .modal_header span {
   color: #a3178c;
+=======
+>>>>>>> 96252b4ac94c5fb1feb545d43fd0e4a17ec7981a
 }
 
 .login_modal .modal_header .close_btn {

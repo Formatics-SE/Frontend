@@ -73,7 +73,6 @@ export default function Groups() {
           Copyright &copy; 2022 Formatics. All rights reserved
         </div>
       </footer>
-
     </div>
   );
 

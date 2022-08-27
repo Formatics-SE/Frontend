@@ -157,7 +157,11 @@ export default function Login() {
                 <Modal.Body>
                     <div className='modal_header'>
                         <Button className='close_btn' onClick={() => setShowModal(false)}>&times;</Button>
+<<<<<<< HEAD
                         {user === 'L' ? <span>Lecturer Login</span> : <span>Student Login</span>}
+=======
+                        {user === 'L' ? 'Lecturer Login' : 'Student Login'}
+>>>>>>> 96252b4ac94c5fb1feb545d43fd0e4a17ec7981a
                     </div>
                     <div>
                         <div className='field mb-2'>

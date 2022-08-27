@@ -1,25 +1,46 @@
+<<<<<<< HEAD
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 .table-container {
+=======
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+.table-container{
+>>>>>>> 96252b4ac94c5fb1feb545d43fd0e4a17ec7981a
     display: flex;
     flex-direction: column;
     gap: 10px;
     padding: 1rem;
     width: 70%;
+<<<<<<< HEAD
 }
 .main-container {
+=======
+    
+    
+}
+.main-container{
+>>>>>>> 96252b4ac94c5fb1feb545d43fd0e4a17ec7981a
     display: flex;
     align-items: center;
     justify-content: center;
 }
+<<<<<<< HEAD
 table {
     border-collapse: collapse;
 }
 th,
 td {
+=======
+table{
+    border-collapse: collapse;
+    
+}
+th, td{
+>>>>>>> 96252b4ac94c5fb1feb545d43fd0e4a17ec7981a
     border: 1px solid white;
     text-align: left;
     padding: 8px;
     font-size: 20px;
+<<<<<<< HEAD
 }
 th {
     background-color: rgb(117, 201, 250);
@@ -29,6 +50,22 @@ td {
     background-color: rgb(205, 235, 253);
 }
 .input-container {
+=======
+
+}
+th{
+    background-color: rgb(117,201,250);
+    font-family: "Poppins";
+
+}
+td{
+    background-color: rgb(205,235,253);
+    
+    
+
+}
+.input-container{
+>>>>>>> 96252b4ac94c5fb1feb545d43fd0e4a17ec7981a
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -36,18 +73,29 @@ td {
     align-items: center;
     margin-top: 30px;
     transition: 0.4s;
+<<<<<<< HEAD
 }
 .table-search {
+=======
+
+}
+.table-search{
+>>>>>>> 96252b4ac94c5fb1feb545d43fd0e4a17ec7981a
     margin-left: 130px;
     width: 350px;
     height: 35px;
     border-radius: 6px;
+<<<<<<< HEAD
     background-color: #bcc5ce;
+=======
+    background-color: #BCC5CE;
+>>>>>>> 96252b4ac94c5fb1feb545d43fd0e4a17ec7981a
     color: black;
     font-size: 18px;
     text-indent: 10px;
     transition: 0.4s;
 }
+<<<<<<< HEAD
 .table-search:hover {
     background-color: white;
     color: black;
@@ -56,6 +104,15 @@ td {
 .confirm-individual {
     position: relative;
     margin-left: 10px;
+=======
+.table-search:hover{
+    background-color: white;
+    color: black;
+}
+.confirm-group, .confirm-individual{
+    position: relative;
+    margin-left:10px;
+>>>>>>> 96252b4ac94c5fb1feb545d43fd0e4a17ec7981a
     margin-right: 120px;
     font-family: "Poppins";
     height: 35px;
@@ -64,6 +121,7 @@ td {
     color: white;
     font-size: 18px;
     transition: 0.4s;
+<<<<<<< HEAD
 }
 .marks-entry,
 .marks {
@@ -71,10 +129,20 @@ td {
     width: 50px;
     margin-left: 10px;
     background-color: #bcc5ce;
+=======
+
+}
+.marks-entry , .marks{
+    height: 20px;
+    width: 50px;
+    margin-left: 10px;
+    background-color: #BCC5CE;
+>>>>>>> 96252b4ac94c5fb1feb545d43fd0e4a17ec7981a
     color: black;
     border-radius: 2px;
     transition: 0.4s;
 }
+<<<<<<< HEAD
 .marks {
     height: 35px;
 }
@@ -94,11 +162,34 @@ td {
     color: rgb(163, 23, 140);
 }
 .my-modal-body {
+=======
+.marks{
+    height: 35px;
+}
+.marks-entry:hover{
+    background-color: white;
+    color: black;
+}
+.table-search:hover{
+    background-color: white;
+    color: black;
+}
+.modal-main-container{
+    margin-top: 200px;
+}
+.modal-title{
+    font-family: "Poppins";
+    color:  rgb(163, 23, 140);
+    
+}
+.modal-body{
+>>>>>>> 96252b4ac94c5fb1feb545d43fd0e4a17ec7981a
     color: rgba(34, 23, 182, 0.726);
     text-align: center;
     font-family: "Poppins";
     font-size: 20px;
 }
+<<<<<<< HEAD
 .closeButton {
     background: linear-gradient(120deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
     margin: 15px 10px 10px 10px;
@@ -122,3 +213,11 @@ td {
 .closeButton:focus {
     box-shadow: 0 0 0 black;
 }
+=======
+.closeButton{
+    background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+}
+
+
+
+>>>>>>> 96252b4ac94c5fb1feb545d43fd0e4a17ec7981a
