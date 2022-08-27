@@ -1,0 +1,19 @@
+@font-face {
+    font-family: "noto sans";
+    src: url("./fonts/NotoSans-Regular.ttf");
+}
+
+@font-face {
+    font-family: "notes";
+    src: url("./fonts/notes.otf");
+}
+
+* {
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif!important;
+}
+
+body {
+    /* overflow: hidden; */
+    /* scrollbar-width: 2px; */
+
+}

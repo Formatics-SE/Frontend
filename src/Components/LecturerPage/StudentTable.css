@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+.table-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 1rem;
+    width: 70%;
+}
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+table {
+    border-collapse: collapse;
+}
+th,
+td {
+    border: 1px solid white;
+    text-align: left;
+    padding: 8px;
+    font-size: 20px;
+}
+th {
+    background-color: rgb(117, 201, 250);
+    font-family: "Poppins";
+}
+td {
+    background-color: rgb(205, 235, 253);
+}
+.input-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 20px;
+    align-items: center;
+    margin-top: 30px;
+    transition: 0.4s;
+}
+.table-search {
+    margin-left: 130px;
+    width: 350px;
+    height: 35px;
+    border-radius: 6px;
+    background-color: #bcc5ce;
+    color: black;
+    font-size: 18px;
+    text-indent: 10px;
+    transition: 0.4s;
+}
+.table-search:hover {
+    background-color: white;
+    color: black;
+}
+.confirm-group,
+.confirm-individual {
+    position: relative;
+    margin-left: 10px;
+    margin-right: 120px;
+    font-family: "Poppins";
+    height: 35px;
+    border-radius: 6px;
+    background: rgba(34, 23, 182, 0.726);
+    color: white;
+    font-size: 18px;
+    transition: 0.4s;
+}
+.marks-entry,
+.marks {
+    height: 20px;
+    width: 50px;
+    margin-left: 10px;
+    background-color: #bcc5ce;
+    color: black;
+    border-radius: 2px;
+    transition: 0.4s;
+}
+.marks {
+    height: 35px;
+}
+.marks-entry:hover {
+    background-color: white;
+    color: black;
+}
+.table-search:hover {
+    background-color: white;
+    color: black;
+}
+.modal-main-container {
+    margin-top: 200px;
+}
+.modal-title {
+    font-family: "Poppins";
+    color: rgb(163, 23, 140);
+}
+.my-modal-body {
+    color: rgba(34, 23, 182, 0.726);
+    text-align: center;
+    font-family: "Poppins";
+    font-size: 20px;
+}
+.closeButton {
+    background: linear-gradient(120deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+    margin: 15px 10px 10px 10px;
+    padding: 7px 25px;
+    width: 96%;
+    border-radius: 7px;
+    border-color: rgb(163, 23, 140);
+    font-size: 103%;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+.closeButton:hover {
+    background: white;
+    color: rgb(163, 23, 140);
+    border-color: rgb(163, 23, 140);
+}
+.closeButton:active {
+    background-color: rgb(163, 23, 140);
+    color: white;
+}
+.closeButton:focus {
+    box-shadow: 0 0 0 black;
+}

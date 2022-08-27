@@ -1,0 +1,161 @@
+$gradient_color_1: rgba(163, 23, 140, 0.897);
+$gradient_color_2: rgba(34, 23, 182, 0.897);
+$header_bg_color: rgb(134, 12, 114);
+
+.header {
+    position: relative;
+    width: 100vw;
+    padding: 8px 30px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 125%;
+    color: white;
+    background-color: $header_bg_color;
+    box-shadow: 0 2px 2px rgb(187, 184, 184);
+    border-width: 0 0 2px 0;
+    border-style: solid;
+
+    .menu_icon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 30px;
+    }
+
+    .app_name {
+        font-weight: bold;
+        font-size: 110%;
+    }
+    .name_and_signout {
+        display: flex !important;
+        flex-direction: row;
+        .name {
+            text-align: right;
+            margin-right: 30px;
+            width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: normal;
+        }
+        .signout {
+            padding: 0 7px;
+            // animate the signout icon on hover
+            &:hover {
+                cursor: pointer;
+                .signout_icon {
+                    animation: 400ms animate ease-in-out;
+                    @keyframes animate {
+                        0% {
+                            transform: rotate(0deg);
+                        }
+                        33% {
+                            transform: rotate(-45deg);
+                        }
+                        66% {
+                            transform: rotate(90deg);
+                        }
+                        100% {
+                            transform: rotate(0deg);
+                        }
+                    }
+                }
+            }
+            &:active {
+                .signout_icon,
+                span {
+                    color: rgb(192, 34, 166);
+                }
+            }
+            .signout_icon {
+                margin-right: 4px;
+                color: rgb(235, 8, 197);
+            }
+        }
+    }
+    .menu {
+        position: fixed;
+        top: 0;
+        right: -170px;
+        z-index: 20;
+        background-color: $header_bg_color;
+        padding: 15px 15px 15px 20px;
+        transition: 250ms;
+        border-color: $gradient_color_1;
+        border-style: solid;
+        border-width: 0 0 2px 2px;
+        
+        .menu_close_btn {
+            color: white;
+            // background-color: white;
+            width: fit-content;
+            height: fit-content;
+            // border-radius: 50%;
+            // border-color: rgb(163, 23, 140);
+            // border-width: 2px;
+            // font-weight: bolder;
+            margin: -10px 0 10px 0;
+            padding: 0;
+
+            font-size: 160%;
+            &:hover {
+                background-color: rgb(163, 23, 140);
+                color: white;
+            }
+            &:active {
+                background-color: white;
+                color: rgb(163, 23, 140);
+            }
+        }
+
+        &.menu ul {
+            padding: 0;
+            margin: 0;
+        }
+        &.menu ul li:first-child {
+            // username
+            margin-bottom: 7px;
+        }
+        &.menu ul li .user_icon {
+            color: rgb(235, 8, 197);
+        }
+        &.menu ul li span {
+            margin-left: 8px;
+            color: white;
+        }
+        &.menu ul li .signout {
+            &:hover {
+                cursor: pointer;
+                .signout_icon {
+                    color: $gradient_color_2;
+                    animation: 400ms animate ease-in-out;
+                    @keyframes animate {
+                        0% {
+                            transform: rotate(0deg);
+                        }
+                        33% {
+                            transform: rotate(-45deg);
+                        }
+                        66% {
+                            transform: rotate(90deg);
+                        }
+                        100% {
+                            transform: rotate(0deg);
+                        }
+                    }
+                }
+            }
+            &:active {
+                .signout_icon,
+                span {
+                    color: rgb(192, 34, 166);
+                }
+            }
+            .signout_icon {
+                color: rgb(235, 8, 197);
+            }
+        }
+    }
+    .menu.active {
+        right: 0;
+    }
+}

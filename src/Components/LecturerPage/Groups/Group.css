@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+section {
+    text-align: center;
+    padding-top: 40px;
+}
+
+.modal_toggle_btn {
+    background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+    border-color: rgb(163, 23, 140);
+    padding: 7px 25px;
+    border-radius: 7px;
+    font-size: 103%;
+}
+.modal_toggle_btn:focus {
+    border-color: rgb(163, 23, 140);
+    box-shadow: 0 0 0 rgb(163, 23, 140);
+}
+.modal_toggle_btn:hover {
+    background: white;
+    border-color: rgb(163, 23, 140);
+    color: rgb(163, 23, 140);
+}
+
+h4 {
+    position: relative;
+    width: 700px;
+    padding-top: 10%;
+    padding-bottom: 10px;
+    margin: 0 auto;
+    background: none;
+    font-size: 20px;
+}
+
+.inner-footer .options ul {
+    display: flex;
+}
+
+.inner-footer .options ul li {
+    list-style: none;
+    padding: 0 20px;
+}
+
+.outer-footer {
+    padding: 10px;
+    color: #bcc5ce;
+    text-align: center;
+}
+
+.footer {
+    position: absolute;
+    bottom: 100px;
+    height: 30px;
+    margin-top: 30px;
+    font-size: 12px;
+    width: 100%;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.links li a {
+    text-decoration: none;
+    color: rgb(31, 29, 29);
+}
+
+.inner-footer .options ul {
+    display: flex;
+}
+
+.inner-footer .options ul li {
+    list-style: none;
+    padding: 0 10px;
+}
+
+.outer-footer {
+    padding: 5px;
+    color: #bcc5ce;
+    text-align: center;
+}
+
+/*modal styling*/
+
+#modal {
+    position: fixed;
+    top: 28%;
+    transform: translateY(-50%);
+    left: 50%;
+    margin: 0 auto;
+    transform: translateX(-50%);
+    max-width: 95vw;
+}
+@media screen and (max-width: 768px) {
+    #modal {
+        min-width: 95vw;
+    }
+}
+#modal #modal_header {
+    font-weight: bold;
+    font-size: 125%;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+#modal #modal_header #close_btn {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background-color: white;
+    border-color: rgb(163, 23, 140);
+    border-width: 2px;
+    color: rgb(163, 23, 140);
+    font-weight: bolder;
+}
+#modal #modal_header #close_btn:hover {
+    background-color: rgb(163, 23, 140);
+    color: white;
+}
+#modal #modal_header #close_btn:active {
+    background-color: white;
+    color: rgb(163, 23, 140);
+}
+#modal #field {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+#modal #field #label {
+    font-size: 120%;
+    width: 50%;
+    font-weight: bold;
+}
+#modal #field input {
+    margin-left: 20px;
+    width: 60%;
+}
+#modal #confirm_btn {
+    margin: 5px 10px 10px 10px;
+    padding: 7px 25px;
+    width: 40%;
+    margin-left: 60%;
+    border-radius: 25px;
+    border-color: rgb(163, 23, 140);
+    background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+    font-size: 103%;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+
+}
+#modal #confirm_btn:hover {
+    text-decoration: antiquewhite;
+    background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726)) border-box;
+    border: 3px solid transparent;
+}
+#modal #confirm_btn:active {
+    background: linear-gradient(120deg, rgba(34, 23, 182, 0.726), rgb(163, 23, 140));
+    color: white;
+}
+#modal #confirm_btn:focus {
+    box-shadow: 0 0 0 black;
+}
+
+/*end*/

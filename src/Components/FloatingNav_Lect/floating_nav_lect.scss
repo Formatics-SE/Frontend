@@ -1,0 +1,116 @@
+$font_hover_color: rgba(163, 23, 140, 0.897);
+$icon_color: #8b8a8d;
+$border_color: rgba(34, 23, 182, 0.897);
+$nav_bg_color: #e1e1e2f3;
+
+.floating_nav_lect {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -80px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-size: 110%;
+    color: $border_color;
+    font-weight: bold;
+    letter-spacing: 0.02em;
+    background-color: $nav_bg_color;
+    box-shadow: 0 0 3px 1px #666;
+    transition: 200ms bottom ease-in-out;
+    &:hover {
+        cursor: pointer;
+    }
+    & > div {
+        border-width: 0 1px 0 0;
+        border-style: solid;
+        border-color: $border_color;
+        padding-right: 10px;
+        display: flex;
+        align-items: center;
+        // change the font color to pink on hover
+        // also rotate icon 30deg to the right and reset
+        &:hover {
+            color: $font_hover_color;
+            .icon {
+                animation: 300ms animate ease-in-out;
+                @keyframes animate {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+                    25% {
+                        transform: rotate(15deg);
+                    }
+                    50% {
+                        transform: rotate(30deg);
+                    }
+                    75% {
+                        transform: rotate(15deg);
+                    }
+                    100% {
+                        transform: rotate(0deg);
+                    }
+                }
+            }
+        }
+        // when a nav item is selected...
+        span.active {
+            color: $font_hover_color;
+        }
+        .icon_div {
+            padding: 5px;
+            margin-right: 6px;
+            width: 30px;
+            height: 30px;
+            @media screen and (max-width: 768px) {
+                width: 40px;
+                height: 40px;
+            }
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .icon {
+                color: $icon_color;
+                font-size: 120%;
+                margin: 0 !important;
+                &.active {
+                    color: $border_color;
+                }
+            }
+        }
+    }
+    & > div:last-child {
+        border-width: 0;
+    }
+    @media screen and (max-width: 768px) {
+        min-width: 70%;
+        justify-content: space-evenly;
+        & > div .icon {
+            font-size: 150%;
+            margin-right: 0;
+        }
+        & > div {
+            padding-right: 0;
+            border-width: 0;
+        }
+    }
+    @media screen and (max-width: 912px) {
+        min-width: 80%;
+        justify-content: space-evenly;
+        & > div .icon {
+            font-size: 155%;
+            margin-right: 5px;
+        }
+        & > div {
+            padding-right: 0;
+            border-width: 0;
+        }
+    }
+    @media screen and (max-width: 1024px) {
+        min-width: 65%;
+    }
+}

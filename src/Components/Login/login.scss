@@ -1,0 +1,204 @@
+$btn_bg_color: rgb(163, 23, 140);
+$shadow_color: rgba(223, 62, 210, 0.664);
+
+.login_page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // font-family: 'noto sans';
+
+    .toast {
+        position: absolute;
+        // height: fit-content;
+        width: fit-content;
+        top: 20px;
+        left: 50%;
+        z-index: 1051;
+        transform: translateX(-50%);
+        font-weight: 500;
+        font-size: 110%;
+        color: white;
+        padding: 5px 30px;
+        text-align: center;
+        // letter-spacing: 0.03em;
+    }
+
+    .bg_img {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-repeat: no-repeat;
+        z-index: -10;
+    }
+    // darkens the background image
+    .bg_img_shade {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.336);
+        z-index: -9;
+    }
+    // form container
+    .login_form {
+        position: relative;
+        display: flex;
+        background-color: rgba(8, 8, 8, 0.822);
+        padding: 25px 20px;
+        border-radius: 7px;
+        margin: 0 20px;
+        box-shadow: 0 0 8px $shadow_color;
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+        }
+
+        .app_name {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 200%;
+            color: white;
+            text-align: center;
+            text-shadow: 0 0 4px $shadow_color;
+        }
+
+        .welcome_text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @media screen and (max-width: 768px) {
+                text-align: center;
+            }
+            font-size: 150%;
+            font-weight: 500;
+            color: white;
+            padding: 5px 20px 5px 10px;
+            margin-right: 20px;
+            @media screen and (min-width: 770px) {
+                border-width: 0 1px 0 0;
+                border-style: solid;
+                border-color: white;
+            }
+            @media screen and (max-width: 768px) {
+                margin-bottom: 20px;
+                margin-right: 0;
+            }
+        }
+        .login_btns {
+            .lecturer_login_btn,
+            .student_login_btn {
+                width: 100%;
+                border-radius: 7px;
+                padding: 10px 25px;
+                font-size: 110%;
+                font-weight: 500;
+                letter-spacing: 0.05em;
+                background: linear-gradient(145deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+                border-color: $btn_bg_color;
+                transition: 300ms background-color;
+                &:hover {
+                    background: white;
+                    color: $btn_bg_color;
+                }
+                &:focus {
+                    box-shadow: 0 0 0 black;
+                }
+            }
+            .student_login_btn {
+                margin-top: 15px;
+            }
+        }
+    }
+}
+
+// stylying for login modal
+.login_modal {
+    position: fixed;
+    top: 22%;
+    transform: translateY(-50%);
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 95vw;
+
+    .modal_header {
+        position: relative;
+        font-weight: bold;
+        font-size: 125%;
+        padding-left: 10px;
+        margin-bottom: 20px;
+        color: $btn_bg_color;
+        span {
+            color: $btn_bg_color;
+        }
+        .close_btn {
+            position: absolute;
+            top: 55%;
+            right: 10px;
+            transform: translateY(-50%);
+            border-radius: 50%;
+            background-color: white;
+            border-color: $btn_bg_color;
+            border-width: 2px;
+            color: $btn_bg_color;
+            font-weight: bolder;
+            &:hover {
+                background-color: $btn_bg_color;
+                color: white;
+            }
+            &:active {
+                background-color: white;
+                color: $btn_bg_color;
+            }
+        }
+    }
+    // label and text input group
+    .field {
+        padding: 0 10px;
+
+        label {
+            font-size: 110%;
+            font-weight: bold;
+        }
+
+        #username,
+        #password {
+            margin-top: -3px;
+            font-size: 103%;
+            &:focus {
+                box-shadow: 0 0 5px 1px $btn_bg_color;
+                border-color: rgb(226, 223, 223);
+            }
+        }
+    }
+
+    .login_btn {
+        margin: 15px 10px 10px 10px;
+        padding: 10px 25px;
+        width: 96%;
+        border-radius: 7px;
+        border-color: $btn_bg_color;
+        // background-color: $btn_bg_color;
+        background: linear-gradient(120deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+
+        font-size: 103%;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        &:hover {
+            background: white;
+            color: $btn_bg_color;
+        }
+        &:active {
+            background-color: $btn_bg_color;
+            color: white;
+        }
+        &:focus {
+            box-shadow: 0 0 0 black;
+        }
+    }
+}
