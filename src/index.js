@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Groups from './Components/LecturerPage/Groups/Groups';
-//import { BrowserRouter } from 'react-router-dom';
-//import App from './App';
-//import RandomGroup from './Components/LecturerPage/RandomGroup';
-//import StudentsTable from './Components/LecturerPage/StudentTable';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
+// import RandomGroup from './Components/LecturerPage/RandomGroup';
+// import StudentsTable from './Components/LecturerPage/StudentTable';
 import './index.css';
 
 ReactDOM.render(

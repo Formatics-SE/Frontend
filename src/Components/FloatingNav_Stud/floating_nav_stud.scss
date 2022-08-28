@@ -77,6 +77,7 @@ $border_color: rgba(34, 23, 182, 0.897);
     }
     @media screen and (max-width: 768px) {
         min-width: 70%;
+        padding: 5px 25px;
         justify-content: space-evenly;
         & > div .icon {
             font-size: 150%;

@@ -88,6 +88,7 @@ $nav_bg_color: #e1e1e2f3;
     }
     @media screen and (max-width: 768px) {
         min-width: 70%;
+        padding: 5px 25px;
         justify-content: space-evenly;
         & > div .icon {
             font-size: 150%;

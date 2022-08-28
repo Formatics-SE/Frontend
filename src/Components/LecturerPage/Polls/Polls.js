@@ -85,6 +85,8 @@ export default function Polls() {
     // end
 
     async function createPoll() {
+        setOptions([]); setOptionsCount(0);
+
         let title = document.querySelector('#title').value;
         // get the array of option input fields
         let optionInputs = Array.from(document.querySelectorAll('.option_input'))
@@ -99,9 +101,11 @@ export default function Polls() {
 
         //  if title and all options are provided, create a poll object and post to server
         let options = optionInputs.map(op => new Object({ option: op.value, votes: 0 }));
+
         setShowModal(false);
         setShowToast(true);
         document.querySelector('.create_poll_btn').disabled = true;
+        
         try {
             const response = await fetch(`${URL}/newpoll`, {
                 method: 'POST',
@@ -128,7 +132,8 @@ export default function Polls() {
             console.log(error.message);
         }
 
-        // setPolls(newPoll);
+        setShowToast(false);
+        document.querySelector('.create_poll_btn').disabled = false;
 
     }
     // end

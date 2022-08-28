@@ -14,6 +14,7 @@ import Polls_L from './Components/LecturerPage/Polls/Polls'
 import Marks_L from './Components/LecturerPage/Marks/Marks'
 // end
 
+import StudentPage from './Components/StudentPage/StudentPage'
 // all pages to be routed in student page
 import Courses from './Components/StudentPage/Courses/Courses'
 import Groups from './Components/StudentPage/Groups/Groups'
@@ -22,9 +23,8 @@ import Marks from './Components/StudentPage/Marks/Marks'
 // end
 
 //temporary imports
-import StudentPage from './Components/StudentPage/StudentPage'
-import StudentsTable from "./Components/LecturerPage/StudentTable";
-import RandomGroup from "./Components/LecturerPage/RandomGroup";
+// import StudentsTable from "./Components/LecturerPage/StudentTable";
+// import RandomGroup from "./Components/LecturerPage/Groups/RandomGroup";
 // end
 
 import FloatingNav_Lect from './Components/FloatingNav_Lect/FloatingNav_Lect';
