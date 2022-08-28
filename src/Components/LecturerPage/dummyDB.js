@@ -8,7 +8,7 @@ let data = [
         lastName: "Yeboah",
         index: "825",
         mark: 50,
-        cwa: 60
+        cwa: 90
         
     },
     {
@@ -17,7 +17,7 @@ let data = [
         lastName: "Adu",
         index: "826",
         mark: 0,
-        cwa: 43
+        cwa: 89
     },
     {
         id: 3,
@@ -25,7 +25,7 @@ let data = [
         lastName: "Yedu",
         index: "827",
         mark:80,
-        cwa: 82
+        cwa: 86
     },
     {
         id: 4,
@@ -33,7 +33,7 @@ let data = [
         lastName: "Amponsa",
         index: "828",
         mark: 45,
-        cwa: 78
+        cwa: 84
     },
     {
         id: 5,
@@ -41,7 +41,7 @@ let data = [
         lastName: "Akumasi",
         index: "829",
         mark: 24,
-        cwa: 63
+        cwa: 82
     },
     {
         id: 6,
@@ -49,7 +49,7 @@ let data = [
         lastName: "Wenawome",
         index: "830",
         mark: 0,
-        cwa: 48
+        cwa: 75
     },
     {
         id: 7,
@@ -57,7 +57,7 @@ let data = [
         lastName: "Boadi",
         index: "931",
         mark: 0,
-        cwa: 100
+        cwa: 73
     },
     {
         id: 8,
@@ -65,7 +65,7 @@ let data = [
         lastName: "Nyame",
         index: "831",
         mark: 0,
-        cwa: 50
+        cwa: 70
     },
     {
         id: 9,
@@ -73,7 +73,7 @@ let data = [
         lastName: "Evans",
         index: "879",
         mark: 10,
-        cwa: 76
+        cwa: 67
     },
     {
         id: 10,
@@ -81,7 +81,7 @@ let data = [
         lastName: "Apiedu",
         index: "880",
         mark: 0,
-        cwa: 45
+        cwa: 66.8
     },
     {
         id: 11,
@@ -89,7 +89,7 @@ let data = [
         lastName: "Andrew",
         index: "881",
         mark: 12,
-        cwa: 90
+        cwa: 64
     },
     {
         id: 12,
@@ -97,7 +97,7 @@ let data = [
         lastName: "Treve",
         index: "882",
         mark: 4,
-        cwa: 88
+        cwa: 63
     },
     {
         id: 13,
@@ -105,7 +105,7 @@ let data = [
         lastName: "Baffour",
         index: "883",
         mark: 62,
-        cwa: 56
+        cwa: 62
     },
     {
         id: 14,
@@ -113,7 +113,7 @@ let data = [
         lastName: "Kwame",
         index: "884",
         mark: 23,
-        cwa: 39
+        cwa: 61
     },
     {
         id: 15,
@@ -121,7 +121,7 @@ let data = [
         lastName: "Kuffour",
         index: "885",
         mark: 10,
-        cwa: 78
+        cwa: 60
     },
     {
         id: 16,
@@ -129,7 +129,7 @@ let data = [
         lastName: "Nyame",
         index: "890",
         mark: 30,
-        cwa: 57
+        cwa: 60
     },
     {
         id: 17,
@@ -137,7 +137,7 @@ let data = [
         lastName: "Clifford",
         index: "886",
         mark: 0,
-        cwa: 89
+        cwa: 59
     },
     {
         id: 18,
@@ -145,7 +145,7 @@ let data = [
         lastName: "Badu",
         index: "887",
         mark: 3,
-        cwa: 65
+        cwa: 55
     },
     {
         id: 19,
@@ -153,7 +153,7 @@ let data = [
         lastName: "World",
         index: "888",
         mark: 20,
-        cwa: 82
+        cwa: 53
     },
     {
         id: 20,
@@ -161,7 +161,7 @@ let data = [
         lastName: "John",
         index: "889",
         mark: 20,
-        cwa: 69
+        cwa: 52
     },
     {
         id: 21,
@@ -169,7 +169,7 @@ let data = [
         lastName: "Christabel",
         index: "901",
         mark: 10,
-        cwa: 69
+        cwa: 51
     },
     {
         id: 22,
@@ -177,7 +177,7 @@ let data = [
         lastName: "Christabel",
         index: "902",
         mark: 0,
-        cwa: 45
+        cwa: 49
     },
     {
         id: 23,
@@ -185,7 +185,7 @@ let data = [
         lastName: "Isaac",
         index: "903",
         mark: 0,
-        cwa: 45
+        cwa: 48.6
     },
     {
         id: 24,
@@ -193,7 +193,7 @@ let data = [
         lastName: "Kwaku",
         index: "904",
         mark: 1,
-        cwa: 88
+        cwa: 48.5
     },
     {
         id: 25,
@@ -201,7 +201,7 @@ let data = [
         lastName: "Chris",
         index: "905",
         mark: 19,
-        cwa: 76
+        cwa: 48.1
     },
     {
         id: 26,
@@ -209,7 +209,7 @@ let data = [
         lastName: "Sandra",
         index: "906",
         mark: 23,
-        cwa: 68
+        cwa: 47
     },
     {
         id: 27,
@@ -217,7 +217,7 @@ let data = [
         lastName: "Akoto",
         index: "907",
         mark: 11,
-        cwa: 80
+        cwa: 47
     },
     {
         id: 28,
@@ -225,7 +225,7 @@ let data = [
         lastName: "Rudolf",
         index: "908",
         mark: 14,
-        cwa: 71
+        cwa: 46
     },
     {
         id: 29,
@@ -233,7 +233,7 @@ let data = [
         lastName: "Paulina",
         index: "909",
         mark: 10,
-        cwa: 69
+        cwa: 45.5
     },
     {
         id: 30,
@@ -241,7 +241,7 @@ let data = [
         lastName: "Christabel",
         index: "510",
         mark: 10,
-        cwa: 70
+        cwa: 45
     },
     {
         id: 31,
@@ -249,7 +249,7 @@ let data = [
         lastName: "Chris",
         index: "511",
         mark: 10,
-        cwa: 46
+        cwa: 44
     },
     {
         id: 32,
@@ -257,7 +257,7 @@ let data = [
         lastName: "Christabel",
         index: "512",
         mark: 10,
-        cwa: 58
+        cwa: 43
     },
     {
         id: 33,
@@ -265,7 +265,7 @@ let data = [
         lastName: "Victor",
         index: "513",
         mark: 10,
-        cwa: 65
+        cwa: 42
     },
     
 ]

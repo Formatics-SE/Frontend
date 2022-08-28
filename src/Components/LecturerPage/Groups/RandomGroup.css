@@ -44,26 +44,40 @@
     border-radius: 5px;
     text-indent: 10px;
 }
-.container-list-random{
+
+.random-groups{
     padding: 10px;
-    margin: 10px;
+    justify-content: center;
     text-align: left;
     display: grid;
     grid-template-columns: 250px 250px 250px;
-    gap: 50px;
+    column-gap: 60px;
+    row-gap: 10px;
+}
+.class-list{
+    padding: 20px;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+.class-list > li{
+    list-style-type: decimal;
+    font-size: 20px;
+    margin-bottom: 2px;
+    letter-spacing: 0.05rem;
 }
 .cards-container{
     width: 300px;
-    display: flex;
-    align-items: center;
+    display: grid;
+    align-items: flex-start;
     justify-content: center;
+    margin-left: 10px;
 }
 li{
-    list-style-type: none;
+    list-style-type: decimal;
 }
 .cards-title{
     font-weight: bolder;
-    text-align: center;
+    text-align: left;
 }
 .cards-button{
     display: flex;
