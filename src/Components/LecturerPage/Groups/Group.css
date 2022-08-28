@@ -9,23 +9,6 @@ section {
     padding-top: 40px;
 }
 
-.modal_toggle_btn {
-    background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
-    border-color: rgb(163, 23, 140);
-    padding: 7px 25px;
-    border-radius: 25px;
-    font-size: 103%;
-}
-.modal_toggle_btn:focus {
-    border-color: rgb(163, 23, 140);
-    box-shadow: 0 0 0 rgb(163, 23, 140);
-}
-.modal_toggle_btn:hover {
-    background: white;
-    border-color: rgb(163, 23, 140);
-    color: rgb(163, 23, 140);
-}
-
 h4 {
     position: relative;
     width: 700px;
