@@ -9,7 +9,7 @@ import './login.css'
 
 import bgImage from './bg.png'
 
-const toastMessages = ['please fill in all fields', 'invalid id or password']
+const toastMessages = ['Please fill in all fields', 'Invalid ID or Password']
 
 const URL = 'http://127.0.0.1:2022';
 
