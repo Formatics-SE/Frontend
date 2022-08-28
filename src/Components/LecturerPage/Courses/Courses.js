@@ -1,27 +1,37 @@
-import Button from 'react-bootstrap/Button';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import React from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
-function Courses() {
+import bg1 from './compressed 1.jpg'
+import bg2 from './compressed 2.jpg'
 
+const Courses = ()=> {
+  
   return (
-    <Dropdown as={ButtonGroup}>
-      <Button variant="success">Course1</Button>
-
-      <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
-
-      <Dropdown.Menu>
-        <Dropdown.Item href="">Groups</Dropdown.Item>
-        <Dropdown.Item href="">Take Attendance</Dropdown.Item>
-        <Dropdown.Item href="">Create a Poll</Dropdown.Item>
-        <Dropdown.Item href="">Allocate Marks</Dropdown.Item>
-      </Dropdown.Menu>
-
-      {/*test */}
-      {/* <button onClick={() => localStorage.setItem('currentPage', 'G')}>click</button> */}
-    </Dropdown>
+    <>
+    {['course1', 'course2' ].map( 
+      (variant) => (
+        <DropdownButton
+          as={ButtonGroup}
+          key={variant}
+          id={`dropdown-variants-${variant}`}
+          variant={variant.toLowerCase()}
+          title={variant}
+        >
+          <Dropdown.Item eventKey="1">Groups</Dropdown.Item>
+          <Dropdown.Item eventKey="2">Take Attendance</Dropdown.Item>
+          <Dropdown.Item eventKey="3">Create a Poll</Dropdown.Item>
+          <Dropdown.Item eventKey="4">Allocate Marks</Dropdown.Item>
     
-  );
+ 
+        </DropdownButton>
+      ),
+    )}
+  </>
+);
 }
 
-export default Courses; 
+
+export default Courses;

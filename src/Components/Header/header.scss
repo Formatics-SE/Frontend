@@ -1,5 +1,6 @@
 $gradient_color_1: rgba(163, 23, 140, 0.897);
 $gradient_color_2: rgba(34, 23, 182, 0.897);
+$header_bg_color: rgb(134, 12, 114);
 
 .header {
     position: relative;
@@ -8,37 +9,11 @@ $gradient_color_2: rgba(34, 23, 182, 0.897);
     display: flex;
     justify-content: space-between;
     font-size: 125%;
-    color: $gradient_color_1;
-    // background: linear-gradient(160deg, $gradient_color_1, $gradient_color_2);
+    color: white;
+    background-color: $header_bg_color;
     box-shadow: 0 2px 2px rgb(187, 184, 184);
     border-width: 0 0 2px 0;
     border-style: solid;
-    border-color: linear-gradient(160deg, $gradient_color_1, $gradient_color_2);
-    // border-color: $gradient_color_1;
-
-    // .filter1,
-    // .filter2 {
-    //     position: absolute;
-    //     height: 46px;
-    //     top: 0;
-    //     z-index: -1;
-    //     filter: blur(1px);
-    //     &.filter1 {
-    //         left: 0;
-    //         width: 250px;
-    //         border-radius: 0 150% 0 0;
-    //         background-color: $gradient_color_2;
-    //         @media screen and (max-width: 768px) {
-    //             width: 140px;
-    //         }
-    //     }
-    //     &.filter2 {
-    //         right: 0;
-    //         width: 280px;
-    //         border-radius: 150% 0 0 0;
-    //         background-color: $gradient_color_1;
-    //     }
-    // }
 
     .menu_icon {
         position: absolute;
@@ -55,7 +30,12 @@ $gradient_color_2: rgba(34, 23, 182, 0.897);
         display: flex !important;
         flex-direction: row;
         .name {
+            text-align: right;
             margin-right: 30px;
+            width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: normal;
         }
         .signout {
             padding: 0 7px;
@@ -63,7 +43,6 @@ $gradient_color_2: rgba(34, 23, 182, 0.897);
             &:hover {
                 cursor: pointer;
                 .signout_icon {
-                    color: $gradient_color_2;
                     animation: 400ms animate ease-in-out;
                     @keyframes animate {
                         0% {
@@ -89,7 +68,7 @@ $gradient_color_2: rgba(34, 23, 182, 0.897);
             }
             .signout_icon {
                 margin-right: 4px;
-                color: rgb(192, 34, 166);
+                color: rgb(235, 8, 197);
             }
         }
     }
@@ -98,21 +77,26 @@ $gradient_color_2: rgba(34, 23, 182, 0.897);
         top: 0;
         right: -170px;
         z-index: 20;
-        background-color: white;
+        background-color: $header_bg_color;
         padding: 15px 15px 15px 20px;
         transition: 250ms;
         border-color: $gradient_color_1;
         border-style: solid;
         border-width: 0 0 2px 2px;
         
-        button {
-            color: rgb(163, 23, 140);
-            background-color: white;
-            border-radius: 50%;
-            border-color: rgb(163, 23, 140);
-            border-width: 2px;
-            font-weight: bolder;
-            margin-bottom: 10px;
+        .menu_close_btn {
+            color: white;
+            // background-color: white;
+            width: fit-content;
+            height: fit-content;
+            // border-radius: 50%;
+            // border-color: rgb(163, 23, 140);
+            // border-width: 2px;
+            // font-weight: bolder;
+            margin: -10px 0 10px 0;
+            padding: 0;
+
+            font-size: 160%;
             &:hover {
                 background-color: rgb(163, 23, 140);
                 color: white;
@@ -132,10 +116,11 @@ $gradient_color_2: rgba(34, 23, 182, 0.897);
             margin-bottom: 7px;
         }
         &.menu ul li .user_icon {
-            color: rgb(192, 34, 166);
+            color: rgb(235, 8, 197);
         }
         &.menu ul li span {
             margin-left: 8px;
+            color: white;
         }
         &.menu ul li .signout {
             &:hover {
@@ -166,7 +151,7 @@ $gradient_color_2: rgba(34, 23, 182, 0.897);
                 }
             }
             .signout_icon {
-                color: rgb(192, 34, 166);
+                color: rgb(235, 8, 197);
             }
         }
     }

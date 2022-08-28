@@ -11,10 +11,11 @@ export default function Groups() {
 
   const [showModal, setShowModal] = useState(false);
 
-  const [value, setValue] = React.useState(0);
-  function checkInputGroupsOf (event) {
-    setValue(event.target.value ? Number(event.target.value) : event.target.value) }
-  
+  const [value, setValue] = React.useState(2);
+  function checkInputGroupsOf(event) {
+    setValue(event.target.value ? Number(event.target.value) : event.target.value)
+  }
+
   return (
     <div className="noCoursePage">
       <section className="bodyContent">
@@ -33,15 +34,13 @@ export default function Groups() {
         <Modal.Body>
           <div id='modal_header'>
             <Button id='close_btn' onClick={() => setShowModal(false)}>&times;</Button>
-            CREATE GROUPS
+            <span style={{ color: 'rgb(163, 23, 140)' }}>Create Groups</span>
           </div>
-          <hr></hr>
+          <hr />
           <div>
             <div id='field'>
               <FormLabel htmlFor='input' >Create groups of:</FormLabel>
-              <Form.Control type='number' id='input' value={value && Math.max(0,value)} onChange={checkInputGroupsOf} 
-              />
-
+              <Form.Control type='number' id='input' value={value && Math.max(2, value)} onChange={checkInputGroupsOf} />
             </div>
             <hr></hr>
             <div>
@@ -74,10 +73,6 @@ export default function Groups() {
           Copyright &copy; 2022 Formatics. All rights reserved
         </div>
       </footer>
-      
-
-      {/* <FloatingNav /> */}
-
     </div>
   );
 
