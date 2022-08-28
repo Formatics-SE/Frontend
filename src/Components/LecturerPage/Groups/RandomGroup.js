@@ -1,5 +1,5 @@
 import React from "react"
-import data from "./dummyDB"
+import data from "../dummyDB"
 import "./RandomGroup.css"
 import {Card, Button, Navbar} from "react-bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
