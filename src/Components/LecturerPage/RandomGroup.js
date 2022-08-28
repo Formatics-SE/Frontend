@@ -8,15 +8,18 @@ import "bootstrap/dist/css/bootstrap.min.css"
 export default function RandomGroup(){
      const [value, setValue] = React.useState({
         division: 2,
-        view: ""
+        shuffle: false,
+        random_group_display: <div>No group has been created yet</div>
     })
+    
     const student_list = data.map(student=>{
         return(
             <li key={student.id}>{`${student.firstName} ${student.lastName}`}</li>
     )
     })
 
-    const [display, setDisplay] = React.useState(student_list)
+
+
    
     function handleChange(event){
         const {name, value}= event.target
@@ -41,7 +44,7 @@ export default function RandomGroup(){
         
         
     }
-    function handleShuffle(){
+    function handleGroupCreation(){
             let classList = data.map(student=>{
                 return `${student.firstName} ${student.lastName}`
             })
@@ -51,7 +54,7 @@ export default function RandomGroup(){
             for(let i=0; i<classList.length;i= i + studentsPerGroup){
                 randomGroups.push(classList.slice(i,i+studentsPerGroup))
             }
-            const random_list = randomGroups.map(item=>{
+            const random_group = randomGroups.map(item=>{
                return(
                 <Card className="cards-container">
                     <Card.Body className="cards-body">
@@ -63,16 +66,21 @@ export default function RandomGroup(){
                             )
                     })}
                         </Card.Text>
-                        <div className="cards-button">
-                            <Button variant="secondary" size="sm">Open</Button>
-                        </div>
                     </Card.Body>
-                
                 </Card>
                )
+            }) 
+    
+            setValue(prev=>{
+                return{
+                    ...prev,
+                    shuffle: true,
+                    random_group_display: random_group
+                }
             })
-            setDisplay(random_list)  
+            
     }
+    
     
     return(
     <section>
@@ -83,15 +91,19 @@ export default function RandomGroup(){
                     <input type="number" id="division" name="division" value={value.division} className="division-box" min={2} max={10} onChange={handleChange}/>
                 </div>
                 <div>
-                    <Button variant="light" className="submit-button1" onClick={handleShuffle}>Shuffle</Button>
+                    <Button variant="light" className="submit-button1" onClick={handleGroupCreation}>Create</Button>
                     <Button variant="light" type="submit" className="submit-button" placeholder="submit">Submit</Button>
                 </div>
             </div>
         </Navbar>
 
-        <div className="container-list-random">
-            {display}
-        </div>
+       {value.shuffle? <div className="random-groups">
+            {value.random_group_display}
+        </div>: <div >
+                    <ol className="class-list">
+                        {student_list}
+                    </ol>
+                </div>}
     </section>
     )
 }
