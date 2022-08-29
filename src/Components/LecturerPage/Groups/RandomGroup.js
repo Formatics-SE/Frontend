@@ -6,76 +6,49 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 
 export default function RandomGroup(props){
-     const [showRandomGroups, setValue] = React.useState(true)
+     // let  classDivision= []
+            // for(let i=0; i<classList.length;i= i + division){
+            //     classDivision.push(classList.slice(i,i+division))
+            // }
     
-    // const student_list = data.map(student=>{
-    //     return(
-    //         <li key={student.id}>{`${student.firstName} ${student.lastName}`}</li>
-    // )
-    // })
-
-
-
-   
-    // function handleChange(event){
-    //     const {name, value}= event.target
-    //     setValue(prev=>{
-    //         return{
-    //             ...prev,
-    //             [name]:value 
-    //         }
-    //     })
+    // function ShuffleList(list){   // a function to shuffle the list for random grouping
+    //     for(let i=list.length-1;i>0;i--){
+    //         let randomNumber = Math.floor(Math.random()*(i+1))
+    //         let temp = list[i]
+    //         list[i] = list[randomNumber]
+    //         list[randomNumber] = temp
+    //     }   
     // }
-    
-
-    
-    function ShuffleList(list){   // a function to shuffle the list for random grouping
-        for(let i=list.length-1;i>0;i--){
-            let randomNumber = Math.floor(Math.random()*(i+1))
-            let temp = list[i]
-            list[i] = list[randomNumber]
-            list[randomNumber] = temp
-        }   
-    }
-    function createArraysForGroups(numberOfGroups){
-        let emptyList = []
-        let groupContainer = []
-        for(let i=0;i<numberOfGroups;i++){
-            emptyList.push(groupContainer)
-        }
-        return emptyList
-    }
+   
+   
     
    let classList = data.map(student=>{
          return `${student.firstName} ${student.lastName}: ${student.cwa}`
             })
-            ShuffleList(classList)
             let studentsPerGroup = Number(props.value_prop)
             let division = Math.ceil(classList.length/studentsPerGroup)
-            let  classDivision= []
-            for(let i=0; i<classList.length;i= i + division){
-                classDivision.push(classList.slice(i,i+division))
-            }
-            let randomGroups = createArraysForGroups(division) 
-            let x = 0
-            for(let i=0;i<classDivision.length;i++){
-                for(let j=0;j<classDivision[i].length;j++){
-                    if(x===randomGroups.length){
-                        x = 0
-                    }
-                    else{
-                    randomGroups[x].push(classDivision[i].pop(j))
-                    x += 1
-                    }
+            let randomGroupingByCwa = []
+            let count = 0
+
+            // forms groups based on their CWAs
+            // picks students from each sub-division(first class, second class and so on) and adds to the group            
+            for(let i=0;i<division;i++){
+                let newArray = []
+                while(count<classList.length){
+                    newArray.push(classList[count])
+                    count = count + division
                 }
-            }
+                randomGroupingByCwa.push(newArray)
+                count = i + 1
+                }
+            
             
 
-            let random_group = randomGroups.map(item=>{
+            let random_group = randomGroupingByCwa.map(item=>{
              return(
              <Card className="cards-container">
                 <Card.Body className="cards-body">
-                    <Card.Title className="cards-title">GROUP {classDivision.indexOf(item) + 1}</Card.Title>
+                    <Card.Title className="cards-title">GROUP {randomGroupingByCwa.indexOf(item) + 1}</Card.Title>
                         <Card.Text>
                              {item.map(sub=>{
                          return(
