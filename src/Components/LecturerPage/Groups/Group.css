@@ -61,13 +61,16 @@
 }
 
 .modal_toggle_btn:focus {
-    border-color: rgb(163, 23, 140);
-    box-shadow: 0 0 0 rgb(163, 23, 140);
+    box-shadow: 0 0 0 black;
 }
 .modal_toggle_btn:hover {
-    background: white;
-    border-color: rgb(163, 23, 140);
-    color: rgb(163, 23, 140);
+    text-decoration: antiquewhite;
+    background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+    box-shadow: rgba(80, 63, 205, 0.5) 0 1px 20px;
+}
+.modal_toggle_btn:active {
+    background: linear-gradient(120deg, rgba(34, 23, 182, 0.726), rgb(163, 23, 140));
+    color: white;
 }
 
 .inner-footer .options ul {
@@ -190,8 +193,8 @@
 }
 #modal #confirm_btn:hover {
     text-decoration: antiquewhite;
-    background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726)) border-box;
-    border: 3px solid transparent;
+    background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+    box-shadow: rgba(80, 63, 205, 0.5) 0 1px 20px;
 }
 #modal #confirm_btn:active {
     background: linear-gradient(120deg, rgba(34, 23, 182, 0.726), rgb(163, 23, 140));
@@ -201,4 +204,3 @@
     box-shadow: 0 0 0 black;
 }
 
-/*end*/
