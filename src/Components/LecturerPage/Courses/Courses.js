@@ -6,8 +6,18 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 function Courses ()
 {
-  return(<>
-    {['course1','course2'].map( 
+  return(
+    <div>
+      
+    </div>
+    
+  )
+}
+
+
+export default Courses;
+/**
+ * ['course1','course2'].map( 
       (variant) => (
         <DropdownButton
           as={ButtonGroup}
@@ -24,9 +34,5 @@ function Courses ()
  
         </DropdownButton>
       ),
-    )}</>
-  )
-}
-
-
-export default Courses;
+    )
+ */
