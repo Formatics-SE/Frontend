@@ -9,7 +9,7 @@ import './login.css'
 
 import bgImage from './bg.png'
 
-const toastMessages = ['please fill in all fields', 'invalid id or password']
+const toastMessages = ['Please fill in all fields', 'Invalid ID or Password']
 
 const URL = 'http://127.0.0.1:2022';
 
@@ -157,7 +157,7 @@ export default function Login() {
                 <Modal.Body>
                     <div className='modal_header'>
                         <Button className='close_btn' onClick={() => setShowModal(false)}>&times;</Button>
-                        {user === 'L' ? 'Lecturer Login' : 'Student Login'}
+                        {user === 'L' ? <span>Lecturer Login</span> : <span>Student Login</span>}
                     </div>
                     <div>
                         <div className='field mb-2'>

@@ -1,0 +1,61 @@
+$border_color: rgb(163, 23, 140);
+$fill_color: rgb(94, 87, 192);
+
+.poll_instance {
+    // border: 1px solid $border_color;
+    // border-radius: 7px;
+    box-shadow: 0px 0px 4px 1px rgb(187, 184, 184);
+    // height: fit-content;
+
+    .title {
+        padding: 5px 15px;
+        border-width: 0 0 1px 0;
+        border-style: solid;
+        border-color: $border_color;
+        font-weight: bold;
+        background-color: #e1e1e2f3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-wrap: none;
+    }
+
+    .options {
+        padding: 8px 10px;
+
+        .option_and_percent_votes {
+            display: flex;
+            justify-content: space-between;
+            column-gap: 5px;
+            padding: 0 5px;
+            .option {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                word-wrap: nowrap;
+            }
+            .percent_votes {
+            }
+        }
+
+        .progressbar {
+            position: relative;
+            width: 100%;
+            height: 10px;
+            background-color: rgb(224, 222, 222);
+            margin-bottom: 3px;
+            .progressbar_fill {
+                transition: 300ms width ease-in-out;
+                width: 0%;
+                height: 10px;
+                background-color: $fill_color;
+            }
+        }
+    }
+
+    .totalVotesCast {
+        border-width: 1px 0 0 0;
+        border-style: solid;
+        border-color: $border_color;
+        padding: 5px 10px;
+        border-radius: 0 0 10px 10px;
+    }
+}

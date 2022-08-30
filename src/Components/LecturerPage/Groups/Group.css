@@ -4,36 +4,73 @@
     font-family: "Poppins", sans-serif;
 }
 
-section {
+.groupsPage {
+    width: 75%;
+    height: calc(100vh - 51px);
+    min-height: 500px;
+    margin: 0 auto;
+    padding: 10px 30px;
+    box-shadow: 0 0 4px 2px rgb(187, 184, 184);
+}
+@media screen and (max-width: 912px) {
+    .groupsPage {
+        width: 100%;
+        box-shadow: 0 0 0 rgb(187, 184, 184);
+        padding: 10px 20px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .groupsPage {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .noGroups div {
+        font-size: 105%;
+    }
+}
+.noGroups {
     text-align: center;
-    padding-top: 40px;
+    background-color: #f2f2f7f3;
+    border-radius: 10px;
+    margin-top: 50vh;
+    transform: translateY(-90%);
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    padding: 15px 25px;
+    box-shadow: 0 0 3px rgb(189, 187, 188);
+}
+.noGroups div {
+    font-size: 140%;
+    margin-bottom: 10px;
 }
 
 .modal_toggle_btn {
     background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
     border-color: rgb(163, 23, 140);
     padding: 7px 25px;
-    border-radius: 25px;
+    border-radius: 7px;
     font-size: 103%;
 }
-.modal_toggle_btn:focus {
-    border-color: rgb(163, 23, 140);
-    box-shadow: 0 0 0 rgb(163, 23, 140);
-}
-.modal_toggle_btn:hover {
-    background: white;
-    border-color: rgb(163, 23, 140);
-    color: rgb(163, 23, 140);
+@media screen and (max-width: 768px) {
+    .modal_toggle_btn {
+        padding: 7px 25px;
+    }
 }
 
-h4 {
-    position: relative;
-    width: 700px;
-    padding-top: 10%;
-    padding-bottom: 10px;
-    margin: 0 auto;
-    background: none;
-    font-size: 20px;
+.modal_toggle_btn:focus {
+    box-shadow: 0 0 0 black;
+}
+.modal_toggle_btn:hover {
+    text-decoration: antiquewhite;
+    background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+    box-shadow: rgba(80, 63, 205, 0.5) 0 1px 20px;
+}
+.modal_toggle_btn:active {
+    background: linear-gradient(120deg, rgba(34, 23, 182, 0.726), rgb(163, 23, 140));
+    color: white;
 }
 
 .inner-footer .options ul {
@@ -88,19 +125,18 @@ h4 {
 }
 
 /*modal styling*/
-
 #modal {
     position: fixed;
-    top: 28%;
-    transform: translateY(-50%);
+    top: 22% !important;
+    margin-top: 1vh;
     left: 50%;
-    margin: 0 auto;
     transform: translateX(-50%);
+    margin-bottom: auto;
     max-width: 95vw;
 }
 @media screen and (max-width: 768px) {
     #modal {
-        min-width: 95vw;
+        min-width: 95vw !important;
     }
 }
 #modal #modal_header {
@@ -154,12 +190,11 @@ h4 {
     font-size: 103%;
     font-weight: 500;
     letter-spacing: 0.05em;
-
 }
 #modal #confirm_btn:hover {
     text-decoration: antiquewhite;
-    background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726)) border-box;
-    border: 3px solid transparent;
+    background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+    box-shadow: rgba(80, 63, 205, 0.5) 0 1px 20px;
 }
 #modal #confirm_btn:active {
     background: linear-gradient(120deg, rgba(34, 23, 182, 0.726), rgb(163, 23, 140));
@@ -169,4 +204,3 @@ h4 {
     box-shadow: 0 0 0 black;
 }
 
-/*end*/

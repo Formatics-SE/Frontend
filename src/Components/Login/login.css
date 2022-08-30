@@ -124,7 +124,7 @@
 .login_page .login_form .login_btns .lecturer_login_btn,
 .login_page .login_form .login_btns .student_login_btn {
   width: 100%;
-  border-radius: 25px;
+  border-radius: 7px;
   padding: 10px 25px;
   font-size: 110%;
   font-weight: 500;
@@ -168,6 +168,11 @@
   font-size: 125%;
   padding-left: 10px;
   margin-bottom: 20px;
+  color: #a3178c;
+}
+
+.login_modal .modal_header span {
+  color: #a3178c;
 }
 
 .login_modal .modal_header .close_btn {
@@ -220,7 +225,7 @@
   margin: 15px 10px 10px 10px;
   padding: 10px 25px;
   width: 96%;
-  border-radius: 25px;
+  border-radius: 7px;
   border-color: #a3178c;
   background: linear-gradient(120deg, #a3178c, rgba(34, 23, 182, 0.726));
   font-size: 103%;

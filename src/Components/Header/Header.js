@@ -8,8 +8,6 @@ import './header.css'
 
 import bg from '../Login/bg.png'
 
-
-
 export default function Header() {
 
     const navigate = useNavigate();
@@ -36,11 +34,11 @@ export default function Header() {
                 </div>
             </div>
             <div className='menu d-block d-md-none'>
-                <Button
+                <div className='menu_close_btn'
                     onClick={() => { document.querySelector('.menu').classList.remove('active') }}
                 >
                     &times;
-                </Button>
+                </div>
                 <ul>
                     <li>
                         <FaUser className='user_icon' />

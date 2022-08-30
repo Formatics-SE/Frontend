@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+.random-groups-heading{
+    font-family: "Poppins";
+    margin-left: 40%;
+}
+.random-groups{
+    padding: 10px;
+    justify-content: center;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 250px 250px 250px;
+    column-gap: 60px;
+    row-gap: 10px;
+}
+
+
+.cards-container{
+    width: 300px;
+    display: grid;
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 10px;
+}
+li{
+    list-style-type: decimal;
+}
+.cards-title{
+    font-weight: bolder;
+    text-align: left;
+}
+.cards-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
