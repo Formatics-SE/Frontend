@@ -1,0 +1,27 @@
+.accendance-record {
+    .span-and-btn {
+        span {
+            margin-right: 8px;
+        }
+        .btn {
+            padding: 0 0 24px 0 !important;
+            width: 22px;
+            height: 20px;
+            margin-right: 8px;
+            border-radius: 50%;
+            background-color: rgba(34, 23, 182, 0.726);
+            color: white;
+            font-weight: bold;
+            &:hover {
+                cursor: pointer;
+                background-color: white;
+                color: rgba(34, 23, 182, 0.726);
+                border: 1px solid rgba(34, 23, 182, 0.726);
+            }
+            &:active {
+                background-color: rgba(34, 23, 182, 0.726);
+                color: white;
+            }
+        }
+    }
+}

@@ -35,7 +35,7 @@ $btn_bg_color: rgb(163, 23, 140);
         top: 20px;
         left: 50%;
         transform: translateX(-50%);
-        color:  rgb(134, 12, 114);
+        color: rgb(134, 12, 114);
     }
 
     .create_polls_header {
@@ -78,21 +78,23 @@ $btn_bg_color: rgb(163, 23, 140);
         min-height: fit-content;
         max-height: calc(100% - 61px);
         overflow-y: auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
-        column-gap: clamp(15px, 15px, 20px);
-        row-gap: clamp(15px, 15px, 20px);
-        @media screen and (max-width: 768px) {
-            padding: 15px 5px 70px 5px;
-            grid-template-columns: 1fr;
-        }
+
+        // display: grid;
+        // grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
+        // column-gap: clamp(15px, 15px, 20px);
+        // row-gap: clamp(15px, 15px, 20px);
+        // @media screen and (max-width: 768px) {
+        //     padding: 15px 5px 70px 5px;
+        //     grid-template-columns: 1fr;
+        // }
     }
 }
 
 #modal {
-    top: 25px;
+    top: 50px !important;
     min-width: 30%;
     min-height: 800px;
+    max-height: 80vh !important;
     @media screen and (max-width: 768px) {
         min-width: 95%;
         top: 30px;

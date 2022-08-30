@@ -105,7 +105,7 @@ export default function Polls() {
         setShowModal(false);
         setShowToast(true);
         document.querySelector('.create_poll_btn').disabled = true;
-        
+
         try {
             const response = await fetch(`${URL}/newpoll`, {
                 method: 'POST',
@@ -126,14 +126,15 @@ export default function Polls() {
                     totalVotesCast={0}
                     options={options}
                 />
-                ])
+                ]);
             }
+
+            setShowToast(false);
+            document.querySelector('.create_poll_btn').disabled = false;
+
         } catch (error) {
             console.log(error.message);
         }
-
-        setShowToast(false);
-        document.querySelector('.create_poll_btn').disabled = false;
 
     }
     // end
@@ -175,7 +176,7 @@ export default function Polls() {
                 <div className='total_polls'>Total Polls: {polls?.length}</div>
             </div>
             <div className='created_polls_container'>
-                {polls}
+                {polls} 
                 {/* <PollInstance />
                 <PollInstance />
                 <PollInstance />
@@ -189,7 +190,7 @@ export default function Polls() {
             >
                 <Modal.Body>
                     <div id='modal_header'>
-                        <span style={{color: 'rgb(163, 23, 140)'}}>Poll</span>
+                        <span style={{ color: 'rgb(163, 23, 140)' }}>Poll</span>
                         <Button id='close_btn'
                             onClick={() => { setOptions([]); setOptionsCount(0); setShowModal(false) }}
                         >

@@ -102,27 +102,13 @@
   min-height: fit-content;
   max-height: calc(100% - 61px);
   overflow-y: auto;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (minmax(48%, 1fr))[auto-fill];
-      grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
-  -webkit-column-gap: clamp(15px, 15px, 20px);
-          column-gap: clamp(15px, 15px, 20px);
-  row-gap: clamp(15px, 15px, 20px);
-}
-
-@media screen and (max-width: 768px) {
-  .polls .created_polls_container {
-    padding: 15px 5px 70px 5px;
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-  }
 }
 
 #modal {
-  top: 25px;
+  top: 50px !important;
   min-width: 30%;
   min-height: 800px;
+  max-height: 80vh !important;
 }
 
 @media screen and (max-width: 768px) {
