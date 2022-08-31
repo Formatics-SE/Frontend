@@ -147,7 +147,7 @@
 }
 #modal #modal_header #close_btn {
     position: absolute;
-    top: 30px;
+    top: 30px; 
     right: 20px;
     transform: translateY(-50%);
     border-radius: 50%;
@@ -184,7 +184,7 @@
     padding: 7px 25px;
     width: 40%;
     margin-left: 60%;
-    border-radius: 25px;
+    border-radius: 7px;
     border-color: rgb(163, 23, 140);
     background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
     font-size: 103%;
