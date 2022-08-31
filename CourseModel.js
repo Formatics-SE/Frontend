@@ -14,8 +14,13 @@ const CourseSchema = new mongoose.Schema({
             cwa: Number,
             attendance: { type: Number, default: 0 },
             strikes: { type: Number, default: 0 },
-            marks: { type: Number, default: 0 },
-            group: Number
+            group: Number,
+            marksArray: [
+                {
+                    marks: { type: Number, default: 0 },
+                    date: String
+                }
+            ]
         }
     ],
     groups: [
