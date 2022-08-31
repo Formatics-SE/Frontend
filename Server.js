@@ -17,11 +17,17 @@ mongoose.connect('mongodb://127.0.0.1:27017',
 const StudentLoginRouter = require('./StudentLoginRouter');
 const LecturerLoginRouter = require('./LecturerLoginRouter');
 const CourseDataRouter = require('./CourseDataRouter');
+const MarksUpdateRouter = require('./MarksUpdateRouter');
+const MarksFetchStudentRouter = require('./MarksFetchStudentRouter');
+const MarksFetchLecturerRouter = require('./MarksFetchLecturerRouter');
 
 // using routers
 app.use('/studentlogin', StudentLoginRouter);
 app.use('/lecturerlogin', LecturerLoginRouter);
 app.use('/coursedata', CourseDataRouter);
+app.use('/updatemarks', MarksUpdateRouter);
+app.use('/fetchstudentmarks', MarksFetchStudentRouter);
+app.use('/fetchlecturermarks', MarksFetchLecturerRouter);
 
 // assigning port
 app.listen(process.env.PORT, () => console.log('running on port 2022'));
