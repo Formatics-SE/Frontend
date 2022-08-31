@@ -1,0 +1,43 @@
+$btn_bg_color: rgb(163, 23, 140);
+
+.student_polls {
+    width: 75%;
+    height: calc(100vh - 51px);
+    min-height: 500px;
+    margin: 0 auto;
+    padding: 10px 30px;
+    box-shadow: 0 0 4px 2px rgb(187, 184, 184);
+    @media screen and (max-width: 912px) {
+        width: 100%;
+        box-shadow: 0 0 0 rgb(187, 184, 184);
+        padding: 10px 20px;
+        @media screen and (max-width: 768px) {
+            padding: 10px;
+        }
+    }
+
+    .pending_polls_title,
+    .participated_polls_title {
+        border-radius: 5px 5px 0 0;
+        font-weight: bold;
+        background-color: #e1e1e2f3;
+        padding: 5px 10px;
+        width: fit-content;
+    }
+
+    .pending_polls_body,
+    .participated_polls_body {
+        width: 100%;
+        padding: 10px;
+        border-radius: 0 5px 5px 5px;
+        border: 1px solid #e1e1e2f3;
+    }
+
+    .pending_polls {
+        margin-bottom: ;
+        
+    }
+    .participated_polls {
+        
+    }
+}

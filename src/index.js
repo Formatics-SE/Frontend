@@ -9,10 +9,10 @@ import Groups from './Components/LecturerPage/Groups/Groups'
 import './index.css';
 
 ReactDOM.render(
-    //  <BrowserRouter>
-    //    <App /> 
-    //  </BrowserRouter>
-     <Groups/>
+     <BrowserRouter>
+       <App /> 
+     </BrowserRouter>
+    //  <Groups />
     , document.getElementById('root')
 );
 
