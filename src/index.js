@@ -1,22 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+//import App from './App';
 //import RandomGroup from './Components/LecturerPage/Groups/RandomGroup'
 import Groups from './Components/LecturerPage/Groups/Groups'
-
-// import StudentsTable from './Components/LecturerPage/StudentTable';
+import StudentsTable from './Components/LecturerPage/StudentTable';
 import './index.css';
 
 ReactDOM.render(
-     <BrowserRouter>
-       <App /> 
-     </BrowserRouter>
-<<<<<<< HEAD
-    // <Groups/>
-=======
-    //  <Groups />
->>>>>>> 31e15b8aef2d5cc8d640486cdf9cb37423a0d1db
+    //  <BrowserRouter>
+    //    <App /> 
+    //  </BrowserRouter>
+    <Groups />
     , document.getElementById('root')
 );
 

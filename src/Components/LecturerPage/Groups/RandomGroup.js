@@ -6,71 +6,69 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 
 export default function RandomGroup(props){
-     // let  classDivision= []
-            // for(let i=0; i<classList.length;i= i + division){
-            //     classDivision.push(classList.slice(i,i+division))
-            // }
-    
-    // function ShuffleList(list){   // a function to shuffle the list for random grouping
-    //     for(let i=list.length-1;i>0;i--){
-    //         let randomNumber = Math.floor(Math.random()*(i+1))
-    //         let temp = list[i]
-    //         list[i] = list[randomNumber]
-    //         list[randomNumber] = temp
-    //     }   
-    // }
-   
-   
-    
+   const [numberOfStudents, setNumberOfStudents] = React.useState(props.value_prop)
+   const [groupsToBeSubmitted, setGroupsToBeSubmitted] = React.useState([])
+   console.log(groupsToBeSubmitted)
+
+   function handleChange(event){
+        let x = Number(event.target.value)
+        setNumberOfStudents(x)
+   }
+   function handleSubmit(){
+    setGroupsToBeSubmitted(randomGroupingsByCwa)
+  }     
+
    let classList = data.map(student=>{
-         return `${student.firstName} ${student.lastName}: ${student.cwa}`
+        return `${student.firstName} ${student.lastName}: ${student.cwa}`
             })
-            let studentsPerGroup = Number(props.value_prop)
+            let studentsPerGroup =  Number(numberOfStudents)   //Number(props.value_prop)
             let division = Math.ceil(classList.length/studentsPerGroup)
-            let randomGroupingByCwa = []
+            let randomGroupingsByCwa = []   // container to hold the various groups
             let count = 0
 
-            // forms groups based on their CWAs
-            // picks students from each sub-division(first class, second class and so on) and adds to the group            
-            for(let i=0;i<division;i++){
-                let newArray = []
-                while(count<classList.length){
-                    newArray.push(classList[count])
-                    count = count + division
+        for(let i=0;i<division;i++){
+          let newArray = []  //container to hold students in a group
+            while(count<classList.length){
+                newArray.push(classList[count])
+                count = count + division
                 }
-                randomGroupingByCwa.push(newArray)
+                randomGroupingsByCwa.push(newArray) // pushing a complete group to the main container
                 count = i + 1
                 }
-            
-            
+          
+      
 
-            let random_group = randomGroupingByCwa.map(item=>{
-             return(
+      let random_group = randomGroupingsByCwa.map(item=>{
+         return(
              <Card className="cards-container">
-                <Card.Body className="cards-body">
-                    <Card.Title className="cards-title">GROUP {randomGroupingByCwa.indexOf(item) + 1}</Card.Title>
-                        <Card.Text>
-                             {item.map(sub=>{
-                         return(
-                             <li>{sub}</li>
-                          )
-                         })}
-                 </Card.Text>
+             <Card.Body className="cards-body">
+               <Card.Title className="cards-title">GROUP {randomGroupingsByCwa.indexOf(item) + 1}</Card.Title>
+                   <Card.Text>
+                             {item.map((student, index)=>{
+                            return(
+                                  <li key={index}>{student}</li>
+                                 )
+                             })}
+                    </Card.Text>
             </Card.Body>
             </Card>
                )
-            }) 
+            }
+        ) 
     
             
     
     
     return(
-    <section>    
-        <h2 className="random-groups-heading">Groupings</h2>
+    <section className="random-groups-container"> 
+        <div className="heading-container">
+            <h3 className="heading">Groups of: </h3>
+            <input  type="number" className="input-field" min={2} onChange={handleChange}/>
+            <button type="submit" className="submit-button" onClick={handleSubmit}>Submit Groups</button>
+        </div>
         <div className="random-groups">
             {random_group}
         </div>
-
     </section>
     )
 }
