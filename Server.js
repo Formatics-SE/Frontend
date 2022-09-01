@@ -20,6 +20,9 @@ const CourseDataRouter = require('./CourseDataRouter');
 const MarksUpdateRouter = require('./MarksUpdateRouter');
 const MarksFetchStudentRouter = require('./MarksFetchStudentRouter');
 const MarksFetchLecturerRouter = require('./MarksFetchLecturerRouter');
+const AttendanceUpdateRouter = require('./AttendanceUpdateRouter');
+const AttendanceFetchRouter = require('./AttendanceFetchRouter');
+
 
 // using routers
 app.use('/studentlogin', StudentLoginRouter);
@@ -28,6 +31,9 @@ app.use('/coursedata', CourseDataRouter);
 app.use('/updatemarks', MarksUpdateRouter);
 app.use('/fetchstudentmarks', MarksFetchStudentRouter);
 app.use('/fetchlecturermarks', MarksFetchLecturerRouter);
+app.use('/fetchattendance', AttendanceFetchRouter);
+app.use('/updateattendance', AttendanceUpdateRouter);
+
 
 // assigning port
 app.listen(process.env.PORT, () => console.log('running on port 2022'));

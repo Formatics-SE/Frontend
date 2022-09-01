@@ -8,11 +8,16 @@ router.post('/', express.json(), async(req,res) =>
 
 {
     const courseCode = req.body.courseCode;
-    const courseData = await CourseModel.findOne({courseCode: courseCode});
+    
     try{
-        if(courseData)
+        const courseData = await CourseModel.findOne({courseCode: courseCode});
+        const registeredStudents = courseData.registeredStudents;
+
+
+        
+        if(registeredStudents)
         {
-            res.json({registeredStudents: courseData.registeredStudents})
+            res.json({registeredStudents: registeredStudents});
         }
 
         else
@@ -28,3 +33,5 @@ router.post('/', express.json(), async(req,res) =>
 );
 
 module.exports = router;
+
+
