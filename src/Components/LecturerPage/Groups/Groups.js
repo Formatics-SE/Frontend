@@ -6,8 +6,8 @@ import Button from "react-bootstrap/Button";
 import "./Group.css";
 
 import RandomGroup from './RandomGroup'
-
 import FloatingNav from '../../FloatingNav_Lect/FloatingNav_Lect'
+import URL from '../../URL'
 
 export default function Groups() {
 

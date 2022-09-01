@@ -12,7 +12,11 @@ ReactDOM.render(
      <BrowserRouter>
        <App /> 
      </BrowserRouter>
+<<<<<<< HEAD
     // <Groups/>
+=======
+    //  <Groups />
+>>>>>>> 31e15b8aef2d5cc8d640486cdf9cb37423a0d1db
     , document.getElementById('root')
 );
 

@@ -9,8 +9,7 @@ import { v4 } from 'uuid'
 import './polls.css'
 
 import PollInstance from './PollInstance'
-
-const URL = 'http://127.0.0.1:2022';
+import URL from '../../URL'
 
 export default function Polls() {
 
@@ -29,13 +28,10 @@ export default function Polls() {
             console.log('up to 10')
             return;
         }
-
         let tempOps = options;
-
         // initially add two options
         if (optionsCount === 0) {
             console.log('zero')
-
             for (let i = 0; i < 2; i++) {
                 let keyVal = v4()
                 tempOps[i] = (
@@ -49,7 +45,6 @@ export default function Polls() {
         }
         else {
             console.log('not zero')
-
             let keyVal = v4()
             tempOps.push(
                 <div className='option' key={keyVal}>
@@ -70,15 +65,9 @@ export default function Polls() {
     function removeOption(e) {
         console.clear()
         if (options.length === 2) return;
-
-
         setOptions(ops => ops.filter(op => {
-            if (e.target.className.split(' ')[1] !== op.key) {
-                return true;
-            }
-            else {
-                return false;
-            }
+            if (e.target.className.split(' ')[1] !== op.key) return true;
+            else return false;
         }))
         setOptionsCount(prevCount => prevCount - 1);
     }
@@ -158,7 +147,7 @@ export default function Polls() {
     }, [])
 
     return (
-        <div className='polls'>
+        <div className='lecturer_polls'>
             <Toast show={showToast}
                 onClose={() => setShowToast(false)}
                 className='poll_toast'
@@ -176,7 +165,7 @@ export default function Polls() {
                 <div className='total_polls'>Total Polls: {polls?.length}</div>
             </div>
             <div className='created_polls_container'>
-                {polls} 
+                {polls}
                 {/* <PollInstance />
                 <PollInstance />
                 <PollInstance />
