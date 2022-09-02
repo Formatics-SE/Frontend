@@ -6,6 +6,7 @@ const CourseSchema = new mongoose.Schema({
     assignedLecturer: String,
     year: Number,
     semester: Number,
+    credits: Number,    
     registeredStudents: [
         {
             name: String,
@@ -13,7 +14,14 @@ const CourseSchema = new mongoose.Schema({
             cwa: Number,
             attendance: { type: Number, default: 0 },
             marks: { type: Number, default: 0 },
-            group: Number
+            strikes: { type: Number, default: 0 },
+            group: Number,
+            marksArray: [
+                {
+                    marks: { type: Number, default: 0 },
+                    date: String
+                }
+            ]
         }
     ],
     groups: [
@@ -25,8 +33,8 @@ const CourseSchema = new mongoose.Schema({
     ],
     polls: [
         {
-            poll: String,
-            totalVotesCast: Number,
+            title: String,
+            totalVotesCast: { type: Number, default: 0 },
             options: [
                 {
                     option: String,
