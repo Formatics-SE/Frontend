@@ -8,10 +8,10 @@ import StudentsTable from './Components/LecturerPage/StudentTable';
 import './index.css';
 
 ReactDOM.render(
-    //  <BrowserRouter>
-    //    <App /> 
-    //  </BrowserRouter>
-    <Groups />
+     <BrowserRouter>
+       <App /> 
+     </BrowserRouter>
+    //<Groups />
     , document.getElementById('root')
 );
 
