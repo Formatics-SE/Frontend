@@ -6,13 +6,14 @@ const CourseSchema = new mongoose.Schema({
     assignedLecturer: String,
     year: Number,
     semester: Number,
-    credits: Number,    // new entry
+    credits: Number,    
     registeredStudents: [
         {
             name: String,
             indexNumber: Number,
             cwa: Number,
             attendance: { type: Number, default: 0 },
+            marks: { type: Number, default: 0 },
             strikes: { type: Number, default: 0 },
             group: Number,
             marksArray: [

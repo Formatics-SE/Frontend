@@ -3,7 +3,7 @@ const router = express.Router();
 
 const CourseModel = require('./CourseModel');
 
-router.post('/', express.marks, async (req, res) => {
+router.post('/', express.json(), async (req, res) => {
     const courseCode = req.body.courseCode;
     const indexNumber = req.body.indexNumber;
 

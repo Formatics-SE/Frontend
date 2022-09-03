@@ -3,17 +3,17 @@ const router = express.Router();
 
 const CourseModel = require('./CourseModel');
 
-router.post('/', express.marks, async (req, res) => {
+router.post('/', express.json(), async (req, res) => {
     const courseCode = req.body.courseCode;
     const marksData = req.body.marksData;
     const date = req.body.date;
 
     try {
         const courseData = await CourseModel.findOne({ courseCode: courseCode })
-        const registeredStudents = courseData.registeredStudents;
+        let registeredStudents = courseData.registeredStudents;
 
         marksData.forEach(marksObject => {
-            for (let i = 0; i < registeredStudents.length; i++) {
+            for (let i = 0; i < registeredStudents.length-1; i++) {
                 if (marksObject.indexNumber === registeredStudents[i].indexNumber) {
                     registeredStudents[i].marksArray.push({
                         marks: marksObject.marks,

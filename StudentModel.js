@@ -7,9 +7,14 @@ const StudentSchema = new mongoose.Schema({
     registeredCourses: [
         {
             courseName: String,
-            courseCode: String
+            courseCode: String,
+            group: Number,
+            assignedLecturer: String,
+            year: Number,
+            semester: Number,
+            credits: Number
         }
-    ] 
+    ]
 });
 
 module.exports = mongoose.model('Students', StudentSchema);
