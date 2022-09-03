@@ -156,7 +156,7 @@ export default function Login() {
                 <Modal.Body>
                     <div className='modal_header'>
                         <Button className='close_btn' onClick={() => setShowModal(false)}>&times;</Button>
-                        {user === 'L' ? <span>Lecturer Login</span> : <span>Student Login</span>}
+                        {user === 'L' ? <span>Welcome Back</span> : <span>Welcome Back</span>}
                     </div>
                     <div>
                         <div className='field mb-2'>
@@ -165,16 +165,16 @@ export default function Login() {
                         </div>
                         <div className='field mb-2'>
                             <FormLabel htmlFor='password'>Password</FormLabel>
-                            <Form.Control type='password' placeholder='####' id='password' />
+                            <Form.Control type='password' placeholder='Please enter your password' id='password' />
                         </div>
                         {user === 'L' ?
                             <div className='field'>
                                 <FormLabel htmlFor='staff_id'>Staff ID</FormLabel>
-                                <Form.Control placeholder='####' id='staff_id' />
+                                <Form.Control placeholder='Please enter your Staff ID' id='staff_id' />
                             </div> : ''
                         }
                         <div>
-                            <Button className='login_btn' onClick={validateInputs}>Submit</Button>
+                            <Button className='login_btn' onClick={validateInputs}>Login</Button>
                         </div>
                     </div>
                 </Modal.Body>
