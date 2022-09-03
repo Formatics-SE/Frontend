@@ -59,13 +59,19 @@ $shadow_color: rgba(223, 62, 210, 0.664);
 
         .app_name {
             position: absolute;
-            top: -100px;
+            top: -130px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 200%;
-            color: white;
-            text-align: center;
-            text-shadow: 0 0 4px $shadow_color;
+            span {
+                font-size: 450%;
+                color: white;
+                text-align: center;
+                text-shadow: 0 0 4px $shadow_color;
+                font-family: "tonsushi" !important;
+                &.cl {
+                    color: rgb(218, 221, 31);
+                }
+            }
         }
 
         .welcome_text {

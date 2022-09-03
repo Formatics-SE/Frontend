@@ -1,6 +1,6 @@
 .lecturer_polls {
   width: 75%;
-  height: calc(100vh - 51px);
+  height: calc(100vh - 57px);
   min-height: 500px;
   margin: 0 auto;
   padding: 10px 30px;
@@ -104,6 +104,8 @@
   overflow-y: auto;
   -webkit-column-count: 2;
           column-count: 2;
+  -webkit-column-gap: 2%;
+          column-gap: 2%;
 }
 
 #modal {
