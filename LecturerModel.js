@@ -7,9 +7,12 @@ const LecturerSchema = new mongoose.Schema({
     assignedCourses: [
         {
             courseName: String,
-            courseCode: String
+            courseCode: String,
+            year: Number,
+            semester: Number,
+            credits: Number
         }
-    ]   
+    ]
 });
 
 module.exports = mongoose.model('Lecturers', LecturerSchema);
