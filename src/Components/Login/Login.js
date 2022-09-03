@@ -126,7 +126,7 @@ export default function Login() {
 
             <div className='login_form'>
                 <div className='app_name'>
-                    App Name
+                    <span className='cl'>CL</span><span>AIM</span>
                 </div>
                 <div className='welcome_text'>
                     Please login to access the site features
