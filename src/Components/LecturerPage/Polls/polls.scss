@@ -70,6 +70,9 @@ $btn_bg_color: rgb(163, 23, 140);
         max-height: calc(100% - 61px);
         overflow-y: auto;
 
+        column-count: 2;
+        column-gap: 2%;
+
         // display: grid;
         // grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
         // column-gap: clamp(15px, 15px, 20px);

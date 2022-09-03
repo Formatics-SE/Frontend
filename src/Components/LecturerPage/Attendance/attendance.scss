@@ -17,12 +17,13 @@
     .attendance-header {
         display: flex;
         justify-content: space-between;
+        box-shadow: 0 2px 3px -2px rgb(187, 184, 184);
+        
         .max-strikes-div {
             display: flex;
             align-items: center;
             padding: 5px 5px 10px 5px;
             font-weight: bold;
-            box-shadow: 0 2px 3px -2px rgb(187, 184, 184);
             .max-strikes-input {
                 margin-left: 5px;
                 width: 100px;

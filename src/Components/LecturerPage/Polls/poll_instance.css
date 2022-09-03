@@ -1,18 +1,35 @@
 .poll_instance {
   -webkit-box-shadow: 0px 0px 4px 1px #bbb8b8;
           box-shadow: 0px 0px 4px 1px #bbb8b8;
+  margin-bottom: 15px;
+  -webkit-column-break-inside: avoid;
+          break-inside: avoid;
 }
 
-.poll_instance .title {
-  padding: 5px 15px;
+.poll_instance .title_and_delete_container {
+  position: relative;
+  padding: 5px 46px 5px 15px;
   border-width: 0 0 1px 0;
   border-style: solid;
   border-color: #a3178c;
   font-weight: bold;
   background-color: #e1e1e2f3;
+}
+
+.poll_instance .title_and_delete_container .title {
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: none;
+}
+
+.poll_instance .title_and_delete_container .delete_icon {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  right: 15px;
+  font-size: 95%;
+  color: #660d0d;
 }
 
 .poll_instance .options {
@@ -59,5 +76,47 @@
   border-color: #a3178c;
   padding: 5px 10px;
   border-radius: 0 0 10px 10px;
+}
+
+#modal #confirm_text {
+  padding: 0 10px;
+  font-weight: bold;
+  font-size: 110%;
+}
+
+#modal #modal_footer {
+  -webkit-box-pack: space-evenly !important;
+      -ms-flex-pack: space-evenly !important;
+          justify-content: space-evenly !important;
+}
+
+#modal #modal_footer #confirm_btn_d,
+#modal #modal_footer #cancel_btn_d {
+  padding: 7px 25px;
+  border-radius: 7px;
+  font-size: 103%;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  border-color: #a3178c;
+  width: 46%;
+  background: linear-gradient(120deg, #a3178c, rgba(34, 23, 182, 0.726));
+}
+
+#modal #modal_footer #confirm_btn_d:hover,
+#modal #modal_footer #cancel_btn_d:hover {
+  background: white;
+  color: #a3178c;
+}
+
+#modal #modal_footer #confirm_btn_d:active,
+#modal #modal_footer #cancel_btn_d:active {
+  background-color: #a3178c;
+  color: white;
+}
+
+#modal #modal_footer #confirm_btn_d:focus,
+#modal #modal_footer #cancel_btn_d:focus {
+  -webkit-box-shadow: 0 0 0 black;
+          box-shadow: 0 0 0 black;
 }
 /*# sourceMappingURL=poll_instance.css.map */

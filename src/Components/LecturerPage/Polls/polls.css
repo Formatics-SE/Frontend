@@ -102,6 +102,8 @@
   min-height: fit-content;
   max-height: calc(100% - 61px);
   overflow-y: auto;
+  -webkit-column-count: 2;
+          column-count: 2;
 }
 
 #modal {

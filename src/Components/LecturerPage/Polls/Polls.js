@@ -92,38 +92,49 @@ export default function Polls() {
         let options = optionInputs.map(op => new Object({ option: op.value, votes: 0 }));
 
         setShowModal(false);
-        setShowToast(true);
-        document.querySelector('.create_poll_btn').disabled = true;
+        // setShowToast(true);
+        // document.querySelector('.create_poll_btn').disabled = true;
 
-        try {
-            const response = await fetch(`${URL}/newpoll`, {
-                method: 'POST',
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify({
-                    title: title,
-                    options: options,
-                    courseCode: 'COE 354'
-                })
-            });
+        //temp
+        setPolls(polls => [...polls,
+        <PollInstance key={v4()}
+            title={title}
+            totalVotesCast={0}
+            options={options}
+        />
+        ]);
+        // end temp
 
-            const data = await response.json();
-            // add created poll to array of poll instances
-            if (data.successful) {
-                setPolls(polls => [...polls,
-                <PollInstance key={v4()}
-                    title={title}
-                    totalVotesCast={0}
-                    options={options}
-                />
-                ]);
-            }
 
-            setShowToast(false);
-            document.querySelector('.create_poll_btn').disabled = false;
+        // try {
+        //     const response = await fetch(`${URL}/newpoll`, {
+        //         method: 'POST',
+        //         headers: { 'content-type': 'application/json' },
+        //         body: JSON.stringify({
+        //             title: title,
+        //             options: options,
+        //             courseCode: 'COE 354'
+        //         })
+        //     });
 
-        } catch (error) {
-            console.log(error.message);
-        }
+        //     const data = await response.json();
+        //     // add created poll to array of poll instances
+        //     if (data.successful) {
+        //         setPolls(polls => [...polls,
+        //         <PollInstance key={v4()}
+        //             title={title}
+        //             totalVotesCast={0}
+        //             options={options}
+        //         />
+        //         ]);
+        //     }
+
+        //     setShowToast(false);
+        //     document.querySelector('.create_poll_btn').disabled = false;
+
+        // } catch (error) {
+        //     console.log(error.message);
+        // }
 
     }
     // end

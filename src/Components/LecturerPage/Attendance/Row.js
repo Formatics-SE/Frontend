@@ -27,8 +27,7 @@ export default function Row({ id, name, attendance, strikes, indexNumber, handle
                         handleStrikesUpdate(indexNumber, strikes_s + 1);
                         setStrikes(prev => (prev + 1))
                     }}
-                >
-                    +
+                >+
                 </div>
                 <div className='btn'
                     onClick={() => {
@@ -38,8 +37,7 @@ export default function Row({ id, name, attendance, strikes, indexNumber, handle
                             else return (prev - 1);
                         })
                     }}
-                >
-                    -
+                >-
                 </div>
             </td>
             <td className='span-and-btn'>
@@ -49,8 +47,7 @@ export default function Row({ id, name, attendance, strikes, indexNumber, handle
                         handleAttendanceUpdate(indexNumber, attendance_s + 1);
                         setAttendance(prev => (prev + 1))
                     }}
-                >
-                    +
+                >+
                 </div>
                 <div className='btn'
                     onClick={() => {
@@ -60,8 +57,7 @@ export default function Row({ id, name, attendance, strikes, indexNumber, handle
                             else return (prev - 1);
                         })
                     }}
-                >
-                    -
+                >-
                 </div>
             </td>
         </tr>
