@@ -4,7 +4,7 @@ $header_bg_color: rgb(134, 12, 114);
 
 .header {
     position: relative;
-    width: 100vw;
+    // width: 100vw !important;
     padding: 12px 30px;
     @media screen and (max-width: 768px) {
         padding: 8px 30px;
