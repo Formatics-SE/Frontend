@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import Form from 'react-bootstrap/Form'
 import Table from 'react-bootstrap/Table'
+import Row from './Row'
+import Button from 'react-bootstrap/Button'
 import './attendance.css'
 
-import Row from './Row'
-import Button from 'react-bootstrap/esm/Button'
+import URL from '../../URL'
 
 export default function Attendance() {
 
@@ -16,16 +17,6 @@ export default function Attendance() {
         document.querySelector('.max-strikes-input').value = 3;
     })
     // temp
-
-    function handleSubmit(e) {
-        // console.log(attendanceUpdate)
-        try {
-
-        } catch (error) {
-            console.log(error)
-        }
-
-    }
 
     useEffect(() => {
         // const attendanceRows_session = JSON.parse(sessionStorage.getItem('attendanceRows'));
@@ -47,15 +38,19 @@ export default function Attendance() {
         ]
 
         let temp_attendance_update = []
+
+        // create an array of Row components and store in state
         setAttendanceRows(
             attendanceRows_session?.map((studentObj, index) => {
+                // for each student object returned, create an object containing only the student information of interest
+                // : index number, attendance record and strikes record.
                 temp_attendance_update.push(
                     {
                         indexNumber: studentObj.indexNumber,
                         attendance: studentObj.attendance,
                         strikes: studentObj.strikes
                     }
-                )
+                );
                 return (
                     <Row key={index}
                         id={index}
@@ -64,26 +59,71 @@ export default function Attendance() {
                         attendance={studentObj.attendance}
                         strikes={studentObj.strikes}
                         handleAttendanceUpdate={handleAttendanceUpdate}
+                        handleStrikesUpdate={handleStrikesUpdate}
                     />
                 )
             })
         );
 
-        // console.log(temp_attendance_update)
         setAttendanceUpdate(temp_attendance_update);
 
     }, [])
 
-    function handleAttendanceUpdate(indexNumber, attendance, strikes) {
-        console.log('in')
+    // post attendance data to server
+    async function handleSubmit(e) {
+        // console.log(attendanceUpdate)
+
+        const courseCode = sessionStorage.getItem('courseCode');
+        try {
+            const response  = await fetch(`${URL}/attendance`, {
+                method: 'POST',
+                headers: {'content-type' : 'application/json'},
+                body: JSON.stringify({
+                    courseCode: courseCode,
+                    attendanceData: attendanceUpdate
+                })
+            });
+
+            const data = await response.json();
+            if(data.successful) {
+
+            }
+            else {
+
+            }
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
+    function handleAttendanceUpdate(indexNumber, attendance) {
+        console.log('attendance: ', attendance)
         setAttendanceUpdate(prev => prev.map(obj => {
             if (indexNumber === obj.indexNumber) {
                 // console.log('match')
                 console.log('at: ', attendance)
                 console.log('obj at: ', obj.attendance)
 
-                obj.attendance += attendance;
-                obj.strikes += strikes;
+                obj.attendance = attendance;
+                return obj;
+            }
+            else {
+                // console.log('no match')
+                return obj;
+            }
+        }))
+    }
+
+    function handleStrikesUpdate(indexNumber, strikes) {
+        console.log('strikes: ', strikes)
+        setAttendanceUpdate(prev => prev.map(obj => {
+            if (indexNumber === obj.indexNumber) {
+                // console.log('match')
+                console.log('at: ', strikes)
+                console.log('obj at: ', obj.strikes)
+
+                obj.strikes = strikes;
                 return obj;
             }
             else {

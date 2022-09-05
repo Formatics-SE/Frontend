@@ -8,10 +8,9 @@ import Modal from 'react-bootstrap/Modal'
 import './login.css'
 
 import bgImage from './bg.png'
+import URL from '../URL'    // server url
 
 const toastMessages = ['Please fill in all fields', 'Invalid ID or Password']
-
-const URL = 'http://127.0.0.1:2022';
 
 export default function Login() {
     // show or hide state: login modal
@@ -48,7 +47,7 @@ export default function Login() {
 
     async function handleLecturerSubmit(username, password, staff_id) {
         try {
-            const response = await fetch(`$URL/lecturerlogin`, {
+            const response = await fetch(`${URL}/lecturerlogin`, {
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify({
@@ -77,7 +76,7 @@ export default function Login() {
     }
 
     async function handleStudentSubmit(username, password) {
-        const response = await fetch(`$URL/sttudentlogin`, {
+        const response = await fetch(`${URL}/studentlogin`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({
@@ -127,7 +126,7 @@ export default function Login() {
 
             <div className='login_form'>
                 <div className='app_name'>
-                    App Name
+                    <span className='cl'>CL</span><span>AIM</span>
                 </div>
                 <div className='welcome_text'>
                     Please login to access the site features

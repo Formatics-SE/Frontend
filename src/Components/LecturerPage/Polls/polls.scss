@@ -1,8 +1,8 @@
 $btn_bg_color: rgb(163, 23, 140);
 
-.polls {
+.lecturer_polls {
     width: 75%;
-    height: calc(100vh - 51px);
+    height: calc(100vh - 57px);
     min-height: 500px;
     margin: 0 auto;
     padding: 10px 30px;
@@ -15,15 +15,6 @@ $btn_bg_color: rgb(163, 23, 140);
             padding: 10px;
         }
     }
-    // body::-webkit-scrollbar {
-    //     width: 2px;
-    // }
-    // body::-webkit-scrollbar-thumb {
-    //     color: black;
-    // }
-    // body::-webkit-scrollbar-track {
-    //     color: white;
-    // }
 
     .poll_toast {
         position: absolute;
@@ -78,6 +69,9 @@ $btn_bg_color: rgb(163, 23, 140);
         min-height: fit-content;
         max-height: calc(100% - 61px);
         overflow-y: auto;
+
+        column-count: 2;
+        column-gap: 2%;
 
         // display: grid;
         // grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));

@@ -22,7 +22,7 @@ export default function Header() {
                 <AiOutlineMenu />
             </div>
             <div className='app_name'>
-                App Name
+                <span className='cl'>CL</span><span>AIM</span>
             </div>
             <div className='name_and_signout'>
                 <div className='name d-none d-md-block'>

@@ -9,8 +9,7 @@ import { v4 } from 'uuid'
 import './polls.css'
 
 import PollInstance from './PollInstance'
-
-const URL = 'http://127.0.0.1:2022';
+import URL from '../../URL'
 
 export default function Polls() {
 
@@ -29,13 +28,10 @@ export default function Polls() {
             console.log('up to 10')
             return;
         }
-
         let tempOps = options;
-
         // initially add two options
         if (optionsCount === 0) {
             console.log('zero')
-
             for (let i = 0; i < 2; i++) {
                 let keyVal = v4()
                 tempOps[i] = (
@@ -49,7 +45,6 @@ export default function Polls() {
         }
         else {
             console.log('not zero')
-
             let keyVal = v4()
             tempOps.push(
                 <div className='option' key={keyVal}>
@@ -70,15 +65,9 @@ export default function Polls() {
     function removeOption(e) {
         console.clear()
         if (options.length === 2) return;
-
-
         setOptions(ops => ops.filter(op => {
-            if (e.target.className.split(' ')[1] !== op.key) {
-                return true;
-            }
-            else {
-                return false;
-            }
+            if (e.target.className.split(' ')[1] !== op.key) return true;
+            else return false;
         }))
         setOptionsCount(prevCount => prevCount - 1);
     }
@@ -103,38 +92,49 @@ export default function Polls() {
         let options = optionInputs.map(op => new Object({ option: op.value, votes: 0 }));
 
         setShowModal(false);
-        setShowToast(true);
-        document.querySelector('.create_poll_btn').disabled = true;
+        // setShowToast(true);
+        // document.querySelector('.create_poll_btn').disabled = true;
 
-        try {
-            const response = await fetch(`${URL}/newpoll`, {
-                method: 'POST',
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify({
-                    title: title,
-                    options: options,
-                    courseCode: 'COE 354'
-                })
-            });
+        //temp
+        setPolls(polls => [...polls,
+        <PollInstance key={v4()}
+            title={title}
+            totalVotesCast={0}
+            options={options}
+        />
+        ]);
+        // end temp
 
-            const data = await response.json();
-            // add created poll to array of poll instances
-            if (data.successful) {
-                setPolls(polls => [...polls,
-                <PollInstance key={v4()}
-                    title={title}
-                    totalVotesCast={0}
-                    options={options}
-                />
-                ]);
-            }
 
-            setShowToast(false);
-            document.querySelector('.create_poll_btn').disabled = false;
+        // try {
+        //     const response = await fetch(`${URL}/newpoll`, {
+        //         method: 'POST',
+        //         headers: { 'content-type': 'application/json' },
+        //         body: JSON.stringify({
+        //             title: title,
+        //             options: options,
+        //             courseCode: 'COE 354'
+        //         })
+        //     });
 
-        } catch (error) {
-            console.log(error.message);
-        }
+        //     const data = await response.json();
+        //     // add created poll to array of poll instances
+        //     if (data.successful) {
+        //         setPolls(polls => [...polls,
+        //         <PollInstance key={v4()}
+        //             title={title}
+        //             totalVotesCast={0}
+        //             options={options}
+        //         />
+        //         ]);
+        //     }
+
+        //     setShowToast(false);
+        //     document.querySelector('.create_poll_btn').disabled = false;
+
+        // } catch (error) {
+        //     console.log(error.message);
+        // }
 
     }
     // end
@@ -158,7 +158,7 @@ export default function Polls() {
     }, [])
 
     return (
-        <div className='polls'>
+        <div className='lecturer_polls'>
             <Toast show={showToast}
                 onClose={() => setShowToast(false)}
                 className='poll_toast'
@@ -176,7 +176,7 @@ export default function Polls() {
                 <div className='total_polls'>Total Polls: {polls?.length}</div>
             </div>
             <div className='created_polls_container'>
-                {polls} 
+                {polls}
                 {/* <PollInstance />
                 <PollInstance />
                 <PollInstance />

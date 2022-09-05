@@ -73,14 +73,22 @@
 
 .login_page .login_form .app_name {
   position: absolute;
-  top: -100px;
+  top: -130px;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  font-size: 200%;
+}
+
+.login_page .login_form .app_name span {
+  font-size: 450%;
   color: white;
   text-align: center;
   text-shadow: 0 0 4px rgba(223, 62, 210, 0.664);
+  font-family: "tonsushi" !important;
+}
+
+.login_page .login_form .app_name span.cl {
+  color: #dadd1f;
 }
 
 .login_page .login_form .welcome_text {

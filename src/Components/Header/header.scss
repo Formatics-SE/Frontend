@@ -4,8 +4,11 @@ $header_bg_color: rgb(134, 12, 114);
 
 .header {
     position: relative;
-    width: 100vw;
-    padding: 8px 30px;
+    // width: 100vw !important;
+    padding: 12px 30px;
+    @media screen and (max-width: 768px) {
+        padding: 8px 30px;
+    }
     display: flex;
     justify-content: space-between;
     font-size: 125%;
@@ -23,8 +26,23 @@ $header_bg_color: rgb(134, 12, 114);
     }
 
     .app_name {
-        font-weight: bold;
-        font-size: 110%;
+        // font-weight: bold;
+        // font-size: 110%;
+        height: 30px !important;
+        margin-top: -8px;
+        @media screen and (max-width: 768px) {
+            margin-bottom: 8px;
+        }
+        span {
+            font-size: 200%;
+            color: white;
+            text-align: center;
+            // text-shadow: 0 0 4px $shadow_color;
+            font-family: 'tonsushi' !important;
+            &.cl {
+                color: rgb(218, 221, 31);
+            }
+        }
     }
     .name_and_signout {
         display: flex !important;
@@ -83,7 +101,7 @@ $header_bg_color: rgb(134, 12, 114);
         border-color: $gradient_color_1;
         border-style: solid;
         border-width: 0 0 2px 2px;
-        
+
         .menu_close_btn {
             color: white;
             // background-color: white;

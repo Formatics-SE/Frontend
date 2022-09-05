@@ -1,6 +1,6 @@
 .attendance {
   width: 75%;
-  height: calc(100vh - 51px);
+  height: calc(100vh - 56px);
   min-height: 500px;
   margin: 0 auto;
   padding: 10px 30px;
@@ -30,6 +30,8 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-shadow: 0 2px 3px -2px #bbb8b8;
+          box-shadow: 0 2px 3px -2px #bbb8b8;
 }
 
 .attendance .attendance-header .max-strikes-div {
@@ -41,8 +43,6 @@
           align-items: center;
   padding: 5px 5px 10px 5px;
   font-weight: bold;
-  -webkit-box-shadow: 0 2px 3px -2px #bbb8b8;
-          box-shadow: 0 2px 3px -2px #bbb8b8;
 }
 
 .attendance .attendance-header .max-strikes-div .max-strikes-input {

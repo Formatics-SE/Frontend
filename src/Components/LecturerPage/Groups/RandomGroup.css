@@ -1,10 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-
-.random-groups-heading{
-    font-family: "Poppins";
-    margin-left: 40%;
+.random-groups-container{
+    margin-top: 30px;
+    
 }
+.heading-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.heading{
+    margin-right: 10px;
+}
+.input-field{
+    margin-right: 10px;
+    width: 150px;
+}
+
 .random-groups{
     padding: 10px;
     justify-content: center;
@@ -30,9 +42,5 @@ li{
     font-weight: bolder;
     text-align: left;
 }
-.cards-button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 

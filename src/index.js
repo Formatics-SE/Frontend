@@ -2,17 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-//import RandomGroup from './Components/LecturerPage/Groups/RandomGroup'
-import Groups from './Components/LecturerPage/Groups/Groups'
-
-// import StudentsTable from './Components/LecturerPage/StudentTable';
 import './index.css';
 
 ReactDOM.render(
-    //  <BrowserRouter>
-    //    <App /> 
-    //  </BrowserRouter>
-     <Groups/>
+     <BrowserRouter>
+       <App /> 
+     </BrowserRouter>
     , document.getElementById('root')
 );
 
