@@ -1,8 +1,113 @@
 .accordion {
-    width: 400px;
-
-}
-.img {
-    width: inherit;
-
-}   
+    border-radius: 7px;
+    margin-bottom: 20px;
+  }
+  
+  .accordion .accordion_body {
+    position: relative;
+  }
+  
+  .accordion .accordion_body .body_bg {
+    border-radius: 9px 9px 0 0;
+    width: 100%;
+    background-repeat: no-repeat;
+    aspect-ratio: 16/9;
+  }
+  
+  .accordion .accordion_body .body_bg_overlay {
+    position: absolute;
+    width: 100%;
+    border-radius: 9px 9px 0 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.404);
+    z-index: 10;
+  }
+  
+  .accordion .accordion_body .course_code {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px 15px;
+    border-radius: 0 9px 0 0;
+    background-color: #860c72;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 0.01rem;
+    z-index: 20;
+  }
+  
+  .accordion .accordion_body .year_semester_credits_container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    z-index: 20;
+    color: white;
+    font-size: 140%;
+    font-weight: bold;
+  }
+  
+  .accordion .accordion_body .year_semester_credits_container .year_semester,
+  .accordion .accordion_body .year_semester_credits_container .credits {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .accordion .accordion_body .year_semester_credits_container .year_semester {
+    padding-top: 7px;
+  }
+  
+  .accordion .accordion_body .year_semester_credits_container .credits {
+    padding-bottom: 7px;
+  }
+  
+  .accordion .dropdown {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 5px 20px;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 0.01rem;
+    background-color: rgba(134, 12, 114, 0.904);
+    border-radius: 0 0 9px 9px;
+    font-size: 105%;
+    display: flex;
+    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  
+  .accordion .dropdown:hover {
+    cursor: pointer;
+  }
+  
+  .accordion .dropdown:active .dropdown_icon {
+    color: #860c72;
+  }
+  
+  .accordion .dropdown .dropdown_icon {
+    font-size: 120%;
+  }
+  /*# sourceMappingURL=accordion.css.map */
