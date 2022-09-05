@@ -3,7 +3,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import './courses.css'
+import './Courses.css'
 
 import bg1 from './compressed 1.jpg'
 import bg2 from './compressed 2.jpg'
