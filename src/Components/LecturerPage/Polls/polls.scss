@@ -89,6 +89,8 @@ $btn_bg_color: rgb(163, 23, 140);
     min-width: 30%;
     min-height: 800px;
     max-height: 80vh !important;
+    margin: 0 auto !important;
+    max-width: 95vw;
     @media screen and (max-width: 768px) {
         min-width: 95%;
         top: 30px;

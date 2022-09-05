@@ -39,15 +39,15 @@ export default function App() {
       <Route path='/lecturer' element={[<LecturerPage />, <FloatingNav_Lect />]}>
         <Route path='courses' element={<Courses_L />} />
         <Route path='groups' element={<Groups_L />} />
-        <Route path='rollcall' element={<Attendance />} />
-        <Route path='polls' element={<Polls_L />} />
         <Route path='marks' element={<Marks_L />} />
+        <Route path='polls' element={<Polls_L />} />
+        <Route path='rollcall' element={<Attendance />} />
       </Route>
       <Route path='/student' element={<StudentPage />}>
-        <Route path='polls' element={<Polls />} />
-        <Route path='groups' element={<Groups />} />
         <Route path='courses' element={<Courses />} />
+        <Route path='groups' element={<Groups />} />
         <Route path='marks' element={<Marks />} />
+        <Route path='polls' element={<Polls />} />
       </Route>
     </Routes> 
 

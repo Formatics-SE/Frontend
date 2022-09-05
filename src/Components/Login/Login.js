@@ -70,39 +70,48 @@ export default function Login() {
                 setShowToast(true);
             }
 
+            // set current page value to 'C' to cause the floatingNav to be hidden on Courses page.
+            sessionStorage.setItem('currentPage', 'C');
+            navigate('/lecturer/courses')
+
         } catch (error) {
             console.log(error.message);
         }
     }
 
     async function handleStudentSubmit(username, password) {
-        const response = await fetch(`${URL}/studentlogin`, {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({
-                username: username,
-                password: password
-            })
-        });
+        try {
+            const response = await fetch(`${URL}/studentlogin`, {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify({
+                    username: username,
+                    password: password
+                })
+            });
 
-        const data = await response.json();
-        const studentData = data.studentData;
+            const data = await response.json();
+            const studentData = data.studentData;
 
-        if (!studentData) {
-            const indexNumber = studentData.indexNumber;
-            const registeredCourses = studentData.registeredCourses;
-            localStorage.setItem('indexNumber', indexNumber);
-            localStorage.setItem('registeredCourses', JSON.stringify(registeredCourses));
-            navigate('/student/courses');
+            if (!studentData) {
+                const indexNumber = studentData.indexNumber;
+                const registeredCourses = studentData.registeredCourses;
+                localStorage.setItem('indexNumber', indexNumber);
+                localStorage.setItem('registeredCourses', JSON.stringify(registeredCourses));
+                navigate('/student/courses');
+            }
+            else {  // invalid details
+                setToastMessage(toastMessages[1]);  // message: invalid id or password
+                setShowToast(true);
+            }
+
+            // set current page value to 'C' to cause the floatingNav to be hidden on Courses page.
+            sessionStorage.setItem('currentPage', 'C');
+            navigate('/student/courses')
+
+        } catch (error) {
+            console.log(error.message);
         }
-        else {  // invalid details
-            setToastMessage(toastMessages[1]);  // message: invalid id or password
-            setShowToast(true);
-        }
-
-
-        // sessionStorage.setItem('currentPage', 'C');
-        // navigate('/lecturer/courses')
 
     }
 

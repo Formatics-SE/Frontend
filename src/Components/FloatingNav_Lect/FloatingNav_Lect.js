@@ -29,12 +29,12 @@ export default function FloatingNav() {
         event.value = value;
         document.dispatchEvent(event);
     }
-    document.addEventListener('monitorItemChange', e => {
+    document.addEventListener('monitorItemChange', (e) => {
         setCurrentPage(e.value);
     })
     // end
 
-    // on refresh or page load, get the current page from local storage
+    // on refresh or page load, get the current page from session storage
     useEffect(() => {
         setCurrentPage(sessionStorage.getItem('currentPage'));
     }, [])

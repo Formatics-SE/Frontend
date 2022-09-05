@@ -1,0 +1,161 @@
+.accordion {
+  border-radius: 7px;
+  position: relative;
+  overflow: hidden;
+}
+
+.accordion .accordion_body {
+  position: relative;
+}
+
+.accordion .accordion_body .body_bg {
+  border-radius: 9px 9px 0 0;
+  width: 100%;
+  background-repeat: no-repeat;
+  aspect-ratio: 16/9;
+}
+
+.accordion .accordion_body .body_bg_overlay {
+  position: absolute;
+  width: 100%;
+  border-radius: 9px 9px 0 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.404);
+  z-index: 10;
+}
+
+.accordion .accordion_body .course_code {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px 15px;
+  border-radius: 0 9px 0 0;
+  background-color: #860c72;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.01rem;
+  z-index: 20;
+}
+
+.accordion .accordion_body .year_semester_credits_container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  font-size: 140%;
+  font-weight: bold;
+  z-index: 20;
+}
+
+.accordion .accordion_body .year_semester_credits_container .year_semester,
+.accordion .accordion_body .year_semester_credits_container .credits {
+  width: 100%;
+  text-align: center;
+}
+
+.accordion .accordion_body .year_semester_credits_container .year_semester {
+  padding-top: 7px;
+}
+
+.accordion .accordion_body .year_semester_credits_container .credits {
+  padding-bottom: 7px;
+}
+
+.accordion .dropdown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 5px 20px 10px 20px;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.01rem;
+  background-color: rgba(134, 12, 114, 0.904);
+  border-radius: 0 0 9px 9px;
+  font-size: 105%;
+  display: flex;
+  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.accordion .dropdown.active .dropdown_icon {
+  color: #ca17ac;
+}
+
+.accordion .dropdown:hover {
+  cursor: pointer;
+}
+
+.accordion .dropdown:active .dropdown_icon {
+  color: #860c72;
+  -webkit-transform: scale(1.4);
+          transform: scale(1.4);
+}
+
+.accordion .dropdown .dropdown_icon {
+  font-size: 120%;
+}
+
+.accordion .dropdown_menu {
+  background-color: black;
+  -webkit-transition-duration: 200ms;
+          transition-duration: 200ms;
+  -webkit-animation: 200ms height;
+          animation: 200ms height;
+  height: 0;
+  color: white;
+  font-weight: bold;
+  padding: 10px 5px;
+  opacity: 0;
+  margin: 3px 0;
+  border-radius: 7px;
+  background-color: #272726;
+  z-index: -10;
+}
+
+.accordion .dropdown_menu.active {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  opacity: 100%;
+}
+
+.accordion .dropdown_menu > div {
+  padding: 0 15px;
+  margin-bottom: 2px;
+  border-radius: 7px;
+}
+
+.accordion .dropdown_menu > div:hover {
+  background-color: #83837f;
+}
+
+.accordion .dropdown_menu > div:active {
+  background-color: #8e3e91;
+}
+
+.accordion .dropdown_menu > div:last-child {
+  margin-bottom: 0;
+}
+/*# sourceMappingURL=accordion.css.map */

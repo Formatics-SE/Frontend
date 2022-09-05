@@ -136,7 +136,7 @@
   position: fixed;
   top: 0;
   right: -170px;
-  z-index: 20;
+  z-index: 30;
   background-color: #860c72;
   padding: 15px 15px 15px 20px;
   -webkit-transition: 250ms;
@@ -169,29 +169,29 @@
   color: #a3178c;
 }
 
-.header .menu.menu ul {
+.header .menu.menu .ul {
   padding: 0;
   margin: 0;
 }
 
-.header .menu.menu ul li:first-child {
+.header .menu.menu .ul .li:first-child {
   margin-bottom: 7px;
 }
 
-.header .menu.menu ul li .user_icon {
+.header .menu.menu .ul .li .user_icon {
   color: #eb08c5;
 }
 
-.header .menu.menu ul li span {
+.header .menu.menu .ul .li span {
   margin-left: 8px;
   color: white;
 }
 
-.header .menu.menu ul li .signout:hover {
+.header .menu.menu .ul .li .signout:hover {
   cursor: pointer;
 }
 
-.header .menu.menu ul li .signout:hover .signout_icon {
+.header .menu.menu .ul .li .signout:hover .signout_icon {
   color: rgba(34, 23, 182, 0.897);
   -webkit-animation: 400ms animate ease-in-out;
           animation: 400ms animate ease-in-out;
@@ -216,12 +216,12 @@
   }
 }
 
-.header .menu.menu ul li .signout:active .signout_icon,
-.header .menu.menu ul li .signout:active span {
+.header .menu.menu .ul .li .signout:active .signout_icon,
+.header .menu.menu .ul .li .signout:active span {
   color: #c022a6;
 }
 
-.header .menu.menu ul li .signout .signout_icon {
+.header .menu.menu .ul .li .signout .signout_icon {
   color: #eb08c5;
 }
 

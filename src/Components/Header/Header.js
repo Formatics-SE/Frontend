@@ -39,18 +39,18 @@ export default function Header() {
                 >
                     &times;
                 </div>
-                <ul>
-                    <li>
+                <div className='ul'>
+                    <div className='li'>
                         <FaUser className='user_icon' />
                         <span>username</span>
-                    </li>
-                    <li>
+                    </div>
+                    <div className='li'>
                         <div className='signout' onClick={() => navigate('/login')}>
                             <FaSignOutAlt className='signout_icon' />
                             <span>signout</span>
                         </div>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
         </div>
     )

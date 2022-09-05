@@ -94,7 +94,7 @@ $header_bg_color: rgb(134, 12, 114);
         position: fixed;
         top: 0;
         right: -170px;
-        z-index: 20;
+        z-index: 30;
         background-color: $header_bg_color;
         padding: 15px 15px 15px 20px;
         transition: 250ms;
@@ -125,22 +125,22 @@ $header_bg_color: rgb(134, 12, 114);
             }
         }
 
-        &.menu ul {
+        &.menu .ul {
             padding: 0;
             margin: 0;
         }
-        &.menu ul li:first-child {
+        &.menu .ul .li:first-child {
             // username
             margin-bottom: 7px;
         }
-        &.menu ul li .user_icon {
+        &.menu .ul .li .user_icon {
             color: rgb(235, 8, 197);
         }
-        &.menu ul li span {
+        &.menu .ul .li span {
             margin-left: 8px;
             color: white;
         }
-        &.menu ul li .signout {
+        &.menu .ul .li .signout {
             &:hover {
                 cursor: pointer;
                 .signout_icon {
