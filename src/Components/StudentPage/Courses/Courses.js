@@ -13,7 +13,7 @@ const App = ()=> {
   
   return (
     <>
-    {['course1', 'course2' ].map(
+    {/* {['course1', 'course2' ].map(
       (variant) => (
         <DropdownButton
           as={ButtonGroup}
@@ -27,7 +27,7 @@ const App = ()=> {
           <Dropdown.Item eventKey="4">Marks</Dropdown.Item>
         </DropdownButton>
       ),
-    )}
+    )} */}
   </>
 );
 }

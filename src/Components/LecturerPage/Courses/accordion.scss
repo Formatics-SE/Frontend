@@ -1,0 +1,97 @@
+$body_height: 220px;
+
+.accordion {
+    border-radius: 7px;
+    margin-bottom: 20px;
+
+    .accordion_body {
+        position: relative;
+
+        .body_bg {
+            border-radius: 9px 9px 0 0;
+            width: 100%;
+            background-repeat: no-repeat;
+            aspect-ratio: 16/9;
+        }
+
+        .body_bg_overlay {
+            position: absolute;
+            width: 100%;
+            border-radius: 9px 9px 0 0;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.404);
+            z-index: 10;
+        }
+
+        .course_code {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 5px 15px;
+            border-radius: 0 9px 0 0;
+            background-color: rgb(134, 12, 114);
+            color: white;
+            font-weight: bold;
+            letter-spacing: 0.01rem;
+            z-index: 20;
+        }
+
+        .year_semester_credits_container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 20;
+            color: white;
+            font-size: 140%;
+            font-weight: bold;
+            .year_semester,
+            .credits {
+                width: 100%;
+                text-align: center;
+                // background-color: rgba(134, 12, 114, 0.459);
+            }
+            .year_semester {
+                padding-top: 7px;
+            }
+            .credits {
+                padding-bottom: 7px;
+            }
+        }
+    }
+    .dropdown {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 20px;
+        color: white;
+        font-weight: bold;
+        letter-spacing: 0.01rem;
+        background-color: rgba(134, 12, 114, 0.904);
+        border-radius: 0 0 9px 9px;
+        font-size: 105%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &:hover {
+            cursor: pointer;
+        }
+        &:active {
+            .dropdown_icon {
+                color: rgb(134, 12, 114);
+            }
+        }
+
+        .dropdown_icon {
+            font-size: 120%;
+        }
+    }
+}
