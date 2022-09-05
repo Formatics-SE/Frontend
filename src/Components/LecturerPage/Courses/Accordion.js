@@ -1,10 +1,8 @@
-import React from 'react'
-import Dropdown from 'react-bootstrap/Dropdown';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
-import './accordion.css'
+
+import './accordion.css';
 
 function Accordion ({courseCode, courseName, year, semester})
 {

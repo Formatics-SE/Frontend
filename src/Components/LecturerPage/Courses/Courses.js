@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import Dropdown from 'react-bootstrap/Dropdown';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import './Courses.css'
 
-import bg1 from './compressed 1.jpg'
-import bg2 from './compressed 2.jpg'
-import Accordion from './Accordion'
+import './Courses.css';
+
+import bg1 from './compressed 1.jpg';
+import bg2 from './compressed 2.jpg';
+import Accordion from './Accordion';
 
 const Courses = () => {
 
