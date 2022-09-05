@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import './accordion.css'
@@ -53,3 +54,30 @@ export default function Accordion({ id, courseCode, courseName, year, semester, 
         </div>
     )
 }
+=======
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+import './accordion.css';
+
+function Accordion ({courseCode, courseName, year, semester})
+{
+  return(
+    <div className='accordion'>
+        <div className='img'>
+            <div className='img-overlay'></div>
+            <div className='course-code'>{courseCode}</div>
+        </div>
+        <div className='dropdown'>
+            <span>{year}</span>
+            <span>{semester}</span>
+        </div>
+    </div>
+    
+  )
+}
+
+
+export default Accordion;
+>>>>>>> b828055ffc30bcdfd1186e78e8092f92c9b1b8ec
