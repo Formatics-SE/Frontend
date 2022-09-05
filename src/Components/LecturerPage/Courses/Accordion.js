@@ -24,4 +24,4 @@ function Accordion ({courseCode, courseName, year, semester})
 }
 
 
-export default Courses;
+export default Accordion;
