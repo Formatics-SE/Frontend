@@ -22,7 +22,10 @@ $shadow_color: rgba(223, 62, 210, 0.664);
         color: white;
         padding: 5px 30px;
         text-align: center;
-        // letter-spacing: 0.03em;
+        
+        @media screen and (max-width: 768px) {
+            width: 80%; 
+        }
     }
 
     .bg_img {

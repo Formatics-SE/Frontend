@@ -73,14 +73,13 @@ const Courses = () => {
     }
 
     try {
-      // const response = await fetch(`${URL}/${urlPath}`, {
-      //   method: 'POST',
-      //   headers: { 'content-type': 'application/json' },
-      //   body: { "courseCode": courseCode }
-      // })
+      const response = await fetch(`${URL}/${urlPath}`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: { "courseCode": courseCode }
+      })
 
-      // const data = await response.json();
-      let data = 'x';
+      const data = await response.json();
       if (data) {
         // switch between the value of path to determine the key of the received json object
         switch (path) {

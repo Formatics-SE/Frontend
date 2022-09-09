@@ -9,10 +9,10 @@ import './floating_nav_lect.css'
 /*
     Page IDs:
     G = Groups page
-    P = Poll page
-    M = marks page
+    P = Polls page
+    M = Marks page
     R = Attendance or Roll Call page
-    C = Course Selection page/
+    C = Course Selection page
 */
 
 export default function FloatingNav() {
@@ -21,18 +21,18 @@ export default function FloatingNav() {
 
     const [currentPage, setCurrentPage] = useState('');
 
-    /* rewriting localStorage's setItem method in order to get current page 
-     * value whenever it changes */
-    localStorage.setItem = (key, value) => {
-        const event = new Event('monitorItemChange');
-        event.key = key;
-        event.value = value;
-        document.dispatchEvent(event);
-    }
-    document.addEventListener('monitorItemChange', (e) => {
-        setCurrentPage(e.value);
-    })
-    // end
+    // /* rewriting localStorage's setItem method in order to get current page 
+    //  * value whenever it changes */
+    // localStorage.setItem = (key, value) => {
+    //     const event = new Event('monitorItemChange');
+    //     event.key = key;
+    //     event.value = value;
+    //     document.dispatchEvent(event);
+    // }
+    // document.addEventListener('monitorItemChange', (e) => {
+    //     setCurrentPage(e.value);
+    // })
+    // // end
 
     // on refresh or page load, get the current page from session storage
     useEffect(() => {

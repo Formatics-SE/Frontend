@@ -29,6 +29,12 @@
   text-align: center;
 }
 
+@media screen and (max-width: 768px) {
+  .login_page .toast {
+    width: 80%;
+  }
+}
+
 .login_page .bg_img {
   width: 100%;
   height: 100%;
