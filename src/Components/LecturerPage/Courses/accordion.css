@@ -149,6 +149,7 @@
 
 .accordion .dropdown_menu > div:hover {
   background-color: #83837f;
+  cursor: pointer;
 }
 
 .accordion .dropdown_menu > div:active {
