@@ -17,29 +17,34 @@ mongoose.connect('mongodb://127.0.0.1:27017',
 const StudentLoginRouter = require('./StudentLoginRouter');
 const LecturerLoginRouter = require('./LecturerLoginRouter');
 const CourseDataRouter = require('./CourseDataRouter');
-<<<<<<< HEAD
-=======
+
 const MarksUpdateRouter = require('./MarksUpdateRouter');
 const MarksFetchStudentRouter = require('./MarksFetchStudentRouter');
 const MarksFetchLecturerRouter = require('./MarksFetchLecturerRouter');
+
 const AttendanceUpdateRouter = require('./AttendanceUpdateRouter');
 const AttendanceFetchRouter = require('./AttendanceFetchRouter');
 
->>>>>>> 7ba6d1cc2117fb0a4c5e452debc718966205e7a4
+const GroupsFetchLecturerRouter = require('./GroupsFetchLecturerRouter');
+const GroupsFetchStudentRouter = require('./GroupsFetchStudentRouter');
+const GroupsUpdateRouter = require('./GroupsUpdateRouter');
 
 // using routers
 app.use('/studentlogin', StudentLoginRouter);
 app.use('/lecturerlogin', LecturerLoginRouter);
 app.use('/coursedata', CourseDataRouter);
-<<<<<<< HEAD
-=======
+
 app.use('/updatemarks', MarksUpdateRouter);
 app.use('/fetchstudentmarks', MarksFetchStudentRouter);
 app.use('/fetchlecturermarks', MarksFetchLecturerRouter);
+
 app.use('/fetchattendance', AttendanceFetchRouter);
 app.use('/updateattendance', AttendanceUpdateRouter);
 
->>>>>>> 7ba6d1cc2117fb0a4c5e452debc718966205e7a4
+app.use('/fetchlecturergroups', GroupsFetchLecturerRouter);
+app.use('/fetchstudentgroup', GroupsFetchStudentRouter);
+app.use('/updategroups', GroupsUpdateRouter);
+
 
 // assigning port
 app.listen(process.env.PORT, () => console.log('running on port 2022'));

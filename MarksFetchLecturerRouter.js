@@ -14,7 +14,7 @@ router.post('/', express.json(), async (req, res) => {
             res.json({ registeredStudents: registeredStudents })
         }
         else {
-            res.json({ marksArray: null })
+            res.json({ registeredStudents: registeredStudents })
 
         }
 

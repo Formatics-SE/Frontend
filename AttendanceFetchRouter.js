@@ -1,32 +1,28 @@
 const express = require('express')
 const router = express.Router();
 
-//importing course Model
 const CourseModel = require('./CourseModel')
 
-router.post('/', express.json(), async(req,res) => 
-
-{
+router.post('/', express.json(), async (req, res) => {
     const courseCode = req.body.courseCode;
-    
-    try{
-        const courseData = await CourseModel.findOne({courseCode: courseCode});
-        const registeredStudents = courseData.registeredStudents;
 
-
-        
-        if(registeredStudents)
-        {
-            res.json({registeredStudents: registeredStudents});
+    try {
+        const courseData = await CourseModel.findOne({ courseCode: courseCode });
+        if (courseData) {
+            res.json({
+                info: {
+                    maxAttendanceStrikes: courseData.maxAttendanceStrikes,
+                    courseName: courseData.courseName,
+                    courseCode: courseData.courseCode,
+                    registeredStudents: courseData.registeredStudents,
+                }
+            });
         }
-
-        else
-        {
-            res.json({registeredStudents: null});
+        else {
+            res.json({ info: null });
         }
     }
-    catch(error)
-    {
+    catch (error) {
         console.log(error.message);
     }
 }
