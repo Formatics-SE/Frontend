@@ -8,7 +8,7 @@ import Modal from 'react-bootstrap/Modal'
 import './login.css'
 
 import bgImage from './bg.png'
-import URL from '../URL'    // server url
+import { URL } from '../URL'    // server url
 
 const toastMessages = ['Please fill in all fields', 'Invalid ID or Password']
 

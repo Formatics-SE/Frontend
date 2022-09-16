@@ -9,7 +9,7 @@ import { v4 } from 'uuid'
 import './polls.css'
 
 import PollInstance from './PollInstance'
-import URL from '../../URL'
+import { URL } from '../../URL'
 
 export default function Polls() {
 
@@ -17,6 +17,8 @@ export default function Polls() {
     const [showSpinner, setShowSpinner] = useState(false)
     const [showToast, setShowToast] = useState(false)
     const [polls, setPolls] = useState([])
+    // hold v4 value for 'key' value and id prop
+    const [v4_s, setV4_s] = useState('')  
 
     const [optionsCount, setOptionsCount] = useState(0)
 
@@ -74,8 +76,6 @@ export default function Polls() {
     // end
 
     async function createPoll() {
-        setOptions([]); setOptionsCount(0);
-
         let title = document.querySelector('#title').value;
         // get the array of option input fields
         let optionInputs = Array.from(document.querySelectorAll('.option_input'))
@@ -85,6 +85,8 @@ export default function Polls() {
         let containsNullVal = optionInputsVals.find(val => val === '') === '';
         // check for nulls
         if (!title || containsNullVal) return;
+
+        setOptions([]); setOptionsCount(0);
 
         const courseCode = JSON.parse(sessionStorage.getItem('courseCode'));
 
@@ -98,9 +100,11 @@ export default function Polls() {
         //temp
         setPolls(polls => [...polls,
         <PollInstance key={v4()}
+            id={v4()}
             title={title}
             totalVotesCast={0}
             options={options}
+            deletePoll={deletePoll}
         />
         ]);
         // end temp
@@ -137,7 +141,20 @@ export default function Polls() {
         // }
 
     }
-    // end
+    // end create poll
+
+    function deletePoll(id) {
+        console.log('id: ', id)
+        console.log(showToast)
+    }
+    // end delete poll
+
+    function getV4() {
+        let random = v4();
+        console.log('v4: ', random)
+        setV4_s(random);
+        return random;
+    }
 
     useEffect(() => {
         // const polls_session = JSON.parse(sessionStorage.getItem('polls')) // array of poll objects

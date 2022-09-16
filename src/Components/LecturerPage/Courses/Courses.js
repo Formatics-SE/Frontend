@@ -5,7 +5,7 @@ import './courses.css'
 import bg1 from './compressed 1.jpg'
 import bg2 from './compressed 2.jpg'
 import Accordion from './Accordion'
-import URL from '../../URL'
+import { URL } from '../../URL'
 
 const Courses = () => {
 
@@ -60,7 +60,7 @@ const Courses = () => {
 
   // receives the path to the destination page from the clicked accordion 
   async function handleSubmit(path, courseCode) {
-    let urlPath;
+    let urlPath; // backend fetch url path
     switch (path) {
       case 'attendance':
         urlPath = 'fetchattendance'; break;

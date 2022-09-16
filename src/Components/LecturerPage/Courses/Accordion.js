@@ -28,7 +28,6 @@ export default function Accordion({ id, courseCode, courseName, year, semester, 
                             accordion.classList.toggle('active')
                         else
                             accordion.classList.remove('active')
-
                     });
                     document.querySelectorAll('.dropdown').forEach(dropdown => {
                         if (dropdown.classList[1] === `dp${id}`)
@@ -44,10 +43,10 @@ export default function Accordion({ id, courseCode, courseName, year, semester, 
                 <div className='dropdown_icon'><IoMdArrowDropdown className='dropdown_icon' /></div>
             </div>
             <div className={`dropdown_menu dp${id}`}>
-                <div onClick={(e) => handleSubmit('attendance', courseCode)}>Roll Call</div>
-                <div onClick={(e) => handleSubmit('marks', courseCode)}>Marks</div>
-                <div onClick={(e) => handleSubmit('groups', courseCode)}>Groups</div>
-                <div onClick={(e) => handleSubmit('polls', courseCode)}>Polls</div>
+                <div onClick={() => handleSubmit('attendance', courseCode)}>Roll Call</div>
+                <div onClick={() => handleSubmit('marks', courseCode)}>Marks</div>
+                <div onClick={() => handleSubmit('groups', courseCode)}>Groups</div>
+                <div onClick={() => handleSubmit('polls', courseCode)}>Polls</div>
             </div>
 
         </div>

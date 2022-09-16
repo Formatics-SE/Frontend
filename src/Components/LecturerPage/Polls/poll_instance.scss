@@ -90,17 +90,26 @@ $fill_color: rgb(94, 87, 192);
             letter-spacing: 0.05em;
             border-color: rgb(163, 23, 140);
             width: 46%;
-            background: linear-gradient(120deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
-            &:hover {
-                background: white;
-                color: rgb(163, 23, 140);
-            }
             &:active {
-                background-color: rgb(163, 23, 140);
-                color: white;
+                background-color: white;
             }
             &:focus {
                 box-shadow: 0 0 0 black;
+            }
+
+            &#confirm_btn_d {
+                background-color: rgba(182, 8, 8, 0.884);
+                &:hover {
+                    background: rgb(182, 8, 8);
+                }
+            }
+            &#cancel_btn_d {
+                background-color: white;
+                color: rgb(163, 23, 140);
+                &:hover {
+                    // background: linear-gradient(120deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+                    // color: white;
+                }
             }
         }
     }

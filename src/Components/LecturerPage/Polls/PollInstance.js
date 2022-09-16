@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import ProgressBar from 'react-bootstrap/ProgressBar'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import { FaTrash } from 'react-icons/fa'
 import './poll_instance.css'
 
-export default function PollInstance({ title, totalVotesCast, options }) {
+export default function PollInstance({ id, title, totalVotesCast, options, deletePoll }) {
 
     const [options_s, setOptions_s] = useState([]);
 
@@ -64,7 +63,7 @@ export default function PollInstance({ title, totalVotesCast, options }) {
                 Total votes: <span>{totalVotesCast}</span>
             </div>
 
-
+            {/* modal to confirm Poll deletion */}
             <Modal onHide={() => setShowModal(false)}
                 show={showModal}
                 backdrop='static'
@@ -82,7 +81,7 @@ export default function PollInstance({ title, totalVotesCast, options }) {
                     <div id='confirm_text'>Do you want to delete this poll ?</div>
                 </Modal.Body>
                 <Modal.Footer id='modal_footer'>
-                    <Button id='confirm_btn_d'>Confirm</Button>
+                    <Button id='confirm_btn_d' onClick={() => deletePoll(id)}>Confirm</Button>
                     <Button id='cancel_btn_d' onClick={() => setShowModal(false)}>Cancel</Button>
                 </Modal.Footer>
             </Modal>

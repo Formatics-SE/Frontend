@@ -99,24 +99,32 @@
   letter-spacing: 0.05em;
   border-color: #a3178c;
   width: 46%;
-  background: linear-gradient(120deg, #a3178c, rgba(34, 23, 182, 0.726));
-}
-
-#modal #modal_footer #confirm_btn_d:hover,
-#modal #modal_footer #cancel_btn_d:hover {
-  background: white;
-  color: #a3178c;
 }
 
 #modal #modal_footer #confirm_btn_d:active,
 #modal #modal_footer #cancel_btn_d:active {
-  background-color: #a3178c;
-  color: white;
+  background-color: white;
 }
 
 #modal #modal_footer #confirm_btn_d:focus,
 #modal #modal_footer #cancel_btn_d:focus {
   -webkit-box-shadow: 0 0 0 black;
           box-shadow: 0 0 0 black;
+}
+
+#modal #modal_footer #confirm_btn_d#confirm_btn_d,
+#modal #modal_footer #cancel_btn_d#confirm_btn_d {
+  background-color: rgba(182, 8, 8, 0.884);
+}
+
+#modal #modal_footer #confirm_btn_d#confirm_btn_d:hover,
+#modal #modal_footer #cancel_btn_d#confirm_btn_d:hover {
+  background: #b60808;
+}
+
+#modal #modal_footer #confirm_btn_d#cancel_btn_d,
+#modal #modal_footer #cancel_btn_d#cancel_btn_d {
+  background-color: white;
+  color: #a3178c;
 }
 /*# sourceMappingURL=poll_instance.css.map */

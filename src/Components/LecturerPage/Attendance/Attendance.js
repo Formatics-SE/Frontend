@@ -5,7 +5,7 @@ import Row from './Row'
 import Button from 'react-bootstrap/Button'
 import './attendance.css'
 
-import URL from '../../URL'
+import { URL } from '../../URL'
 
 export default function Attendance() {
 
@@ -75,9 +75,9 @@ export default function Attendance() {
 
         const courseCode = sessionStorage.getItem('courseCode');
         try {
-            const response  = await fetch(`${URL}/attendance`, {
+            const response = await fetch(`${URL}/attendance`, {
                 method: 'POST',
-                headers: {'content-type' : 'application/json'},
+                headers: { 'content-type': 'application/json' },
                 body: JSON.stringify({
                     courseCode: courseCode,
                     attendanceData: attendanceUpdate
@@ -85,7 +85,7 @@ export default function Attendance() {
             });
 
             const data = await response.json();
-            if(data.successful) {
+            if (data.successful) {
 
             }
             else {
