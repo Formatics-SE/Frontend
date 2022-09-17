@@ -4,6 +4,7 @@ import "./polls.css";
 export default function Polls() {
   const [pendingPolls, setPendingPolls] = useState([]);
   const [participatedPolls, setParticipatedPolls] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     const polls_session = JSON.parse(sessionStorage.getItem("polls"));
@@ -29,6 +30,7 @@ export default function Polls() {
             title={pollObj?.title}
             totalVotesCast={pollObj?.totalVotesCast}
             options={pollObj.options}
+            setRefresh={setRefresh}
           />
         ]);
       }
@@ -43,7 +45,7 @@ export default function Polls() {
     //         />
     //     )
     // }));
-  }, []);
+  }, [refresh]);
 
   return (
     <div className="student_polls">

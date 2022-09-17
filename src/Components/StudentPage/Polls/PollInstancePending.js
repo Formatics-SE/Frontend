@@ -4,22 +4,53 @@ import Button from "react-bootstrap/Button";
 import { FaTrash } from "react-icons/fa";
 import "./poll_instance_pending.css";
 
+import { URL } from "../../URL";
+
 export default function PollInstancePending({
   id,
   title,
   totalVotesCast,
   options,
   deletePoll,
+  setRefresh,
 }) {
   const [showModal, setShowModal] = useState(false);
 
   const [options_s, setOptions_s] = useState([]);
 
+  async function handleClick(e) {
+    let pollOptionId = e.target.getAttribute("data-attr");
+    try {
+      const response = await fetch(`${URL}/pollsupdate`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          pollId: id,
+          indexNumber: sessionStorage.getItem("indexNumber"),
+          optionId: pollOptionId,
+        }),
+      });
+
+      const data = await response.json();
+      if (data.polls) {
+        sessionStorage.setItem("polls", data.polls);
+        setRefresh((prev) => !prev);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   useEffect(() => {
     const ops = options?.map((obj, index) => {
       return (
         <>
-          <div className="pending_option" key={obj._id} onClick={() => {}}>
+          <div
+            className="pending_option"
+            key={obj._id}
+            data-attr={obj._id}
+            onClick={(e) => handleClick(e)}
+          >
             {obj.option}
           </div>
         </>
