@@ -178,7 +178,7 @@ export default function Polls() {
         <div className='lecturer_polls'>
             <Toast show={showToast}
                 onClose={() => setShowToast(false)}
-                className='poll_toast'
+                className='loading_toast'
             >
                 <Toast.Body>
                     <Spinner className='spinner'

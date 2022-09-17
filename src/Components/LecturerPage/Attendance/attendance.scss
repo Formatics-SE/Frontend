@@ -13,12 +13,19 @@
             padding: 10px;
         }
     }
-
-    .attendance-header {
+    .course-info {
+        text-align: center;
+        box-shadow: 0 2px 3px -2px rgb(187, 184, 184);
+        padding: 5px;
+        margin-bottom: 5px;
+        background-color: rgb(238, 230, 230);
+        font-weight: bold;
+    }
+    .max-strikes-and-submit {
         display: flex;
         justify-content: space-between;
         box-shadow: 0 2px 3px -2px rgb(187, 184, 184);
-        
+
         .max-strikes-div {
             display: flex;
             align-items: center;
@@ -33,29 +40,32 @@
                 }
             }
         }
-        .submit-btn {
-            height: fit-content;
-            background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
-            border-color: rgb(163, 23, 140);
-            padding: 7px 25px;
-            border-radius: 7px;
-            font-size: 103%;
-            &:focus {
+        .submit-btn-div {
+            padding: 5px;
+            .submit-btn {
+                height: fit-content;
+                background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
                 border-color: rgb(163, 23, 140);
-                box-shadow: 0 0 0 rgb(163, 23, 140);
-            }
-            &:hover {
-                background: white;
-                border-color: rgb(163, 23, 140);
-                color: rgb(163, 23, 140);
+                padding: 7px 25px;
+                border-radius: 7px;
+                font-size: 103%;
+                &:focus {
+                    border-color: rgb(163, 23, 140);
+                    box-shadow: 0 0 0 rgb(163, 23, 140);
+                }
+                &:hover {
+                    background: white;
+                    border-color: rgb(163, 23, 140);
+                    color: rgb(163, 23, 140);
+                }
             }
         }
     }
     .attendance-list {
-        padding: 15px 10px 70px 10px;
+        padding: 15px 10px 50px 10px;
         width: 100%;
         min-height: fit-content;
-        max-height: calc(100% - 61px);
+        max-height: calc(100% - 100px);
         overflow-y: auto;
         @media screen and (max-width: 768px) {
             padding: 15px 5px 70px 5px;

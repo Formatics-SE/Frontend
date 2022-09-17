@@ -1,26 +1,49 @@
-.accendance-record .span-and-btn span {
-  margin-right: 8px;
+.accendance-record .strikes-and-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.accendance-record .span-and-btn .btn {
-  padding: 0 0 24px 0 !important;
+.accendance-record .strikes-and-btn div {
+  margin-right: 8px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.accendance-record .strikes-and-btn .btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
   width: 20px;
   height: 20px;
   margin-right: 8px;
-  border-radius: 50%;
   background-color: rgba(34, 23, 182, 0.726);
   color: white;
   font-weight: bold;
 }
 
-.accendance-record .span-and-btn .btn:hover {
+.accendance-record .strikes-and-btn .btn:hover {
   cursor: pointer;
   background-color: white;
   color: rgba(34, 23, 182, 0.726);
   border: 1px solid rgba(34, 23, 182, 0.726);
 }
 
-.accendance-record .span-and-btn .btn:active {
+.accendance-record .strikes-and-btn .btn:active {
   background-color: rgba(34, 23, 182, 0.726);
   color: white;
 }

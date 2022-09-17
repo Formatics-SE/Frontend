@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Toast from "react-bootstrap/Toast";
+import Spinner from "react-bootstrap/Spinner";
 import './courses.css'
 
 import bg1 from './compressed 1.jpg'
@@ -11,6 +13,7 @@ const Courses = () => {
 
   const [BG_Images, setBG_Images] = useState([bg1, bg2]);
   const [Courses, setCourses] = useState([]);
+  const [showToast, setShowToast] = useState(false)   // toast for a loading animation
 
   const navigate = useNavigate();
 
@@ -61,6 +64,7 @@ const Courses = () => {
   // receives the path to the destination page from the clicked accordion 
   async function handleSubmit(path, courseCode) {
     let urlPath; // backend fetch url path
+    setShowToast(true);
     switch (path) {
       case 'attendance':
         urlPath = 'fetchattendance'; break;
@@ -76,16 +80,24 @@ const Courses = () => {
       const response = await fetch(`${URL}/${urlPath}`, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: { "courseCode": courseCode }
+        body: JSON.stringify({ courseCode: courseCode })
       })
 
+      console.log('returned')
+
       const data = await response.json();
-      if (data) {
-        // switch between the value of path to determine the key of the received json object
+      setShowToast(false);
+      if (data.info) {
+        // switch between the value of path to determine the storage key for sessionStorage
         switch (path) {
-          case 'attendance' || 'marks':
-            sessionStorage.setItem('registeredStudents', data?.registeredStudents);
-            navigate(path === 'attendance' ? '/lecturer/rollcall' : '/lecturer/marks');
+          case 'attendance':
+            console.log('atInfo: ', data.info)
+            sessionStorage.setItem('attendanceInfo', JSON.stringify(data.info));
+            navigate('/lecturer/rollcall');
+            break;
+          case 'marks':
+            sessionStorage.setItem('marks', data?.info);
+            navigate('/lecturer/marks');
             break;
           case 'groups':
             sessionStorage.setItem('groups', data?.groups);
@@ -95,6 +107,8 @@ const Courses = () => {
             sessionStorage.setItem('polls', data?.polls);
             navigate('/lecturer/polls');
             break;
+          default:
+            console.log('none of the above')
         }
       }
 
@@ -105,6 +119,17 @@ const Courses = () => {
 
   return (
     <div className='courses'>
+      <Toast show={showToast}
+        onClose={() => setShowToast(false)}
+        className='loading_toast'
+      >
+        <Toast.Body>
+          <Spinner className='spinner'
+            animation='border'
+            size='md'
+          />
+        </Toast.Body>
+      </Toast>
       <div className='course_accordion_container'>
         {Courses}
       </div>

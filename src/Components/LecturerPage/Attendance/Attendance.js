@@ -11,39 +11,25 @@ export default function Attendance() {
 
     const [attendanceRows, setAttendanceRows] = useState([])
     const [attendanceUpdate, setAttendanceUpdate] = useState([])
-
-    // temp
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelector('.max-strikes-input').value = 3;
-    })
-    // temp
+    const [courseName, setCourseName] = useState('')
+    const [courseCode, setCourseCode] = useState('')
+    const [maxAbsentStrikes, setMaxAbsentStrikes] = useState(0)
 
     useEffect(() => {
-        // const attendanceRows_session = JSON.parse(sessionStorage.getItem('attendanceRows'));
+        const attendanceInfo_session = JSON.parse(sessionStorage.getItem('attendanceInfo'));
+        const students = attendanceInfo_session?.registeredStudents;
 
-        // test data
-        const attendanceRows_session = [
-            {
-                name: 'Rayyaan',
-                attendance: 0,
-                strikes: 2,
-                indexNumber: 8211111
-            },
-            {
-                name: 'Andy',
-                attendance: 2,
-                strikes: 0,
-                indexNumber: 8233333
-            }
-        ]
+        setCourseName(attendanceInfo_session?.courseName)
+        setCourseCode(attendanceInfo_session?.courseCode)
+        setMaxAbsentStrikes(attendanceInfo_session?.maxAbsentStrikes)
 
         let temp_attendance_update = []
 
-        // create an array of Row components and store in state
+        // create an array of Row components and store state in setAttendanceRows
         setAttendanceRows(
-            attendanceRows_session?.map((studentObj, index) => {
+            students?.map((studentObj, index) => {
                 // for each student object returned, create an object containing only the student information of interest
-                // : index number, attendance record and strikes record.
+                // i.e index number, attendance record and strikes record. These values would be updated when attendance is taken
                 temp_attendance_update.push(
                     {
                         indexNumber: studentObj.indexNumber,
@@ -71,8 +57,6 @@ export default function Attendance() {
 
     // post attendance data to server
     async function handleSubmit(e) {
-        // console.log(attendanceUpdate)
-
         const courseCode = sessionStorage.getItem('courseCode');
         try {
             const response = await fetch(`${URL}/attendance`, {
@@ -98,68 +82,62 @@ export default function Attendance() {
     }
 
     function handleAttendanceUpdate(indexNumber, attendance) {
-        console.log('attendance: ', attendance)
         setAttendanceUpdate(prev => prev.map(obj => {
             if (indexNumber === obj.indexNumber) {
-                // console.log('match')
-                console.log('at: ', attendance)
-                console.log('obj at: ', obj.attendance)
-
                 obj.attendance = attendance;
                 return obj;
             }
             else {
-                // console.log('no match')
                 return obj;
             }
         }))
     }
 
     function handleStrikesUpdate(indexNumber, strikes) {
-        console.log('strikes: ', strikes)
         setAttendanceUpdate(prev => prev.map(obj => {
             if (indexNumber === obj.indexNumber) {
-                // console.log('match')
-                console.log('at: ', strikes)
-                console.log('obj at: ', obj.strikes)
-
                 obj.strikes = strikes;
                 return obj;
             }
             else {
-                // console.log('no match')
                 return obj;
             }
         }))
     }
 
-    useEffect(() => {
-        console.log('attendanceUpate: ', attendanceUpdate)
-    }, [attendanceUpdate])
-
     return (
         <div className='attendance'>
-            <div className='attendance-header'>
+            <div className='course-info'>
+                {courseCode}: {courseName}
+                {/* COE 358 : Embedded Systems */}
+            </div>
+            <div className='max-strikes-and-submit'>
                 <div className='max-strikes-div'>
                     Max Strikes:
-                <Form.Control type='number' className='max-strikes-input' />
+                <Form.Control type='number'
+                        className='max-strikes-input'
+                        value={maxAbsentStrikes}
+                        onChange={(e) => {
+                            setMaxAbsentStrikes(prev => e.target.value < 1 ? prev : e.target.value);
+                            // set the new max absence strikes value in the rewritten localStorage's setItem method in order to get the
+                            // changed value in Row component
+                            if (e.target.value >= 1) localStorage.setItem('maxStrikes', e.target.value)
+                        }}
+                    />
                 </div>
-                <Button className='submit-btn' onClick={(e) => handleSubmit(e)}>Submit</Button>
+                <div className='submit-btn-div'><Button className='submit-btn' onClick={(e) => handleSubmit(e)}>Submit</Button></div>
             </div>
             <div className='attendance-list'>
                 <Table hover bordered className='table'>
                     <thead>
                         <tr>
                             <th>Students</th>
+                            <th>Index</th>
                             <th>Strikes</th>
                             <th>Attendance</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {
-                            attendanceRows
-                        }
-                    </tbody>
+                    <tbody>{attendanceRows}</tbody>
                 </Table>
             </div>
         </div>
