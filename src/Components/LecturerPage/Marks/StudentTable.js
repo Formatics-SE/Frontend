@@ -1,6 +1,6 @@
 import React from "react";
 import StudentsDetails from "./StudentDetails";
-import data from "./dummyDB";
+import data from "../dummyDB";
 import "./StudentTable.css";
 import Modal from 'react-bootstrap/Modal'
 import Table from "react-bootstrap/Table"
@@ -50,7 +50,7 @@ export default function StudentsTable() {
 
     }
 
-    function handleAll() {
+    function handleAllStudentsMarks() {
         setStudents(prev => {
             return prev.map(student => {
                 const total = Number(student.mark) + Number(marks.group_marks)
@@ -71,7 +71,7 @@ export default function StudentsTable() {
         })
     }
 
-    function handleIndividual() {
+    function handleIndividualMarks() {
         setStudents(prev => {
             return prev.map(student => {
                 if (student.index === match) {
@@ -90,16 +90,8 @@ export default function StudentsTable() {
                 }
             })
         })
-        setSpecifiedStudent("Oops, no match!!!")
+        setSpecifiedStudent("Oops, no match!!!")  
         setMatch("")
-        // student_list = students.map(item=>{
-        //     return(
-        //         <StudentsDetails 
-        //             key={item.id}
-        //             item={item}
-        //         />
-        //     )
-        // })
         setMarks(prev => {
             return {
                 ...prev,
@@ -113,30 +105,30 @@ export default function StudentsTable() {
     return (
         <section>
             <div className="input-container">
-                <div>
-                    <input type="search"
-                        placeholder="Search with index numbers...."
+                
+                  <div className="search"> 
+                        <input type="search"
+                        placeholder="Search by index numbers...."
                         name="search_sname"
                         className="table-search"
                         value={match}
                         onChange={handleSearch} />
-                    <input type="number"
+                   </div>
+
+                    <div className="individual"><input type="number"
                         className="marks"
                         id="individual"
                         name="individual_marks"
                         value={marks.individual_marks}
-                        onChange={handleMarksEntry}
-                    />
-                    <button type="submit"
+                        onChange={handleMarksEntry}/>
+                        <button type="submit"
                         id="input_marks"
-                        onClick={handleIndividual}
+                        onClick={handleIndividualMarks}
                         className="confirm-individual">
                         Assign
-                    </button>
-
-                </div>
-
-
+                        </button> 
+                    </div>
+                
                 <div className="all-students">
                     <input type="number"
                         className="marks"
@@ -146,13 +138,13 @@ export default function StudentsTable() {
                         onChange={handleMarksEntry} />
                     <button type="submit"
                         id="input_marks"
-                        onClick={handleAll}
+                        onClick={handleAllStudentsMarks}
                         className="confirm-group">
                         Assign to all
                     </button>
                 </div>
-
             </div>
+
             <div className="main-container">
                 <div className="table-container">
                     <Table striped bordered hover size="sm" variant="secondary" responsive>
