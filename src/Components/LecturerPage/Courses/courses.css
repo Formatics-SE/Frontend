@@ -53,7 +53,7 @@
   }
 }
 
-.loading_toast {
+.loading_toast { 
   position: absolute;
   width: -webkit-fit-content;
   width: -moz-fit-content;
