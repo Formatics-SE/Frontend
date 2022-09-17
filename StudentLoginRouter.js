@@ -10,6 +10,8 @@ router.post('/', express.json(), async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
+    console.log('in llogin')
+
     try {
         // query student by 'username' and 'password'
         const studentData = await StudentModel.findOne({

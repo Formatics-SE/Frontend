@@ -7,7 +7,7 @@ const CourseSchema = new mongoose.Schema({
     year: Number,
     semester: Number,
     credits: Number,
-    maxAttendanceStrikes: { type: Number, default: 3 },
+    maxAbsentStrikes: { type: Number, default: 3 },
     registeredStudents: [
         {
             name: String,

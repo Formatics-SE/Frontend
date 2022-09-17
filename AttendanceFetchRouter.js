@@ -8,10 +8,11 @@ router.post('/', express.json(), async (req, res) => {
 
     try {
         const courseData = await CourseModel.findOne({ courseCode: courseCode });
+        console.log(courseData)
         if (courseData) {
             res.json({
                 info: {
-                    maxAttendanceStrikes: courseData.maxAttendanceStrikes,
+                    maxAbsentStrikes: courseData.maxAbsentStrikes,
                     courseName: courseData.courseName,
                     courseCode: courseData.courseCode,
                     registeredStudents: courseData.registeredStudents,
@@ -25,8 +26,7 @@ router.post('/', express.json(), async (req, res) => {
     catch (error) {
         console.log(error.message);
     }
-}
-);
+});
 
 module.exports = router;
 

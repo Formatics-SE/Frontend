@@ -8,30 +8,21 @@ router.post('/', express.json(), async (req, res) => {
 
     try {
         const courseData = await CourseModel.findOne({ courseCode: courseCode })
-        const registeredStudents = courseData.registeredStudents;
-
-        if (registeredStudents) {
-            res.json({ registeredStudents: registeredStudents })
+        if (courseData) {
+            res.json({
+                info: {
+                    courseName: courseData.courseName,
+                    courseCode: courseData.courseCode,
+                    registeredStudents: courseData.registeredStudents,
+                }
+            })
         }
         else {
-            res.json({ registeredStudents: registeredStudents })
-
+            res.json({ info: info })
         }
-
-
     } catch (error) {
         console.log(error.message)
     }
-
-
-    // while (marks >100){
-    //     marks = marksData + marks
-    // }
-
-
-
-
-
 })
 
 module.exports = router;
