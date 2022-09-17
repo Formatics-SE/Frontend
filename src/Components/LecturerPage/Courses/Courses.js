@@ -42,7 +42,7 @@ const Courses = () => {
     let bg_index = -1;
     setCourses(courses_session.map((courseData, index) => {
       ++bg_index;
-      if (bg_index == BG_Images.length) { bg_index = 0 }
+      if (bg_index === BG_Images.length) { bg_index = 0 }
       return (
         <Accordion key={index}
           id={index}
@@ -110,7 +110,7 @@ const Courses = () => {
           default:
             console.log('none of the above')
         }
-      }
+      } 
 
     } catch (error) {
       console.log(error.message);
