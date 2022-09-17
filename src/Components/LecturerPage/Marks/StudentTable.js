@@ -1,6 +1,6 @@
 import React from "react";
 import StudentsDetails from "./StudentDetails";
-import data from "./dummyDB";
+import data from "../dummyDB";
 import "./StudentTable.css";
 import Modal from 'react-bootstrap/Modal'
 import Table from "react-bootstrap/Table"
