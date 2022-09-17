@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 export default function RandomGroup(props){
    const [numberOfStudents, setNumberOfStudents] = React.useState(props.value_prop)
    const [groupsToBeSubmitted, setGroupsToBeSubmitted] = React.useState([])
-   console.log(groupsToBeSubmitted)
+  
 
    function handleChange(event){
         let x = Number(event.target.value)
@@ -16,7 +16,8 @@ export default function RandomGroup(props){
    }
    function handleSubmit(){
     setGroupsToBeSubmitted(randomGroupingsByCwa)
-  }     
+  }  
+  console.log(groupsToBeSubmitted)   
 
    let classList = data.map(student=>{
         return `${student.firstName} ${student.lastName}: ${student.cwa}`
@@ -25,7 +26,6 @@ export default function RandomGroup(props){
             let division = Math.ceil(classList.length/studentsPerGroup)
             let randomGroupingsByCwa = []   // container to hold the various groups
             let count = 0
-
         for(let i=0;i<division;i++){
           let newArray = []  //container to hold students in a group
             while(count<classList.length){
@@ -42,7 +42,7 @@ export default function RandomGroup(props){
          return(
              <Card className="cards-container">
              <Card.Body className="cards-body">
-               <Card.Title className="cards-title">GROUP {randomGroupingsByCwa.indexOf(item) + 1}</Card.Title>
+               <Card.Title className="cards-title">GROUP {randomGroupingsByCwa.indexOf(item) + 1 }</Card.Title>
                    <Card.Text>
                              {item.map((student, index)=>{
                             return(
@@ -55,9 +55,6 @@ export default function RandomGroup(props){
                )
             }
         ) 
-    
-            
-    
     
     return(
     <section className="random-groups-container"> 

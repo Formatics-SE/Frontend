@@ -28,6 +28,7 @@
 }
 
 
+
 .cards-container{
     width: 300px;
     display: grid;
@@ -42,5 +43,45 @@ li{
     font-weight: bolder;
     text-align: left;
 }
+
+@media screen and (max-width: 912px) {
+    .random-groups-container{
+    width: 100%;
+    box-shadow: 0 0 0 rgb(187, 184, 184);
+    padding: 10px 20px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .random-groups{
+      padding: 15px 5px 70px 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+  }
+  @media screen and (max-width: 433px) {
+    .random-groups{
+      padding: 15px 5px 70px 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .heading-container{
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+    .input-field, .submit-button{
+        margin-top: 8px;
+    }
+
+
+  }
 
 

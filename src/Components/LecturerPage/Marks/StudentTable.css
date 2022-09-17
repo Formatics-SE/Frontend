@@ -38,7 +38,7 @@ td {
     transition: 0.4s;
 }
 .table-search {
-    margin-left: 130px;
+    margin-left: 118px;
     width: 350px;
     height: 35px;
     border-radius: 6px;
@@ -65,11 +65,12 @@ td {
     font-size: 18px;
     transition: 0.4s;
 }
-.marks-entry,
+
 .marks {
     height: 20px;
     width: 50px;
-    margin-left: 10px;
+    margin-left: 5px;
+    margin-right: -8px;
     background-color: #bcc5ce;
     color: black;
     border-radius: 2px;
@@ -121,4 +122,61 @@ td {
 }
 .closeButton:focus {
     box-shadow: 0 0 0 black;
+}
+
+@media screen and (max-width: 1091px) {
+    .table-container{
+    width: 100%;
+    box-shadow: 0 0 0 rgb(187, 184, 184);
+    padding: 10px 20px;
+    }
+    .input-container{
+        justify-content: space-between;
+        margin-left: 20px;
+        gap: 0px;
+        
+    }
+    .table-search{
+        margin-left: 0px;
+    }
+    .confirm-group{
+        margin-right: 18px;
+    }
+}
+
+@media screen and (max-width: 849px) {
+    .table-container{
+        width: 100%;
+        box-shadow: 0 0 0 rgb(187, 184, 184);
+        padding: 10px 20px;
+        }
+        .input-container{
+          display: flex;
+        }
+        .table-search{
+            width: 250px;
+        }
+        .confirm-individual{
+            margin-right: 20px;
+        }
+        .marks .marks-entry{
+            margin: 0;
+
+        }
+}
+@media screen and (max-width: 618px) {
+    .table-container{
+        width: 100%;
+        box-shadow: 0 0 0 rgb(187, 184, 184);
+        padding: 10px 20px;
+        }
+        .input-container{
+          display: flex;
+          flex-direction: column; 
+        }
+        .all-students, .individual{
+            margin-top: 5px;
+        }
+      
+      
 }
