@@ -1,17 +1,10 @@
 .login_page {
   width: 100vw;
   height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
-
 .login_page .toast {
   position: absolute;
   width: -webkit-fit-content;
@@ -20,21 +13,18 @@
   top: 20px;
   left: 50%;
   z-index: 1051;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   font-weight: 500;
   font-size: 110%;
   color: white;
   padding: 5px 30px;
   text-align: center;
 }
-
 @media screen and (max-width: 768px) {
   .login_page .toast {
     width: 80%;
   }
 }
-
 .login_page .bg_img {
   width: 100%;
   height: 100%;
@@ -44,7 +34,6 @@
   background-repeat: no-repeat;
   z-index: -10;
 }
-
 .login_page .bg_img_shade {
   width: 100%;
   height: 100%;
@@ -54,37 +43,26 @@
   background-color: rgba(0, 0, 0, 0.336);
   z-index: -9;
 }
-
 .login_page .login_form {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   background-color: rgba(8, 8, 8, 0.822);
   padding: 25px 20px;
   border-radius: 7px;
   margin: 0 20px;
-  -webkit-box-shadow: 0 0 8px rgba(223, 62, 210, 0.664);
-          box-shadow: 0 0 8px rgba(223, 62, 210, 0.664);
+  box-shadow: 0 0 8px rgba(223, 62, 210, 0.664);
 }
-
 @media screen and (max-width: 768px) {
   .login_page .login_form {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
   }
 }
-
 .login_page .login_form .app_name {
   position: absolute;
   top: -130px;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
 }
-
 .login_page .login_form .app_name span {
   font-size: 450%;
   color: white;
@@ -92,34 +70,24 @@
   text-shadow: 0 0 4px rgba(223, 62, 210, 0.664);
   font-family: "tonsushi" !important;
 }
-
 .login_page .login_form .app_name span.cl {
-  color: #dadd1f;
+  color: rgb(218, 221, 31);
 }
-
 .login_page .login_form .welcome_text {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   font-size: 150%;
   font-weight: 500;
   color: white;
   padding: 5px 20px 5px 10px;
   margin-right: 20px;
 }
-
 @media screen and (max-width: 768px) {
   .login_page .login_form .welcome_text {
     text-align: center;
   }
 }
-
 @media screen and (min-width: 770px) {
   .login_page .login_form .welcome_text {
     border-width: 0 1px 0 0;
@@ -127,14 +95,12 @@
     border-color: white;
   }
 }
-
 @media screen and (max-width: 768px) {
   .login_page .login_form .welcome_text {
     margin-bottom: 20px;
     margin-right: 0;
   }
 }
-
 .login_page .login_form .login_btns .lecturer_login_btn,
 .login_page .login_form .login_btns .student_login_btn {
   width: 100%;
@@ -143,24 +109,19 @@
   font-size: 110%;
   font-weight: 500;
   letter-spacing: 0.05em;
-  background: linear-gradient(145deg, #a3178c, rgba(34, 23, 182, 0.726));
-  border-color: #a3178c;
-  -webkit-transition: 300ms background-color;
+  background: linear-gradient(145deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+  border-color: rgb(163, 23, 140);
   transition: 300ms background-color;
 }
-
 .login_page .login_form .login_btns .lecturer_login_btn:hover,
 .login_page .login_form .login_btns .student_login_btn:hover {
   background: white;
-  color: #a3178c;
+  color: rgb(163, 23, 140);
 }
-
 .login_page .login_form .login_btns .lecturer_login_btn:focus,
 .login_page .login_form .login_btns .student_login_btn:focus {
-  -webkit-box-shadow: 0 0 0 black;
-          box-shadow: 0 0 0 black;
+  box-shadow: 0 0 0 black;
 }
-
 .login_page .login_form .login_btns .student_login_btn {
   margin-top: 15px;
 }
@@ -168,97 +129,78 @@
 .login_modal {
   position: fixed;
   top: 22%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   max-width: 95vw;
 }
-
 .login_modal .modal_header {
   position: relative;
   font-weight: bold;
   font-size: 125%;
   padding-left: 10px;
   margin-bottom: 20px;
-  color: #a3178c;
+  color: rgb(163, 23, 140);
 }
-
 .login_modal .modal_header span {
-  color: #a3178c;
+  color: rgb(163, 23, 140);
 }
-
 .login_modal .modal_header .close_btn {
   position: absolute;
   top: 55%;
   right: 10px;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   border-radius: 50%;
   background-color: white;
-  border-color: #a3178c;
+  border-color: rgb(163, 23, 140);
   border-width: 2px;
-  color: #a3178c;
+  color: rgb(163, 23, 140);
   font-weight: bolder;
 }
-
 .login_modal .modal_header .close_btn:hover {
-  background-color: #a3178c;
+  background-color: rgb(163, 23, 140);
   color: white;
 }
-
 .login_modal .modal_header .close_btn:active {
   background-color: white;
-  color: #a3178c;
+  color: rgb(163, 23, 140);
 }
-
 .login_modal .field {
   padding: 0 10px;
 }
-
 .login_modal .field label {
   font-size: 110%;
   font-weight: bold;
 }
-
 .login_modal .field #username,
 .login_modal .field #password {
   margin-top: -3px;
   font-size: 103%;
 }
-
 .login_modal .field #username:focus,
 .login_modal .field #password:focus {
-  -webkit-box-shadow: 0 0 5px 1px #a3178c;
-          box-shadow: 0 0 5px 1px #a3178c;
-  border-color: #e2dfdf;
+  box-shadow: 0 0 5px 1px rgb(163, 23, 140);
+  border-color: rgb(226, 223, 223);
 }
-
 .login_modal .login_btn {
   margin: 15px 10px 10px 10px;
   padding: 10px 25px;
   width: 96%;
   border-radius: 7px;
-  border-color: #a3178c;
-  background: linear-gradient(120deg, #a3178c, rgba(34, 23, 182, 0.726));
+  border-color: rgb(163, 23, 140);
+  background: linear-gradient(120deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
   font-size: 103%;
   font-weight: 500;
   letter-spacing: 0.05em;
 }
-
 .login_modal .login_btn:hover {
   background: white;
-  color: #a3178c;
+  color: rgb(163, 23, 140);
 }
-
 .login_modal .login_btn:active {
-  background-color: #a3178c;
+  background-color: rgb(163, 23, 140);
   color: white;
 }
-
 .login_modal .login_btn:focus {
-  -webkit-box-shadow: 0 0 0 black;
-          box-shadow: 0 0 0 black;
-}
-/*# sourceMappingURL=login.css.map */
+  box-shadow: 0 0 0 black;
+}/*# sourceMappingURL=login.css.map */

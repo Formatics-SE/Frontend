@@ -1,67 +1,48 @@
 .header {
   position: relative;
   padding: 12px 30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   font-size: 125%;
   color: white;
-  background-color: #860c72;
-  -webkit-box-shadow: 0 2px 2px #bbb8b8;
-          box-shadow: 0 2px 2px #bbb8b8;
+  background-color: rgb(134, 12, 114);
+  box-shadow: 0 2px 2px rgb(187, 184, 184);
   border-width: 0 0 2px 0;
   border-style: solid;
 }
-
 @media screen and (max-width: 768px) {
   .header {
     padding: 8px 30px;
   }
 }
-
 .header .menu_icon {
   position: absolute;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  transform: translateY(-50%);
   right: 30px;
 }
-
 .header .app_name {
   height: 30px !important;
   margin-top: -8px;
 }
-
 @media screen and (max-width: 768px) {
   .header .app_name {
     margin-bottom: 8px;
   }
 }
-
 .header .app_name span {
   font-size: 200%;
   color: white;
   text-align: center;
-  font-family: 'tonsushi' !important;
+  font-family: "tonsushi" !important;
 }
-
 .header .app_name span.cl {
-  color: #dadd1f;
+  color: rgb(218, 221, 31);
 }
-
 .header .name_and_signout {
-  display: -webkit-box !important;
-  display: -ms-flexbox !important;
   display: flex !important;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
 }
-
 .header .name_and_signout .name {
   text-align: right;
   margin-right: 30px;
@@ -70,82 +51,64 @@
   text-overflow: ellipsis;
   word-wrap: normal;
 }
-
 .header .name_and_signout .signout {
   padding: 0 7px;
 }
-
 .header .name_and_signout .signout:hover {
   cursor: pointer;
 }
-
 .header .name_and_signout .signout:hover .signout_icon {
   -webkit-animation: 400ms animate ease-in-out;
           animation: 400ms animate ease-in-out;
 }
-
 @-webkit-keyframes animate {
   0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   33% {
-    -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg);
+    transform: rotate(-45deg);
   }
   66% {
-    -webkit-transform: rotate(90deg);
-            transform: rotate(90deg);
+    transform: rotate(90deg);
   }
   100% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
 }
-
 @keyframes animate {
   0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   33% {
-    -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg);
+    transform: rotate(-45deg);
   }
   66% {
-    -webkit-transform: rotate(90deg);
-            transform: rotate(90deg);
+    transform: rotate(90deg);
   }
   100% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
 }
-
 .header .name_and_signout .signout:active .signout_icon,
 .header .name_and_signout .signout:active span {
-  color: #c022a6;
+  color: rgb(192, 34, 166);
 }
-
 .header .name_and_signout .signout .signout_icon {
   margin-right: 4px;
-  color: #eb08c5;
+  color: rgb(235, 8, 197);
 }
-
 .header .menu {
   position: fixed;
   top: 0;
   right: -170px;
   z-index: 30;
-  background-color: #860c72;
+  background-color: rgb(134, 12, 114);
   padding: 15px 15px 15px 20px;
-  -webkit-transition: 250ms;
   transition: 250ms;
   border-color: rgba(163, 23, 140, 0.897);
   border-style: solid;
   border-width: 0 0 2px 2px;
 }
-
 .header .menu .menu_close_btn {
   color: white;
   width: -webkit-fit-content;
@@ -158,74 +121,57 @@
   padding: 0;
   font-size: 160%;
 }
-
 .header .menu .menu_close_btn:hover {
-  background-color: #a3178c;
+  background-color: rgb(163, 23, 140);
   color: white;
 }
-
 .header .menu .menu_close_btn:active {
   background-color: white;
-  color: #a3178c;
+  color: rgb(163, 23, 140);
 }
-
 .header .menu.menu .ul {
   padding: 0;
   margin: 0;
 }
-
 .header .menu.menu .ul .li:first-child {
   margin-bottom: 7px;
 }
-
 .header .menu.menu .ul .li .user_icon {
-  color: #eb08c5;
+  color: rgb(235, 8, 197);
 }
-
 .header .menu.menu .ul .li span {
   margin-left: 8px;
   color: white;
 }
-
 .header .menu.menu .ul .li .signout:hover {
   cursor: pointer;
 }
-
 .header .menu.menu .ul .li .signout:hover .signout_icon {
   color: rgba(34, 23, 182, 0.897);
   -webkit-animation: 400ms animate ease-in-out;
           animation: 400ms animate ease-in-out;
 }
-
 @keyframes animate {
   0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   33% {
-    -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg);
+    transform: rotate(-45deg);
   }
   66% {
-    -webkit-transform: rotate(90deg);
-            transform: rotate(90deg);
+    transform: rotate(90deg);
   }
   100% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
 }
-
 .header .menu.menu .ul .li .signout:active .signout_icon,
 .header .menu.menu .ul .li .signout:active span {
-  color: #c022a6;
+  color: rgb(192, 34, 166);
 }
-
 .header .menu.menu .ul .li .signout .signout_icon {
-  color: #eb08c5;
+  color: rgb(235, 8, 197);
 }
-
 .header .menu.active {
   right: 0;
-}
-/*# sourceMappingURL=header.css.map */
+}/*# sourceMappingURL=header.css.map */

@@ -14,22 +14,23 @@ export default function Polls() {
       if (match) {
         setParticipatedPolls((prev) => [
           ...prev,
-          <PollInstance
+          <PollInstance key={pollObj._id}
             title={pollObj?.title}
             totalVotesCast={pollObj?.totalVotesCast}
             options={pollObj.options}
-          />,
+          />
         ]);
-      }
-      else {
+      } else {
         setPendingPolls((prev) => [
-            ...prev,
-            <PollInstance
-              title={pollObj?.title}
-              totalVotesCast={pollObj?.totalVotesCast}
-              options={pollObj.options}
-            />,
-          ]);
+          ...prev,
+          <PollInstancePending
+            key={pollObj._id}
+            id={pollObj._id}
+            title={pollObj?.title}
+            totalVotesCast={pollObj?.totalVotesCast}
+            options={pollObj.options}
+          />
+        ]);
       }
     });
 
@@ -48,15 +49,11 @@ export default function Polls() {
     <div className="student_polls">
       <div className="pending_polls">
         <div className="pending_polls_title">Pending Polls</div>
-        <div className="pending_polls_body">
-            {pendingPolls}
-        </div>
+        <div className="pending_polls_body">{pendingPolls}</div>
       </div>
       <div className="participated_polls">
         <div className="participated_polls_title">Participated Polls</div>
-        <div className="participated_polls_body">
-            {participatedPolls}
-        </div>
+        <div className="participated_polls_body">{participatedPolls}</div>
       </div>
     </div>
   );

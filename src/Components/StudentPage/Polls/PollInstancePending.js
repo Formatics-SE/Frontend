@@ -16,11 +16,10 @@ export default function PollInstancePending({
   const [options_s, setOptions_s] = useState([]);
 
   useEffect(() => {
-    // const totalVotesCast = 74
     const ops = options?.map((obj, index) => {
       return (
         <>
-          <div className="pending_option" key={index}>
+          <div className="pending_option" key={obj._id} onClick={() => {}}>
             {obj.option}
           </div>
         </>
