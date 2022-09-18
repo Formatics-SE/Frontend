@@ -64,12 +64,10 @@ const Courses = () => {
     let urlPath; // backend fetch url path
     setShowToast(true);
     switch (path) {
-      case 'attendance':
-        urlPath = 'fetchattendance'; break;
       case 'marks':
-        urlPath = 'fetchlecturermarks'; break;
+        urlPath = 'fetchstudentmarks'; break;
       case 'groups':
-        urlPath = 'fetchlecturergroups'; break;
+        urlPath = 'fetchstudentgroup'; break;
       case 'polls':
         urlPath = 'polls'; break;
     }
@@ -81,32 +79,23 @@ const Courses = () => {
         body: JSON.stringify({ courseCode: courseCode })
       })
 
-      console.log('returned')
-
       const data = await response.json();
       setShowToast(false);
       if (data.info) {
         // switch between the value of path to determine the storage key for sessionStorage
         switch (path) {
-          case 'attendance':
-            console.log('atInfo: ', data.info)
-            sessionStorage.setItem('attendanceInfo', JSON.stringify(data.info));
-            navigate('/lecturer/rollcall');
-            break;
           case 'marks':
             sessionStorage.setItem('marks', JSON.stringify(data?.info));
-            navigate('/lecturer/marks');
+            navigate('/student/marks');
             break;
           case 'groups':
-            sessionStorage.setItem('groups', JSON.stringify(data?.groups));
-            navigate('/lecturer/groups');
+            sessionStorage.setItem('group', JSON.stringify(data?.groups));
+            navigate('/student/groups');
             break;
           case 'polls':
             sessionStorage.setItem('polls', JSON.stringify(data?.polls));
-            navigate('/lecturer/polls');
+            navigate('/student/polls');
             break;
-          default:
-            console.log('none of the above')
         }
       } 
 

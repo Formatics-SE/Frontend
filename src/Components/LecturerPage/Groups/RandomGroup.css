@@ -1,87 +1,119 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-.random-groups-container{
-    margin-top: 30px;
-    
+.random-groups-container {
 }
-.heading-container{
+.course-info {
+    text-align: center;
+    box-shadow: 0 2px 3px -2px rgb(187, 184, 184);
+    padding: 5px;
+    margin-bottom: 5px;
+    background-color: rgb(238, 230, 230);
+    font-weight: bold;
+}
+.heading-container {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 2px 3px -2px rgb(187, 184, 184);
+}
+.heading-container .groupsof-and-groupsof-input {
     display: flex;
     align-items: center;
-    justify-content: center;
+    padding: 5px 5px 10px 5px;
+    font-weight: bold;
 }
-.heading{
-    margin-right: 10px;
+.heading-container .groupsof-and-groupsof-input .input-field {
+    margin-left: 5px;
+    width: 100px;
 }
-.input-field{
-    margin-right: 10px;
-    width: 150px;
+.heading-container .groupsof-and-groupsof-input .input-field:focus {
+    box-shadow: 0 0 5px 1px rgb(163, 23, 140);
+    border-color: rgb(226, 223, 223);
 }
 
-.random-groups{
-    padding: 10px;
-    justify-content: center;
-    text-align: left;
+.heading-container .submit-button-div {
+    padding: 5px;
+}
+.heading-container .submit-button-div .submit-button {
+    height: fit-content;
+    background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+    border-color: rgb(163, 23, 140);
+    padding: 7px 25px;
+    border-radius: 7px;
+    font-size: 103%;
+}
+.heading-container .submit-button-div .submit-button:hover {
+    background: white;
+    border-color: rgb(163, 23, 140);
+    color: rgb(163, 23, 140);
+}
+.heading-container .submit-button-div .submit-button:focus {
+    border-color: rgb(163, 23, 140);
+    box-shadow: 0 0 0 rgb(163, 23, 140);
+}
+
+.random-groups {
+    padding: 15px 10px 50px 10px;
+    width: 100%;
+    min-height: fit-content;
+    max-height: calc(100% - 100px);
+    overflow-y: scroll;
     display: grid;
-    grid-template-columns: 250px 250px 250px;
-    column-gap: 60px;
-    row-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(24.25%, 1fr));
+    column-gap: 1%;
+    row-gap: 1.5%;
 }
 
-
-
-.cards-container{
-    width: 300px;
-    display: grid;
-    align-items: flex-start;
-    justify-content: center;
-    margin-left: 10px;
-}
-li{
+li {
     list-style-type: decimal;
 }
-.cards-title{
-    font-weight: bolder;
+.cards-title {
+    font-weight: bold;
+    font-size: 16px;
     text-align: left;
 }
 
-@media screen and (max-width: 912px) {
-    .random-groups-container{
-    width: 100%;
-    box-shadow: 0 0 0 rgb(187, 184, 184);
-    padding: 10px 20px;
+@media screen and (max-width: 1024px) {
+    .random-groups {
+        grid-template-columns: repeat(auto-fill, minmax(32.67%, 1fr));
     }
 }
-
-
 @media screen and (max-width: 768px) {
-    .random-groups{
-      padding: 15px 5px 70px 5px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    .random-groups {
+        grid-template-columns: 1fr;
+        row-gap: 0.7%;
+    }
+}
+@media screen and (max-width: 414px) {
+    .heading-container::before  {
+        content: attr(data-attr);
+    }
+}
+/*
+@media screen and (max-width: 768px) {
+    .random-groups {
+        padding: 15px 5px 70px 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+@media screen and (max-width: 433px) {
+    .random-groups {
+        padding: 15px 5px 70px 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
-  }
-  @media screen and (max-width: 433px) {
-    .random-groups{
-      padding: 15px 5px 70px 5px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .heading-container{
+    .heading-container {
         display: flex;
         flex-direction: column;
         gap: 2px;
     }
-    .input-field, .submit-button{
+    .input-field,
+    .submit-button {
         margin-top: 8px;
     }
-
-
-  }
-
-
+} */

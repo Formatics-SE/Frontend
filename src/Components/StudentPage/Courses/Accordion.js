@@ -5,6 +5,7 @@ import './accordion.css'
 export default function Accordion({ id, courseCode, courseName, year, semester, credits, bg, handleSubmit }) {
 
     useEffect(() => {
+        
 
     }, [])
 
@@ -43,9 +44,8 @@ export default function Accordion({ id, courseCode, courseName, year, semester, 
                 <div className='dropdown_icon'><IoMdArrowDropdown className='dropdown_icon' /></div>
             </div>
             <div className={`dropdown_menu dp${id}`}>
-                <div onClick={() => handleSubmit('attendance', courseCode)}>Roll Call</div>
                 <div onClick={() => handleSubmit('marks', courseCode)}>Marks</div>
-                <div onClick={() => handleSubmit('groups', courseCode)}>Groups</div>
+                <div onClick={() => handleSubmit('group', courseCode)}>Group</div>
                 <div onClick={() => handleSubmit('polls', courseCode)}>Polls</div>
             </div>
 

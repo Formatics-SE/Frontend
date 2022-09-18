@@ -11,7 +11,7 @@ import Attendance from './Components/LecturerPage/Attendance/Attendance'
 import Courses_L from './Components/LecturerPage/Courses/Courses'
 import Groups_L from './Components/LecturerPage/Groups/Groups'
 import Polls_L from './Components/LecturerPage/Polls/Polls'
-import Marks_L from './Components/LecturerPage/Marks/Marks'
+import Marks_L from './Components/LecturerPage/Marks/StudentTable'
 // end
 
 import StudentPage from './Components/StudentPage/StudentPage'
@@ -40,7 +40,7 @@ export default function App() {
       </Route>
       <Route path='/student' element={<StudentPage />}>
         <Route path='courses' element={<Courses />} />
-        <Route path='groups' element={<Groups />} />
+        <Route path='group' element={<Groups />} />
         <Route path='marks' element={<Marks />} />
         <Route path='polls' element={<Polls />} />
       </Route>

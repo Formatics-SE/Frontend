@@ -109,7 +109,6 @@ export default function Attendance() {
         <div className='attendance'>
             <div className='course-info'>
                 {courseCode}: {courseName}
-                {/* COE 358 : Embedded Systems */}
             </div>
             <div className='max-strikes-and-submit'>
                 <div className='max-strikes-div'>

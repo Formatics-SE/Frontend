@@ -1,4 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.marks-page-container {
+    width: 75%;
+    height: calc(100vh - 56px);
+    min-height: 500px;
+    margin: 0 auto;
+    padding: 10px 30px;
+    box-shadow: 0 0 4px 2px rgb(187, 184, 184);
+}
+
 .table-container {
     display: flex;
     flex-direction: column;

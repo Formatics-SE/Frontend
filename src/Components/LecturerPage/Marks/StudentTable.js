@@ -90,7 +90,7 @@ export default function StudentsTable() {
                 }
             })
         })
-        setSpecifiedStudent("Oops, no match!!!")  
+        setSpecifiedStudent("Oops, no match!!!")
         setMatch("")
         setMarks(prev => {
             return {
@@ -103,32 +103,34 @@ export default function StudentsTable() {
     }
 
     return (
-        <section>
+        <section className='marks-page-container'>
+            <div className='course-info'>
+                {courseCode}: {courseName}
+            </div>
             <div className="input-container">
-                
-                  <div className="search"> 
-                        <input type="search"
+                <div className="search">
+                    <input type="search"
                         placeholder="Search by index numbers...."
                         name="search_sname"
                         className="table-search"
                         value={match}
                         onChange={handleSearch} />
-                   </div>
+                </div>
 
-                    <div className="individual"><input type="number"
-                        className="marks"
-                        id="individual"
-                        name="individual_marks"
-                        value={marks.individual_marks}
-                        onChange={handleMarksEntry}/>
-                        <button type="submit"
+                <div className="individual"><input type="number"
+                    className="marks"
+                    id="individual"
+                    name="individual_marks"
+                    value={marks.individual_marks}
+                    onChange={handleMarksEntry} />
+                    <button type="submit"
                         id="input_marks"
                         onClick={handleIndividualMarks}
                         className="confirm-individual">
                         Assign
-                        </button> 
-                    </div>
-                
+                        </button>
+                </div>
+
                 <div className="all-students">
                     <input type="number"
                         className="marks"
