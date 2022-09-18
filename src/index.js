@@ -7,10 +7,10 @@ import RandomGroup from "./Components/LecturerPage/Groups/RandomGroup"
 
 
 ReactDOM.render(
-    //  <BrowserRouter>
-    //    <App /> 
-    //  </BrowserRouter>
-    <RandomGroup />
+      <BrowserRouter>
+        <App /> 
+     </BrowserRouter>
+    //<RandomGroup />
     , document.getElementById('root')
 );
 
