@@ -1,21 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import StudentsDetails from "./StudentDetails";
 import data from "../dummyDB";
 import "./StudentTable.css";
 import Modal from 'react-bootstrap/Modal'
+import Form from 'react-bootstrap/Form'
 import Table from "react-bootstrap/Table"
 import Button from "react-bootstrap/Button"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 export default function StudentsTable() {
-    const [students, setStudents] = React.useState(data)
-    const [match, setMatch] = React.useState('')
-    const [marks, setMarks] = React.useState({
+
+    const [courseName, setCourseName] = useState('')
+    const [courseCode, setCourseCode] = useState('')
+
+    const [students, setStudents] = useState(data)
+    const [match, setMatch] = useState('')
+    const [marks, setMarks] = useState({
         individual_marks: 0,
         group_marks: 0
     })
-    const [showModal, setShowModal] = React.useState(false);
-    const [specifiedStudent, setSpecifiedStudent] = React.useState('No match')
+    const [showModal, setShowModal] = useState(false);
+    const [specifiedStudent, setSpecifiedStudent] = useState('No match')
 
     let student_list = students.filter(val => {
         if (match === "") {
@@ -31,9 +36,16 @@ export default function StudentsTable() {
                 item={item}
             />
         )
-    }
+    })
 
-    )
+    // useEffect(() => {
+    //     const attendanceInfo_session = JSON.parse(sessionStorage.getItem('attendanceInfo'));
+    //     const students = attendanceInfo_session?.registeredStudents;
+
+    //     setCourseName(attendanceInfo_session?.courseName)
+    //     setCourseCode(attendanceInfo_session?.courseCode)
+
+    // }, [])
 
 
 
@@ -109,47 +121,47 @@ export default function StudentsTable() {
             </div>
             <div className="input-container">
                 <div className="search">
-                    <input type="search"
-                        placeholder="Search by index numbers...."
+                    <Form.Control type="search"
+                        placeholder="Search by index number"
                         name="search_sname"
                         className="table-search"
                         value={match}
                         onChange={handleSearch} />
                 </div>
 
-                <div className="individual"><input type="number"
+                <div className="individual"><Form.Control type="number"
                     className="marks"
                     id="individual"
                     name="individual_marks"
                     value={marks.individual_marks}
                     onChange={handleMarksEntry} />
-                    <button type="submit"
+                    <Button type="submit"
                         id="input_marks"
                         onClick={handleIndividualMarks}
                         className="confirm-individual">
                         Assign
-                        </button>
+                    </Button>
                 </div>
 
                 <div className="all-students">
-                    <input type="number"
+                    <Form.Control type="number"
                         className="marks"
                         id="group"
                         name="group_marks"
                         value={marks.group_marks}
                         onChange={handleMarksEntry} />
-                    <button type="submit"
+                    <Button type="submit"
                         id="input_marks"
                         onClick={handleAllStudentsMarks}
                         className="confirm-group">
                         Assign to all
-                    </button>
+                    </Button>
                 </div>
             </div>
 
             <div className="main-container">
                 <div className="table-container">
-                    <Table striped bordered hover size="sm" variant="secondary" responsive>
+                    <Table striped hover bordered size="sm" responsive>
                         <thead>
                             <tr>
                                 <th>Name</th>

@@ -8,55 +8,47 @@
     padding: 10px 30px;
     box-shadow: 0 0 4px 2px rgb(187, 184, 184);
 }
+@media screen and (max-width: 912px) {
+    .marks-page-container {
+        width: 100%;
+        box-shadow: 0 0 0 rgb(187, 184, 184);
+        padding: 10px 20px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .marks-page-container {
+        padding: 10px;
+    }
+}
+
+.course-info {
+    margin-bottom: 10px;
+}
 
 .table-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 1rem;
-    width: 70%;
+    margin-top: 10px;
 }
 .main-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding-bottom: 70px;
+    width: 100%;
+    min-height: fit-content;
+    max-height: calc(100% - 100px);
+    overflow-y: auto;
 }
 table {
-    border-collapse: collapse;
-}
-th,
-td {
-    border: 1px solid white;
-    text-align: left;
-    padding: 8px;
-    font-size: 20px;
-}
-th {
-    background-color: rgb(117, 201, 250);
-    font-family: "Poppins";
-}
-td {
-    background-color: rgb(205, 235, 253);
+    text-align: center;
 }
 .input-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    gap: 20px;
-    align-items: center;
-    margin-top: 30px;
-    transition: 0.4s;
+    justify-content: space-between;
+    /* align-items: center; */
 }
 .table-search {
-    margin-left: 118px;
-    width: 350px;
-    height: 35px;
-    border-radius: 6px;
-    background-color: #bcc5ce;
-    color: black;
-    font-size: 18px;
-    text-indent: 10px;
-    transition: 0.4s;
+    width: 120%;
+}
+.table-search:focus {
+    box-shadow: 0 0 5px 1px rgb(163, 23, 140);
+    border-color: rgb(226, 223, 223);
 }
 .table-search:hover {
     background-color: white;
@@ -64,27 +56,23 @@ td {
 }
 .confirm-group,
 .confirm-individual {
-    position: relative;
-    margin-left: 10px;
-    margin-right: 120px;
-    font-family: "Poppins";
-    height: 35px;
-    border-radius: 6px;
-    background: rgba(34, 23, 182, 0.726);
-    color: white;
-    font-size: 18px;
-    transition: 0.4s;
+    height: fit-content;
+    background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+    border-color: rgb(163, 23, 140);
+    padding: 5px 25px;
+    border-radius: 7px;
+    font-size: 103%;
 }
 
 .marks {
-    height: 20px;
-    width: 50px;
-    margin-left: 5px;
-    margin-right: -8px;
-    background-color: #bcc5ce;
-    color: black;
-    border-radius: 2px;
-    transition: 0.4s;
+    /* height: 25px !important; */
+    width: 80px;
+    margin-right: 5px;
+    /* margin-right: -8px; */
+    /* background-color: #bcc5ce; */
+    /* color: black; */
+    /* border-radius: 2px; */
+    /* transition: 0.4s; */
 }
 .marks {
     height: 35px;
@@ -93,6 +81,23 @@ td {
     background-color: white;
     color: black;
 }
+
+.all-students {
+    display: flex;
+    text-align: right;
+    justify-content: end;
+}
+.individual {
+    display: flex;
+    align-items: center;
+}
+.confirm-individual:focus,
+.confirm-group:focus {
+    border-color: rgb(163, 23, 140);
+    box-shadow: 0 0 0 rgb(163, 23, 140);
+    /* margin-left: 50px; */
+}
+
 .table-search:hover {
     background-color: white;
     color: black;
@@ -135,58 +140,58 @@ td {
 }
 
 @media screen and (max-width: 1091px) {
-    .table-container{
-    width: 100%;
-    box-shadow: 0 0 0 rgb(187, 184, 184);
-    padding: 10px 20px;
+    .table-container {
+        width: 100%;
+        box-shadow: 0 0 0 rgb(187, 184, 184);
+        /* padding: 10px 20px; */
     }
-    .input-container{
-        justify-content: space-between;
-        margin-left: 20px;
-        gap: 0px;
-        
+    .input-container {
+        /* justify-content: space-between; */
     }
-    .table-search{
-        margin-left: 0px;
+    .table-search {
+        width: 100%;
     }
-    .confirm-group{
-        margin-right: 18px;
+    .confirm-group {
+        margin-right: 20px;
     }
 }
 
 @media screen and (max-width: 849px) {
-    .table-container{
-        width: 100%;
-        box-shadow: 0 0 0 rgb(187, 184, 184);
-        padding: 10px 20px;
-        }
-        .input-container{
-          display: flex;
-        }
-        .table-search{
-            width: 250px;
-        }
-        .confirm-individual{
-            margin-right: 20px;
-        }
-        .marks .marks-entry{
-            margin: 0;
-
-        }
+    .table-container {
+        /* width: 100%;
+        box-shadow: 0 0 0 rgb(187, 184, 184); */
+        /* padding: 10px 20px; */
+    }
+    .input-container {
+        display: flex;
+    }
+    .table-search {
+    }
+    .confirm-individual {
+        /* margin-right: 20px; */
+    }
+    .marks .marks-entry {
+        /* margin: 0; */
+    }
 }
 @media screen and (max-width: 618px) {
-    .table-container{
+    .table-container {
         width: 100%;
         box-shadow: 0 0 0 rgb(187, 184, 184);
-        padding: 10px 20px;
-        }
-        .input-container{
-          display: flex;
-          flex-direction: column; 
-        }
-        .all-students, .individual{
-            margin-top: 5px;
-        }
-      
-      
+        /* padding: 10px 20px; */
+    }
+    .input-container {
+        /* display: flex; */
+        flex-direction: column;
+    }
+    .all-students,
+    .individual {
+        margin-top: 5px;
+    }
+
+    .confirm-individual,
+    .confirm-group {
+        width: 100%;
+        margin-right: 0;
+    }
 }
