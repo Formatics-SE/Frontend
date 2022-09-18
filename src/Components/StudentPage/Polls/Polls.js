@@ -1,5 +1,8 @@
-import React, { useState, suseEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./polls.css";
+
+import PollInstance from './PollInstance'
+import PollInstancePending from './PollInstancePending'
 
 export default function Polls() {
   const [pendingPolls, setPendingPolls] = useState([]);
@@ -10,7 +13,7 @@ export default function Polls() {
     const polls_session = JSON.parse(sessionStorage.getItem("polls"));
     const indexNumber = JSON.parse(sessionStorage.getItem("indexNumber"));
 
-    polls_session.map((pollObj) => {
+    polls_session?.map((pollObj) => {
       let match = pollObj.participants.find((index) => index === indexNumber);
       if (match) {
         setParticipatedPolls((prev) => [

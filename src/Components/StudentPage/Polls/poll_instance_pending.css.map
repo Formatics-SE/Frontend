@@ -1,1 +1,9 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"poll_instance_pending.css"}
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "poll_instance_pending.scss"
+    ],
+    "names": [],
+    "file": "poll_instance_pending.css"
+}

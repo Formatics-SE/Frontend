@@ -1,1 +1,9 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"marks.css"}
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "marks.scss"
+    ],
+    "names": [],
+    "file": "marks.css"
+}

@@ -4,69 +4,95 @@
   min-height: 500px;
   margin: 0 auto;
   padding: 10px 30px;
-  box-shadow: 0 0 4px 2px rgb(187, 184, 184);
+  -webkit-box-shadow: 0 0 4px 2px #bbb8b8;
+          box-shadow: 0 0 4px 2px #bbb8b8;
 }
+
 @media screen and (max-width: 912px) {
   .attendance {
     width: 100%;
-    box-shadow: 0 0 0 rgb(187, 184, 184);
+    -webkit-box-shadow: 0 0 0 #bbb8b8;
+            box-shadow: 0 0 0 #bbb8b8;
     padding: 10px 20px;
   }
 }
+
 @media screen and (max-width: 912px) and (max-width: 768px) {
   .attendance {
     padding: 10px;
   }
 }
+
 .attendance .course-info {
   text-align: center;
-  box-shadow: 0 2px 3px -2px rgb(187, 184, 184);
+  -webkit-box-shadow: 0 2px 3px -2px #bbb8b8;
+          box-shadow: 0 2px 3px -2px #bbb8b8;
   padding: 5px;
   margin-bottom: 5px;
-  background-color: rgb(238, 230, 230);
+  background-color: #eee6e6;
   font-weight: bold;
 }
+
 .attendance .max-strikes-and-submit {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  box-shadow: 0 2px 3px -2px rgb(187, 184, 184);
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-shadow: 0 2px 3px -2px #bbb8b8;
+          box-shadow: 0 2px 3px -2px #bbb8b8;
 }
+
 .attendance .max-strikes-and-submit .max-strikes-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 5px 5px 10px 5px;
   font-weight: bold;
 }
+
 .attendance .max-strikes-and-submit .max-strikes-div .max-strikes-input {
   margin-left: 5px;
   width: 100px;
 }
+
 .attendance .max-strikes-and-submit .max-strikes-div .max-strikes-input:focus {
-  box-shadow: 0 0 5px 1px rgb(163, 23, 140);
-  border-color: rgb(226, 223, 223);
+  -webkit-box-shadow: 0 0 5px 1px #a3178c;
+          box-shadow: 0 0 5px 1px #a3178c;
+  border-color: #e2dfdf;
 }
+
 .attendance .max-strikes-and-submit .submit-btn-div {
   padding: 5px;
 }
+
 .attendance .max-strikes-and-submit .submit-btn-div .submit-btn {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
-  border-color: rgb(163, 23, 140);
+  background: linear-gradient(140deg, #a3178c, rgba(34, 23, 182, 0.726));
+  border-color: #a3178c;
   padding: 7px 25px;
   border-radius: 7px;
   font-size: 103%;
 }
+
 .attendance .max-strikes-and-submit .submit-btn-div .submit-btn:focus {
-  border-color: rgb(163, 23, 140);
-  box-shadow: 0 0 0 rgb(163, 23, 140);
+  border-color: #a3178c;
+  -webkit-box-shadow: 0 0 0 #a3178c;
+          box-shadow: 0 0 0 #a3178c;
 }
+
 .attendance .max-strikes-and-submit .submit-btn-div .submit-btn:hover {
   background: white;
-  border-color: rgb(163, 23, 140);
-  color: rgb(163, 23, 140);
+  border-color: #a3178c;
+  color: #a3178c;
 }
+
 .attendance .attendance-list {
   padding: 15px 10px 50px 10px;
   width: 100%;
@@ -76,11 +102,14 @@
   max-height: calc(100% - 100px);
   overflow-y: auto;
 }
+
 @media screen and (max-width: 768px) {
   .attendance .attendance-list {
     padding: 15px 5px 70px 5px;
   }
 }
+
 .attendance .attendance-list .table {
   text-align: center;
-}/*# sourceMappingURL=attendance.css.map */
+}
+/*# sourceMappingURL=attendance.css.map */

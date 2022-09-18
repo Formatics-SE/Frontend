@@ -1,0 +1,51 @@
+.courses {
+    width: 75%;
+    height: calc(100vh - 57px);
+    min-height: 500px;
+    margin: 0 auto;
+    padding: 15px 15px 0 15px;
+    padding: 15px 1% 0 1%;
+    box-shadow: 0 0 4px 2px rgb(187, 184, 184);
+    @media screen and (max-width: 912px) {
+        width: 100%;
+        box-shadow: 0 0 0 rgb(187, 184, 184);
+        padding: 10px 20px;
+        @media screen and (max-width: 768px) {
+            padding: 10px;
+        }
+    }
+
+    .course_accordion_container {  
+        width: 100%;
+        min-height: fit-content;
+        // max-height: calc(100% - 61px);
+        overflow-y: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(23.5%, 1fr));
+        column-gap: 2%;
+        // row-gap: 2%;
+
+        @media screen and (max-width: 1024px) {
+            grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
+        }
+        @media screen and (max-width: 768px) {
+            padding: 15px 2% 0 2%;
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+.loading_toast {
+    position: absolute;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(134, 12, 114);
+    z-index: 30;
+    opacity: 100%;
+}

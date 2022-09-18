@@ -9,6 +9,7 @@ import { v4 } from 'uuid'
 import './polls.css'
 
 import PollInstance from './PollInstance'
+
 import { URL } from '../../URL'
 
 export default function Polls() {

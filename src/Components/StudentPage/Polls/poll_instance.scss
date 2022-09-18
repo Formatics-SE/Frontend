@@ -1,0 +1,116 @@
+$border_color: rgb(163, 23, 140);
+$fill_color: rgb(94, 87, 192);
+
+.poll_instance {
+    box-shadow: 0px 0px 4px 1px rgb(187, 184, 184);
+
+    // width: clamp(48%, 48%, 48%);
+    margin-bottom: 15px;
+    break-inside: avoid;
+
+    .title_and_delete_container {
+        position: relative;
+        padding: 5px 46px 5px 15px;
+        border-width: 0 0 1px 0;
+        border-style: solid;
+        border-color: $border_color;
+        font-weight: bold;
+        background-color: #e1e1e2f3;
+
+        .title {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: none;
+        }
+        .delete_icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 15px;
+            font-size: 95%;
+            color: rgb(102, 13, 13);
+        }
+    }
+
+    .options {
+        padding: 8px 10px;
+
+        .option_and_percent_votes {
+            display: flex;
+            justify-content: space-between;
+            column-gap: 5px;
+            padding: 0 5px;
+            .option {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                word-wrap: nowrap;
+            }
+            .percent_votes {
+            }
+        }
+
+        .progressbar {
+            position: relative;
+            width: 100%;
+            height: 10px;
+            background-color: rgb(224, 222, 222);
+            margin-bottom: 3px;
+            .progressbar_fill {
+                transition: 300ms width ease-in-out;
+                width: 0%;
+                height: 10px;
+                background-color: $fill_color;
+            }
+        }
+    }
+
+    .totalVotesCast {
+        border-width: 1px 0 0 0;
+        border-style: solid;
+        border-color: $border_color;
+        padding: 5px 10px;
+        border-radius: 0 0 10px 10px;
+    }
+}
+
+#modal {
+    #confirm_text {
+        padding: 0 10px;
+        font-weight: bold;
+        font-size: 110%;
+    }
+    #modal_footer {
+        justify-content: space-evenly !important;
+        #confirm_btn_d,
+        #cancel_btn_d {
+            padding: 7px 25px;
+            border-radius: 7px;
+            font-size: 103%;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            border-color: rgb(163, 23, 140);
+            width: 46%;
+            &:active {
+                background-color: white;
+            }
+            &:focus {
+                box-shadow: 0 0 0 black;
+            }
+
+            &#confirm_btn_d {
+                background-color: rgba(182, 8, 8, 0.884);
+                &:hover {
+                    background: rgb(182, 8, 8);
+                }
+            }
+            &#cancel_btn_d {
+                background-color: white;
+                color: rgb(163, 23, 140);
+                &:hover {
+                    // background: linear-gradient(120deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+                    // color: white;
+                }
+            }
+        }
+    }
+}

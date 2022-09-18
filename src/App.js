@@ -22,11 +22,6 @@ import Polls from './Components/StudentPage/Polls/Polls'
 import Marks from './Components/StudentPage/Marks/Marks'
 // end
 
-//temporary imports
-// import StudentsTable from "./Components/LecturerPage/StudentTable";
-// import RandomGroup from "./Components/LecturerPage/Groups/RandomGroup";
-// end
-
 import FloatingNav_Lect from './Components/FloatingNav_Lect/FloatingNav_Lect';
 import FloatingNav_Stud from './Components/FloatingNav_Stud/FloatingNav_Stud';
 
