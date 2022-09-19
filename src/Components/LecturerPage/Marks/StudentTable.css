@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 .marks-page-container {
+    position: relative;
     width: 75%;
     height: calc(100vh - 56px);
     min-height: 500px;
@@ -204,4 +205,18 @@ th {
         width: 100%;
         margin-right: 0;
     }
+}
+.toast-message {
+    position: absolute;
+    height: fit-content;
+    width: fit-content;
+    top: 20px;
+    left: 50%;
+    z-index: 1051;
+    transform: translateX(-50%);
+    font-weight: 500;
+    font-size: 110%;
+    color: white;
+    padding: 5px 30px;
+    text-align: center;
 }

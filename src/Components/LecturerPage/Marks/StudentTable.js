@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import StudentsDetails from "./StudentDetails";
 import data from "../dummyDB";
 import "./StudentTable.css";
-import Modal from 'react-bootstrap/Modal'
+import Toast from 'react-bootstrap/Toast'
 import Form from 'react-bootstrap/Form'
 import Table from "react-bootstrap/Table"
 import Button from "react-bootstrap/Button"
@@ -19,8 +19,8 @@ export default function StudentsTable() {
         individual_marks: 0,
         group_marks: 0
     })
-    const [showModal, setShowModal] = useState(false);
-    const [specifiedStudent, setSpecifiedStudent] = useState('No match')
+    const [showToast, setShowToast] = useState(false);
+    const [message, setMessage] = useState('No match')
 
     let student_list = students.filter(val => {
         if (match === "") {
@@ -73,8 +73,12 @@ export default function StudentsTable() {
             })
         })
 
-        setShowModal(prev => !prev)
-        setSpecifiedStudent(`Assigned ${marks.group_marks} to all students`)
+        if(marks.group_marks===0){
+            setShowToast(false)
+        }
+        else{
+        setShowToast(true)
+        setMessage(`Assigned ${marks.group_marks} to all students`)
         setMarks(prev => {
             return {
                 ...prev,
@@ -82,27 +86,28 @@ export default function StudentsTable() {
             }
         })
     }
+    }
 
     function handleIndividualMarks() {
         setStudents(prev => {
             return prev.map(student => {
                 if (student.index === match) {
-                    setShowModal(prev => !prev)
+                    setShowToast(prev => !prev)
                     let total = Number(student.mark)
                     total = Number(student.mark) + Number(marks.individual_marks)
-                    setSpecifiedStudent(`Assigned ${marks.individual_marks} to ${student.firstName} ${student.lastName}`)
+                    setMessage(`Assigned ${marks.individual_marks} to ${student.firstName} ${student.lastName}`)
                     return {
                         ...student,
                         mark: total
                     }
                 }
                 else {
-                    setShowModal(prev => !prev)
+                    setShowToast(prev => !prev)
                     return student
                 }
             })
         })
-        setSpecifiedStudent("Oops, no match!!!")
+        setMessage("Oops, no match!!!")
         setMatch("")
         setMarks(prev => {
             return {
@@ -173,7 +178,7 @@ export default function StudentsTable() {
                             {student_list}
                         </tbody>
                     </Table>
-                    <Modal
+                    {/* <Modal
                         onHide={() => setShowModal(false)}
                         show={showModal}
                         backdrop='static'
@@ -187,9 +192,22 @@ export default function StudentsTable() {
                         <Modal.Footer>
                             <Button className="closeButton" onClick={() => setShowModal(prev => !prev)}>Close</Button>
                         </Modal.Footer>
-                    </Modal>
+                    </Modal> */}
+
+                        
                 </div>
             </div>
+            <Toast show={showToast}
+                            onClose={() => setShowToast(false)}
+                            bg='secondary'
+                            autohide
+                            delay={3000}
+                            className='toast-message'
+                        >
+                            <Toast.Body>
+                                {message}
+                            </Toast.Body>
+                        </Toast>
         </section>
     )
 }
