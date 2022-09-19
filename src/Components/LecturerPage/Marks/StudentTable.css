@@ -77,9 +77,9 @@ table {
 .marks {
     height: 35px;
 }
-.marks-entry:hover {
-    background-color: white;
-    color: black;
+.marks:focus {
+    box-shadow: 0 0 5px 1px rgb(163, 23, 140);
+    border-color: rgb(226, 223, 223);
 }
 
 .all-students {
@@ -97,10 +97,20 @@ table {
     box-shadow: 0 0 0 rgb(163, 23, 140);
     /* margin-left: 50px; */
 }
+.confirm-individual:hover,
+.confirm-group:hover {
+    background: white;
+    border-color: rgb(163, 23, 140);
+    color: rgb(163, 23, 140);
+}
 
 .table-search:hover {
     background-color: white;
     color: black;
+}
+
+th {
+    padding: 8px !important;
 }
 .modal-main-container {
     margin-top: 200px;
