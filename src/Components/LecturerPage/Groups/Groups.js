@@ -13,7 +13,6 @@ export default function Groups() {
 
   const [showModal, setShowModal] = useState(false);
   const [noCreatedGroups, setNoCreatedGroups] = useState(true);
-  const [groups, setGroups] = useState([]);
 
   const [value, setValue] = React.useState(2);
 
@@ -22,15 +21,17 @@ export default function Groups() {
   }
 
   useEffect(() => {
-    const groups_session = JSON.parse(sessionStorage.getItem('groups')) // array of group objects
-    if (groups_session?.length === 0) {
-      setNoCreatedGroups(true);
-    }
-    else {
-
-    }
+    // const groups_session = JSON.parse(sessionStorage.getItem('groups'))
+    // // display no groups page if there are no groups created for this course
+    // if (groups_session?.length === 0) {
+    //   setNoCreatedGroups(true);
+    // }
+    // else {
+    //   setNoCreatedGroups(false);
+    // }
 
   }, [])
+  // end useEffect
 
   return (
     <div className="groupsPage">
@@ -41,8 +42,7 @@ export default function Groups() {
             <Button onClick={() => setShowModal(true)} className='modal_toggle_btn'>Create Groups</Button>
           </section> :
           <div className='groups_container'>
-            <RandomGroup value_prop={value} />
-
+            <RandomGroup value_prop={value} noCreatedGroups={noCreatedGroups}/>
           </div>
       }
 

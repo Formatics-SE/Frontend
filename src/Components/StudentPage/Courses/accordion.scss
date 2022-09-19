@@ -1,0 +1,142 @@
+$body_height: 220px;
+
+.accordion {
+    border-radius: 7px;
+    position: relative;
+    overflow: hidden;
+
+    .accordion_body {
+        position: relative;
+
+        .body_bg {
+            border-radius: 9px 9px 0 0;
+            width: 100%;
+            background-repeat: no-repeat;
+            aspect-ratio: 16/9;
+        }
+
+        .body_bg_overlay {
+            position: absolute;
+            width: 100%;
+            border-radius: 9px 9px 0 0;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.404);
+            z-index: 10;
+        } 
+
+        .course_code {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 5px 15px;
+            border-radius: 0 9px 0 0;
+            background-color: rgb(134, 12, 114);
+            color: white;
+            font-weight: bold;
+            letter-spacing: 0.01rem;
+            z-index: 20;
+        }
+
+        .year_semester_credits_container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 140%;
+            font-weight: bold;
+            z-index: 20;
+
+            .year_semester,
+            .credits {
+                width: 100%;
+                text-align: center;
+                // background-color: rgba(134, 12, 114, 0.459);
+            }
+            .year_semester {
+                padding-top: 7px;
+            }
+            .credits {
+                padding-bottom: 7px;
+            }
+        }
+    }
+    .dropdown {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 20px 10px 20px;
+        color: white;
+        font-weight: bold;
+        letter-spacing: 0.01rem;
+        background-color: rgba(134, 12, 114, 0.904);
+        border-radius: 0 0 9px 9px;
+        font-size: 105%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &.active {
+            .dropdown_icon {
+                color: rgb(202, 23, 172);
+            }
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+        &:active {
+            .dropdown_icon {
+                color: rgb(134, 12, 114);
+                transform: scale(1.4);
+            }
+        }
+
+        .dropdown_icon {
+            font-size: 120%;
+        }
+    }
+
+    .dropdown_menu {
+        background-color: black;
+        transition-duration: 200ms;
+        animation: 200ms height;
+        height: 0;
+        color: white;
+        font-weight: bold;
+        padding: 10px 5px;
+        opacity: 0;
+        margin: 3px 0;
+        border-radius: 7px;
+        background-color: rgb(39, 39, 38);
+        z-index: -10;
+
+        &.active {
+            height: fit-content;
+            opacity: 100%;
+        }
+
+        & > div {
+            padding: 0 15px;
+            margin-bottom: 2px;
+            border-radius: 7px;
+
+            &:hover {
+                background-color: rgb(131, 131, 127);
+                cursor: pointer;
+            }
+            &:active {
+                background-color: rgb(142, 62, 145);
+            }
+        }
+        & > div:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

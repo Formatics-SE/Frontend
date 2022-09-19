@@ -46,7 +46,7 @@
                 height: fit-content;
                 background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
                 border-color: rgb(163, 23, 140);
-                padding: 7px 25px;
+                padding: 5px 25px;
                 border-radius: 7px;
                 font-size: 103%;
                 &:focus {
@@ -62,7 +62,7 @@
         }
     }
     .attendance-list {
-        padding: 15px 10px 50px 10px;
+        padding: 15px 0 50px 0;
         width: 100%;
         min-height: fit-content;
         max-height: calc(100% - 100px);

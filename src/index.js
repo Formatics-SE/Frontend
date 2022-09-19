@@ -3,14 +3,18 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './index.css';
-import RandomGroup from "./Components/LecturerPage/Groups/RandomGroup"
-
-
+ 
 ReactDOM.render(
+<<<<<<< HEAD
       <BrowserRouter>
         <App /> 
      </BrowserRouter>
     //<RandomGroup />
+=======
+     <BrowserRouter>
+       <App /> 
+     </BrowserRouter>
+>>>>>>> ceb66884370448659168876a430cedca10b429ec
     , document.getElementById('root')
 );
 

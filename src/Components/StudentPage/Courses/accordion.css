@@ -130,11 +130,7 @@
   opacity: 0;
   margin: 3px 0;
   border-radius: 7px;
-<<<<<<< HEAD
-  background-color: rgba(134, 12, 114, 0.904);
-=======
   background-color: #272726;
->>>>>>> ceb66884370448659168876a430cedca10b429ec
   z-index: -10;
 }
 
@@ -152,11 +148,7 @@
 }
 
 .accordion .dropdown_menu > div:hover {
-<<<<<<< HEAD
-  background-color: rgb(134, 12, 114);
-=======
   background-color: #83837f;
->>>>>>> ceb66884370448659168876a430cedca10b429ec
   cursor: pointer;
 }
 

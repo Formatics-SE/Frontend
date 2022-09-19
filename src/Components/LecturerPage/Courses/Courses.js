@@ -96,15 +96,15 @@ const Courses = () => {
             navigate('/lecturer/rollcall');
             break;
           case 'marks':
-            sessionStorage.setItem('marks', data?.info);
+            sessionStorage.setItem('marks', JSON.stringify(data?.info));
             navigate('/lecturer/marks');
             break;
           case 'groups':
-            sessionStorage.setItem('groups', data?.groups);
+            sessionStorage.setItem('groups', JSON.stringify(data?.groups));
             navigate('/lecturer/groups');
             break;
           case 'polls':
-            sessionStorage.setItem('polls', data?.polls);
+            sessionStorage.setItem('polls', JSON.stringify(data?.polls));
             navigate('/lecturer/polls');
             break;
           default:

@@ -170,16 +170,16 @@ export default function Login() {
                     <div>
                         <div className='field mb-2'>
                             <FormLabel htmlFor='username'>Username</FormLabel>
-                            <Form.Control placeholder='Please enter username' id='username' />
+                            <Form.Control placeholder='username' id='username' />
                         </div>
                         <div className='field mb-2'>
                             <FormLabel htmlFor='password'>Password</FormLabel>
-                            <Form.Control type='password' placeholder='Please enter password' id='password' />
+                            <Form.Control type='password' placeholder='password' id='password' />
                         </div>
                         {user === 'L' ?
                             <div className='field'>
                                 <FormLabel htmlFor='staff_id'>Staff ID</FormLabel>
-                                <Form.Control placeholder='Please enter Staff ID' id='staff_id' />
+                                <Form.Control placeholder='Staff ID' id='staff_id' />
                             </div> : ''
                         }
                         <div>
