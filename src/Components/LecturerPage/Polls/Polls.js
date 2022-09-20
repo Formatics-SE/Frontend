@@ -95,7 +95,6 @@ export default function Polls() {
 
         setOptions([]); setOptionsCount(0);
 
-        const courseCode = JSON.parse(sessionStorage.getItem('courseCode'));
 
         //  if title and all options are provided, create a poll object and post to server
         let options = optionInputs.map(op => new Object({ option: op.value, votes: 0 }));
@@ -105,47 +104,50 @@ export default function Polls() {
         // document.querySelector('.create_poll_btn').disabled = true;
 
         //temp
-        setPolls(polls => [...polls,
-        <PollInstance key={v4()}
-            id={v4()}
-            title={title}
-            totalVotesCast={0}
-            options={options}
-            deletePoll={deletePoll}
-        />
-        ]);
+        // setPolls(polls => [...polls,
+        // <PollInstance key={v4()}
+        //     id={v4()}
+        //     title={title}
+        //     totalVotesCast={0}
+        //     options={options}
+        //     deletePoll={deletePoll}
+        // />
+        // ]);
         // end temp
 
+        // console.log('sessionStorage: ', sessionStorage.getItem('courseCode'))
 
-        // try {
-        //     const response = await fetch(`${URL}/newpoll`, {
-        //         method: 'POST',
-        //         headers: { 'content-type': 'application/json' },
-        //         body: JSON.stringify({
-        //             title: title,
-        //             options: options,
-        //             courseCode: 'COE 354'
-        //         })
-        //     });
+        const courseCode = sessionStorage.getItem('courseCode');
 
-        //     const data = await response.json();
-        //     // add created poll to array of poll instances
-        //     if (data.successful) {
-        //         setPolls(polls => [...polls,
-        //         <PollInstance key={v4()}
-        //             title={title}
-        //             totalVotesCast={0}
-        //             options={options}
-        //         />
-        //         ]);
-        //     }
+        try {
+            const response = await fetch(`${URL}/addpoll`, {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify({
+                    title: title,
+                    options: options,
+                    courseCode: courseCode
+                })
+            });
 
-        //     setShowToast(false);
-        //     document.querySelector('.create_poll_btn').disabled = false;
+            const data = await response.json();
+            // add created poll to array of poll instances
+            if (data.successful) {
+                setPolls(polls => [...polls,
+                <PollInstance key={v4()}
+                    title={title}
+                    totalVotesCast={0}
+                    options={options}
+                />
+                ]);
+            }
 
-        // } catch (error) {
-        //     console.log(error.message);
-        // }
+            setShowToast(false);
+            document.querySelector('.create_poll_btn').disabled = false;
+
+        } catch (error) {
+            console.log(error.message);
+        }
 
     }
     // end create poll
