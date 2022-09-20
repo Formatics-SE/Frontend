@@ -1,15 +1,10 @@
 .floating_nav_lect {
   position: fixed;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
   bottom: -80px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   gap: 10px;
   padding: 10px 25px;
   border-radius: 20px;
@@ -17,89 +12,65 @@
   color: rgba(34, 23, 182, 0.897);
   font-weight: bold;
   letter-spacing: 0.02em;
-  background-color: #e1e1e2f3;
-  -webkit-box-shadow: 0 0 3px 1px #666;
-          box-shadow: 0 0 3px 1px #666;
-  -webkit-transition: 200ms bottom ease-in-out;
+  background-color: rgba(225, 225, 226, 0.9529411765);
+  box-shadow: 0 0 3px 1px #666;
   transition: 200ms bottom ease-in-out;
 }
-
 .floating_nav_lect:hover {
   cursor: pointer;
 }
-
 .floating_nav_lect > div {
   border-width: 0 1px 0 0;
   border-style: solid;
   border-color: rgba(34, 23, 182, 0.897);
   padding-right: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 .floating_nav_lect > div:hover {
   color: rgba(163, 23, 140, 0.897);
 }
-
 .floating_nav_lect > div:hover .icon {
   -webkit-animation: 300ms animate ease-in-out;
           animation: 300ms animate ease-in-out;
 }
-
 @-webkit-keyframes animate {
   0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   25% {
-    -webkit-transform: rotate(15deg);
-            transform: rotate(15deg);
+    transform: rotate(15deg);
   }
   50% {
-    -webkit-transform: rotate(30deg);
-            transform: rotate(30deg);
+    transform: rotate(30deg);
   }
   75% {
-    -webkit-transform: rotate(15deg);
-            transform: rotate(15deg);
+    transform: rotate(15deg);
   }
   100% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
 }
-
 @keyframes animate {
   0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   25% {
-    -webkit-transform: rotate(15deg);
-            transform: rotate(15deg);
+    transform: rotate(15deg);
   }
   50% {
-    -webkit-transform: rotate(30deg);
-            transform: rotate(30deg);
+    transform: rotate(30deg);
   }
   75% {
-    -webkit-transform: rotate(15deg);
-            transform: rotate(15deg);
+    transform: rotate(15deg);
   }
   100% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
 }
-
 .floating_nav_lect > div span.active {
   color: rgba(163, 23, 140, 0.897);
 }
-
 .floating_nav_lect > div .icon_div {
   padding: 5px;
   margin-right: 6px;
@@ -107,45 +78,32 @@
   height: 30px;
   background-color: white;
   border-radius: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
-
 @media screen and (max-width: 768px) {
   .floating_nav_lect > div .icon_div {
     width: 40px;
     height: 40px;
   }
 }
-
 .floating_nav_lect > div .icon_div .icon {
   color: #8b8a8d;
   font-size: 120%;
   margin: 0 !important;
 }
-
 .floating_nav_lect > div .icon_div .icon.active {
   color: rgba(34, 23, 182, 0.897);
 }
-
 .floating_nav_lect > div:last-child {
   border-width: 0;
 }
-
 @media screen and (max-width: 768px) {
   .floating_nav_lect {
     min-width: 70%;
     padding: 5px 25px;
-    -webkit-box-pack: space-evenly;
-        -ms-flex-pack: space-evenly;
-            justify-content: space-evenly;
+    justify-content: space-evenly;
   }
   .floating_nav_lect > div .icon {
     font-size: 150%;
@@ -156,13 +114,10 @@
     border-width: 0;
   }
 }
-
 @media screen and (max-width: 912px) {
   .floating_nav_lect {
     min-width: 80%;
-    -webkit-box-pack: space-evenly;
-        -ms-flex-pack: space-evenly;
-            justify-content: space-evenly;
+    justify-content: space-evenly;
   }
   .floating_nav_lect > div .icon {
     font-size: 155%;
@@ -173,10 +128,8 @@
     border-width: 0;
   }
 }
-
 @media screen and (max-width: 1024px) {
   .floating_nav_lect {
     min-width: 65%;
   }
-}
-/*# sourceMappingURL=floating_nav_lect.css.map */
+}/*# sourceMappingURL=floating_nav_lect.css.map */

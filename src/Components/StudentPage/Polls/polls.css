@@ -4,45 +4,37 @@
   min-height: 500px;
   margin: 0 auto;
   padding: 10px 30px;
-  -webkit-box-shadow: 0 0 4px 2px #bbb8b8;
-          box-shadow: 0 0 4px 2px #bbb8b8;
+  box-shadow: 0 0 4px 2px rgb(187, 184, 184);
 }
-
 @media screen and (max-width: 912px) {
   .student_polls {
     width: 100%;
-    -webkit-box-shadow: 0 0 0 #bbb8b8;
-            box-shadow: 0 0 0 #bbb8b8;
+    box-shadow: 0 0 0 rgb(187, 184, 184);
     padding: 10px 20px;
   }
 }
-
 @media screen and (max-width: 912px) and (max-width: 768px) {
   .student_polls {
     padding: 10px;
   }
 }
-
 .student_polls .pending_polls_title,
 .student_polls .participated_polls_title {
   border-radius: 5px 5px 0 0;
   font-weight: bold;
-  background-color: #e1e1e2f3;
+  background-color: rgba(225, 225, 226, 0.9529411765);
   padding: 5px 10px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
-
 .student_polls .pending_polls_body,
 .student_polls .participated_polls_body {
   width: 100%;
   padding: 10px;
   border-radius: 0 5px 5px 5px;
-  border: 1px solid #e1e1e2f3;
+  border: 1px solid rgba(225, 225, 226, 0.9529411765);
 }
-
 .student_polls .pending_polls {
   margin-bottom: 20px;
-}
-/*# sourceMappingURL=polls.css.map */
+}/*# sourceMappingURL=polls.css.map */

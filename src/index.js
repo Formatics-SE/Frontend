@@ -5,16 +5,9 @@ import App from './App';
 import './index.css';
  
 ReactDOM.render(
-<<<<<<< HEAD
-      <BrowserRouter>
-        <App /> 
-     </BrowserRouter>
-    //<RandomGroup />
-=======
      <BrowserRouter>
        <App /> 
      </BrowserRouter>
->>>>>>> ceb66884370448659168876a430cedca10b429ec
     , document.getElementById('root')
 );
 
