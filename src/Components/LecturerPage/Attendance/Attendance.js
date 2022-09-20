@@ -10,6 +10,7 @@ import { URL } from '../../URL'
 export default function Attendance() {
 
     const [attendanceRows, setAttendanceRows] = useState([])
+    // holds the updated attendance objects for students
     const [attendanceUpdate, setAttendanceUpdate] = useState([])
     const [courseName, setCourseName] = useState('')
     const [courseCode, setCourseCode] = useState('')

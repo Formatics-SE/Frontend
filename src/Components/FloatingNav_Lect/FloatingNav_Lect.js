@@ -23,15 +23,15 @@ export default function FloatingNav() {
 
     // /* rewriting localStorage's setItem method in order to get current page 
     //  * value whenever it changes */
-    // localStorage.setItem = (key, value) => {
-    //     const event = new Event('monitorItemChange');
-    //     event.key = key;
-    //     event.value = value;
-    //     document.dispatchEvent(event);
-    // }
-    // document.addEventListener('monitorItemChange', (e) => {
-    //     setCurrentPage(e.value);
-    // })
+    localStorage.setItem = (key, value) => {
+        const event = new Event('monitorItemChange');
+        event.key = key;
+        event.value = value;
+        document.dispatchEvent(event);
+    }
+    document.addEventListener('monitorItemChange', (e) => {
+        setCurrentPage(e.value);
+    })
     // // end
 
     // on refresh or page load, get the current page from session storage

@@ -58,11 +58,12 @@ export default function Login() {
             });
 
             const data = await response.json();
-            const assignedCourses = data.assignedCourses;
-
-            if (!assignedCourses) {
-                localStorage.setItem('staff_id', staff_id);
-                localStorage.setItem('assignedCourses', JSON.stringify(assignedCourses));
+            const lecturerData = data.lecturerData;
+            
+            if (lecturerData) {
+                // sessionStorage.setItem('staff_id', staff_id);
+                sessionStorage.setItem('username', JSON.stringify(lecturerData.username));
+                sessionStorage.setItem('assignedCourses', JSON.stringify(lecturerData.assignedCourses));
                 navigate('/lecturer/courses');
             }
             else {  // invalid details
@@ -93,11 +94,13 @@ export default function Login() {
             const data = await response.json();
             const studentData = data.studentData;
 
-            if (!studentData) {
+            if (studentData) {
                 const indexNumber = studentData.indexNumber;
+                const username = studentData.username;
                 const registeredCourses = studentData.registeredCourses;
-                localStorage.setItem('indexNumber', indexNumber);
-                localStorage.setItem('registeredCourses', JSON.stringify(registeredCourses));
+                sessionStorage.setItem('indexNumber', indexNumber);
+                sessionStorage.setItem('username', username);
+                sessionStorage.setItem('registeredCourses', JSON.stringify(registeredCourses));
                 navigate('/student/courses');
             }
             else {  // invalid details

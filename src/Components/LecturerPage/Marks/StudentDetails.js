@@ -5,9 +5,9 @@ export default function StudentsDetails(props){
 
     return(
         <tr>
-            <td>{props.item.firstName} {props.item.lastName}</td>
-            <td id={props.item.index}>{props.item.index}</td>
-            <td>{props.item.mark}</td>
+            <td>{props.student.name}</td>
+            <td id={props.student.indexNumber}>{props.student.indexNumber}</td>
+            <td>{props.student.totalMarks}</td>
         </tr>
     )
 }

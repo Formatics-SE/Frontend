@@ -13,30 +13,32 @@ const Courses = () => {
 
   const [BG_Images, setBG_Images] = useState([bg1, bg2]);
   const [Courses, setCourses] = useState([]);
-  const [showToast, setShowToast] = useState(false)   // toast for a loading animation
+  const [showToast, setShowToast] = useState(false)   // toggle for toast used for a loading animation
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    // const courses_session = JOSN.parse(sessionStorage.getItem('courses'));
+    const courses_session = JSON.parse(sessionStorage.getItem('assignedCourses'));
+    console.log('Courses assignedCourses: ', courses_session)
+
 
     // temp
-    const courses_session = [
-      {
-        courseCode: 'COE 354',
-        courseName: 'Software Engineering',
-        year: 3,
-        semester: 2,
-        credits: 4
-      },
-      {
-        courseCode: 'COE 358',
-        courseName: 'Operating Engineering',
-        year: 3,
-        semester: 2,
-        credits: 3
-      }
-    ]
+    // const courses_session = [
+    //   {
+    //     courseCode: 'COE 354',
+    //     courseName: 'Software Engineering',
+    //     year: 3,
+    //     semester: 2,
+    //     credits: 4
+    //   },
+    //   {
+    //     courseCode: 'COE 358',
+    //     courseName: 'Operating Engineering',
+    //     year: 3,
+    //     semester: 2,
+    //     credits: 3
+    //   }
+    // ]
 
     // keeps track of the background image to parse next to accordion
     let bg_index = -1;
@@ -88,29 +90,32 @@ const Courses = () => {
       const data = await response.json();
       setShowToast(false);
       if (data.info) {
-        // switch between the value of path to determine the storage key for sessionStorage
+        // Switch between the value of path to determine the storage key for sessionStorage.
+        // The value set by localStorage.setItem is retrieved by the floating nav component and highlights the approrpiate page
+        // as active.
         switch (path) {
           case 'attendance':
-            console.log('atInfo: ', data.info)
             sessionStorage.setItem('attendanceInfo', JSON.stringify(data.info));
+            localStorage.setItem('currentPage', 'R');
             navigate('/lecturer/rollcall');
             break;
           case 'marks':
             sessionStorage.setItem('marks', JSON.stringify(data?.info));
+            localStorage.setItem('currentPage', 'M');
             navigate('/lecturer/marks');
             break;
           case 'groups':
             sessionStorage.setItem('groups', JSON.stringify(data?.groups));
+            localStorage.setItem('currentPage', 'G'); 
             navigate('/lecturer/groups');
             break;
           case 'polls':
             sessionStorage.setItem('polls', JSON.stringify(data?.polls));
+            localStorage.setItem('currentPage', 'P');
             navigate('/lecturer/polls');
             break;
-          default:
-            console.log('none of the above')
         }
-      } 
+      }
 
     } catch (error) {
       console.log(error.message);
