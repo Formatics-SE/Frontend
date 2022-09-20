@@ -57,7 +57,7 @@ const Courses = () => {
       case 'groups':
         urlPath = 'fetchlecturergroups'; break;
       case 'polls':
-        urlPath = 'polls'; break;
+        urlPath = 'fetchpolls'; break;
     }
 
     try {

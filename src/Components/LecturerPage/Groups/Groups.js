@@ -74,10 +74,14 @@ export default function Groups() {
       </div>
       {
         noCreatedGroups ?
-          <section className="noGroups">
-            <div>No groups have been created for this course</div>
-            <Button onClick={() => setShowModal(true)} className='modal_toggle_btn'>Create Groups</Button>
-          </section> :
+          <>
+            <div className='create_groups_header'>
+              <Button className='create_groups_btn'
+                onClick={() => setShowModal(true)}>Create Groups
+            </Button>
+            </div>
+            <div className="no_groups_message">No groups have been created for this course</div>
+          </> :
           <div className='groups_container'>
             <RandomGroup
               value_prop={value}
