@@ -30,9 +30,17 @@
   -moz-column-gap: 2%;
        column-gap: 2%;
 }
+<<<<<<< HEAD
 @media screen and (max-width: 1024px) {
   .courses .course_accordion_container {
     grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
+=======
+
+@media screen and (max-width: 1200px) {
+  .courses .course_accordion_container {
+    -ms-grid-columns: (minmax(32.6667%, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(32.6667%, 1fr));
+>>>>>>> c3cf435dc5cb0764b5cb63a8c75515bbf6f0e5e7
   }
 }
 @media screen and (max-width: 768px) {
@@ -53,8 +61,15 @@
   padding: 20px;
   top: 20px;
   left: 50%;
+<<<<<<< HEAD
   transform: translateX(-50%);
   color: rgb(134, 12, 114);
   z-index: 30;
+=======
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  color: white !important;
+  z-index: 50;
+>>>>>>> c3cf435dc5cb0764b5cb63a8c75515bbf6f0e5e7
   opacity: 100%;
 }/*# sourceMappingURL=courses.css.map */

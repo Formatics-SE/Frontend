@@ -1,4 +1,5 @@
 .lecturer_polls {
+  position: relative;
   width: 75%;
   height: calc(100vh - 57px);
   min-height: 500px;
@@ -18,6 +19,29 @@
     padding: 10px;
   }
 }
+<<<<<<< HEAD
+=======
+
+.lecturer_polls .no_polls_message {
+  position: absolute;
+  top: 46%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 15px 25px;
+  background-color: #f2f2f7f3;
+  font-size: 140%;
+  text-align: center;
+  -webkit-box-shadow: 0 0 3px #bdbbbc;
+          box-shadow: 0 0 3px #bdbbbc;
+}
+
+>>>>>>> c3cf435dc5cb0764b5cb63a8c75515bbf6f0e5e7
 .lecturer_polls .loading_toast {
   position: absolute;
   width: -webkit-fit-content;
@@ -44,9 +68,15 @@
   }
 }
 .lecturer_polls .create_polls_header div .create_poll_btn {
+<<<<<<< HEAD
   background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
   border-color: rgb(163, 23, 140);
   padding: 7px 25px;
+=======
+  background: linear-gradient(140deg, #a3178c, rgba(34, 23, 182, 0.726));
+  border-color: #a3178c;
+  padding: 5px 25px;
+>>>>>>> c3cf435dc5cb0764b5cb63a8c75515bbf6f0e5e7
   border-radius: 7px;
   font-size: 103%;
 }

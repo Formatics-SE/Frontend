@@ -3,121 +3,189 @@ import StudentsDetails from "./StudentDetails";
 import data from "../dummyDB";
 import "./StudentTable.css";
 import Toast from 'react-bootstrap/Toast'
+import Spinner from "react-bootstrap/Spinner"
 import Form from 'react-bootstrap/Form'
 import Table from "react-bootstrap/Table"
 import Button from "react-bootstrap/Button"
 import "bootstrap/dist/css/bootstrap.min.css"
+
+import { URL } from "../../URL"
 
 export default function StudentsTable() {
 
     const [courseName, setCourseName] = useState('')
     const [courseCode, setCourseCode] = useState('')
 
-    const [students, setStudents] = useState(data)
+    const [students, setStudents] = useState([])
     const [match, setMatch] = useState('')
+
+    const [individualMarksFieldValue, setIndividualMarksFieldValue] = useState(0)
+    const [allMarksFieldValue, setAllMarksFieldValue] = useState(0)
+
     const [marks, setMarks] = useState({
         individual_marks: 0,
         group_marks: 0
     })
-    const [showToast, setShowToast] = useState(false);
+    const [showMessageToast, setShowMessageToast] = useState(false);
+    const [showLoadingToast, setShowLoadingToast] = useState(false);
     const [message, setMessage] = useState('No match')
+    const [toastVariant, setToastVariant] = useState('success')
 
-    let student_list = students.filter(val => {
-        if (match === "") {
-            return val
-        }
-        else if (val.index.includes(match)) {
-            return val
-        }
-    }).map(item => {
+    let student_list = students?.map((student, index) => {
         return (
             <StudentsDetails
-                key={item.id}
-                item={item}
+                key={index}
+                student={student}
             />
         )
     })
 
-    // useEffect(() => {
-    //     const attendanceInfo_session = JSON.parse(sessionStorage.getItem('attendanceInfo'));
-    //     const students = attendanceInfo_session?.registeredStudents;
+    // let student_list_filtered = students.filter(student => {
+    //     let regexp = new RegExp(`${match}`)
+    //     if (student.indexNumber.toString().search(regexp) != -1) {
+    //         return true
+    //     }
+    //     else {
+    //         return false
+    //     }
+    // }).map((student, index) => {
+    //     return (
+    //         <StudentsDetails
+    //             key={index}
+    //             student={student}
+    //         />
+    //     )
+    // })
 
-    //     setCourseName(attendanceInfo_session?.courseName)
-    //     setCourseCode(attendanceInfo_session?.courseCode)
+    useEffect(async () => {
+        let marks_session = JSON.parse(sessionStorage.getItem('marks'));
+        // if marks_session is null, the page was navigate to either by url or the floating nav, hence fetch the data 
+        if (!marks_session) {
+            setShowLoadingToast(true);
+            try {
+                const response = await fetch(`${URL}/fetchlecturermarks`, {
+                    method: 'POST',
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify({ courseCode: 'COE 354' })
+                });
 
-    // }, [])
+                const data = await response.json();
+                setShowLoadingToast(false);
 
+                marks_session = data?.info;
+                sessionStorage.setItem('marks', JSON.stringify(data?.info));
+            }
+            catch (error) {
+                console.log(error.message)
+            }
+        }
+        // make sure the active page on  the flaoting nav is the Marks page
+        localStorage.setItem('currentPage', 'M');
 
+        setCourseName(marks_session?.courseName)
+        setCourseCode(marks_session?.courseCode)
+        setStudents(marks_session?.registeredStudents.map((student, index) => {
+            let totalMarks = 0;
+            // calculate the total marks in the marksArray : [{marks: ..., date: ...}]
+            student.marksArray.map(marksObj => {
+                totalMarks += marksObj.marks;
+            })
+            return {
+                key: { index },
+                name: student.name,
+                indexNumber: student.indexNumber,
+                currentDayMarks: 0,
+                totalMarks: totalMarks
+            }
+        }))
+
+    }, [])
 
     function handleSearch(event) {
         setMatch(event.target.value)
     }
-    function handleMarksEntry(event) {
-        setMarks(prev => {
-            return {
-                ...prev,
-                [event.target.name]: event.target.value
-            }
-        })
-
-    }
 
     function handleAllStudentsMarks() {
+        let inputMarks = Number(document.querySelector('.all_marks_field').value);
         setStudents(prev => {
             return prev.map(student => {
-                const total = Number(student.mark) + Number(marks.group_marks)
-                return {
-                    ...student,
-                    mark: total
-                }
+                student.currentDayMarks += inputMarks;
+                student.totalMarks += inputMarks;
+                return student;
             })
         })
-
-        if(marks.group_marks===0){
-            setShowToast(false)
+        if (inputMarks === 0) {
+            setShowMessageToast(false)
         }
-        else{
-        setShowToast(true)
-        setMessage(`Assigned ${marks.group_marks} to all students`)
-        setMarks(prev => {
-            return {
-                ...prev,
-                group_marks: 0
-            }
-        })
-    }
+        else {
+            setShowMessageToast(true)
+            setToastVariant('success')
+            setMessage(`Assigned ${inputMarks} to all students`)
+        }
     }
 
     function handleIndividualMarks() {
+        let studentName;
+        let inputMarks = Number(document.querySelector('.individual_marks_field').value);
+        let foundMatch = false;
         setStudents(prev => {
             return prev.map(student => {
-                if (student.index === match) {
-                    setShowToast(prev => !prev)
-                    let total = Number(student.mark)
-                    total = Number(student.mark) + Number(marks.individual_marks)
-                    setMessage(`Assigned ${marks.individual_marks} to ${student.firstName} ${student.lastName}`)
-                    return {
-                        ...student,
-                        mark: total
-                    }
+                studentName = student.name;
+                if (student.indexNumber.toString() === match && (Number(inputMarks) > 0)) {
+                    foundMatch = true;
+                    student.currentDayMarks += inputMarks;
+                    student.totalMarks += inputMarks;
+                    return student;
                 }
                 else {
-                    setShowToast(prev => !prev)
-                    return student
+                    foundMatch = false;
+                    return student;
                 }
             })
         })
-        setMessage("Oops, no match!!!")
-        setMatch("")
-        setMarks(prev => {
-            return {
-                ...prev,
-                individual_marks: 0
-            }
-        })
-
-
+        if (foundMatch) {
+            setMessage(`Assigned ${inputMarks} to ${studentName}`);
+            setToastVariant('success')
+        }
+        else {
+            setMessage("No match found !")
+            setToastVariant('danger')
+        }
+        setShowMessageToast(true)
     }
+
+    async function handleSubmit() {
+        setShowLoadingToast(true);
+        document.querySelector('.submit-form').disabled = true;
+        try {
+            const response = await fetch(`${URL}/updatemarks`, {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify({
+                    courseCode: 'COE 354', //sessionStorage.getItem('courseCode'),
+                    marksData: students
+                })
+            })
+
+            const data = await response.json();
+            setShowLoadingToast(false);
+            document.querySelector('.submit-form').disabled = false;
+
+            if (data.successful) {
+                setMessage('Successfully applied updates !')
+                setToastVariant('success')
+            }
+            else {
+                setMessage('Could not apply updates !')
+                setToastVariant('danger')
+            }
+            setShowMessageToast(true);
+
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+    // end submit
 
     return (
         <section className='marks-page-container'>
@@ -128,6 +196,7 @@ export default function StudentsTable() {
                 <div className="search">
                     <Form.Control type="search"
                         placeholder="Search by index number"
+                        type="number"
                         name="search_sname"
                         className="table-search"
                         value={match}
@@ -135,11 +204,12 @@ export default function StudentsTable() {
                 </div>
 
                 <div className="individual"><Form.Control type="number"
-                    className="marks"
+                    className="marks individual_marks_field"
                     id="individual"
                     name="individual_marks"
-                    value={marks.individual_marks}
-                    onChange={handleMarksEntry} />
+                    value={individualMarksFieldValue}
+                    onChange={(e) => setIndividualMarksFieldValue(e.target.value)}
+                />
                     <Button type="submit"
                         id="input_marks"
                         onClick={handleIndividualMarks}
@@ -150,16 +220,24 @@ export default function StudentsTable() {
 
                 <div className="all-students">
                     <Form.Control type="number"
-                        className="marks"
+                        className="marks all_marks_field"
                         id="group"
                         name="group_marks"
-                        value={marks.group_marks}
-                        onChange={handleMarksEntry} />
+                        value={allMarksFieldValue}
+                        onChange={(e) => setAllMarksFieldValue(e.target.value)}
+                    />
                     <Button type="submit"
                         id="input_marks"
                         onClick={handleAllStudentsMarks}
                         className="confirm-group">
                         Assign to all
+                    </Button>
+                </div>
+                <div>
+                    <Button type="submit"
+                        onClick={handleSubmit}
+                        className="submit-form">
+                        Submit
                     </Button>
                 </div>
             </div>
@@ -176,38 +254,42 @@ export default function StudentsTable() {
                         </thead>
                         <tbody>
                             {student_list}
+                            {/* {student_list_filtered.length === 0 ?
+                                student_list :
+                                student_list_filtered
+                            } */}
                         </tbody>
                     </Table>
-                    {/* <Modal
-                        onHide={() => setShowModal(false)}
-                        show={showModal}
-                        backdrop='static'
-                        className='modal-main-container' >
-                        <Modal.Header closeButton>
-                            <Modal.Title className="modal-title">Confirm</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body className="my-modal-body">
-                            <div>{specifiedStudent}</div>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button className="closeButton" onClick={() => setShowModal(prev => !prev)}>Close</Button>
-                        </Modal.Footer>
-                    </Modal> */}
-
-                        
                 </div>
             </div>
-            <Toast show={showToast}
-                            onClose={() => setShowToast(false)}
-                            bg='secondary'
-                            autohide
-                            delay={3000}
-                            className='toast-message'
-                        >
-                            <Toast.Body>
-                                {message}
-                            </Toast.Body>
-                        </Toast>
+
+            {/* toasts */}
+            <Toast show={showMessageToast}
+                onClose={() => setShowMessageToast(false)}
+                bg={toastVariant}
+                autohide
+                delay={3000}
+                className='toast-message'
+            >
+                <Toast.Body>
+                    {message}
+                </Toast.Body>
+            </Toast>
+
+            <Toast show={showLoadingToast}
+                onClose={() => setShowLoadingToast(false)}
+                bg='secondary'
+                autohide
+                delay={3000}
+                className='loading_toast'
+            >
+                <Toast.Body>
+                    <Spinner className='spinner'
+                        animation='border'
+                        size='md'
+                    />
+                </Toast.Body>
+            </Toast>
         </section>
     )
 }

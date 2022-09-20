@@ -1,24 +1,55 @@
 import React, { useState, useEffect } from 'react'
 import Form from 'react-bootstrap/Form'
-import Table from 'react-bootstrap/Table'
-import Row from './Row'
+import Toast from 'react-bootstrap/Toast'
+import Spinner from 'react-bootstrap/Spinner'
 import Button from 'react-bootstrap/Button'
-import './attendance.css'
+import Table from 'react-bootstrap/Table'
 
+import './attendance.css'
+import Row from './Row'
 import { URL } from '../../URL'
 
 export default function Attendance() {
 
     const [attendanceRows, setAttendanceRows] = useState([])
+    // holds the updated attendance objects for students
     const [attendanceUpdate, setAttendanceUpdate] = useState([])
     const [courseName, setCourseName] = useState('')
     const [courseCode, setCourseCode] = useState('')
     const [maxAbsentStrikes, setMaxAbsentStrikes] = useState(0)
 
-    useEffect(() => {
-        const attendanceInfo_session = JSON.parse(sessionStorage.getItem('attendanceInfo'));
-        const students = attendanceInfo_session?.registeredStudents;
+    const [showMessageToast, setShowMessageToast] = useState(false);
+    const [showLoadingToast, setShowLoadingToast] = useState(false);
+    const [message, setMessage] = useState('')
+    const [toastVariant, setToastVariant] = useState('success')
 
+    useEffect(async () => {
+        let attendanceInfo_session = JSON.parse(sessionStorage.getItem('attendance'));
+        // if attendanceInfo_session is null, the page was navigate to either by url or the floating nav, hence fetch the data 
+        if (!attendanceInfo_session) {
+            setShowLoadingToast(true);
+            try {
+                const response = await fetch(`${URL}/fetchattendance`, {
+                    method: 'POST',
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
+                });
+
+                const data = await response.json();
+                setShowLoadingToast(false);
+
+                attendanceInfo_session = data?.info;
+                // save the fetched data in session
+                sessionStorage.setItem('attendance', JSON.stringify(data?.info));
+            }
+            catch (error) {
+                console.log(error.message)
+            }
+        }
+        // make sure the active page on  the floating nav is the Attendance page
+        localStorage.setItem('currentPage', 'R');
+
+        const students = attendanceInfo_session?.registeredStudents;
         setCourseName(attendanceInfo_session?.courseName)
         setCourseCode(attendanceInfo_session?.courseCode)
         setMaxAbsentStrikes(attendanceInfo_session?.maxAbsentStrikes)
@@ -58,28 +89,39 @@ export default function Attendance() {
     // post attendance data to server
     async function handleSubmit(e) {
         const courseCode = sessionStorage.getItem('courseCode');
+        setShowLoadingToast(true);
+        e.target.disabled = true;
         try {
-            const response = await fetch(`${URL}/attendance`, {
+            const response = await fetch(`${URL}/updateattendance`, {
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify({
                     courseCode: courseCode,
-                    attendanceData: attendanceUpdate
+                    attendanceData: attendanceUpdate,
+                    maxAbsentStrikes: maxAbsentStrikes
                 })
             });
 
             const data = await response.json();
-            if (data.successful) {
+            e.target.disabled = false;
+            setShowLoadingToast(false);
 
+            if (data.successful) {
+                setMessage('Successfully applied updates !')
+                setToastVariant('success')
             }
             else {
-
+                setMessage('Could not apply updates !')
+                setToastVariant('danger')
             }
+            setShowMessageToast(true);
+
         } catch (error) {
             console.log(error)
         }
 
     }
+    // end submit
 
     function handleAttendanceUpdate(indexNumber, attendance) {
         setAttendanceUpdate(prev => prev.map(obj => {
@@ -139,6 +181,34 @@ export default function Attendance() {
                     <tbody>{attendanceRows}</tbody>
                 </Table>
             </div>
+
+            {/* toasts */}
+            <Toast show={showMessageToast}
+                onClose={() => setShowMessageToast(false)}
+                bg={toastVariant}
+                autohide
+                delay={3000}
+                className='toast-message'
+            >
+                <Toast.Body>
+                    {message}
+                </Toast.Body>
+            </Toast>
+
+            <Toast show={showLoadingToast}
+                onClose={() => setShowMessageToast(false)}
+                bg='secondary'
+                autohide
+                delay={3000}
+                className='loading_toast'
+            >
+                <Toast.Body>
+                    <Spinner className='spinner'
+                        animation='border'
+                        size='md'
+                    />
+                </Toast.Body>
+            </Toast>
         </div>
     )
 }

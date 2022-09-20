@@ -75,9 +75,9 @@ export default function RandomGroup(props) {
 
     return (
         <section className="random-groups-container">
-            <div className='course-info'>
+            {/* <div className='course-info'>
                 {props.courseCode}: {props.courseName}
-            </div>
+            </div> */}
             <div className="heading-container">
                 <div className="groupsof-and-groupsof-input">Groups of:
                     <Form.Control type="number" className="input-field" min={2} onChange={handleChange} />

@@ -18,29 +18,11 @@ const Courses = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // const courses_session = JOSN.parse(sessionStorage.getItem('courses'));
-
-    // temp
-    const courses_session = [
-      {
-        courseCode: 'COE 354',
-        courseName: 'Software Engineering',
-        year: 3,
-        semester: 2,
-        credits: 4
-      },
-      {
-        courseCode: 'COE 358',
-        courseName: 'Operating Engineering',
-        year: 3,
-        semester: 2,
-        credits: 3
-      }
-    ]
+    const courses_session = JSON.parse(sessionStorage.getItem('registeredCourses'));
 
     // keeps track of the background image to parse next to accordion
     let bg_index = -1;
-    setCourses(courses_session.map((courseData, index) => {
+    setCourses(courses_session?.map((courseData, index) => {
       ++bg_index;
       if (bg_index === BG_Images.length) { bg_index = 0 }
       return (
@@ -48,8 +30,8 @@ const Courses = () => {
           id={index}
           courseCode={courseData.courseCode}
           courseName={courseData.courseName}
-          year={courseData.year}
-          semester={courseData.semester}
+          year={sessionStorage.getItem('year')}
+          semester={sessionStorage.getItem('semester')}
           credits={courseData.credits}
           bg={BG_Images[bg_index]}
           handleSubmit={handleSubmit}

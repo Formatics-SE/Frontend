@@ -30,7 +30,7 @@
     margin-top: 10px;
 }
 .main-container {
-    padding-bottom: 70px;
+    padding: 5px 0 70px 0;
     width: 100%;
     min-height: fit-content;
     max-height: calc(100% - 100px);
@@ -42,7 +42,8 @@ table {
 .input-container {
     display: flex;
     justify-content: space-between;
-    /* align-items: center; */
+    padding-bottom: 10px;
+    box-shadow: 0 2px 3px -2px rgb(187, 184, 184);
 }
 .table-search {
     width: 120%;
@@ -56,7 +57,8 @@ table {
     color: black;
 }
 .confirm-group,
-.confirm-individual {
+.confirm-individual,
+.submit-form {
     height: fit-content;
     background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
     border-color: rgb(163, 23, 140);
@@ -126,29 +128,6 @@ th {
     font-family: "Poppins";
     font-size: 20px;
 }
-.closeButton {
-    background: linear-gradient(120deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
-    margin: 15px 10px 10px 10px;
-    padding: 7px 25px;
-    width: 96%;
-    border-radius: 7px;
-    border-color: rgb(163, 23, 140);
-    font-size: 103%;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-}
-.closeButton:hover {
-    background: white;
-    color: rgb(163, 23, 140);
-    border-color: rgb(163, 23, 140);
-}
-.closeButton:active {
-    background-color: rgb(163, 23, 140);
-    color: white;
-}
-.closeButton:focus {
-    box-shadow: 0 0 0 black;
-}
 
 @media screen and (max-width: 1091px) {
     .table-container {
@@ -204,6 +183,10 @@ th {
     .confirm-group {
         width: 100%;
         margin-right: 0;
+    }
+    .submit-form {
+        margin-top: 5px;
+        width: 100%;
     }
 }
 .toast-message {

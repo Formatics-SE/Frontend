@@ -12,7 +12,12 @@ import { URL } from '../../URL'
 export default function Groups() {
 
   const [showModal, setShowModal] = useState(false);
+  const [showLoadingToast, setShowLoadingToast] = useState(false);
+
   const [noCreatedGroups, setNoCreatedGroups] = useState(true);
+
+  const [courseName, setCourseName] = useState('')
+  const [courseCode, setCourseCode] = useState('')
 
   const [value, setValue] = React.useState(2);
 
@@ -20,29 +25,68 @@ export default function Groups() {
     setValue(event.target.value ? Number(event.target.value) : event.target.value)
   }
 
-  useEffect(() => {
-    // const groups_session = JSON.parse(sessionStorage.getItem('groups'))
+  useEffect(async () => {
+    let groups_session = JSON.parse(sessionStorage.getItem('groups'))
+    console.log('groups_session: ', groups_session)
+    if (!groups_session) {
+      setShowLoadingToast(true);
+      try {
+        const response = await fetch(`${URL}/fetchlecturergroups`, {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
+        });
+
+        const data = await response.json();
+        setShowLoadingToast(false);
+
+        groups_session = data?.info;
+        // save the fetched data in session
+        sessionStorage.setItem('groups', JSON.stringify(data?.info));
+      }
+      catch (error) {
+        console.log(error.message)
+      }
+    }
+    // // make sure the active page on  the floating nav is the Attendance page
+    localStorage.setItem('currentPage', 'G');
+
     // // display no groups page if there are no groups created for this course
-    // if (groups_session?.length === 0) {
-    //   setNoCreatedGroups(true);
-    // }
-    // else {
-    //   setNoCreatedGroups(false);
-    // }
+    if (groups_session?.groups?.length === 0) {
+      console.log('no groups')
+      setNoCreatedGroups(true);
+    }
+    else {
+      console.log('groups')
+      setNoCreatedGroups(false);
+    }
+
+    setCourseName(groups_session?.courseName)
+    setCourseCode(groups_session?.courseCode)
 
   }, [])
   // end useEffect
 
   return (
     <div className="groupsPage">
+      <div className='course-info'>
+        {courseCode}: {courseName}
+      </div>
       {
         noCreatedGroups ?
-          <section className="noGroups">
-            <div>No groups have been created for this course</div>
-            <Button onClick={() => setShowModal(true)} className='modal_toggle_btn'>Create Groups</Button>
-          </section> :
+          <>
+            <div className='create_groups_header'>
+              <Button className='create_groups_btn'
+                onClick={() => setShowModal(true)}>Create Groups
+            </Button>
+            </div>
+            <div className="no_groups_message">No groups have been created for this course</div>
+          </> :
           <div className='groups_container'>
-            <RandomGroup value_prop={value} noCreatedGroups={noCreatedGroups}/>
+            <RandomGroup
+              value_prop={value}
+              noCreatedGroups={noCreatedGroups}
+            />
           </div>
       }
 

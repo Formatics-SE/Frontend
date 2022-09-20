@@ -17,9 +17,15 @@ export default function Polls() {
     const [showModal, setShowModal] = useState(false)
     const [showSpinner, setShowSpinner] = useState(false)
     const [showToast, setShowToast] = useState(false)
+    const [showLoadingToast, setShowLoadingToast] = useState(false);
+
+    const [courseName, setCourseName] = useState('')
+    const [courseCode, setCourseCode] = useState('')
+
     const [polls, setPolls] = useState([])
+    const [noCreatedPolls, setNoCreatedPolls] = useState([])
     // hold v4 value for 'key' value and id prop
-    const [v4_s, setV4_s] = useState('')  
+    const [v4_s, setV4_s] = useState('')
 
     const [optionsCount, setOptionsCount] = useState(0)
 
@@ -89,7 +95,6 @@ export default function Polls() {
 
         setOptions([]); setOptionsCount(0);
 
-        const courseCode = JSON.parse(sessionStorage.getItem('courseCode'));
 
         //  if title and all options are provided, create a poll object and post to server
         let options = optionInputs.map(op => new Object({ option: op.value, votes: 0 }));
@@ -99,47 +104,50 @@ export default function Polls() {
         // document.querySelector('.create_poll_btn').disabled = true;
 
         //temp
-        setPolls(polls => [...polls,
-        <PollInstance key={v4()}
-            id={v4()}
-            title={title}
-            totalVotesCast={0}
-            options={options}
-            deletePoll={deletePoll}
-        />
-        ]);
+        // setPolls(polls => [...polls,
+        // <PollInstance key={v4()}
+        //     id={v4()}
+        //     title={title}
+        //     totalVotesCast={0}
+        //     options={options}
+        //     deletePoll={deletePoll}
+        // />
+        // ]);
         // end temp
 
+        // console.log('sessionStorage: ', sessionStorage.getItem('courseCode'))
 
-        // try {
-        //     const response = await fetch(`${URL}/newpoll`, {
-        //         method: 'POST',
-        //         headers: { 'content-type': 'application/json' },
-        //         body: JSON.stringify({
-        //             title: title,
-        //             options: options,
-        //             courseCode: 'COE 354'
-        //         })
-        //     });
+        const courseCode = sessionStorage.getItem('courseCode');
 
-        //     const data = await response.json();
-        //     // add created poll to array of poll instances
-        //     if (data.successful) {
-        //         setPolls(polls => [...polls,
-        //         <PollInstance key={v4()}
-        //             title={title}
-        //             totalVotesCast={0}
-        //             options={options}
-        //         />
-        //         ]);
-        //     }
+        try {
+            const response = await fetch(`${URL}/addpoll`, {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify({
+                    title: title,
+                    options: options,
+                    courseCode: courseCode
+                })
+            });
 
-        //     setShowToast(false);
-        //     document.querySelector('.create_poll_btn').disabled = false;
+            const data = await response.json();
+            // add created poll to array of poll instances
+            if (data.successful) {
+                setPolls(polls => [...polls,
+                <PollInstance key={v4()}
+                    title={title}
+                    totalVotesCast={0}
+                    options={options}
+                />
+                ]);
+            }
 
-        // } catch (error) {
-        //     console.log(error.message);
-        // }
+            setShowToast(false);
+            document.querySelector('.create_poll_btn').disabled = false;
+
+        } catch (error) {
+            console.log(error.message);
+        }
 
     }
     // end create poll
@@ -157,28 +165,86 @@ export default function Polls() {
         return random;
     }
 
-    useEffect(() => {
-        // const polls_session = JSON.parse(sessionStorage.getItem('polls')) // array of poll objects
+    useEffect(async () => {
+        let polls_session = JSON.parse(sessionStorage.getItem('polls')) // array of poll objects
 
         // console.log('polls_session: ', polls_session)
+        // if polls_session is null, the page was navigate to either by url or the floating nav, hence fetch the data 
+        if (!polls_session) {
+            setShowLoadingToast(true);
+            try {
+                const response = await fetch(`${URL}/fetchpolls`, {
+                    method: 'POST',
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
+                });
 
+                const data = await response.json();
+                setShowLoadingToast(false);
 
-        // setPolls(polls_session?.map(obj => {
-        //     return (
-        //         <PollInstance
-        //             title={obj?.title}
-        //             totalVotesCast={obj?.totalVotesCast}
-        //             options={obj.options}
-        //         />
-        //     )
-        // }));
+                polls_session = data?.info;
+                // save the fetched data in session
+                sessionStorage.setItem('polls', JSON.stringify(data?.info));
+            }
+            catch (error) {
+                console.log(error.message)
+            }
+        }
+        // make sure the active page on  the floating nav is the Attendance page
+        localStorage.setItem('currentPage', 'P');
+
+        if (polls_session?.polls?.length === 0) {
+            setNoCreatedPolls(true)
+        }
+        else {
+            setPolls(polls_session?.polls.map(obj => {
+                return (
+                    <PollInstance
+                        title={obj?.title}
+                        totalVotesCast={obj?.totalVotesCast}
+                        options={obj.options}
+                    />
+                )
+            }))
+        }
+
+        setCourseName(polls_session?.courseName)
+        setCourseCode(polls_session?.courseCode)
+
 
     }, [])
 
+    // do not display the no created poll message if a poll has been created
+    useEffect(() => {
+        if (polls?.length > 0) setNoCreatedPolls(false);
+    }, [polls])
+
     return (
         <div className='lecturer_polls'>
-            <Toast show={showToast}
-                onClose={() => setShowToast(false)}
+            <div className='course-info'>
+                {courseCode}: {courseName}
+            </div>
+            <div className='create_polls_header'>
+                <div><Button className='create_poll_btn'
+                    onClick={() => { addOption(); setShowModal(true) }}>Create Poll</Button></div>
+                <div className='total_polls'>Total Polls: {polls?.length}</div>
+            </div>
+            {
+                noCreatedPolls ?
+                    <div className='no_polls_message'>No polls have been created for this course</div>
+                    :
+                    <div className='created_polls_container'>
+                        {polls}
+                        {/* <PollInstance />
+                        <PollInstance />
+                        <PollInstance />
+                        <PollInstance /> */}
+                    </div>
+            }
+
+            {/* loading toast */}
+            <Toast show={showLoadingToast}
+                onClose={() => setShowLoadingToast(false)}
                 className='loading_toast'
             >
                 <Toast.Body>
@@ -188,19 +254,8 @@ export default function Polls() {
                     />
                 </Toast.Body>
             </Toast>
-            <div className='create_polls_header'>
-                <div><Button className='create_poll_btn'
-                    onClick={() => { addOption(); setShowModal(true) }}>Create Poll</Button></div>
-                <div className='total_polls'>Total Polls: {polls?.length}</div>
-            </div>
-            <div className='created_polls_container'>
-                {polls}
-                {/* <PollInstance />
-                <PollInstance />
-                <PollInstance />
-                <PollInstance /> */}
-            </div>
 
+            {/* poll  creation modal */}
             <Modal onHide={() => setShowModal(false)}
                 show={showModal}
                 backdrop='static'
