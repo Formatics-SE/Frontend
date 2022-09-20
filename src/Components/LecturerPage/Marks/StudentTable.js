@@ -3,10 +3,13 @@ import StudentsDetails from "./StudentDetails";
 import data from "../dummyDB";
 import "./StudentTable.css";
 import Toast from 'react-bootstrap/Toast'
+import Spinner from "react-bootstrap/Spinner"
 import Form from 'react-bootstrap/Form'
 import Table from "react-bootstrap/Table"
 import Button from "react-bootstrap/Button"
 import "bootstrap/dist/css/bootstrap.min.css"
+
+import { URL } from "../../URL"
 
 export default function StudentsTable() {
 
@@ -23,10 +26,12 @@ export default function StudentsTable() {
         individual_marks: 0,
         group_marks: 0
     })
-    const [showToast, setShowToast] = useState(false);
+    const [showMessageToast, setShowMessageToast] = useState(false);
+    const [showLoadingToast, setShowLoadingToast] = useState(false);
     const [message, setMessage] = useState('No match')
+    const [toastVariant, setToastVariant] = useState('success')
 
-    let student_list = students.map((student, index) => {
+    let student_list = students?.map((student, index) => {
         return (
             <StudentsDetails
                 key={index}
@@ -52,19 +57,41 @@ export default function StudentsTable() {
     //     )
     // })
 
-    useEffect(() => {
-        const marks_session = JSON.parse(sessionStorage.getItem('marks'));
+    useEffect(async () => {
+        let marks_session = JSON.parse(sessionStorage.getItem('marks'));
+        // if marks_session is null, the page was navigate to either by url or the floating nav, hence fetch the data 
+        if (!marks_session) {
+            setShowLoadingToast(true);
+            try {
+                const response = await fetch(`${URL}/fetchlecturermarks`, {
+                    method: 'POST',
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify({ courseCode: 'COE 354' })
+                });
+
+                const data = await response.json();
+                setShowLoadingToast(false);
+
+                marks_session = data?.info;
+                sessionStorage.setItem('marks', JSON.stringify(data?.info));
+            }
+            catch (error) {
+                console.log(error.message)
+            }
+        }
+        // make sure the active page on  the flaoting nav is the Marks page
+        localStorage.setItem('currentPage', 'M');
 
         setCourseName(marks_session?.courseName)
         setCourseCode(marks_session?.courseCode)
-        // setStudents(marks_session?.registeredStudents)
-
-        setStudents(marks_session?.registeredStudents.map(student => {
+        setStudents(marks_session?.registeredStudents.map((student, index) => {
             let totalMarks = 0;
+            // calculate the total marks in the marksArray : [{marks: ..., date: ...}]
             student.marksArray.map(marksObj => {
-                totalMarks += marks;
+                totalMarks += marksObj.marks;
             })
             return {
+                key: { index },
                 name: student.name,
                 indexNumber: student.indexNumber,
                 currentDayMarks: 0,
@@ -88,10 +115,11 @@ export default function StudentsTable() {
             })
         })
         if (inputMarks === 0) {
-            setShowToast(false)
+            setShowMessageToast(false)
         }
         else {
-            setShowToast(true)
+            setShowMessageToast(true)
+            setToastVariant('success')
             setMessage(`Assigned ${inputMarks} to all students`)
         }
     }
@@ -111,20 +139,53 @@ export default function StudentsTable() {
                 }
                 else {
                     foundMatch = false;
-                    setMessage("No match found !")
-                    setShowToast(true)
                     return student;
                 }
             })
         })
         if (foundMatch) {
             setMessage(`Assigned ${inputMarks} to ${studentName}`);
+            setToastVariant('success')
         }
         else {
             setMessage("No match found !")
+            setToastVariant('danger')
         }
-        setShowToast(true)
+        setShowMessageToast(true)
     }
+
+    async function handleSubmit() {
+        setShowLoadingToast(true);
+        document.querySelector('.submit-form').disabled = true;
+        try {
+            const response = await fetch(`${URL}/updatemarks`, {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify({
+                    courseCode: 'COE 354', //sessionStorage.getItem('courseCode'),
+                    marksData: students
+                })
+            })
+
+            const data = await response.json();
+            setShowLoadingToast(false);
+            document.querySelector('.submit-form').disabled = false;
+
+            if (data.successful) {
+                setMessage('Successfully applied updates !')
+                setToastVariant('success')
+            }
+            else {
+                setMessage('Could not apply updates !')
+                setToastVariant('danger')
+            }
+            setShowMessageToast(true);
+
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+    // end submit
 
     return (
         <section className='marks-page-container'>
@@ -174,7 +235,6 @@ export default function StudentsTable() {
                 </div>
                 <div>
                     <Button type="submit"
-                        id="input_marks"
                         onClick={handleSubmit}
                         className="submit-form">
                         Submit
@@ -200,34 +260,34 @@ export default function StudentsTable() {
                             } */}
                         </tbody>
                     </Table>
-                    {/* <Modal
-                        onHide={() => setShowModal(false)}
-                        show={showModal}
-                        backdrop='static'
-                        className='modal-main-container' >
-                        <Modal.Header closeButton>
-                            <Modal.Title className="modal-title">Confirm</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body className="my-modal-body">
-                            <div>{specifiedStudent}</div>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button className="closeButton" onClick={() => setShowModal(prev => !prev)}>Close</Button>
-                        </Modal.Footer>
-                    </Modal> */}
-
-
                 </div>
             </div>
-            <Toast show={showToast}
-                onClose={() => setShowToast(false)}
-                bg='secondary'
+
+            {/* toasts */}
+            <Toast show={showMessageToast}
+                onClose={() => setShowMessageToast(false)}
+                bg={toastVariant}
                 autohide
                 delay={3000}
                 className='toast-message'
             >
                 <Toast.Body>
                     {message}
+                </Toast.Body>
+            </Toast>
+
+            <Toast show={showLoadingToast}
+                onClose={() => setShowLoadingToast(false)}
+                bg='secondary'
+                autohide
+                delay={3000}
+                className='loading_toast'
+            >
+                <Toast.Body>
+                    <Spinner className='spinner'
+                        animation='border'
+                        size='md'
+                    />
                 </Toast.Body>
             </Toast>
         </section>

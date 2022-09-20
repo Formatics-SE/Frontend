@@ -72,8 +72,8 @@
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  color: #860c72;
-  z-index: 30;
+  color: white !important;
+  z-index: 50;
   opacity: 100%;
 }
 /*# sourceMappingURL=courses.css.map */

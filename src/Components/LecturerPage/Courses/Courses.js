@@ -19,26 +19,7 @@ const Courses = () => {
 
   useEffect(() => {
     const courses_session = JSON.parse(sessionStorage.getItem('assignedCourses'));
-    console.log('Courses assignedCourses: ', courses_session)
 
-
-    // temp
-    // const courses_session = [
-    //   {
-    //     courseCode: 'COE 354',
-    //     courseName: 'Software Engineering',
-    //     year: 3,
-    //     semester: 2,
-    //     credits: 4
-    //   },
-    //   {
-    //     courseCode: 'COE 358',
-    //     courseName: 'Operating Engineering',
-    //     year: 3,
-    //     semester: 2,
-    //     credits: 3
-    //   }
-    // ]
 
     // keeps track of the background image to parse next to accordion
     let bg_index = -1;
@@ -59,6 +40,7 @@ const Courses = () => {
       )
     }));
 
+    // localStorage.setItem('currentPage', 'C');
 
 
   }, []);
@@ -85,17 +67,17 @@ const Courses = () => {
         body: JSON.stringify({ courseCode: courseCode })
       })
 
-      console.log('returned')
-
       const data = await response.json();
       setShowToast(false);
+      // save the course code for the session
+      sessionStorage.setItem('courseCode', courseCode);
+
       if (data.info) {
         // Switch between the value of path to determine the storage key for sessionStorage.
-        // The value set by localStorage.setItem is retrieved by the floating nav component and highlights the approrpiate page
-        // as active.
+        // The value set by localStorage.setItem is retrieved by the floating nav component and highlights the approrpiate page as active.
         switch (path) {
           case 'attendance':
-            sessionStorage.setItem('attendanceInfo', JSON.stringify(data.info));
+            sessionStorage.setItem('attendance', JSON.stringify(data?.info));
             localStorage.setItem('currentPage', 'R');
             navigate('/lecturer/rollcall');
             break;
@@ -105,12 +87,12 @@ const Courses = () => {
             navigate('/lecturer/marks');
             break;
           case 'groups':
-            sessionStorage.setItem('groups', JSON.stringify(data?.groups));
-            localStorage.setItem('currentPage', 'G'); 
+            sessionStorage.setItem('groups', JSON.stringify(data?.info));
+            localStorage.setItem('currentPage', 'G');
             navigate('/lecturer/groups');
             break;
           case 'polls':
-            sessionStorage.setItem('polls', JSON.stringify(data?.polls));
+            sessionStorage.setItem('polls', JSON.stringify(data?.info));
             localStorage.setItem('currentPage', 'P');
             navigate('/lecturer/polls');
             break;
@@ -126,6 +108,7 @@ const Courses = () => {
     <div className='courses'>
       <Toast show={showToast}
         onClose={() => setShowToast(false)}
+        bg='secondary'
         className='loading_toast'
       >
         <Toast.Body>

@@ -16,7 +16,9 @@ export default function Row({ id, name, attendance, strikes, indexNumber, handle
         document.dispatchEvent(event);
     }
     document.addEventListener('monitorItemChange', (e) => {
-        setMaxAbsentStrikes(e.value);
+        if (e.key === 'maxStrikes') {
+            setMaxAbsentStrikes(e.value);
+        }
     })
 
     useEffect(() => {

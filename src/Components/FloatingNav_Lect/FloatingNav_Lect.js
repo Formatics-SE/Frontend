@@ -30,7 +30,9 @@ export default function FloatingNav() {
         document.dispatchEvent(event);
     }
     document.addEventListener('monitorItemChange', (e) => {
-        setCurrentPage(e.value);
+        if (e.key === 'currentPage') {
+            setCurrentPage(e.value);
+        }
     })
     // // end
 
@@ -38,7 +40,7 @@ export default function FloatingNav() {
     useEffect(() => {
         setCurrentPage(sessionStorage.getItem('currentPage'));
     }, [])
-  
+
     /* save current page value whenever it changes
      * hide floating nav in course selection page */
     useEffect(() => {

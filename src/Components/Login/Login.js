@@ -4,13 +4,14 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import FormLabel from 'react-bootstrap/FormLabel'
 import Toast from 'react-bootstrap/Toast'
+import Spinner from 'react-bootstrap/Spinner'
 import Modal from 'react-bootstrap/Modal'
 import './login.css'
 
 import bgImage from './bg.png'
 import { URL } from '../URL'    // server url
 
-const toastMessages = ['Please fill in all fields', 'Invalid ID or Password']
+const toastMessages = ['Please fill in all fields', 'Invalid login credentials']
 
 export default function Login() {
     // show or hide state: login modal
@@ -20,6 +21,7 @@ export default function Login() {
     // show or hide state: toast
     const [showToast, setShowToast] = useState(false);
     const [toastMessage, setToastMessage] = useState('');
+    const [showLoadingToast, setShowLoadingToast] = useState(false);
 
     const navigate = useNavigate()
 
@@ -27,25 +29,38 @@ export default function Login() {
     function validateInputs(e) {
         let username = document.querySelector('#username').value;
         let password = document.querySelector('#password').value;
-        let staff_id;
-        if (user === 'L')
+        let staff_id, staff_id_type_correct;
+        if (user === 'L') {
             staff_id = document.querySelector('#staff_id').value;
+        }
+        // let regexp = new RegExp('\d+$')
+        // if (staff_id.search(regexp) == -1) {
+        //     console.log('wrong')
+        //     staff_id_type_correct = false;
+        // }
 
         if ((user === 'L' && (!username || !password || !staff_id)) ||
             (user === 'S' && (!username || !password))) {
             setToastMessage(toastMessages[0]);  // message: please fill in all fields
             setShowToast('true');
         }
-        // call handle submit if all inputs are filled
+        // else if (!staff_id_type_correct) {
+        //     // console.log(typeof staff_id)
+        //     setToastMessage(toastMessages[1]);  // message: invalid login credentials
+        //     setShowToast('true');
+        // }
+        // call handle submit if all inputs are filled and are of valid types
         else {
             if (user === 'L')
-                handleLecturerSubmit(username, password, staff_id);
+                handleLecturerSubmit(e, username, password, staff_id);
             else
-                handleStudentSubmit(username, password);
+                handleStudentSubmit(e, username, password);
         }
     }
 
-    async function handleLecturerSubmit(username, password, staff_id) {
+    async function handleLecturerSubmit(e, username, password, staff_id) {
+        setShowLoadingToast(true);
+        e.target.disabled = true;
         try {
             const response = await fetch(`${URL}/lecturerlogin`, {
                 method: 'POST',
@@ -59,28 +74,32 @@ export default function Login() {
 
             const data = await response.json();
             const lecturerData = data.lecturerData;
-            
+            setShowLoadingToast(false);
+            e.target.disabled = false;
+
             if (lecturerData) {
                 // sessionStorage.setItem('staff_id', staff_id);
                 sessionStorage.setItem('username', JSON.stringify(lecturerData.username));
                 sessionStorage.setItem('assignedCourses', JSON.stringify(lecturerData.assignedCourses));
+                // set current page value to 'C' to cause the floating nav to be hidden on Courses page.
+                localStorage.setItem('currentPage', 'C');
                 navigate('/lecturer/courses');
             }
-            else {  // invalid details
+            // invalid details
+            else {
                 setToastMessage(toastMessages[1]);  // message: invalid id or password
                 setShowToast(true);
             }
-
-            // set current page value to 'C' to cause the floatingNav to be hidden on Courses page.
-            sessionStorage.setItem('currentPage', 'C');
-            navigate('/lecturer/courses')
 
         } catch (error) {
             console.log(error.message);
         }
     }
 
-    async function handleStudentSubmit(username, password) {
+    async function handleStudentSubmit(e, username, password) {
+        setShowLoadingToast(true);
+        e.target.disabled = true;
+
         try {
             const response = await fetch(`${URL}/studentlogin`, {
                 method: 'POST',
@@ -93,24 +112,23 @@ export default function Login() {
 
             const data = await response.json();
             const studentData = data.studentData;
+            setShowLoadingToast(false);
+            e.target.disabled = false;
 
             if (studentData) {
-                const indexNumber = studentData.indexNumber;
-                const username = studentData.username;
-                const registeredCourses = studentData.registeredCourses;
-                sessionStorage.setItem('indexNumber', indexNumber);
-                sessionStorage.setItem('username', username);
-                sessionStorage.setItem('registeredCourses', JSON.stringify(registeredCourses));
+                sessionStorage.setItem('indexNumber', studentData.indexNumber);
+                sessionStorage.setItem('username', studentData.username);
+                sessionStorage.setItem('semester', studentData.semester);
+                sessionStorage.setItem('year', studentData.year);
+                sessionStorage.setItem('registeredCourses', JSON.stringify(studentData.registeredCourses));
+                // set current page value to 'C' to cause the floating nav to be hidden on Courses page.
+                localStorage.setItem('currentPage', 'C');
                 navigate('/student/courses');
             }
             else {  // invalid details
                 setToastMessage(toastMessages[1]);  // message: invalid id or password
                 setShowToast(true);
             }
-
-            // set current page value to 'C' to cause the floatingNav to be hidden on Courses page.
-            sessionStorage.setItem('currentPage', 'C');
-            navigate('/student/courses')
 
         } catch (error) {
             console.log(error.message);
@@ -186,11 +204,27 @@ export default function Login() {
                             </div> : ''
                         }
                         <div>
-                            <Button className='login_btn' onClick={validateInputs}>Login</Button>
+                            <Button className='login_btn' onClick={(e) => validateInputs(e)}>Login</Button>
                         </div>
                     </div>
                 </Modal.Body>
             </Modal>
+
+            {/* loading animation toast */}
+            <Toast show={showLoadingToast}
+                onClose={() => setShowLoadingToast(false)}
+                bg='secondary'
+                autohide
+                delay={3000}
+                className='loading_toast'
+            >
+                <Toast.Body>
+                    <Spinner className='spinner'
+                        animation='border'
+                        size='md'
+                    />
+                </Toast.Body>
+            </Toast>
         </div>
     )
 }
