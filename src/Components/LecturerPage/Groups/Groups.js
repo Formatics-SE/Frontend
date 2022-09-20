@@ -26,42 +26,43 @@ export default function Groups() {
   }
 
   useEffect(async () => {
-    // let groups_session = sessionStorage.getItem('groups')
+    let groups_session = JSON.parse(sessionStorage.getItem('groups'))
+    console.log('groups_session: ', groups_session)
+    if (!groups_session) {
+      setShowLoadingToast(true);
+      try {
+        const response = await fetch(`${URL}/fetchlecturergroups`, {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
+        });
 
-    // if (!groups_session) {
-    //   setShowLoadingToast(true);
-    //   try {
-    //     const response = await fetch(`${URL}/fetchlecturergroups`, {
-    //       method: 'POST',
-    //       headers: { 'content-type': 'application/json' },
-    //       body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
-    //     });
+        const data = await response.json();
+        setShowLoadingToast(false);
 
-    //     const data = await response.json();
-    //     setShowLoadingToast(false);
-
-    //     groups_session = data?.info;
-    //     // save the fetched data in session
-    //     sessionStorage.setItem('groups', JSON.stringify(data?.info));
-    //   }
-    //   catch (error) {
-    //     console.log(error.message)
-    //   }
-    // }
+        groups_session = data?.info;
+        // save the fetched data in session
+        sessionStorage.setItem('groups', JSON.stringify(data?.info));
+      }
+      catch (error) {
+        console.log(error.message)
+      }
+    }
     // // make sure the active page on  the floating nav is the Attendance page
-    // localStorage.setItem('currentPage', 'G');
+    localStorage.setItem('currentPage', 'G');
 
     // // display no groups page if there are no groups created for this course
-    // if (groups_session?.groups?.length == 0) {
-    //   console.log(groups_session?.groups)
-    //   setNoCreatedGroups(true);
-    // }
-    // else {
-    //   setNoCreatedGroups(false);
-    // }
+    if (groups_session?.groups?.length === 0) {
+      console.log('no groups')
+      setNoCreatedGroups(true);
+    }
+    else {
+      console.log('groups')
+      setNoCreatedGroups(false);
+    }
 
-    // setCourseName(groups_session?.courseName)
-    // setCourseCode(groups_session?.courseCode)
+    setCourseName(groups_session?.courseName)
+    setCourseCode(groups_session?.courseCode)
 
   }, [])
   // end useEffect
