@@ -15,19 +15,25 @@ export default function RandomGroup(props) {
 
     function handleChange(event) {
         let x = Number(event.target.value)
-        setNumberOfStudents(x)
+        if(x>=2){
+            setNumberOfStudents(x)
+        }
+        else{
+            setNumberOfStudents(2)
+        }
+        
     }
 
     function handleSubmit() {
         setGroupsToBeSubmitted(randomGroupingsByCwa)
     }
-    console.log(groupsToBeSubmitted)
+    
 
     let randomGroupingsByCwa, random_group;
     // generate groups if the value of the 'noCreatedGroups' prop is false
     if (!props.noCreatedGroups) {
-        let classList = data.map(student => {
-            return `${student.firstName} ${student.lastName}: ${student.cwa}`
+        let classList = data.map(studentData => {
+            return studentData
         })
         let studentsPerGroup = Number(numberOfStudents)   //Number(props.value_prop)
         let division = Math.ceil(classList.length / studentsPerGroup)
@@ -42,16 +48,32 @@ export default function RandomGroup(props) {
             randomGroupingsByCwa.push(newArray) // pushing a complete group to the main container
             count = i + 1
         }
+        //console.log(randomGroupingsByCwa)
+        let number = 0
+        let groupFormat = randomGroupingsByCwa.map(item=>{
+            number = number + 1
+            return{
+                groupNumber: number,
+                members: item.map(student=>{
+                    return {
+                        name: `${student.firstName} ${student.lastName}`,
+                        index: student.index,
+                        cwa: student.cwa  }
+                })
+            }
+        })
 
-        random_group = randomGroupingsByCwa.map(item => {
+       console.log(groupFormat)
+
+        random_group = groupFormat.map(item => {
             return (
                 <Card className="cards-container">
                     <Card.Body className="cards-body">
-                        <Card.Title className="cards-title">GROUP {randomGroupingsByCwa.indexOf(item) + 1}</Card.Title>
+                        <Card.Title className="cards-title">GROUP {item.groupNumber}</Card.Title>
                         <Card.Text>
-                            {item.map((student, index) => {
+                            {item.members.map(student => {
                                 return (
-                                    <li key={index}>{student}</li>
+                                    <li>{student.name}: {student.index}</li>
                                 )
                             })}
                         </Card.Text>
@@ -80,7 +102,7 @@ export default function RandomGroup(props) {
             </div> */}
             <div className="heading-container">
                 <div className="groupsof-and-groupsof-input">Groups of:
-                    <Form.Control type="number" className="input-field" min={2} onChange={handleChange} />
+                    <Form.Control type="number" className="input-field"  min={2} onChange={handleChange} />
                 </div>
                 <div className="submit-button-div"><Button className="submit-button" onClick={handleSubmit}>Submit Groups</Button></div>
             </div>
