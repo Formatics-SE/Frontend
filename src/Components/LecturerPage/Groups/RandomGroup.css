@@ -33,7 +33,7 @@
 .heading-container .submit-button-div {
     padding: 5px;
 }
-.heading-container .submit-button-div .submit-button {
+.heading-container .submit-button-div .submit-button  {
     height: fit-content;
     background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
     border-color: rgb(163, 23, 140);
@@ -41,16 +41,20 @@
     border-radius: 7px;
     font-size: 103%;
 }
-.heading-container .submit-button-div .submit-button:hover {
+.heading-container .submit-button-div .submit-button:hover{
     background: white;
     border-color: rgb(163, 23, 140);
     color: rgb(163, 23, 140);
 }
-.heading-container .submit-button-div .submit-button:focus {
+.heading-container .submit-button-div .submit-button:focus  {
     border-color: rgb(163, 23, 140);
     box-shadow: 0 0 0 rgb(163, 23, 140);
 }
-
+.heading-container-scores{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 .random-groups {
     padding: 15px 10px 90px 10px;
     width: 100%;
@@ -69,6 +73,72 @@ li {
     font-weight: bold;
     font-size: 16px;
     text-align: left;
+}
+
+.cards-title-score{
+    font-weight: bold;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal_header{
+    display: flex;
+    justify-content: flex-end;
+}
+.close_btn{
+    background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+    border-color: rgb(163, 23, 140);
+    padding: 7px 25px;
+    text-align: center;
+    border-radius: 30px;
+    font-size: 15px;
+}
+.assign-marks-div{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+.assign-marks-entry{
+    margin-right: 10px;
+    width: 100px;
+}
+.assign-marks-button, 
+.submit-button-scores, 
+.submit-button-group-score{
+    background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+    border-color: rgb(163, 23, 140);
+
+}
+.assign-marks-button:hover, 
+.close_btn:hover, 
+.submit-button-scores:hover,
+.submit-button-group-score:hover{
+    background: white;
+    border-color: rgb(163, 23, 140);
+    color: rgb(163, 23, 140);
+}
+.assign-marks-button:focus, 
+.close_btn:focus, 
+.submit-button-scores:focus,
+.submit-button-group-score:focus{
+    border-color: rgb(163, 23, 140);
+    box-shadow: 0 0 0 rgb(163, 23, 140);
+}
+.group-members{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "Poppins";
+    font-size: 18px;
+}
+.group-members > li{
+    list-style-type: decimal;
+    margin-left: 10px;
 }
 
 @media screen and (max-width: 1024px) {
