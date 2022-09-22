@@ -3,6 +3,8 @@ import data from "../dummyDB"
 import "./RandomGroup.css"
 import Card from "react-bootstrap/Card"
 import Button from "react-bootstrap/Button"
+import Toast from 'react-bootstrap/Toast'
+import Spinner from 'react-bootstrap/Spinner'
 import Modal from "react-bootstrap/Modal"
 import Form from "react-bootstrap/Form"
 
@@ -18,55 +20,93 @@ export default function RandomGroup(props) {
     const [scores, setScores] = useState(0)
     // groups fetched from session storage
     //const [groups, setGroups] = useState([])
-    
+
+    const [showMessageToast, setShowMessageToast] = useState(false);
+    const [showLoadingToast, setShowLoadingToast] = useState(false);
+    const [message, setMessage] = useState('')
+    const [toastVariant, setToastVariant] = useState('success')
+
 
     function handleChange(event) {
         let x = Number(event.target.value)
-        if(x>=2){
+        if (x >= 2) {
             setNumberOfStudents(x)
         }
-        else{
+        else {
             setNumberOfStudents(2)
         }
-        
     }
 
-    function handleSubmitGroups() {
-        if(!showScores){
-            setCreatedGroups(groupFormat)
-            setShowScores(true)}
+    async function handleSubmitGroups(e) {
+        const courseCode = sessionStorage.getItem('courseCode');
+        setShowLoadingToast(true);
+        e.target.disabled = true;
+        try {
+            const response = await fetch(`${URL}/updategroups`, {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify({
+                    courseCode: courseCode,
+
+                })
+            });
+
+            const data = await response.json();
+            e.target.disabled = false;
+            setShowLoadingToast(false);
+
+            if (data.successful) {
+                setMessage('Successfully applied updates !')
+                setToastVariant('success')
+            }
+            else {
+                setMessage('Could not apply updates !')
+                setToastVariant('danger')
+            }
+            setShowMessageToast(true);
+
+
+            // if (!showScores) {
+            //     setCreatedGroups(groupFormat)
+            //     setShowScores(true)
+            // }
+        }
+        catch (error) {
+            console.log(error.message)
+        }
     }
 
-    function handleSubmitScores(){
+    function handleSubmitScores() {
         console.log(createdGroups)
         console.log("scores have been submitted successfully")
     }
 
-    function handleScores(){
-                setCreatedGroups(prev=>{
-                    return prev.map(item=>{
-                        let total = Number(item.score) + Number(scores)
-                        if(item.groupNumber===selectedGroup.groupNumber){
-                        return{
-                            ...item,
-                            score: total
-                        }
-                        }
-                        else{
-                            return item
-                        }
-            })})
+    function handleScores() {
+        setCreatedGroups(prev => {
+            return prev.map(item => {
+                let total = Number(item.score) + Number(scores)
+                if (item.groupNumber === selectedGroup.groupNumber) {
+                    return {
+                        ...item,
+                        score: total
+                    }
+                }
+                else {
+                    return item
+                }
+            })
+        })
         setShowModal(false)
-        }
-        
-    
-    
-    
+    }
+
+
+
+
     let randomGroupingsByCwa
     let randomGroupWithoutScores
-    let groupFormat            
-    let randomGroupWithScores  
-    let groupListInModal       
+    let groupFormat
+    let randomGroupWithScores
+    let groupListInModal
     // generate groups if the value of the 'noCreatedGroups' prop is false
     if (!props.noCreatedGroups) {
         let classList = data.map(studentData => {
@@ -85,30 +125,30 @@ export default function RandomGroup(props) {
             randomGroupingsByCwa.push(newArray) // pushing a complete group to the main list
             count = i + 1
         }
-        
+
         let number = 0
-        groupFormat = randomGroupingsByCwa.map(item=>{
+        groupFormat = randomGroupingsByCwa.map(item => {
             number = number + 1
-            return{
+            return {
                 groupNumber: number,
-                members: item.map(student=>{
+                members: item.map(student => {
                     return {
                         name: `${student.firstName} ${student.lastName}`,
                         index: student.index,
                         cwa: student.cwa,
-                         }
+                    }
                 }),
                 score: 0
             }
         })
-       
+
 
         randomGroupWithoutScores = groupFormat.map(item => {
             return (
                 <Card className="cards-container">
                     <Card.Body className="cards-body">
-                        <Card.Title className="cards-title">GROUP {item.groupNumber}</Card.Title>
-                        <Card.Text>
+                        <Card.Title className="cards-title-score">Group {item.groupNumber}</Card.Title>
+                        <Card.Text className="members">
                             {item.members.map(student => {
                                 return (
                                     <li key={student.index}>{student.name}: {student.index}</li>
@@ -122,46 +162,37 @@ export default function RandomGroup(props) {
 
         randomGroupWithScores = createdGroups.map(item => {
             return (
-                <Card className="cards-container">
+                <Card className="cards-container"
+                    onClick={() => {
+                        setSelectedGroup(item)
+                        setShowModal(true)
+                    }}
+                >
                     <Card.Body className="cards-body">
                         <Card.Title className="cards-title-score">
-                            <div>GROUP {item.groupNumber}</div>
+                            <div>Group {item.groupNumber}</div>
                             <div>Score: {item.score}</div>
                         </Card.Title>
-                        <Card.Text>
+                        <Card.Text className="members">
                             {item.members.map(student => {
                                 return (
                                     <li>{student.name}: {student.index}</li>
                                 )
                             })}
                         </Card.Text>
-                        <div className="submit-button-div">
-                            <Button
-                             onClick={()=>{
-                                setSelectedGroup(item)
-                                setShowModal(true)
-                                }
-                            }
-                             className="submit-button-group-score" 
-                             id={item.groupNumber}>
-                                Assign
-                            </Button>
-                        </div>
                     </Card.Body>
                 </Card>
             )
         })
 
     }
-    if(showModal){
-        groupListInModal = selectedGroup.members.map(member=>{
-                            return(
-                            <li className="list-in-modal">{member.name}: {member.index}</li>
-                            )
+    if (showModal) {
+        groupListInModal = selectedGroup.members.map(member => {
+            return (
+                <li className="list-in-modal">{member.name}: {member.index}</li>
+            )
         })
     }
-    
-
 
     useEffect(() => {
         // if (!props.noCreatedGroups) {
@@ -177,53 +208,85 @@ export default function RandomGroup(props) {
 
     return (
         <section className="random-groups-container">
-            {/* <div className='course-info'>
-                {props.courseCode}: {props.courseName}
-            </div> */}
-            {!showScores?
             <div className="heading-container">
-                <div className="groupsof-and-groupsof-input">Groups of:
-                    <Form.Control type="number" className="input-field"  min={2} onChange={handleChange} />
-                </div>
-                <div className="submit-button-div"><Button className="submit-button" onClick={handleSubmitGroups}>Submit Groups</Button></div>
-            </div>:
-            <div className="heading-container-scores">
-                <h4 className="heading">Assign Marks to Groups</h4>
-                <div className="submit-button-div"><Button className="submit-button-scores" onClick={handleSubmitScores}>Submit Scores</Button></div>
+                {
+                    !showScores ?
+                        <>
+                            <div className="groupsof-and-groupsof-input">Groups of:
+                            <Form.Control type="number" className="input-field" min={2} onChange={handleChange} />
+                            </div>
+                            <div className="submit-button-div"><Button className="submit-button" onClick={handleSubmitGroups}>Submit Groups</Button></div>
+                        </> :
+                        <>
+                            <div className="assign-marks-label">Assign Marks to Groups</div>
+                            <div className="submit-button-div"><Button className="submit-button-scores" onClick={handleSubmitScores}>Submit Scores</Button></div>
+                        </>
+                }
             </div>
+            {!showScores ?
+                <div className="random-groups">
+                    {randomGroupWithoutScores}
+                </div> :
+                <div className="random-groups">
+                    {randomGroupWithScores}
+                </div>
             }
-            {!showScores?
-            <div className="random-groups">
-                {randomGroupWithoutScores}
-            </div>:
-            <div className="random-groups">
-                {randomGroupWithScores}
-            </div> }
 
             <Modal onHide={() => setShowModal(false)}
                 show={showModal}
                 backdrop='static'
+                id='modal'
                 className='group-marks-modal'
             >
-                <Modal.Body className="modal-container">
-                    <div className='modal_header'>
-                        <Button className='close_btn' onClick={() => setShowModal(false)}>&times;</Button>
+                <Modal.Body>
+                    <div id='modal_header'>
+                        <span style={{ color: 'rgb(163, 23, 140)' }}>Assign Group Marks</span>
+                        <Button id='close_btn' onClick={() => setShowModal(false)}>&times;</Button>
                     </div>
                     <div>
                         <div className='assign-marks-div'>
-                            <input type="number" className="assign-marks-entry" onChange={(e)=>setScores(e.target.value)}/>
-                            <Button 
+                            <Form.Control type="number" className="assign-marks-entry" onChange={(e) => setScores(e.target.value)} />
+                            <Button
                                 className='assign-marks-button'
                                 onClick={handleScores}>
                                 Confirm
                             </Button>
                         </div>
-                        </div>
-                            {showModal? <div className="group-members">{groupListInModal}</div>: <div>No group selected</div> }
-                        <div>
+                    </div>
+                    {showModal ? <div className="group-members">{groupListInModal}</div> : <div>No group selected</div>}
+                    <div>
                     </div>
                 </Modal.Body>
             </Modal>
+
+            {/* message toast */}
+            <Toast show={showMessageToast}
+                onClose={() => setShowMessageToast(false)}
+                bg={toastVariant}
+                autohide
+                delay={3000}
+                className='toast-message'
+            >
+                <Toast.Body>
+                    {message}
+                </Toast.Body>
+            </Toast>
+
+            {/* loading toast */}
+            <Toast show={showLoadingToast}
+                onClose={() => setShowMessageToast(false)}
+                bg='secondary'
+                autohide
+                delay={3000}
+                className='loading_toast'
+            >
+                <Toast.Body>
+                    <Spinner className='spinner'
+                        animation='border'
+                        size='md'
+                    />
+                </Toast.Body>
+            </Toast>
 
         </section>
     )
