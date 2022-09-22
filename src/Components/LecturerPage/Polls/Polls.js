@@ -15,21 +15,75 @@ import { URL } from '../../URL'
 export default function Polls() {
 
     const [showModal, setShowModal] = useState(false)
-    const [showSpinner, setShowSpinner] = useState(false)
-    const [showToast, setShowToast] = useState(false)
-    const [showLoadingToast, setShowLoadingToast] = useState(false);
-
-    const [courseName, setCourseName] = useState('')
-    const [courseCode, setCourseCode] = useState('')
+    const [showLoadingToast, setShowLoadingToast] = useState(false)
+    const [showMessageToast, setShowMessageToast] = useState(false)
+    const [message, setMessage] = useState('')
+    const [toastVariant, setToastVariant] = useState('success')
 
     const [polls, setPolls] = useState([])
     const [noCreatedPolls, setNoCreatedPolls] = useState([])
-    // hold v4 value for 'key' value and id prop
-    const [v4_s, setV4_s] = useState('')
 
     const [optionsCount, setOptionsCount] = useState(0)
 
     const [options, setOptions] = useState([])
+
+    useEffect(async () => {
+        let polls_session = JSON.parse(sessionStorage.getItem('polls')) // array of poll objects
+
+        // console.log('polls_session: ', polls_session)
+        // if polls_session is null, the page was navigate to either by url or the floating nav, hence fetch the data 
+        if (!polls_session) {
+            setShowLoadingToast(true);
+            try {
+                const response = await fetch(`${URL}/fetchpolls`, {
+                    method: 'POST',
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
+                });
+
+                const data = await response.json();
+                setShowLoadingToast(false);
+
+                polls_session = data?.info.polls;
+                console.log('ata.pols: ', polls_session)
+                // save the fetched data in session
+                sessionStorage.setItem('polls', JSON.stringify(data?.info.polls));
+            }
+            catch (error) {
+                console.log(error.message)
+            }
+        }
+        // make sure the active page on  the floating nav is the Attendance page
+        localStorage.setItem('currentPage', 'P');
+
+        console.log(polls_session)
+
+        // if there are no created polls, set noCreatedPolls to true and display no polls message
+        if (polls_session?.length === 0) {
+            setNoCreatedPolls(true)
+        }
+        else {
+            setPolls(polls_session.map((pollObj, index) => {
+                return (
+                    <PollInstance key={index}
+                        pollId={pollObj._id}
+                        title={pollObj?.title}
+                        totalVotesCast={pollObj?.totalVotesCast}
+                        options={pollObj.options}
+                        deletePoll={deletePoll}
+                    />
+                )
+            }))
+        }
+
+    }, [])
+
+    // do not display the no created polls message if a poll has been created
+    useEffect(() => {
+        console.log('polls changed')
+        if (polls?.length > 0) setNoCreatedPolls(false);
+        else setNoCreatedPolls(true);
+    }, [polls])
 
     // adds one option to the list of poll options => 10 options maximum
     function addOption() {
@@ -95,30 +149,15 @@ export default function Polls() {
 
         setOptions([]); setOptionsCount(0);
 
-
-        //  if title and all options are provided, create a poll object and post to server
+        //  if title and all options are provided, create a poll object
         let options = optionInputs.map(op => new Object({ option: op.value, votes: 0 }));
 
         setShowModal(false);
-        // setShowToast(true);
-        // document.querySelector('.create_poll_btn').disabled = true;
-
-        //temp
-        // setPolls(polls => [...polls,
-        // <PollInstance key={v4()}
-        //     id={v4()}
-        //     title={title}
-        //     totalVotesCast={0}
-        //     options={options}
-        //     deletePoll={deletePoll}
-        // />
-        // ]);
-        // end temp
-
-        // console.log('sessionStorage: ', sessionStorage.getItem('courseCode'))
+        setShowLoadingToast(true);
+        document.querySelector('.create_poll_btn').disabled = true;
 
         const courseCode = sessionStorage.getItem('courseCode');
-
+        // post poll details to server
         try {
             const response = await fetch(`${URL}/addpoll`, {
                 method: 'POST',
@@ -131,18 +170,30 @@ export default function Polls() {
             });
 
             const data = await response.json();
+            setShowLoadingToast(false);
             // add created poll to array of poll instances
-            if (data.successful) {
-                setPolls(polls => [...polls,
-                <PollInstance key={v4()}
-                    title={title}
-                    totalVotesCast={0}
-                    options={options}
-                />
-                ]);
+            if (data.polls) {
+                // sessionStorage.setItem('polls', data.polls)
+                console.log(data.polls)
+                setPolls(prev => [...data.polls.map((pollObj, index) => {
+                    return (
+                        <PollInstance key={index}
+                            pollId={pollObj._id}
+                            title={pollObj?.title}
+                            totalVotesCast={pollObj?.totalVotesCast}
+                            options={pollObj.options}
+                            deletePoll={deletePoll}
+                        />
+                    )
+                })]);
+                setToastVariant('success');
+                setMessage('Poll created successfully !');
             }
-
-            setShowToast(false);
+            else {
+                setToastVariant('danger');
+                setMessage('Could not create poll. Please try again !');
+            }
+            setShowMessageToast(true);
             document.querySelector('.create_poll_btn').disabled = false;
 
         } catch (error) {
@@ -152,77 +203,56 @@ export default function Polls() {
     }
     // end create poll
 
-    function deletePoll(id) {
-        console.log('id: ', id)
-        console.log(showToast)
+    async function deletePoll(pollId) {
+        console.log('poll id: ', pollId)
+        console.log('modal val: ', showModal)
+        setShowLoadingToast(true);
+        setShowModal(false);
+
+        // api call to remove poll from database
+        try {
+            const courseCode = sessionStorage.getItem('courseCode');
+            const courseName = sessionStorage.getItem('courseName');
+            const response = await fetch(`${URL}/deletepoll`, {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify({
+                    pollId: pollId,
+                    courseCode: courseCode
+                })
+            });
+
+            const data = await response.json();
+            if (data.successful) {
+                setShowLoadingToast(false);
+                setMessage('Successfully applied updates !');
+                setToastVariant('success');
+                // if updates are successfully applied on the database, filter the local polls
+                setPolls(prevPolls => [...prevPolls.filter(poll => {
+                    if (poll.props.pollId != pollId) { console.log('match'); return true; }
+                    else { console.log('no match'); return false; }
+                })]);
+                // sessionStorage.setItem('polls', JSON.stringify({ ...tempPolls }));
+            }
+            else {
+                setMessage('Could not apply updates !')
+                setToastVariant('danger')
+            }
+            setShowMessageToast(true);
+
+        } catch (error) {
+            console.log(error.message);
+        }
+
+        console.log('poll length: ', polls.length)
+
     }
     // end delete poll
-
-    function getV4() {
-        let random = v4();
-        console.log('v4: ', random)
-        setV4_s(random);
-        return random;
-    }
-
-    useEffect(async () => {
-        let polls_session = JSON.parse(sessionStorage.getItem('polls')) // array of poll objects
-
-        // console.log('polls_session: ', polls_session)
-        // if polls_session is null, the page was navigate to either by url or the floating nav, hence fetch the data 
-        if (!polls_session) {
-            setShowLoadingToast(true);
-            try {
-                const response = await fetch(`${URL}/fetchpolls`, {
-                    method: 'POST',
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
-                });
-
-                const data = await response.json();
-                setShowLoadingToast(false);
-
-                polls_session = data?.info;
-                // save the fetched data in session
-                sessionStorage.setItem('polls', JSON.stringify(data?.info));
-            }
-            catch (error) {
-                console.log(error.message)
-            }
-        }
-        // make sure the active page on  the floating nav is the Attendance page
-        localStorage.setItem('currentPage', 'P');
-
-        if (polls_session?.polls?.length === 0) {
-            setNoCreatedPolls(true)
-        }
-        else {
-            setPolls(polls_session?.polls.map(obj => {
-                return (
-                    <PollInstance
-                        title={obj?.title}
-                        totalVotesCast={obj?.totalVotesCast}
-                        options={obj.options}
-                    />
-                )
-            }))
-        }
-
-        setCourseName(polls_session?.courseName)
-        setCourseCode(polls_session?.courseCode)
-
-
-    }, [])
-
-    // do not display the no created poll message if a poll has been created
-    useEffect(() => {
-        if (polls?.length > 0) setNoCreatedPolls(false);
-    }, [polls])
 
     return (
         <div className='lecturer_polls'>
             <div className='course-info'>
-                {courseCode}: {courseName}
+                {sessionStorage.getItem('courseCode')}: {sessionStorage.getItem('courseName')}
             </div>
             <div className='create_polls_header'>
                 <div><Button className='create_poll_btn'
@@ -246,12 +276,26 @@ export default function Polls() {
             <Toast show={showLoadingToast}
                 onClose={() => setShowLoadingToast(false)}
                 className='loading_toast'
+                bg='secondary'
             >
                 <Toast.Body>
                     <Spinner className='spinner'
                         animation='border'
                         size='md'
                     />
+                </Toast.Body>
+            </Toast>
+
+            {/* message toast */}
+            <Toast show={showMessageToast}
+                onClose={() => setShowMessageToast(false)}
+                bg={toastVariant}
+                autohide
+                delay={3000}
+                className='toast-message'
+            >
+                <Toast.Body>
+                    {message}
                 </Toast.Body>
             </Toast>
 
@@ -284,7 +328,7 @@ export default function Polls() {
                         </div>
                         <div>
                             <Button className='confirm_btn' onClick={createPoll}>Confirm</Button>
-                            {showSpinner ? <Spinner /> : ''}
+                            {/* {showSpinner ? <Spinner /> : ''} */}
                         </div>
                     </div>
 

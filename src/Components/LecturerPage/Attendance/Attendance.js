@@ -182,7 +182,7 @@ export default function Attendance() {
                 </Table>
             </div>
 
-            {/* toasts */}
+            {/* message toast */}
             <Toast show={showMessageToast}
                 onClose={() => setShowMessageToast(false)}
                 bg={toastVariant}
@@ -195,6 +195,7 @@ export default function Attendance() {
                 </Toast.Body>
             </Toast>
 
+            {/* loading toast */}
             <Toast show={showLoadingToast}
                 onClose={() => setShowMessageToast(false)}
                 bg='secondary'

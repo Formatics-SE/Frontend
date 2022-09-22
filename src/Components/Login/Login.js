@@ -214,8 +214,6 @@ export default function Login() {
             <Toast show={showLoadingToast}
                 onClose={() => setShowLoadingToast(false)}
                 bg='secondary'
-                autohide
-                delay={3000}
                 className='loading_toast'
             >
                 <Toast.Body>

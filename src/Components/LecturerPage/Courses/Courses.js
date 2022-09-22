@@ -69,8 +69,9 @@ const Courses = () => {
 
       const data = await response.json();
       setShowToast(false);
-      // save the course code for the session
-      sessionStorage.setItem('courseCode', courseCode);
+      // save the course code in session
+      sessionStorage.setItem('courseCode', data.info.courseCode);
+      sessionStorage.setItem('courseName', data.info.courseName);
 
       if (data.info) {
         // Switch between the value of path to determine the storage key for sessionStorage.
@@ -92,7 +93,7 @@ const Courses = () => {
             navigate('/lecturer/groups');
             break;
           case 'polls':
-            sessionStorage.setItem('polls', JSON.stringify(data?.info));
+            sessionStorage.setItem('polls', JSON.stringify(data?.info.polls));
             localStorage.setItem('currentPage', 'P');
             navigate('/lecturer/polls');
             break;
