@@ -104,7 +104,7 @@ const Courses = () => {
       <div className='course_accordion_container'>
         {Courses}
       </div>
-
+ 
       {/* loading toast */}
       <Toast show={showToast}
         onClose={() => setShowToast(false)}
