@@ -83,7 +83,6 @@ export default function Groups() {
           <div className='groups_container'>
             <RandomGroup
               value_prop={value}
-              noCreatedGroups={noCreatedGroups}
             />
           </div>
       }

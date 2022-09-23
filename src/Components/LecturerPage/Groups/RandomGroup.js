@@ -18,6 +18,7 @@ export default function RandomGroup(props) {
     const [showModal, setShowModal] = useState(false)
     const [selectedGroup, setSelectedGroup] = useState([])
     const [scores, setScores] = useState(0)
+    const [groupsWithScores, setGroupsWithScores] = ([])
     // groups fetched from session storage
     //const [groups, setGroups] = useState([])
 
@@ -101,10 +102,10 @@ export default function RandomGroup(props) {
         setShowModal(false)
     }
 
-    let randomGroupingsByCwa
-    let randomGroupWithoutScores
+    let GroupingsByCwa
+    let GroupWithoutScores
     let groupFormat
-    let randomGroupWithScores
+    let GroupWithScores
     let groupNumberInModal
     
     let groups_session = JSON.parse(sessionStorage.getItem('groups'))
@@ -115,7 +116,7 @@ export default function RandomGroup(props) {
         })
         let studentsPerGroup = Number(numberOfStudents)   //Number(props.value_prop)
         let division = Math.ceil(classList.length / studentsPerGroup)
-        randomGroupingsByCwa = []   // container to hold the various groups
+        GroupingsByCwa = []   // container to hold the various groups
         let count = 0
         for (let i = 0; i < division; i++) {
             let newArray = []  //container to hold students in a group
@@ -123,12 +124,12 @@ export default function RandomGroup(props) {
                 newArray.push(classList[count])
                 count = count + division
             }
-            randomGroupingsByCwa.push(newArray) // pushing a complete group to the main list
+            GroupingsByCwa.push(newArray) // pushing a complete group to the main list
             count = i + 1
         }
 
         let number = 0
-        groupFormat = randomGroupingsByCwa.map(item => {
+        groupFormat = GroupingsByCwa.map(item => {
             number = number + 1
             return {
                 groupNumber: number,
@@ -142,7 +143,7 @@ export default function RandomGroup(props) {
             }
         })
 
-        randomGroupWithoutScores = groupFormat.map(item => {
+        GroupWithoutScores = groupFormat.map(item => {
             return (
                 <Card className="cards-container">
                     <Card.Body className="cards-body">
@@ -159,7 +160,7 @@ export default function RandomGroup(props) {
             )
         })
 
-        randomGroupWithScores = createdGroups.map(item => {
+        setGroupsWithScores(prev => [...createdGroups.map(item => {
             return (
                 <Card className="cards-container"
                     onClick={() => {
@@ -182,7 +183,8 @@ export default function RandomGroup(props) {
                     </Card.Body>
                 </Card>
             )
-        })
+        })])
+        //setGroupsWithScores(GroupWithScores)
     }
     else {
         // setCreatedGroups(groups_session?.groups)
@@ -199,7 +201,23 @@ export default function RandomGroup(props) {
     useEffect(() => {
         if (groups_session?.groups.length != 0) {
            //
-
+             let display = groups_session?.groups.map(item => {
+                return (
+                    <Card className="cards-container">
+                        <Card.Body className="cards-body">
+                            <Card.Title className="cards-title-score">Group {item.groupNumber}</Card.Title>
+                            <Card.Text className="members">
+                                {item.members.map(student => {
+                                    return (
+                                        <li key={student.indexNumber}>{student.name}: {student.indexNumber}</li>
+                                    )
+                                })}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                )
+            })
+            // setGroupsWithScores(display);
            //
             if (!showScores) {
                 setCreatedGroups(groups_session?.groups)
@@ -227,10 +245,10 @@ export default function RandomGroup(props) {
             </div>
             {!showScores ?
                 <div className="random-groups">
-                    {randomGroupWithoutScores}
+                    {GroupWithoutScores}
                 </div> :
                 <div className="random-groups">
-                    {randomGroupWithScores}
+                    {GroupWithScores}
                 </div>
             }
 
