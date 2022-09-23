@@ -1,0 +1,20 @@
+.marks_instance {
+    border-radius: 7px 7px 0 0;
+    box-shadow: 0px 0px 4px 1px rgb(187, 184, 184);
+    text-align: center;
+
+    .date {
+        position: relative;
+        padding: 5px 25px;
+        border-width: 0 0 1px 0;
+        border-style: solid;
+        border-color: rgb(163, 23, 140);
+        font-weight: bold;
+        background-color: #e1e1e2f3;
+        border-radius: 7px 7px 0 0;
+    }
+
+    .date_marks {
+        padding: 5px;
+    }
+}

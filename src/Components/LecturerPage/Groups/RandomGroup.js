@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import data from "../dummyDB"
-import "./RandomGroup.css"
 import Card from "react-bootstrap/Card"
 import Button from "react-bootstrap/Button"
 import Toast from 'react-bootstrap/Toast'
@@ -8,8 +7,9 @@ import Spinner from 'react-bootstrap/Spinner'
 import Modal from "react-bootstrap/Modal"
 import Form from "react-bootstrap/Form"
 
+import "./RandomGroup.css"
 import "bootstrap/dist/css/bootstrap.min.css"
-import { ListGroupItem } from "react-bootstrap"
+import { URL } from "../../URL"
 
 export default function RandomGroup(props) {
     const [numberOfStudents, setNumberOfStudents] = useState(props.value_prop)
@@ -26,7 +26,6 @@ export default function RandomGroup(props) {
     const [message, setMessage] = useState('')
     const [toastVariant, setToastVariant] = useState('success')
 
-
     function handleChange(event) {
         let x = Number(event.target.value)
         if (x >= 2) {
@@ -41,13 +40,16 @@ export default function RandomGroup(props) {
         const courseCode = sessionStorage.getItem('courseCode');
         setShowLoadingToast(true);
         e.target.disabled = true;
+
+        setCreatedGroups(groupFormat);
+
         try {
             const response = await fetch(`${URL}/updategroups`, {
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify({
                     courseCode: courseCode,
-
+                    groupsData: groupFormat
                 })
             });
 
@@ -65,16 +67,16 @@ export default function RandomGroup(props) {
             }
             setShowMessageToast(true);
 
-
-            // if (!showScores) {
-            //     setCreatedGroups(groupFormat)
-            //     setShowScores(true)
-            // }
+            if (!showScores) {
+                setCreatedGroups(groupFormat)
+                setShowScores(true)
+            }
         }
         catch (error) {
             console.log(error.message)
         }
     }
+    // end handleSubmitGroups 
 
     function handleSubmitScores() {
         console.log(createdGroups)
@@ -99,17 +101,16 @@ export default function RandomGroup(props) {
         setShowModal(false)
     }
 
-
-
-
     let randomGroupingsByCwa
     let randomGroupWithoutScores
     let groupFormat
     let randomGroupWithScores
-    let groupListInModal
-    // generate groups if the value of the 'noCreatedGroups' prop is false
-    if (!props.noCreatedGroups) {
-        let classList = data.map(studentData => {
+    let groupNumberInModal
+    
+    let groups_session = JSON.parse(sessionStorage.getItem('groups'))
+    // generate groups if no groups have been created
+    if (groups_session?.groups.length === 0) {
+        let classList = groups_session?.registeredStudents.map(studentData => {
             return studentData
         })
         let studentsPerGroup = Number(numberOfStudents)   //Number(props.value_prop)
@@ -133,15 +134,13 @@ export default function RandomGroup(props) {
                 groupNumber: number,
                 members: item.map(student => {
                     return {
-                        name: `${student.firstName} ${student.lastName}`,
-                        index: student.index,
-                        cwa: student.cwa,
+                        name: `${student.name}`,
+                        indexNumber: student.indexNumber
                     }
                 }),
                 score: 0
             }
         })
-
 
         randomGroupWithoutScores = groupFormat.map(item => {
             return (
@@ -151,7 +150,7 @@ export default function RandomGroup(props) {
                         <Card.Text className="members">
                             {item.members.map(student => {
                                 return (
-                                    <li key={student.index}>{student.name}: {student.index}</li>
+                                    <li key={student.indexNumber}>{student.name}: {student.indexNumber}</li>
                                 )
                             })}
                         </Card.Text>
@@ -176,7 +175,7 @@ export default function RandomGroup(props) {
                         <Card.Text className="members">
                             {item.members.map(student => {
                                 return (
-                                    <li>{student.name}: {student.index}</li>
+                                    <li key={student.indexNumber}>{student.name}: {student.indexNumber}</li>
                                 )
                             })}
                         </Card.Text>
@@ -184,26 +183,29 @@ export default function RandomGroup(props) {
                 </Card>
             )
         })
-
     }
+    else {
+        // setCreatedGroups(groups_session?.groups)
+        // if (!showScores) {
+        //     setCreatedGroups(groups_session?.groups)
+        //     setShowScores(true)
+        // }
+    }
+
     if (showModal) {
-        groupListInModal = selectedGroup.members.map(member => {
-            return (
-                <li className="list-in-modal">{member.name}: {member.index}</li>
-            )
-        })
+        groupNumberInModal = <div className="number-in-modal">Group {selectedGroup.groupNumber} marks: </div>
     }
 
     useEffect(() => {
-        // if (!props.noCreatedGroups) {
-        //     let groups_session = JSON.parse(sessionStorage.getItem('groups'))
-        //     setGroups(prev => [...prev, 
-        //         groups_session?.map(groupObj => {
+        if (groups_session?.groups.length != 0) {
+           //
 
-        //         })
-        //     ])
-        // }
-
+           //
+            if (!showScores) {
+                setCreatedGroups(groups_session?.groups)
+                setShowScores(true)
+            }
+        }
     }, [])
 
     return (
@@ -243,17 +245,23 @@ export default function RandomGroup(props) {
                         <span style={{ color: 'rgb(163, 23, 140)' }}>Assign Group Marks</span>
                         <Button id='close_btn' onClick={() => setShowModal(false)}>&times;</Button>
                     </div>
+                    <hr />
                     <div>
                         <div className='assign-marks-div'>
+                            {groupNumberInModal}
                             <Form.Control type="number" className="assign-marks-entry" onChange={(e) => setScores(e.target.value)} />
-                            <Button
-                                className='assign-marks-button'
-                                onClick={handleScores}>
-                                Confirm
-                            </Button>
                         </div>
                     </div>
-                    {showModal ? <div className="group-members">{groupListInModal}</div> : <div>No group selected</div>}
+                    <hr />
+                    <div>
+                        <Button
+                            id='confirm_btn'
+                            className='assign-marks-button'
+                            onClick={handleScores}>
+                            Confirm
+                        </Button>
+                    </div>
+                    {/* {showModal ? <div className="group-members">{groupNumberInModal}</div> : <div>No group selected</div>} */}
                     <div>
                     </div>
                 </Modal.Body>

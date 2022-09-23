@@ -32,13 +32,14 @@
   overflow-y: auto;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(23.5%, 1fr))[auto-fill];
-      grid-template-columns: repeat(auto-fill, minmax(23.5%, 1fr));
-  -webkit-column-gap: 2%;
-          column-gap: 2%;
+  -ms-grid-columns: (minmax(24.25%, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(24.25%, 1fr));
+  -webkit-column-gap: 1%;
+          column-gap: 1%;
+  row-gap: 2%;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1280px) {
   .courses .course_accordion_container {
     -ms-grid-columns: (minmax(32.6667%, 1fr))[auto-fill];
         grid-template-columns: repeat(auto-fill, minmax(32.6667%, 1fr));
@@ -72,7 +73,7 @@
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  color: white !important;
+  color: white;
   z-index: 50;
   opacity: 100%;
 }

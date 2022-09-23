@@ -30,6 +30,7 @@ export default function FloatingNav() {
         document.dispatchEvent(event);
     }
     document.addEventListener('monitorItemChange', (e) => {
+        console.log('current page: ', e.value)
         if (e.key === 'currentPage') {
             setCurrentPage(e.value);
         }

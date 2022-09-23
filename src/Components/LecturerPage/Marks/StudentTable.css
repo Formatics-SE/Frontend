@@ -7,7 +7,7 @@
     min-height: 500px;
     margin: 0 auto;
     padding: 10px 30px;
-    box-shadow: 0 0 4px 2px rgb(187, 184, 184);
+    box-shadow: 0 0 4px rgb(187, 184, 184);
 }
 @media screen and (max-width: 912px) {
     .marks-page-container {

@@ -25,6 +25,11 @@ export default function Login() {
 
     const navigate = useNavigate()
 
+    useEffect(() => {
+        // set current page value to 'C' to cause the floating nav to be hidden on Courses page.
+        sessionStorage.setItem('currentPage', 'C');
+    }, [])
+
     // check if all fields are filled in
     function validateInputs(e) {
         let username = document.querySelector('#username').value;
@@ -33,22 +38,11 @@ export default function Login() {
         if (user === 'L') {
             staff_id = document.querySelector('#staff_id').value;
         }
-        // let regexp = new RegExp('\d+$')
-        // if (staff_id.search(regexp) == -1) {
-        //     console.log('wrong')
-        //     staff_id_type_correct = false;
-        // }
-
         if ((user === 'L' && (!username || !password || !staff_id)) ||
             (user === 'S' && (!username || !password))) {
             setToastMessage(toastMessages[0]);  // message: please fill in all fields
             setShowToast('true');
         }
-        // else if (!staff_id_type_correct) {
-        //     // console.log(typeof staff_id)
-        //     setToastMessage(toastMessages[1]);  // message: invalid login credentials
-        //     setShowToast('true');
-        // }
         // call handle submit if all inputs are filled and are of valid types
         else {
             if (user === 'L')
@@ -78,11 +72,8 @@ export default function Login() {
             e.target.disabled = false;
 
             if (lecturerData) {
-                // sessionStorage.setItem('staff_id', staff_id);
                 sessionStorage.setItem('username', JSON.stringify(lecturerData.username));
                 sessionStorage.setItem('assignedCourses', JSON.stringify(lecturerData.assignedCourses));
-                // set current page value to 'C' to cause the floating nav to be hidden on Courses page.
-                localStorage.setItem('currentPage', 'C');
                 navigate('/lecturer/courses');
             }
             // invalid details
@@ -121,8 +112,6 @@ export default function Login() {
                 sessionStorage.setItem('semester', studentData.semester);
                 sessionStorage.setItem('year', studentData.year);
                 sessionStorage.setItem('registeredCourses', JSON.stringify(studentData.registeredCourses));
-                // set current page value to 'C' to cause the floating nav to be hidden on Courses page.
-                localStorage.setItem('currentPage', 'C');
                 navigate('/student/courses');
             }
             else {  // invalid details

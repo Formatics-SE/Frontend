@@ -22,10 +22,6 @@ export default function StudentsTable() {
     const [individualMarksFieldValue, setIndividualMarksFieldValue] = useState(0)
     const [allMarksFieldValue, setAllMarksFieldValue] = useState(0)
 
-    const [marks, setMarks] = useState({
-        individual_marks: 0,
-        group_marks: 0
-    })
     const [showMessageToast, setShowMessageToast] = useState(false);
     const [showLoadingToast, setShowLoadingToast] = useState(false);
     const [message, setMessage] = useState('No match')
@@ -59,7 +55,7 @@ export default function StudentsTable() {
 
     useEffect(async () => {
         let marks_session = JSON.parse(sessionStorage.getItem('marks'));
-        // if marks_session is null, the page was navigate to either by url or the floating nav, hence fetch the data 
+        // fetc marks data if marks_session is null
         if (!marks_session) {
             setShowLoadingToast(true);
             try {

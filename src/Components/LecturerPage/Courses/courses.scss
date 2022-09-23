@@ -21,11 +21,11 @@
         // max-height: calc(100% - 61px);
         overflow-y: auto;
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(23.5%, 1fr));
-        column-gap: 2%;
-        // row-gap: 2%;
+        grid-template-columns: repeat(auto-fill, minmax(24.25%, 1fr));
+        column-gap: 1%;
+        row-gap: 2%;
 
-        @media screen and (max-width: 1200px) {
+        @media screen and (max-width: 1280px) {
             grid-template-columns: repeat(auto-fill, minmax(32.6667%, 1fr));
         }
         @media screen and (max-width: 768px) {
@@ -45,7 +45,7 @@
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    color: white !important;
+    color: white;
     z-index: 50;
     opacity: 100%;
 }

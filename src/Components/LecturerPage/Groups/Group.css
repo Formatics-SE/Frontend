@@ -10,7 +10,7 @@
     min-height: 500px;
     margin: 0 auto;
     padding: 10px 30px;
-    box-shadow: 0 0 4px 2px rgb(187, 184, 184);
+    box-shadow: 0 0 4px rgb(187, 184, 184);
 }
 @media screen and (max-width: 912px) {
     .groupsPage {
@@ -47,6 +47,12 @@
     font-size: 140%;
     text-align: center;
     box-shadow: 0 0 3px rgb(189, 187, 188);
+}
+@media screen and (max-width: 768px) {
+    .no_groups_message {
+        top: 45%;
+        width: 90%;
+    }
 }
 .noGroups div {
     font-size: 140%;
@@ -183,7 +189,12 @@
 }
 #modal #field input {
     margin-left: 20px;
-    width: 60%;
+    width: 59%;
+}
+@media screen and (max-width: 768px) {
+    #modal #field input {
+        width: 50%;
+    }
 }
 #modal #confirm_btn {
     margin: 5px 10px 10px 10px;

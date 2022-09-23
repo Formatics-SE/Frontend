@@ -1,1 +1,74 @@
-/* No CSS *//*# sourceMappingURL=marks.css.map */
+.student_marks {
+  position: relative;
+  width: 75%;
+  height: calc(100vh - 57px);
+  min-height: 500px;
+  margin: 0 auto;
+  padding: 10px 30px;
+  -webkit-box-shadow: 0 0 4px #bbb8b8;
+          box-shadow: 0 0 4px #bbb8b8;
+}
+
+@media screen and (max-width: 912px) {
+  .student_marks {
+    width: 100%;
+    -webkit-box-shadow: 0 0 0 #bbb8b8;
+            box-shadow: 0 0 0 #bbb8b8;
+    padding: 10px 20px;
+  }
+}
+
+@media screen and (max-width: 912px) and (max-width: 768px) {
+  .student_marks {
+    padding: 10px;
+  }
+}
+
+.student_marks .course-info {
+  background-color: #e1e1e2f3 !important;
+}
+
+.student_marks .no_marks_message {
+  position: absolute;
+  top: 45%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 15px 25px;
+  background-color: #f2f2f7f3;
+  font-size: 140%;
+  text-align: center;
+  -webkit-box-shadow: 0 0 3px #bdbbbc;
+          box-shadow: 0 0 3px #bdbbbc;
+}
+
+.student_marks .student_marks_container {
+  margin-top: 10px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(19.2%, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(19.2%, 1fr));
+  -webkit-column-gap: 1%;
+          column-gap: 1%;
+  row-gap: 2%;
+}
+
+@media screen and (max-width: 1280px) {
+  .student_marks .student_marks_container {
+    -ms-grid-columns: (minmax(24.25%, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(24.25%, 1fr));
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .student_marks .student_marks_container {
+    -ms-grid-columns: (minmax(49.5%, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(49.5%, 1fr));
+  }
+}
+/*# sourceMappingURL=marks.css.map */

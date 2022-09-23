@@ -8,7 +8,7 @@
     box-shadow: 0 2px 3px -2px rgb(187, 184, 184);
     padding: 5px;
     margin-bottom: 5px !important;
-    background-color: rgb(238, 230, 230);
+    background-color: #e1e1e2f3 !important;
     font-weight: bold;
 }
 .heading-container {
@@ -114,26 +114,26 @@ li {
 }
 
 .modal_header {
-    display: flex;
-    justify-content: flex-end;
+    /* display: flex;
+    justify-content: flex-end; */
 }
-.close_btn {
+/* .close_btn {
     background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
     border-color: rgb(163, 23, 140);
     padding: 7px 25px;
     text-align: center;
     border-radius: 30px;
     font-size: 15px;
-}
+} */
 .assign-marks-div {
     display: flex;
-    justify-content: flex-start;
-    margin-top: 10px;
+    align-items: center;
+    margin-top: 5px;
     margin-bottom: 10px;
 }
-.assign-marks-entry {
-    margin-right: 10px;
-    width: 100px;
+.assign-marks-div .number-in-modal{
+    width: 40%;
+    margin-left: 10px;
 }
 .assign-marks-button,
 .submit-button-scores,
@@ -159,8 +159,8 @@ li {
     box-shadow: 0 0 0 rgb(163, 23, 140);
 }
 .assign-marks-button {
-    width: 60%;
-    margin-right: 10px;
+    width: 95%;
+    margin: 0 10px 0 10px;
 }
 .group-members {
     display: flex;
@@ -175,11 +175,12 @@ li {
     margin-left: 10px;
 }
 
-#modal input {
+#modal .assign-marks-entry {
     margin-top: -3px;
     font-size: 103%;
-    width: 40%;
+    width: 70%;
     margin-left: 10px;
+    margin-right: 10px;
 }
 #modal input:focus {
     box-shadow: 0 0 5px 1px rgb(163, 23, 140);
@@ -187,7 +188,7 @@ li {
 }
 @media screen and (max-width: 1280px) {
     .random-groups {
-        grid-template-columns: repeat(auto-fill, minmax(32.6667%, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(49.5%, 1fr));
     }
 }
 @media screen and (max-width: 768px) {
