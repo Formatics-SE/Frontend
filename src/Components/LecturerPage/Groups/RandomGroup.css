@@ -71,7 +71,7 @@
     /* max-height: calc(100% - 80px) !important; */
     overflow-y: auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(24.25%, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(32.6667%, 1fr));
     column-gap: 1%;
     row-gap: 2%;
 }

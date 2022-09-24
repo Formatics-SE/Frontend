@@ -54,26 +54,23 @@ export default function StudentsTable() {
     // })
 
     useEffect(async () => {
-        let marks_session = JSON.parse(sessionStorage.getItem('marks'));
-        // fetc marks data if marks_session is null
-        if (!marks_session) {
-            setShowLoadingToast(true);
-            try {
-                const response = await fetch(`${URL}/fetchlecturermarks`, {
-                    method: 'POST',
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
-                });
+        setShowLoadingToast(true);
+        let marks_session;
+        try {
+            const response = await fetch(`${URL}/fetchlecturermarks`, {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
+            });
 
-                const data = await response.json();
-                setShowLoadingToast(false);
+            const data = await response.json();
+            setShowLoadingToast(false);
 
-                marks_session = data?.info;
-                sessionStorage.setItem('marks', JSON.stringify(data?.info));
-            }
-            catch (error) {
-                console.log(error.message)
-            }
+            marks_session = data?.info;
+            sessionStorage.setItem('marks', JSON.stringify(data?.info));
+        }
+        catch (error) {
+            console.log(error.message)
         }
         // make sure the active page on  the flaoting nav is the Marks page
         localStorage.setItem('currentPage', 'M');

@@ -41,8 +41,8 @@
 
 @media screen and (max-width: 1280px) {
   .courses .course_accordion_container {
-    -ms-grid-columns: (minmax(32.6667%, 1fr))[auto-fill];
-        grid-template-columns: repeat(auto-fill, minmax(32.6667%, 1fr));
+    -ms-grid-columns: (minmax(32.6667%, 1fr))[auto-fit];
+        grid-template-columns: repeat(auto-fit, minmax(32.6667%, 1fr));
   }
 }
 

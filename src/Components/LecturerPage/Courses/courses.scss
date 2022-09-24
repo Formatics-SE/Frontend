@@ -26,7 +26,7 @@
         row-gap: 2%;
 
         @media screen and (max-width: 1280px) {
-            grid-template-columns: repeat(auto-fill, minmax(32.6667%, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(32.6667%, 1fr));
         }
         @media screen and (max-width: 768px) {
             padding: 15px 2% 0 2%;

@@ -79,22 +79,22 @@ const Courses = () => {
         // The value set by localStorage.setItem is retrieved by the floating nav component and highlights the approrpiate page as active.
         switch (path) {
           case 'attendance':
-            sessionStorage.setItem('attendance', JSON.stringify(data?.info));
+            // sessionStorage.setItem('attendance', JSON.stringify(data.info));
             localStorage.setItem('currentPage', 'R');
             navigate('/lecturer/rollcall');
             break;
           case 'marks':
-            sessionStorage.setItem('marks', JSON.stringify(data?.info));
+            // sessionStorage.setItem('marks', JSON.stringify(data.info));
             localStorage.setItem('currentPage', 'M');
             navigate('/lecturer/marks');
             break;
           case 'groups':
-            sessionStorage.setItem('groups', JSON.stringify(data?.info));
+            sessionStorage.setItem('groups', JSON.stringify(data.info));
             localStorage.setItem('currentPage', 'G');
             navigate('/lecturer/groups');
             break;
           case 'polls':
-            sessionStorage.setItem('polls', JSON.stringify(data?.info.polls));
+            sessionStorage.setItem('polls', JSON.stringify(data.info.polls));
             localStorage.setItem('currentPage', 'P');
             navigate('/lecturer/polls');
             break;

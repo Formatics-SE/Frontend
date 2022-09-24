@@ -24,27 +24,24 @@ export default function Attendance() {
     const [toastVariant, setToastVariant] = useState('success')
 
     useEffect(async () => {
-        let attendanceInfo_session = JSON.parse(sessionStorage.getItem('attendance'));
-        // if attendanceInfo_session is null, the page was navigate to either by url or the floating nav, hence fetch the data 
-        if (!attendanceInfo_session) {
-            setShowLoadingToast(true);
-            try {
-                const response = await fetch(`${URL}/fetchattendance`, {
-                    method: 'POST',
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
-                });
+        setShowLoadingToast(true);
+        let attendanceInfo_session;
+        try {
+            const response = await fetch(`${URL}/fetchattendance`, {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
+            });
 
-                const data = await response.json();
-                setShowLoadingToast(false);
+            const data = await response.json();
+            setShowLoadingToast(false);
 
-                attendanceInfo_session = data?.info;
-                // save the fetched data in session
-                sessionStorage.setItem('attendance', JSON.stringify(data?.info));
-            }
-            catch (error) {
-                console.log(error.message)
-            }
+            attendanceInfo_session = data?.info;
+            // save the fetched data in session
+            sessionStorage.setItem('attendance', JSON.stringify(data?.info));
+        }
+        catch (error) {
+            console.log(error.message)
         }
         // make sure the active page on  the floating nav is the Attendance page
         localStorage.setItem('currentPage', 'R');
