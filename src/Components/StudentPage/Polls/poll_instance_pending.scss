@@ -1,0 +1,56 @@
+$border_color: rgb(163, 23, 140);
+$fill_color: rgb(94, 87, 192);
+
+.poll_instance_pending {
+    box-shadow: 0px 0px 4px 1px rgb(187, 184, 184);
+    margin-bottom: 15px;
+    break-inside: avoid;
+ 
+
+    .pending_poll_title {
+        position: relative;
+        padding: 5px 46px 5px 15px;
+        border-width: 0 0 1px 0;
+        border-style: solid;
+        border-color: $border_color;
+        font-weight: bold;
+        background-color: #e1e1e2f3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-wrap: none;
+    }
+
+    .options {
+        padding: 8px 5px;
+
+        .option {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: nowrap;
+            padding-left: 5px;
+            padding-right: 5px;
+            &:hover {
+                cursor: pointer;
+                background-color: #e1e1e2f3;
+            }
+
+            .option_mark {
+                width: 10px;
+                height: 10px;
+                border: 2px solid $fill_color;
+                border-radius: 50%;
+                margin-right: 15px;
+            }
+        }
+    }
+
+    .totalVotesCast {
+        border-width: 1px 0 0 0;
+        border-style: solid;
+        border-color: $border_color;
+        padding: 5px 10px;
+        border-radius: 0 0 10px 10px;
+    }
+}

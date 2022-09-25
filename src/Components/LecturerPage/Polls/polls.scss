@@ -70,20 +70,22 @@ $btn_bg_color: rgb(163, 23, 140);
         }
     }
 
-    .created_polls_container {
+    .created_polls {
         padding: 15px 10px 50px 10px;
         width: 100%;
         min-height: fit-content;
-        max-height: calc(100% - 61px);
-        // max-height: 99%;
+        max-height: calc(100% - 105px);
         overflow-y: auto;
 
-        column-count: 2;
-        column-gap: 2%;
+        .created_polls_container {
+            padding-bottom: 30px;
+            column-count: 2;
+            column-gap: 2%;
 
-        @media screen and (max-width: 768px) {
-            // column-count: 1;
-            // column-gap: 0%;
+            @media screen and (max-width: 768px) {
+                column-count: 1;
+                column-gap: 3%;
+            }
         }
     }
 }

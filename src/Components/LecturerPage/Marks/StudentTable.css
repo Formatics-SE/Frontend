@@ -204,3 +204,9 @@ th {
     padding: 5px 30px;
     text-align: center;
 }
+@media screen and (max-width: 768px) {
+    .toast-message {
+        padding: 5px 10px;
+        width: 90%;
+    }
+}

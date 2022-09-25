@@ -2,11 +2,12 @@ $btn_bg_color: rgb(163, 23, 140);
 
 .student_polls {
     width: 75%;
-    height: calc(100vh - 51px);
+    height: calc(100vh - 56px);
     min-height: 500px;
     margin: 0 auto;
     padding: 10px 30px;
     box-shadow: 0 0 4px 2px rgb(187, 184, 184);
+
     @media screen and (max-width: 912px) {
         width: 100%;
         box-shadow: 0 0 0 rgb(187, 184, 184);
@@ -14,6 +15,15 @@ $btn_bg_color: rgb(163, 23, 140);
         @media screen and (max-width: 768px) {
             padding: 10px;
         }
+    }
+
+    .pending_and_participated_polls_container {
+        width: 100%;
+        min-height: fit-content;
+        padding-bottom: 60px;
+        max-height: calc(100% - 31px);
+        overflow-y: auto;
+
     }
 
     .pending_polls_title,
@@ -34,10 +44,61 @@ $btn_bg_color: rgb(163, 23, 140);
     }
 
     .pending_polls {
+        margin-top: 10px;
         margin-bottom: 20px;
-        
+
+        .pending_polls_body {
+            padding: 15px 10px;
+            width: 100%;
+            min-height: fit-content;
+            overflow-y: auto;
+            column-count: 2;
+            column-gap: 2%;
+
+            @media screen and (max-width: 768px) {
+                column-count: 1;
+                column-gap: 3%;
+            }
+            .no_pending_polls_message {
+                width: fit-content;
+                padding: 10px 25px;
+                background-color: #f2f2f7f3;
+                font-size: 110%;
+                text-align: center;
+                box-shadow: 0 0 3px rgb(189, 187, 188);
+
+                @media screen and (max-width: 768px) {
+                    width: 100%;
+                }
+            }
+        }
     }
     .participated_polls {
-        
+        margin-bottom: 20px;
+
+        .participated_polls_body {
+            padding: 15px 10px;
+            width: 100%;
+            min-height: fit-content;
+            column-count: 2;
+            column-gap: 2%;
+
+            @media screen and (max-width: 768px) {
+                column-count: 1;
+                column-gap: 3%;
+            }
+
+            .no_participated_polls_message {
+                width: fit-content;
+                padding: 10px 25px;
+                background-color: #f2f2f7f3;
+                font-size: 110%;
+                text-align: center;
+                box-shadow: 0 0 3px rgb(189, 187, 188);
+                @media screen and (max-width: 768px) {
+                    width: 100%;
+                }
+            }
+        }
     }
 }

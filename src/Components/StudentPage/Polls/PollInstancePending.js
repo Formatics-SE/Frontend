@@ -1,113 +1,111 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { FaTrash } from "react-icons/fa";
-import "./poll_instance_pending.css";
+import Toast from 'react-bootstrap/Toast'
+import Spinner from 'react-bootstrap/Spinner'
 
+import "./poll_instance_pending.css";
 import { URL } from "../../URL";
 
 export default function PollInstancePending({
-  id,
+  pollId,
   title,
   totalVotesCast,
   options,
-  deletePoll,
   setRefresh,
 }) {
-  const [showModal, setShowModal] = useState(false);
+
 
   const [options_s, setOptions_s] = useState([]);
 
+  const [showMessageToast, setShowMessageToast] = useState(false);
+  const [showLoadingToast, setShowLoadingToast] = useState(false);
+  const [message, setMessage] = useState('')
+  const [toastVariant, setToastVariant] = useState('success')
+
   async function handleClick(e) {
-    let pollOptionId = e.target.getAttribute("data-attr");
+    setShowLoadingToast(true);
+    const pollOptionId = e.target.classList[1];
+    const courseCode = sessionStorage.getItem('courseCode');
+
     try {
-      const response = await fetch(`${URL}/pollsupdate`, {
+      const response = await fetch(`${URL}/updatepolls`, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
-          pollId: id,
+          courseCode: courseCode,
+          pollId: pollId,
           indexNumber: sessionStorage.getItem("indexNumber"),
           optionId: pollOptionId,
         }),
       });
 
       const data = await response.json();
-      if (data.polls) {
-        sessionStorage.setItem("polls", data.polls);
+      setShowLoadingToast(false);
+
+      if (data.successful) {
         setRefresh((prev) => !prev);
+        window.location.reload(true);
       }
     } catch (error) {
       console.log(error.message);
     }
+
   }
 
   useEffect(() => {
     const ops = options?.map((obj, index) => {
+      console.log('id: ', obj._id)
       return (
-        <>
-          <div
-            className="pending_option"
-            key={obj._id}
-            data-attr={obj._id}
-            onClick={(e) => handleClick(e)}
-          >
-            {obj.option}
-          </div>
-        </>
-      );
+        <div key={index} className={`option ${obj._id}`}
+          onClick={(e) => handleClick(e)}>
+          <div className='option_mark'></div> {obj.option}
+        </div>
+      )
     });
 
     setOptions_s(ops);
+
   }, []);
+
   return (
     <div className="poll_instance_pending">
-      <div className="title_and_delete_container">
-        <div className="title">{title}</div>
-        <div>
-          <FaTrash className="delete_icon" onClick={() => setShowModal(true)} />
-        </div>
-      </div>
+      <div className="pending_poll_title">{title}</div>
       <div className="options">{options_s}</div>
       <div className="totalVotesCast">
         Total votes: <span>{totalVotesCast}</span>
       </div>
 
-      {/* modal to confirm Poll deletion */}
-      <Modal
-        onHide={() => setShowModal(false)}
-        show={showModal}
-        backdrop="static"
-        id="modal"
+      {/* message toast */}
+      <Toast show={showMessageToast}
+        onClose={() => setShowMessageToast(false)}
+        bg={toastVariant}
+        autohide
+        delay={3000}
+        className='toast-message'
       >
-        <Modal.Body>
-          <div id="modal_header">
-            <span style={{ color: "rgb(163, 23, 140)" }}>Confirm Delete</span>
-            <Button
-              id="close_btn"
-              onClick={() => {
-                setShowModal(false);
-              }}
-            >
-              &times;
-            </Button>
-          </div>
-          <div id="confirm_text">Do you want to delete this poll ?</div>
-        </Modal.Body>
-        <Modal.Footer id="modal_footer">
-          <Button id="confirm_btn_d" onClick={() => deletePoll(id)}>
-            Confirm
-          </Button>
-          <Button id="cancel_btn_d" onClick={() => setShowModal(false)}>
-            Cancel
-          </Button>
-        </Modal.Footer>
-      </Modal>
+        <Toast.Body>
+          {message}
+        </Toast.Body>
+      </Toast>
+
+      {/* loading toast */}
+      <Toast show={showLoadingToast}
+        onClose={() => setShowLoadingToast(false)}
+        bg='secondary'
+        autohide
+        delay={3000}
+        className='loading_toast'
+      >
+        <Toast.Body>
+          <Spinner className='spinner'
+            animation='border'
+            size='md'
+          />
+        </Toast.Body>
+      </Toast>
+
     </div>
   );
 }
 
-/**
- <div className='votes'>
-</div>
-<div className='percent_fill'></div>
- */

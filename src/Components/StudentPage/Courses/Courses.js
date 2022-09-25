@@ -77,17 +77,17 @@ const Courses = () => {
         // switch between the value of path to determine the storage key for sessionStorage
         switch (path) {
           case 'marks':
-            sessionStorage.setItem('marks', JSON.stringify(data?.info));
+            // sessionStorage.setItem('marks', JSON.stringify(data?.info));
             localStorage.setItem('currentPage', 'M');
             navigate('/student/marks');
             break;
           case 'groups':
-            sessionStorage.setItem('group', JSON.stringify(data?.group));
+            // sessionStorage.setItem('group', JSON.stringify(data?.group));
             localStorage.setItem('currentPage', 'G');
             navigate('/student/groups');
             break;
           case 'polls':
-            sessionStorage.setItem('polls', JSON.stringify(data?.polls));
+            // sessionStorage.setItem('polls', JSON.stringify(data?.polls));
             localStorage.setItem('currentPage', 'P');
             navigate('/student/polls');
             break;

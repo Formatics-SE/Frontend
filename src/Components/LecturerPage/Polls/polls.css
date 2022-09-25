@@ -100,18 +100,31 @@
   font-weight: bold;
 }
 
-.lecturer_polls .created_polls_container {
+.lecturer_polls .created_polls {
   padding: 15px 10px 50px 10px;
   width: 100%;
   min-height: -webkit-fit-content;
   min-height: -moz-fit-content;
   min-height: fit-content;
-  max-height: calc(100% - 61px);
+  max-height: calc(100% - 105px);
   overflow-y: auto;
+}
+
+.lecturer_polls .created_polls .created_polls_container {
+  padding-bottom: 30px;
   -webkit-column-count: 2;
           column-count: 2;
   -webkit-column-gap: 2%;
           column-gap: 2%;
+}
+
+@media screen and (max-width: 768px) {
+  .lecturer_polls .created_polls .created_polls_container {
+    -webkit-column-count: 1;
+            column-count: 1;
+    -webkit-column-gap: 3%;
+            column-gap: 3%;
+  }
 }
 
 #modal {

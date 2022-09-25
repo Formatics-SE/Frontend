@@ -6,7 +6,7 @@
           break-inside: avoid;
 }
 
-.poll_instance .title_and_delete_container {
+.poll_instance .participated_poll_title {
   position: relative;
   padding: 5px 46px 5px 15px;
   border-width: 0 0 1px 0;
@@ -14,22 +14,9 @@
   border-color: #a3178c;
   font-weight: bold;
   background-color: #e1e1e2f3;
-}
-
-.poll_instance .title_and_delete_container .title {
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: none;
-}
-
-.poll_instance .title_and_delete_container .delete_icon {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  right: 15px;
-  font-size: 95%;
-  color: #660d0d;
 }
 
 .poll_instance .options {

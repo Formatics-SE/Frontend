@@ -17,6 +17,7 @@ export default function StudentsTable() {
     const [courseCode, setCourseCode] = useState('')
 
     const [students, setStudents] = useState([])
+    const [groups, setGroups] = useState([])
     const [match, setMatch] = useState('')
 
     const [individualMarksFieldValue, setIndividualMarksFieldValue] = useState(0)
@@ -31,6 +32,7 @@ export default function StudentsTable() {
         return (
             <StudentsDetails
                 key={index}
+                id={index}
                 student={student}
             />
         )
@@ -72,7 +74,7 @@ export default function StudentsTable() {
         catch (error) {
             console.log(error.message)
         }
-        // make sure the active page on  the flaoting nav is the Marks page
+        // set the active page on the floating nav to the Marks page
         localStorage.setItem('currentPage', 'M');
 
         setCourseName(marks_session?.courseName)
@@ -83,14 +85,29 @@ export default function StudentsTable() {
             student.marksArray.map(marksObj => {
                 totalMarks += marksObj.marks;
             })
+
+            console.log('groups: ', marks_session?.groups, 'student: ', student)
+
+            let groupScore;
+            for (let i = 0; i < marks_session?.groups?.length; i++) {
+                // console.log('student gn: ', student.groupNumber, 'ms number: ', marks_session?.groups[i].groupNumber)
+                if (student.groupNumber === marks_session?.groups[i].groupNumber) {
+                    groupScore = marks_session?.groups[i].score;
+                    break;
+                }
+            }
+            console.log('groupScore: ', groupScore)
+
             return {
                 key: { index },
                 name: student.name,
                 indexNumber: student.indexNumber,
                 currentDayMarks: 0,
-                totalMarks: totalMarks
+                totalMarks: totalMarks,
+                groupScore: groupScore
             }
         }))
+        setGroups(marks_session?.groups)
 
     }, [])
 
@@ -242,7 +259,9 @@ export default function StudentsTable() {
                             <tr>
                                 <th>Name</th>
                                 <th>Index Number</th>
-                                <th>Accumulated marks</th>
+                                <th>Individual Score</th>
+                                <th>Group Score</th>
+                                <th>Total</th>
                             </tr>
                         </thead>
                         <tbody>

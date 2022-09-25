@@ -7,17 +7,17 @@ import './poll_instance.css'
 export default function PollInstance({ pollId, title, totalVotesCast, options, deletePoll }) {
 
     const [options_s, setOptions_s] = useState([]);
-
     const [showModal, setShowModal] = useState(false);
 
     function percentage(votes) {
-        return ((votes / 74) * 100).toFixed(2);
+        if(votes === 0) return '0.00';
+        return ((votes / totalVotesCast) * 100).toFixed(2);
     }
 
     useEffect(() => {
         const ops = options?.map((obj, index) => {
             return (<>
-                <div className='option_and_percent_votes' key={index}>
+                <div className='option_and_percent_votes' key={index}> 
                     <div className='option'>
                         {obj.option}
                     </div>

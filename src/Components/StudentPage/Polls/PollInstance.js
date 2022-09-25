@@ -11,26 +11,10 @@ export default function PollInstance({ id, title, totalVotesCast, options, delet
     const [showModal, setShowModal] = useState(false);
 
     function percentage(votes) {
-        return ((votes / 74) * 100).toFixed(2);
+        return ((votes / totalVotesCast) * 100).toFixed(2);
     }
 
     useEffect(() => {
-        // const testData = [
-        //     {
-        //         option: 'Naruto',
-        //         votes: 24
-        //     },
-        //     {
-        //         option: 'Demon Slayer',
-        //         votes: 32
-        //     },
-        //     {
-        //         option: 'Voltron',
-        //         votes: 18
-        //     }
-        // ];
-
-        // const totalVotesCast = 74
         const ops = options?.map((obj, index) => {
             return (<>
                 <div className='option_and_percent_votes' key={index}>
@@ -52,10 +36,7 @@ export default function PollInstance({ id, title, totalVotesCast, options, delet
     }, [])
     return (
         <div className='poll_instance'>
-            <div className='title_and_delete_container'>
-                <div className='title'>{title}</div>
-                <div><FaTrash className='delete_icon' onClick={() => setShowModal(true)} /></div>
-            </div>
+            <div className='participated_poll_title'>{title}</div>
             <div className='options'>
                 {options_s}
             </div>

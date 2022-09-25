@@ -1,1 +1,29 @@
-/* No CSS *//*# sourceMappingURL=groups.css.map */
+.student_group_page {
+  width: 75%;
+  height: calc(100vh - 56px);
+  min-height: 500px;
+  margin: 0 auto;
+  padding: 10px 30px;
+  -webkit-box-shadow: 0 0 4px 2px #bbb8b8;
+          box-shadow: 0 0 4px 2px #bbb8b8;
+}
+
+.student_group_page .no_group_message {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 15px 25px;
+  background-color: #f2f2f7f3;
+  font-size: 140%;
+  text-align: center;
+  -webkit-box-shadow: 0 0 3px #bdbbbc;
+          box-shadow: 0 0 3px #bdbbbc;
+}
+/*# sourceMappingURL=groups.css.map */

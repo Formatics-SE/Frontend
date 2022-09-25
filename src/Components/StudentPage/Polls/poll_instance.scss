@@ -3,12 +3,10 @@ $fill_color: rgb(94, 87, 192);
 
 .poll_instance {
     box-shadow: 0px 0px 4px 1px rgb(187, 184, 184);
-
-    // width: clamp(48%, 48%, 48%);
     margin-bottom: 15px;
     break-inside: avoid;
 
-    .title_and_delete_container {
+    .participated_poll_title {
         position: relative;
         padding: 5px 46px 5px 15px;
         border-width: 0 0 1px 0;
@@ -16,20 +14,9 @@ $fill_color: rgb(94, 87, 192);
         border-color: $border_color;
         font-weight: bold;
         background-color: #e1e1e2f3;
-
-        .title {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            word-wrap: none;
-        }
-        .delete_icon {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            right: 15px;
-            font-size: 95%;
-            color: rgb(102, 13, 13);
-        }
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-wrap: none;
     }
 
     .options {

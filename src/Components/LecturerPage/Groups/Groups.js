@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import FormLabel from "react-bootstrap/FormLabel";
 import Form from "react-bootstrap/Form";
+import Toast from 'react-bootstrap/Toast'
+import Spinner from 'react-bootstrap/Spinner'
 import Button from "react-bootstrap/Button";
 import "./Group.css";
 
@@ -26,27 +28,24 @@ export default function Groups() {
   }
 
   useEffect(async () => {
-    let groups_session = JSON.parse(sessionStorage.getItem('groups'))
-    // getch groups if no groups data is saved locally
-    if (!groups_session) {
-      setShowLoadingToast(true);
-      try {
-        const response = await fetch(`${URL}/fetchlecturergroups`, {
-          method: 'POST',
-          headers: { 'content-type': 'application/json' },
-          body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
-        });
+    setShowLoadingToast(true);
+    let groups_session;
+    try {
+      const response = await fetch(`${URL}/fetchlecturergroups`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
+      });
 
-        const data = await response.json();
-        setShowLoadingToast(false);
+      const data = await response.json();
+      setShowLoadingToast(false);
 
-        groups_session = data?.info;
-        // save the fetched data in session
-        sessionStorage.setItem('groups', JSON.stringify(data?.info));
-      }
-      catch (error) {
-        console.log(error.message)
-      }
+      groups_session = data?.info;
+      // save the fetched data in session
+      sessionStorage.setItem('groups', JSON.stringify(data?.info));
+    }
+    catch (error) {
+      console.log(error.message)
     }
     // make sure the active page on  the floating nav is the Attendance page
     localStorage.setItem('currentPage', 'G');
@@ -116,29 +115,22 @@ export default function Groups() {
         </Modal.Body>
       </Modal>
 
-      {/* <footer className="footer">
-        <div className="inner-footer">
-          <div className="options">
-            <ul className="links">
-              <li>
-                <a href="#">Privacy</a>
-              </li>
-              <li>
-                <a href="#">About</a>
-              </li>
-              <li>
-                <a href="#">Contact Us</a>
-              </li>
-              <li>
-                <a href="#">Terms & Conditions Apply</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="outer-footer">
-          Copyright &copy; 2022 Formatics. All rights reserved
-        </div>
-      </footer> */}
+      {/* loading toast */}
+      <Toast show={showLoadingToast}
+        onClose={() => setShowLoadingToast(false)}
+        bg='secondary'
+        autohide
+        delay={3000}
+        className='loading_toast'
+      >
+        <Toast.Body>
+          <Spinner className='spinner'
+            animation='border'
+            size='md'
+          />
+        </Toast.Body>
+      </Toast>
+
     </div>
   );
 
