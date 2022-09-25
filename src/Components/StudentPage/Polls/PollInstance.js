@@ -7,7 +7,6 @@ import './poll_instance.css'
 export default function PollInstance({ id, title, totalVotesCast, options, deletePoll }) {
 
     const [options_s, setOptions_s] = useState([]);
-
     const [showModal, setShowModal] = useState(false);
 
     function percentage(votes) {
@@ -16,9 +15,13 @@ export default function PollInstance({ id, title, totalVotesCast, options, delet
 
     useEffect(() => {
         const ops = options?.map((obj, index) => {
+            let match = obj.taken.find(indexNumber => indexNumber === sessionStorage.getItem('indexNumber'));
+            console.log('op match')
+            // console..og()
+
             return (<>
                 <div className='option_and_percent_votes' key={index}>
-                    <div className='option'>
+                    <div className={`option ${match ? 'highlightedOption' : ''}`}>
                         {obj.option}
                     </div>
                     <div className='percent_votes'>

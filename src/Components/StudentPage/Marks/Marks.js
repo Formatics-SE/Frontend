@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import './marks.css'
 
+import './marks.css'
 import MarksInstance from './MarksInstance'
+import { URL } from "../../URL"
+
 
 export default function Marks() {
 
@@ -23,7 +25,10 @@ export default function Marks() {
             const response = await fetch(`${URL}/fetchstudentmarks`, {
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },
-                body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
+                body: JSON.stringify({ 
+                    courseCode: sessionStorage.getItem('courseCode') ,
+                    indexNumber: sessionStorage.getItem('indexNumber')
+                })
             });
 
             const data = await response.json();
@@ -50,6 +55,8 @@ export default function Marks() {
             )
         }))
 
+        console.log('marks array: ', marks_session?.marksArray)
+
         if (marks_session?.marksArray.length === 0) {
             setNoAvailableMarks(true);
         }
@@ -71,7 +78,8 @@ export default function Marks() {
                 {
                     noAvailableMarks ?
                         <div className="no_marks_message">No marks available for this course</div>
-                        : marks
+                        :
+                        <div className='student_group_card'>{marks}</div>
                 }
             </div>
 

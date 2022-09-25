@@ -6,6 +6,15 @@
     padding: 10px 30px;
     box-shadow: 0 0 4px 2px rgb(187, 184, 184);
 
+    @media screen and (max-width: 912px) {
+        width: 100%;
+        box-shadow: 0 0 0 rgb(187, 184, 184);
+        padding: 10px 20px;
+        @media screen and (max-width: 768px) {
+            padding: 10px;
+        }
+    }
+
     .no_group_message {
         position: absolute;
         top: 50%;
@@ -18,5 +27,20 @@
         font-size: 140%;
         text-align: center;
         box-shadow: 0 0 3px rgb(189, 187, 188);
+    }
+
+    .student_group_card {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(32.6667%, 1fr));
+        column-gap: 1%;
+
+        @media screen and (max-width: 1280px) {
+            grid-template-columns: repeat(auto-fill, minmax(49.5%, 1fr));
+        }
+        @media screen and (max-width: 768px) {
+            grid-template-columns: 1fr;
+            column-gap: 0%;
+        }
     }
 }

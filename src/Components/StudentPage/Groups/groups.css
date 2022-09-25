@@ -8,6 +8,21 @@
           box-shadow: 0 0 4px 2px #bbb8b8;
 }
 
+@media screen and (max-width: 912px) {
+  .student_group_page {
+    width: 100%;
+    -webkit-box-shadow: 0 0 0 #bbb8b8;
+            box-shadow: 0 0 0 #bbb8b8;
+    padding: 10px 20px;
+  }
+}
+
+@media screen and (max-width: 912px) and (max-width: 768px) {
+  .student_group_page {
+    padding: 10px;
+  }
+}
+
 .student_group_page .no_group_message {
   position: absolute;
   top: 50%;
@@ -25,5 +40,31 @@
   text-align: center;
   -webkit-box-shadow: 0 0 3px #bdbbbc;
           box-shadow: 0 0 3px #bdbbbc;
+}
+
+.student_group_page .student_group_card {
+  margin-top: 10px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(32.6667%, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(32.6667%, 1fr));
+  -webkit-column-gap: 1%;
+          column-gap: 1%;
+}
+
+@media screen and (max-width: 1280px) {
+  .student_group_page .student_group_card {
+    -ms-grid-columns: (minmax(49.5%, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(49.5%, 1fr));
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .student_group_page .student_group_card {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    -webkit-column-gap: 0%;
+            column-gap: 0%;
+  }
 }
 /*# sourceMappingURL=groups.css.map */

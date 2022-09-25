@@ -26,9 +26,9 @@ export default function Groups() {
             const data = await response.json();
             setShowLoadingToast(false);
 
-            group_session = data?.info;
+            group_session = data?.group;
             // save the fetched data in session
-            sessionStorage.setItem('group', JSON.stringify(data?.info));
+            sessionStorage.setItem('group', JSON.stringify(data?.group));
         }
         catch (error) {
             console.log(error.message)
@@ -36,13 +36,31 @@ export default function Groups() {
         // make sure the active page on  the floating nav is the Attendance page
         localStorage.setItem('currentPage', 'G');
 
+        console.log('fetched group: ', group_session)
+
         // display no groups page if there are no groups created for this course
-        if (!group_session?.group) {
+        if (!group_session) {
             setNoCreatedGroup(true);
         }
         else {
             setNoCreatedGroup(false);
-            setStudentGroup(group_session?.group);
+            setStudentGroup(
+                <Card className="cards-container">
+                    <Card.Body className="cards-body">
+                        <Card.Title className="cards-title-score">
+                            <div>Group {group_session.groupNumber}</div>
+                            <div>Score: {group_session.score}</div>
+                        </Card.Title>
+                        <Card.Text className="members">
+                            {group_session.members.map((student, index) => {
+                                return (
+                                    <li key={index}>{student.name}: {student.indexNumber}</li>
+                                )
+                            })}
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+            );
         }
     }, [])
 
@@ -56,7 +74,7 @@ export default function Groups() {
                 noCreatedGroup ?
                     <div className='no_group_message'>No groups have been created for this course</div>
                     :
-                    studentGroup
+                    <div className='student_group_card'>{studentGroup}</div>
             }
 
             {/* loading toast */}

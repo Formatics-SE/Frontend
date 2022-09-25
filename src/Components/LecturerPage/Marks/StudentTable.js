@@ -77,6 +77,8 @@ export default function StudentsTable() {
         // set the active page on the floating nav to the Marks page
         localStorage.setItem('currentPage', 'M');
 
+        console.log('marks session groups: ', marks_session?.groups)
+
         setCourseName(marks_session?.courseName)
         setCourseCode(marks_session?.courseCode)
         setStudents(marks_session?.registeredStudents.map((student, index) => {
@@ -85,18 +87,20 @@ export default function StudentsTable() {
             student.marksArray.map(marksObj => {
                 totalMarks += marksObj.marks;
             })
+            console.log('total marks: ' , totalMarks)
 
-            console.log('groups: ', marks_session?.groups, 'student: ', student)
 
-            let groupScore;
-            for (let i = 0; i < marks_session?.groups?.length; i++) {
-                // console.log('student gn: ', student.groupNumber, 'ms number: ', marks_session?.groups[i].groupNumber)
-                if (student.groupNumber === marks_session?.groups[i].groupNumber) {
-                    groupScore = marks_session?.groups[i].score;
-                    break;
+            let groupScore = 0;
+            if (marks_session.groups.length != 0) {
+                for (let i = 0; i < marks_session?.groups?.length; i++) {
+                    // console.log('student gn: ', student.groupNumber, 'ms number: ', marks_session?.groups[i].groupNumber)
+                    if (student.groupNumber === marks_session?.groups[i].groupNumber) {
+                        groupScore = marks_session?.groups[i].score;
+                        break;
+                    }
                 }
             }
-            console.log('groupScore: ', groupScore)
+            console.log('group score: ' , groupScore)
 
             return {
                 key: { index },

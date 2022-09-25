@@ -41,6 +41,10 @@
   word-wrap: nowrap;
 }
 
+.poll_instance .options .option_and_percent_votes .highlightedOption {
+  color: red;
+}
+
 .poll_instance .options .progressbar {
   position: relative;
   width: 100%;
