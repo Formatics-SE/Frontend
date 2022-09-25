@@ -5,7 +5,8 @@
   margin: 0 auto;
   padding: 15px 15px 0 15px;
   padding: 15px 1% 0 1%;
-  box-shadow: 0 0 4px 2px rgb(187, 184, 184);
+  -webkit-box-shadow: 0 0 4px #bbb8b8;
+          box-shadow: 0 0 4px #bbb8b8;
 }
 @media screen and (max-width: 912px) {
   .courses {

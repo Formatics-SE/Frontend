@@ -18,8 +18,9 @@ const Courses = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const courses_session = JSON.parse(sessionStorage.getItem('assignedCourses'));
+    sessionStorage.setItem('currentPage', 'C');
 
+    const courses_session = JSON.parse(sessionStorage.getItem('assignedCourses'));
 
     // keeps track of the background image to parse next to accordion
     let bg_index = -1;
@@ -69,30 +70,31 @@ const Courses = () => {
 
       const data = await response.json();
       setShowToast(false);
-      // save the course code for the session
-      sessionStorage.setItem('courseCode', courseCode);
-
+      
       if (data.info) {
+        // save the course code and course name in session
+        sessionStorage.setItem('courseCode', data.info.courseCode);
+        sessionStorage.setItem('courseName', data.info.courseName);
         // Switch between the value of path to determine the storage key for sessionStorage.
         // The value set by localStorage.setItem is retrieved by the floating nav component and highlights the approrpiate page as active.
         switch (path) {
           case 'attendance':
-            sessionStorage.setItem('attendance', JSON.stringify(data?.info));
+            // sessionStorage.setItem('attendance', JSON.stringify(data.info));
             localStorage.setItem('currentPage', 'R');
             navigate('/lecturer/rollcall');
             break;
           case 'marks':
-            sessionStorage.setItem('marks', JSON.stringify(data?.info));
+            // sessionStorage.setItem('marks', JSON.stringify(data.info));
             localStorage.setItem('currentPage', 'M');
             navigate('/lecturer/marks');
             break;
           case 'groups':
-            sessionStorage.setItem('groups', JSON.stringify(data?.info));
+            sessionStorage.setItem('groups', JSON.stringify(data.info));
             localStorage.setItem('currentPage', 'G');
             navigate('/lecturer/groups');
             break;
           case 'polls':
-            sessionStorage.setItem('polls', JSON.stringify(data?.info));
+            sessionStorage.setItem('polls', JSON.stringify(data.info.polls));
             localStorage.setItem('currentPage', 'P');
             navigate('/lecturer/polls');
             break;

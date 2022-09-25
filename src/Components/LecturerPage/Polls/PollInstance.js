@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button'
 import { FaTrash } from 'react-icons/fa'
 import './poll_instance.css'
 
-export default function PollInstance({ id, title, totalVotesCast, options, deletePoll }) {
+export default function PollInstance({ pollId, title, totalVotesCast, options, deletePoll }) {
 
     const [options_s, setOptions_s] = useState([]);
 
@@ -15,22 +15,6 @@ export default function PollInstance({ id, title, totalVotesCast, options, delet
     }
 
     useEffect(() => {
-        // const testData = [
-        //     {
-        //         option: 'Naruto',
-        //         votes: 24
-        //     },
-        //     {
-        //         option: 'Demon Slayer',
-        //         votes: 32
-        //     },
-        //     {
-        //         option: 'Voltron',
-        //         votes: 18
-        //     }
-        // ];
-
-        // const totalVotesCast = 74
         const ops = options?.map((obj, index) => {
             return (<>
                 <div className='option_and_percent_votes' key={index}>
@@ -81,7 +65,7 @@ export default function PollInstance({ id, title, totalVotesCast, options, delet
                     <div id='confirm_text'>Do you want to delete this poll ?</div>
                 </Modal.Body>
                 <Modal.Footer id='modal_footer'>
-                    <Button id='confirm_btn_d' onClick={() => deletePoll(id)}>Confirm</Button>
+                    <Button id='confirm_btn_d' onClick={() => deletePoll(pollId)}>Confirm</Button>
                     <Button id='cancel_btn_d' onClick={() => setShowModal(false)}>Cancel</Button>
                 </Modal.Footer>
             </Modal>

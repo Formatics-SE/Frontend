@@ -18,6 +18,8 @@ const Courses = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    sessionStorage.setItem('currentPage', 'C');
+
     const courses_session = JSON.parse(sessionStorage.getItem('registeredCourses'));
 
     // keeps track of the background image to parse next to accordion
@@ -51,35 +53,46 @@ const Courses = () => {
       case 'groups':
         urlPath = 'fetchstudentgroup'; break;
       case 'polls':
-        urlPath = 'polls'; break;
+        urlPath = 'fetchpolls'; break;
     }
 
+    const indexNumber = sessionStorage.getItem('indexNumber');
+    console.log('index: ', indexNumber, 'code: ', courseCode)
     try {
       const response = await fetch(`${URL}/${urlPath}`, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ courseCode: courseCode })
+        body: JSON.stringify({
+          courseCode: courseCode,
+          indexNumber: indexNumber
+        })
       })
 
       const data = await response.json();
       setShowToast(false);
+
       if (data.info) {
+        sessionStorage.setItem('courseCode', data.info.courseCode);
+        sessionStorage.setItem('courseName', data.info.courseName);
         // switch between the value of path to determine the storage key for sessionStorage
         switch (path) {
           case 'marks':
             sessionStorage.setItem('marks', JSON.stringify(data?.info));
+            localStorage.setItem('currentPage', 'M');
             navigate('/student/marks');
             break;
           case 'groups':
-            sessionStorage.setItem('group', JSON.stringify(data?.groups));
+            sessionStorage.setItem('group', JSON.stringify(data?.group));
+            localStorage.setItem('currentPage', 'G');
             navigate('/student/groups');
             break;
           case 'polls':
             sessionStorage.setItem('polls', JSON.stringify(data?.polls));
+            localStorage.setItem('currentPage', 'P');
             navigate('/student/polls');
             break;
         }
-      } 
+      }
 
     } catch (error) {
       console.log(error.message);
@@ -88,8 +101,14 @@ const Courses = () => {
 
   return (
     <div className='courses'>
+      <div className='course_accordion_container'>
+        {Courses}
+      </div>
+ 
+      {/* loading toast */}
       <Toast show={showToast}
         onClose={() => setShowToast(false)}
+        bg='secondary'
         className='loading_toast'
       >
         <Toast.Body>
@@ -99,9 +118,6 @@ const Courses = () => {
           />
         </Toast.Body>
       </Toast>
-      <div className='course_accordion_container'>
-        {Courses}
-      </div>
     </div>
   )
 }

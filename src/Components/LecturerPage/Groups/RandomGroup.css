@@ -1,13 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 .random-groups-container {
+    position: relative;
 }
 .course-info {
     text-align: center;
     box-shadow: 0 2px 3px -2px rgb(187, 184, 184);
     padding: 5px;
-    margin-bottom: 5px;
-    background-color: rgb(238, 230, 230);
+    margin-bottom: 5px !important;
+    background-color: #e1e1e2f3 !important;
     font-weight: bold;
 }
 .heading-container {
@@ -29,12 +30,20 @@
     box-shadow: 0 0 5px 1px rgb(163, 23, 140);
     border-color: rgb(226, 223, 223);
 }
+.heading-container .assign-marks-label {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 105%;
+}
 
 .heading-container .submit-button-div {
     padding: 5px;
 }
 .heading-container .submit-button-div .submit-button {
     height: fit-content;
+    width: fit-content;
     background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
     border-color: rgb(163, 23, 140);
     padding: 7px 25px;
@@ -50,36 +59,142 @@
     border-color: rgb(163, 23, 140);
     box-shadow: 0 0 0 rgb(163, 23, 140);
 }
-
+.heading-container-scores {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 .random-groups {
     padding: 15px 10px 90px 10px;
     width: 100%;
-    max-height: 78vh;
+    max-height: 80vh;
+    /* max-height: calc(100% - 80px) !important; */
     overflow-y: auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(24.25%, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(32.6667%, 1fr));
     column-gap: 1%;
-    row-gap: 1.5%; 
+    row-gap: 2%;
 }
 
 li {
     list-style-type: decimal;
+}
+.cards-container:active {
+    background-color: #e1e1e2f3;
+}
+.cards-container:hover {
+    cursor: pointer;
+}
+.card-body {
+    padding: 0 !important;
 }
 .cards-title {
     font-weight: bold;
     font-size: 16px;
     text-align: left;
 }
+.members {
+    padding: 0 10px 10px 10px;
+}
 
-@media screen and (max-width: 1024px) {
+.cards-title-score {
+    /* font-weight: bold;
+    font-size: 16px;
+    align-items: center;*/
+
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: rgb(163, 23, 140);
+    font-weight: bold;
+    font-size: 16px !important;
+    background-color: #e1e1e2f3;
+}
+
+.modal_header {
+    /* display: flex;
+    justify-content: flex-end; */
+}
+/* .close_btn {
+    background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+    border-color: rgb(163, 23, 140);
+    padding: 7px 25px;
+    text-align: center;
+    border-radius: 30px;
+    font-size: 15px;
+} */
+.assign-marks-div {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.assign-marks-div .number-in-modal{
+    width: 40%;
+    margin-left: 10px;
+}
+.assign-marks-button,
+.submit-button-scores,
+.submit-button-group-score {
+    background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
+    border-color: rgb(163, 23, 140);
+    padding: 7px 25px;
+    border-radius: 7px;
+}
+.assign-marks-button:hover,
+.close_btn:hover,
+.submit-button-scores:hover,
+.submit-button-group-score:hover {
+    background: white;
+    border-color: rgb(163, 23, 140);
+    color: rgb(163, 23, 140);
+}
+.assign-marks-button:focus,
+.close_btn:focus,
+.submit-button-scores:focus,
+.submit-button-group-score:focus {
+    border-color: rgb(163, 23, 140);
+    box-shadow: 0 0 0 rgb(163, 23, 140);
+}
+.assign-marks-button {
+    width: 95%;
+    margin: 0 10px 0 10px;
+}
+.group-members {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "Poppins";
+    font-size: 18px;
+}
+.group-members > li {
+    list-style-type: decimal;
+    margin-left: 10px;
+}
+
+#modal .assign-marks-entry {
+    margin-top: -3px;
+    font-size: 103%;
+    width: 70%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+#modal input:focus {
+    box-shadow: 0 0 5px 1px rgb(163, 23, 140);
+    border-color: rgb(226, 223, 223);
+}
+@media screen and (max-width: 1280px) {
     .random-groups {
-        grid-template-columns: repeat(auto-fill, minmax(32.67%, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(49.5%, 1fr));
     }
 }
 @media screen and (max-width: 768px) {
     .random-groups {
         grid-template-columns: 1fr;
-        row-gap: 1.3%;
+        column-gap: 0%;
+        row-gap: 2%;
     }
 }
-

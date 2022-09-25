@@ -29,25 +29,17 @@ $btn_bg_color: rgb(163, 23, 140);
         font-size: 140%;
         text-align: center;
         box-shadow: 0 0 3px rgb(189, 187, 188);
-    }
-
-    .loading_toast {
-        position: absolute;
-        width: fit-content;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: rgb(134, 12, 114);
+        @media screen and (max-width: 768px) {
+            top: 41%;
+            width: 90%;
+        }
     }
 
     .create_polls_header {
         display: flex;
         justify-content: space-between;
         padding: 0 10px 10px 10px;
+        margin-top: 10px;
         box-shadow: 0 2px 3px -2px rgb(187, 184, 184);
 
         @media screen and (max-width: 768px) {
@@ -57,7 +49,7 @@ $btn_bg_color: rgb(163, 23, 140);
         div .create_poll_btn {
             background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
             border-color: rgb(163, 23, 140);
-            padding: 5px 25px;
+            padding: 7px 25px;
             border-radius: 7px;
             font-size: 103%;
             &:focus {
@@ -103,6 +95,8 @@ $btn_bg_color: rgb(163, 23, 140);
     max-height: 80vh !important;
     margin: 0 auto !important;
     max-width: 95vw;
+    z-index: 20 !important;
+
     @media screen and (max-width: 768px) {
         min-width: 95%;
         top: 30px;
@@ -221,4 +215,17 @@ $btn_bg_color: rgb(163, 23, 140);
             box-shadow: 0 0 0 black;
         }
     }
+}
+
+.loading_toast {
+    position: absolute;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(134, 12, 114);
 }

@@ -27,7 +27,7 @@ export default function Groups() {
 
   useEffect(async () => {
     let groups_session = JSON.parse(sessionStorage.getItem('groups'))
-    console.log('groups_session: ', groups_session)
+    // getch groups if no groups data is saved locally
     if (!groups_session) {
       setShowLoadingToast(true);
       try {
@@ -48,16 +48,14 @@ export default function Groups() {
         console.log(error.message)
       }
     }
-    // // make sure the active page on  the floating nav is the Attendance page
+    // make sure the active page on  the floating nav is the Attendance page
     localStorage.setItem('currentPage', 'G');
 
-    // // display no groups page if there are no groups created for this course
+    // display no groups page if there are no groups created for this course
     if (groups_session?.groups?.length === 0) {
-      console.log('no groups')
       setNoCreatedGroups(true);
     }
     else {
-      console.log('groups')
       setNoCreatedGroups(false);
     }
 
@@ -85,7 +83,6 @@ export default function Groups() {
           <div className='groups_container'>
             <RandomGroup
               value_prop={value}
-              noCreatedGroups={noCreatedGroups}
             />
           </div>
       }

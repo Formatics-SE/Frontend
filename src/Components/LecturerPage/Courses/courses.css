@@ -26,9 +26,11 @@
   min-height: fit-content;
   overflow-y: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(23.5%, 1fr));
-  -moz-column-gap: 2%;
-       column-gap: 2%;
+  -ms-grid-columns: (minmax(24.25%, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(24.25%, 1fr));
+  -webkit-column-gap: 1%;
+          column-gap: 1%;
+  row-gap: 2%;
 }
 <<<<<<< HEAD
 @media screen and (max-width: 1024px) {
@@ -36,11 +38,16 @@
     grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
 =======
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1280px) {
   .courses .course_accordion_container {
+<<<<<<< HEAD
     -ms-grid-columns: (minmax(32.6667%, 1fr))[auto-fill];
         grid-template-columns: repeat(auto-fill, minmax(32.6667%, 1fr));
 >>>>>>> c3cf435dc5cb0764b5cb63a8c75515bbf6f0e5e7
+=======
+    -ms-grid-columns: (minmax(32.6667%, 1fr))[auto-fit];
+        grid-template-columns: repeat(auto-fit, minmax(32.6667%, 1fr));
+>>>>>>> 6724be7442f1f853c27d84e8910412616a8fdad1
   }
 }
 @media screen and (max-width: 768px) {
@@ -68,7 +75,7 @@
 =======
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  color: white !important;
+  color: white;
   z-index: 50;
 >>>>>>> c3cf435dc5cb0764b5cb63a8c75515bbf6f0e5e7
   opacity: 100%;

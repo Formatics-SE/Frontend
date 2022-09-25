@@ -7,9 +7,9 @@
     min-height: 500px;
     margin: 0 auto;
     padding: 10px 30px;
-    box-shadow: 0 0 4px 2px rgb(187, 184, 184);
+    box-shadow: 0 0 4px rgb(187, 184, 184);
 }
-@media screen and (max-width: 912px) {
+@media screen and (max-width: 1074px) {
     .marks-page-container {
         width: 100%;
         box-shadow: 0 0 0 rgb(187, 184, 184);
@@ -43,6 +43,7 @@ table {
     display: flex;
     justify-content: space-between;
     padding-bottom: 10px;
+    margin-top: 10px;
     box-shadow: 0 2px 3px -2px rgb(187, 184, 184);
 }
 .table-search {

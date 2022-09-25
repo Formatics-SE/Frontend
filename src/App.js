@@ -28,7 +28,7 @@ import FloatingNav_Stud from './Components/FloatingNav_Stud/FloatingNav_Stud';
 export default function App() {
 
   return (
-     <Routes>
+    <Routes>
       <Route path='/' element={<Navigate replace to='/login' />} />
       <Route path='/login' element={<Login />} />
       <Route path='/lecturer' element={[<LecturerPage />, <FloatingNav_Lect />]}>
@@ -38,13 +38,13 @@ export default function App() {
         <Route path='polls' element={<Polls_L />} />
         <Route path='rollcall' element={<Attendance />} />
       </Route>
-      <Route path='/student' element={<StudentPage />}>
+      <Route path='/student' element={[<StudentPage />, <FloatingNav_Stud />]}>
         <Route path='courses' element={<Courses />} />
         <Route path='group' element={<Groups />} />
         <Route path='marks' element={<Marks />} />
         <Route path='polls' element={<Polls />} />
       </Route>
-    </Routes> 
+    </Routes>
 
     //<Groups /> 
 

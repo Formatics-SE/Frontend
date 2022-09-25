@@ -22,10 +22,6 @@ export default function StudentsTable() {
     const [individualMarksFieldValue, setIndividualMarksFieldValue] = useState(0)
     const [allMarksFieldValue, setAllMarksFieldValue] = useState(0)
 
-    const [marks, setMarks] = useState({
-        individual_marks: 0,
-        group_marks: 0
-    })
     const [showMessageToast, setShowMessageToast] = useState(false);
     const [showLoadingToast, setShowLoadingToast] = useState(false);
     const [message, setMessage] = useState('No match')
@@ -58,26 +54,23 @@ export default function StudentsTable() {
     // })
 
     useEffect(async () => {
-        let marks_session = JSON.parse(sessionStorage.getItem('marks'));
-        // if marks_session is null, the page was navigate to either by url or the floating nav, hence fetch the data 
-        if (!marks_session) {
-            setShowLoadingToast(true);
-            try {
-                const response = await fetch(`${URL}/fetchlecturermarks`, {
-                    method: 'POST',
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify({ courseCode: 'COE 354' })
-                });
+        setShowLoadingToast(true);
+        let marks_session;
+        try {
+            const response = await fetch(`${URL}/fetchlecturermarks`, {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
+            });
 
-                const data = await response.json();
-                setShowLoadingToast(false);
+            const data = await response.json();
+            setShowLoadingToast(false);
 
-                marks_session = data?.info;
-                sessionStorage.setItem('marks', JSON.stringify(data?.info));
-            }
-            catch (error) {
-                console.log(error.message)
-            }
+            marks_session = data?.info;
+            sessionStorage.setItem('marks', JSON.stringify(data?.info));
+        }
+        catch (error) {
+            console.log(error.message)
         }
         // make sure the active page on  the flaoting nav is the Marks page
         localStorage.setItem('currentPage', 'M');
@@ -162,7 +155,7 @@ export default function StudentsTable() {
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify({
-                    courseCode: 'COE 354', //sessionStorage.getItem('courseCode'),
+                    courseCode: sessionStorage.getItem('courseCode'),
                     marksData: students
                 })
             })
@@ -190,7 +183,7 @@ export default function StudentsTable() {
     return (
         <section className='marks-page-container'>
             <div className='course-info'>
-                {courseCode}: {courseName}
+                {sessionStorage.getItem('courseCode')}: {sessionStorage.getItem('courseName')}
             </div>
             <div className="input-container">
                 <div className="search">
@@ -279,8 +272,6 @@ export default function StudentsTable() {
             <Toast show={showLoadingToast}
                 onClose={() => setShowLoadingToast(false)}
                 bg='secondary'
-                autohide
-                delay={3000}
                 className='loading_toast'
             >
                 <Toast.Body>

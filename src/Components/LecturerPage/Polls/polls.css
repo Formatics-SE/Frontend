@@ -41,6 +41,7 @@
           box-shadow: 0 0 3px #bdbbbc;
 }
 
+<<<<<<< HEAD
 >>>>>>> c3cf435dc5cb0764b5cb63a8c75515bbf6f0e5e7
 .lecturer_polls .loading_toast {
   position: absolute;
@@ -55,12 +56,25 @@
   left: 50%;
   transform: translateX(-50%);
   color: rgb(134, 12, 114);
+=======
+@media screen and (max-width: 768px) {
+  .lecturer_polls .no_polls_message {
+    top: 41%;
+    width: 90%;
+  }
+>>>>>>> 6724be7442f1f853c27d84e8910412616a8fdad1
 }
 .lecturer_polls .create_polls_header {
   display: flex;
   justify-content: space-between;
   padding: 0 10px 10px 10px;
+<<<<<<< HEAD
   box-shadow: 0 2px 3px -2px rgb(187, 184, 184);
+=======
+  margin-top: 10px;
+  -webkit-box-shadow: 0 2px 3px -2px #bbb8b8;
+          box-shadow: 0 2px 3px -2px #bbb8b8;
+>>>>>>> 6724be7442f1f853c27d84e8910412616a8fdad1
 }
 @media screen and (max-width: 768px) {
   .lecturer_polls .create_polls_header {
@@ -75,8 +89,12 @@
 =======
   background: linear-gradient(140deg, #a3178c, rgba(34, 23, 182, 0.726));
   border-color: #a3178c;
+<<<<<<< HEAD
   padding: 5px 25px;
 >>>>>>> c3cf435dc5cb0764b5cb63a8c75515bbf6f0e5e7
+=======
+  padding: 7px 25px;
+>>>>>>> 6724be7442f1f853c27d84e8910412616a8fdad1
   border-radius: 7px;
   font-size: 103%;
 }
@@ -115,6 +133,7 @@
   max-height: 80vh !important;
   margin: 0 auto !important;
   max-width: 95vw;
+  z-index: 20 !important;
 }
 @media screen and (max-width: 768px) {
   #modal {
@@ -232,5 +251,34 @@
   color: white;
 }
 #modal .confirm_btn:focus {
+<<<<<<< HEAD
   box-shadow: 0 0 0 black;
 }/*# sourceMappingURL=polls.css.map */
+=======
+  -webkit-box-shadow: 0 0 0 black;
+          box-shadow: 0 0 0 black;
+}
+
+.loading_toast {
+  position: absolute;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+  top: 20px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  color: #860c72;
+}
+/*# sourceMappingURL=polls.css.map */
+>>>>>>> 6724be7442f1f853c27d84e8910412616a8fdad1
