@@ -25,7 +25,7 @@ export default function StudentsTable() {
 
     const [showMessageToast, setShowMessageToast] = useState(false);
     const [showLoadingToast, setShowLoadingToast] = useState(false);
-    const [message, setMessage] = useState('No match')
+    const [message, setMessage] = useState('No match found !')
     const [toastVariant, setToastVariant] = useState('success')
 
     let student_list = students?.map((student, index) => {
@@ -87,7 +87,7 @@ export default function StudentsTable() {
             student.marksArray.map(marksObj => {
                 totalMarks += marksObj.marks;
             })
-            console.log('total marks: ' , totalMarks)
+            console.log('total marks: ', totalMarks)
 
 
             let groupScore = 0;
@@ -100,7 +100,6 @@ export default function StudentsTable() {
                     }
                 }
             }
-            console.log('group score: ' , groupScore)
 
             return {
                 key: { index },
@@ -141,31 +140,29 @@ export default function StudentsTable() {
     function handleIndividualMarks() {
         let studentName;
         let inputMarks = Number(document.querySelector('.individual_marks_field').value);
-        let foundMatch = false;
         setStudents(prev => {
             return prev.map(student => {
                 studentName = student.name;
-                if (student.indexNumber.toString() === match && (Number(inputMarks) > 0)) {
-                    foundMatch = true;
+                if (student.indexNumber == match && (parseInt(inputMarks) > 0)) {
                     student.currentDayMarks += inputMarks;
                     student.totalMarks += inputMarks;
                     return student;
                 }
                 else {
-                    foundMatch = false;
                     return student;
                 }
             })
         })
-        if (foundMatch) {
-            setMessage(`Assigned ${inputMarks} to ${studentName}`);
-            setToastVariant('success')
-        }
-        else {
-            setMessage("No match found !")
-            setToastVariant('danger')
-        }
-        setShowMessageToast(true)
+
+        // if () {
+        //     setMessage(`Assigned ${inputMarks} to ${studentName}`);
+        //     setToastVariant('success')
+        // }
+        // else {
+        //     setMessage("No match found !")
+        //     setToastVariant('danger')
+        // }
+        // setShowMessageToast(true)
     }
 
     async function handleSubmit() {
@@ -294,7 +291,7 @@ export default function StudentsTable() {
 
             <Toast show={showLoadingToast}
                 onClose={() => setShowLoadingToast(false)}
-                bg='secondary'
+                bg={toastVariant}
                 className='loading_toast'
             >
                 <Toast.Body>
