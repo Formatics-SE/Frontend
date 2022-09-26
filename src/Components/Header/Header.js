@@ -5,16 +5,12 @@ import { AiOutlineMenu } from 'react-icons/ai'
 
 import './header.css'
 
-import bg from '../Login/bg.png'
-
 export default function Header({ username }) {
 
     const navigate = useNavigate();
 
     return (
         <div className='header'>
-            {/* <div className='filter1'></div> background design  */}
-            {/* <div className='filter2'></div> background design */}
             <div className='menu_icon d-block d-md-none'
                 onClick={() => { document.querySelector('.menu').classList.toggle('active') }}
             >

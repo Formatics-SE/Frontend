@@ -49,7 +49,7 @@ export default function Row({ id, name, attendance, strikes, indexNumber, handle
                                 handleStrikesUpdate(indexNumber, strikes_s - 1);
                             }
                             setStrikes(prev => {
-                                if (prev == 0) return prev;
+                                if (prev === 0) return prev;
                                 else return (prev - 1);
                             })
                         }}
@@ -71,7 +71,7 @@ export default function Row({ id, name, attendance, strikes, indexNumber, handle
                                 handleAttendanceUpdate(indexNumber, attendance_s - 1);
                             }
                             setAttendance(prev => {
-                                if (prev == 0) return prev;
+                                if (prev === 0) return prev;
                                 else return (prev - 1);
                             })
                         }}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-
+import Toast from 'react-bootstrap/Toast'
+import Spinner from 'react-bootstrap/Spinner'
 import './marks.css'
 import MarksInstance from './MarksInstance'
 import { URL } from "../../URL"
@@ -9,16 +10,10 @@ export default function Marks() {
 
     const [marks, setMarks] = useState([])
     const [noAvailableMarks, setNoAvailableMarks] = useState(false)
-
-    const [courseName, setCourseName] = useState('')
-    const [courseCode, setCourseCode] = useState('')
-
-    const [showMessageToast, setShowMessageToast] = useState(false);
     const [showLoadingToast, setShowLoadingToast] = useState(false);
-    const [message, setMessage] = useState('No match')
-    const [toastVariant, setToastVariant] = useState('success')
 
-    useEffect(async () => {
+    useEffect(() => {
+    async function fetchData() {
         setShowLoadingToast(true);
         let marks_session;
         try {
@@ -43,9 +38,6 @@ export default function Marks() {
         // make sure the active page on  the flaoting nav is the Marks page
         localStorage.setItem('currentPage', 'M');
 
-        setCourseName(marks_session?.courseName)
-        setCourseCode(marks_session?.courseCode)
-
         setMarks(marks_session?.marksArray.map((marksObj, index) => {
             return (
                 <MarksInstance key={index}
@@ -63,6 +55,9 @@ export default function Marks() {
         else {
             setNoAvailableMarks(false);
         }
+    }
+
+    fetchData();
 
     }, [])
 
@@ -79,6 +74,20 @@ export default function Marks() {
                         <div className='student_marks_container'>{marks}</div>
                 }
             </div>
+
+             {/* loading toast */}
+             <Toast show={showLoadingToast}
+                onClose={() => setShowLoadingToast(false)}
+                bg='secondary'
+                className='loading_toast'
+            >
+                <Toast.Body>
+                    <Spinner className='spinner'
+                        animation='border'
+                        size='md'
+                    />
+                </Toast.Body>
+            </Toast>
 
         </div>
     )

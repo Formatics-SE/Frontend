@@ -18,8 +18,6 @@ const Courses = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    localStorage.setItem('currentPage', 'C');
-
     const courses_session = JSON.parse(sessionStorage.getItem('assignedCourses'));
 
     // keeps track of the background image to parse next to accordion
@@ -41,7 +39,7 @@ const Courses = () => {
       )
     }));
 
-    // localStorage.setItem('currentPage', 'C');
+    localStorage.setItem('currentPage', 'C');
 
 
   }, []);
