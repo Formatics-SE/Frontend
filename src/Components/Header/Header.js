@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import Button from 'react-bootstrap/Button'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FaSignOutAlt, FaUser } from 'react-icons/fa'
-import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
+import { AiOutlineMenu } from 'react-icons/ai'
 
 import './header.css'
 

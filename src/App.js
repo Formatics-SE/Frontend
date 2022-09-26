@@ -8,10 +8,10 @@ import Login from './Components/Login/Login'
 import LecturerPage from './Components/LecturerPage/LecturerPage'
 // all pages to be routed in lecturer page
 import Attendance from './Components/LecturerPage/Attendance/Attendance'
-import Courses_L from './Components/LecturerPage/Courses/Courses'
-import Groups_L from './Components/LecturerPage/Groups/Groups'
-import Polls_L from './Components/LecturerPage/Polls/Polls'
-import Marks_L from './Components/LecturerPage/Marks/StudentTable'
+import CoursesL from './Components/LecturerPage/Courses/Courses'
+import GroupsL from './Components/LecturerPage/Groups/Groups'
+import PollsL from './Components/LecturerPage/Polls/Polls'
+import MarksL from './Components/LecturerPage/Marks/StudentTable'
 // end
 
 import StudentPage from './Components/StudentPage/StudentPage'
@@ -22,8 +22,8 @@ import Polls from './Components/StudentPage/Polls/Polls'
 import Marks from './Components/StudentPage/Marks/Marks'
 // end
 
-import FloatingNav_Lect from './Components/FloatingNav_Lect/FloatingNav_Lect';
-import FloatingNav_Stud from './Components/FloatingNav_Stud/FloatingNav_Stud';
+import FloatingNavLect from './Components/FloatingNav_Lect/FloatingNav_Lect';
+import FloatingNavStud from './Components/FloatingNav_Stud/FloatingNav_Stud';
 
 export default function App() {
 
@@ -31,14 +31,14 @@ export default function App() {
     <Routes>
       <Route path='/' element={<Navigate replace to='/login' />} />
       <Route path='/login' element={<Login />} />
-      <Route path='/lecturer' element={[<LecturerPage />, <FloatingNav_Lect />]}>
-        <Route path='courses' element={<Courses_L />} />
-        <Route path='groups' element={<Groups_L />} />
-        <Route path='marks' element={<Marks_L />} />
-        <Route path='polls' element={<Polls_L />} />
+      <Route path='/lecturer' element={[<LecturerPage />, <FloatingNavLect />]}>
+        <Route path='courses' element={<CoursesL />} />
+        <Route path='groups' element={<GroupsL />} />
+        <Route path='marks' element={<MarksL />} />
+        <Route path='polls' element={<PollsL />} />
         <Route path='rollcall' element={<Attendance />} />
       </Route>
-      <Route path='/student' element={[<StudentPage />, <FloatingNav_Stud />]}>
+      <Route path='/student' element={[<StudentPage />, <FloatingNavStud />]}>
         <Route path='courses' element={<Courses />} />
         <Route path='group' element={<Groups />} />
         <Route path='marks' element={<Marks />} />
