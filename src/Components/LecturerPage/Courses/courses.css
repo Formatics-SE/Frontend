@@ -77,4 +77,8 @@
   z-index: 50;
   opacity: 100%;
 }
+
+.loading_toast .spinner {
+  color: white !important;
+}
 /*# sourceMappingURL=courses.css.map */

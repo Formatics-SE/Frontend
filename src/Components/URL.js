@@ -1,2 +1,2 @@
-export const URL = 'http://127.0.0.1:2022';
+export const URL = 'https://claim-app-formatics.herokuapp.com';
   
