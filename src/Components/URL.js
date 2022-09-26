@@ -1,2 +1,2 @@
-export const URL = 'https://claim-app-formatics.herokuapp.com';
+export const URL = 'https://boiling-caverns-45988.herokuapp.com';
   
