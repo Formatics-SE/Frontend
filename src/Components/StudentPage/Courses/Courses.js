@@ -51,14 +51,14 @@ const Courses = () => {
     switch (path) {
       case 'marks':
         urlPath = 'fetchstudentmarks'; break;
-      case 'groups':
+      case 'group':
+        console.log('path: ', path)
         urlPath = 'fetchstudentgroup'; break;
       case 'polls':
         urlPath = 'fetchpolls'; break;
     }
 
     const indexNumber = sessionStorage.getItem('indexNumber');
-    console.log('index: ', indexNumber, 'code: ', courseCode)
     try {
       const response = await fetch(`${URL}/${urlPath}`, {
         method: 'POST',
@@ -78,19 +78,23 @@ const Courses = () => {
         // switch between the value of path to determine the storage key for sessionStorage
         switch (path) {
           case 'marks':
+            console.log('path: ', path)
             // sessionStorage.setItem('marks', JSON.stringify(data?.info));
             localStorage.setItem('currentPage', 'M');
             navigate('/student/marks');
             break;
-          case 'groups':
-            // sessionStorage.setItem('group', JSON.stringify(data?.group));
-            localStorage.setItem('currentPage', 'G');
-            navigate('/student/groups');
-            break;
+
           case 'polls':
+            console.log('path: ', path)
             // sessionStorage.setItem('polls', JSON.stringify(data?.polls));
             localStorage.setItem('currentPage', 'P');
             navigate('/student/polls');
+            break;
+          case 'group':
+            console.log('path: ', path)
+            // sessionStorage.setItem('polls', JSON.stringify(data?.polls));
+            localStorage.setItem('currentPage', 'G')
+            navigate('/student/group');
             break;
         }
       }
@@ -105,7 +109,7 @@ const Courses = () => {
       <div className='course_accordion_container'>
         {Courses}
       </div>
- 
+
       {/* loading toast */}
       <Toast show={showToast}
         onClose={() => setShowToast(false)}

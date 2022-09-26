@@ -87,12 +87,12 @@ const Courses = () => {
             navigate('/lecturer/marks');
             break;
           case 'groups':
-            sessionStorage.setItem('groups', JSON.stringify(data.info));
+            // sessionStorage.setItem('groups', JSON.stringify(data.info));
             localStorage.setItem('currentPage', 'G');
             navigate('/lecturer/groups');
             break;
           case 'polls':
-            sessionStorage.setItem('polls', JSON.stringify(data.info.polls));
+            // sessionStorage.setItem('polls', JSON.stringify(data.info.polls));
             localStorage.setItem('currentPage', 'P');
             navigate('/lecturer/polls');
             break;

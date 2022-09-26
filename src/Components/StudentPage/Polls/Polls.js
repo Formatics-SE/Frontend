@@ -33,7 +33,6 @@ export default function Polls() {
         setShowLoadingToast(false);
 
         polls_session = data?.info.polls;
-        console.log('ata.pols: ', polls_session)
         // save the fetched data in session
         sessionStorage.setItem('polls', JSON.stringify(data?.info.polls));
       }
