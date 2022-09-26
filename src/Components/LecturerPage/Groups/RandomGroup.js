@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import data from "../dummyDB"
 import Card from "react-bootstrap/Card"
 import Button from "react-bootstrap/Button"
 import Toast from 'react-bootstrap/Toast'
@@ -34,14 +33,7 @@ export default function RandomGroup(props) {
     }, [])
 
     function handleChange(event) {
-        let x = Number(event.target.value)
-        // change the value of students per group only when the value is > 1 and <= half the total number of students
-        if (x >= 2 && x <= (totalNumberOfStudents / 2)) {
-            setNumberOfStudentsPerGroup(x)
-        }
-        else if (x < 2) {
-            setNumberOfStudentsPerGroup(2)
-        }
+        setNumberOfStudentsPerGroup(event.target.value)
     }
 
     async function handleSubmitGroups(e) {
@@ -66,7 +58,7 @@ export default function RandomGroup(props) {
             if (data.info) {
                 sessionStorage.setItem('groups', JSON.stringify(data.info))
                 setGroupsSession(data.info)
-                setMessage('Successfully applied updates !')
+                setMessage('Successfully applied updates ! Click on a group to assign marks')
                 setToastVariant('success')
                 if (!showScores) {
                     setCreatedGroups(groupFormat)
@@ -120,7 +112,6 @@ export default function RandomGroup(props) {
                 setToastVariant('danger')
             }
             setShowMessageToast(true);
-
         }
         catch (error) {
             console.log(error.message)
@@ -153,7 +144,13 @@ export default function RandomGroup(props) {
     let groupNumberInModal
 
     let classList = groups_session?.registeredStudents
-    let studentsPerGroup = Number(numberOfStudentsPerGroup)   //Number(props.value_prop)
+    let studentsPerGroup = 2;
+    if (numberOfStudentsPerGroup != '' && numberOfStudentsPerGroup > 1 && numberOfStudentsPerGroup <= (totalNumberOfStudents / 2)) {
+        studentsPerGroup = Number(numberOfStudentsPerGroup)   //Number(props.value_prop)  
+    }
+    else {
+
+    }
     let division = Math.ceil(classList.length / studentsPerGroup)
     GroupingsByCwa = []   // container to hold the various groups
     let count = 0
@@ -184,8 +181,6 @@ export default function RandomGroup(props) {
 
     // generate groups if no groups have been created
     if (groups_session?.groups?.length === 0 || groupsSession?.groups?.length === 0) {
-        console.log('no groups available')
-
         GroupWithoutScores = groupFormat.map(item => {
             return (
                 <Card className="cards-container">
@@ -258,7 +253,7 @@ export default function RandomGroup(props) {
                                     value={numberOfStudentsPerGroup}
                                 />
                             </div>
-                            <div className="submit-button-div"><Button className="submit-button" onClick={(e) => handleSubmitGroups(e)}>Submit Groups</Button></div>
+                            <div className="submit-button-div"><Button className="groups-submit-button" onClick={(e) => handleSubmitGroups(e)}>Submit Groups</Button></div>
                         </> :
                         <>
                             <div className="assign-marks-label">Assign Marks to Groups</div>
@@ -313,7 +308,7 @@ export default function RandomGroup(props) {
                 onClose={() => setShowMessageToast(false)}
                 bg={toastVariant}
                 autohide
-                delay={3000}
+                delay={6000}
                 className='toast-message'
             >
                 <Toast.Body>
@@ -325,8 +320,6 @@ export default function RandomGroup(props) {
             <Toast show={showLoadingToast}
                 onClose={() => setShowLoadingToast(false)}
                 bg='secondary'
-                autohide
-                delay={3000}
                 className='loading_toast'
             >
                 <Toast.Body>

@@ -72,7 +72,8 @@ export default function Login() {
             e.target.disabled = false;
 
             if (lecturerData) {
-                sessionStorage.setItem('username', JSON.stringify(lecturerData.username));
+                console.log('username: ', lecturerData.username)
+                sessionStorage.setItem('username', lecturerData.username);
                 sessionStorage.setItem('assignedCourses', JSON.stringify(lecturerData.assignedCourses));
                 navigate('/lecturer/courses');
             }
@@ -107,6 +108,7 @@ export default function Login() {
             e.target.disabled = false;
 
             if (studentData) {
+                console.log('student username: ', studentData.username)
                 sessionStorage.setItem('indexNumber', studentData.indexNumber);
                 sessionStorage.setItem('username', studentData.username);
                 sessionStorage.setItem('semester', studentData.semester);

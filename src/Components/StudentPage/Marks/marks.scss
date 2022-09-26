@@ -34,18 +34,21 @@
         box-shadow: 0 0 3px rgb(189, 187, 188);
     }
 
-    .student_marks_container {
+    .marks_and_no_marks {
         margin-top: 10px;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(19.2%, 1fr));
-        column-gap: 1%;
-        row-gap: 2%;
 
-        @media screen and (max-width: 1280px) {
-            grid-template-columns: repeat(auto-fill, minmax(24.25%, 1fr));
-        }
-        @media screen and (max-width: 768px) {
-            grid-template-columns: repeat(auto-fill, minmax(49.5%, 1fr));
+        .student_marks_container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(19.2%, 1fr));
+            column-gap: 1%;
+            // row-gap: 2%;
+
+            @media screen and (max-width: 1280px) {
+                grid-template-columns: repeat(auto-fill, minmax(24.25%, 1fr));
+            }
+            @media screen and (max-width: 768px) {
+                grid-template-columns: repeat(auto-fill, minmax(49.5%, 1fr));
+            }
         }
     }
 }

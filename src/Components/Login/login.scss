@@ -11,8 +11,7 @@ $shadow_color: rgba(223, 62, 210, 0.664);
 
     .toast {
         position: absolute;
-        // height: fit-content;
-        width: fit-content;
+        min-width: fit-content;
         top: 20px;
         left: 50%;
         z-index: 1051;
@@ -20,7 +19,7 @@ $shadow_color: rgba(223, 62, 210, 0.664);
         font-weight: 500;
         font-size: 110%;
         color: white;
-        padding: 5px 30px;
+        padding: 5px 15px;
         text-align: center;
         
         @media screen and (max-width: 768px) {

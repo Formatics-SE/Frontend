@@ -38,22 +38,21 @@ export default function StudentsTable() {
         )
     })
 
-    // let student_list_filtered = students.filter(student => {
-    //     let regexp = new RegExp(`${match}`)
-    //     if (student.indexNumber.toString().search(regexp) != -1) {
-    //         return true
-    //     }
-    //     else {
-    //         return false
-    //     }
-    // }).map((student, index) => {
-    //     return (
-    //         <StudentsDetails
-    //             key={index}
-    //             student={student}
-    //         />
-    //     )
-    // })
+    let student_list_filtered = students.filter(student => {
+        if (student.indexNumber === parseInt(match)) {
+            return true
+        }
+        else {
+            return false
+        }
+    }).map((student, index) => {
+        return (
+            <StudentsDetails
+                key={index}
+                student={student}
+            />
+        )
+    })
 
     useEffect(async () => {
         setShowLoadingToast(true);
@@ -115,7 +114,10 @@ export default function StudentsTable() {
     }, [])
 
     function handleSearch(event) {
-        setMatch(event.target.value)
+        let val = event.target.value;
+        if (val.length <= 7) {
+            setMatch(event.target.value)
+        }
     }
 
     function handleAllStudentsMarks() {
@@ -131,9 +133,9 @@ export default function StudentsTable() {
             setShowMessageToast(false)
         }
         else {
-            setShowMessageToast(true)
             setToastVariant('success')
             setMessage(`Assigned ${inputMarks} to all students`)
+            setShowMessageToast(true)
         }
     }
 
@@ -142,8 +144,8 @@ export default function StudentsTable() {
         let inputMarks = Number(document.querySelector('.individual_marks_field').value);
         setStudents(prev => {
             return prev.map(student => {
-                studentName = student.name;
-                if (student.indexNumber == match && (parseInt(inputMarks) > 0)) {
+                if (student.indexNumber == match) {
+                    studentName = student.name;
                     student.currentDayMarks += inputMarks;
                     student.totalMarks += inputMarks;
                     return student;
@@ -154,15 +156,17 @@ export default function StudentsTable() {
             })
         })
 
-        // if () {
-        //     setMessage(`Assigned ${inputMarks} to ${studentName}`);
-        //     setToastVariant('success')
-        // }
-        // else {
-        //     setMessage("No match found !")
-        //     setToastVariant('danger')
-        // }
-        // setShowMessageToast(true)
+        if (inputMarks != 0 && student_list_filtered.length == 1) {
+            setMessage(`Assignment successful !`);
+            setToastVariant('success')
+            setShowMessageToast(true)
+        }
+        else if (inputMarks == 0) return;
+        else {
+            setMessage("No match found !")
+            setToastVariant('danger')
+            setShowMessageToast(true)
+        }
     }
 
     async function handleSubmit() {
@@ -266,11 +270,11 @@ export default function StudentsTable() {
                             </tr>
                         </thead>
                         <tbody>
-                            {student_list}
-                            {/* {student_list_filtered.length === 0 ?
+                            {/* {student_list} */}
+                            {student_list_filtered.length === 0 ?
                                 student_list :
                                 student_list_filtered
-                            } */}
+                            }
                         </tbody>
                     </Table>
                 </div>

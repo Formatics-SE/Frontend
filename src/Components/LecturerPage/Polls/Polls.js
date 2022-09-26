@@ -73,7 +73,6 @@ export default function Polls() {
 
     // do not display the no created polls message if a poll has been created
     useEffect(() => {
-        console.log('polls changed')
         if (polls?.length > 0) setNoCreatedPolls(false);
         else setNoCreatedPolls(true);
     }, [polls])
@@ -87,7 +86,6 @@ export default function Polls() {
         let tempOps = options;
         // initially add two options
         if (optionsCount === 0) {
-            console.log('zero')
             for (let i = 0; i < 2; i++) {
                 let keyVal = v4()
                 tempOps[i] = (
@@ -138,7 +136,7 @@ export default function Polls() {
         // find any field with a null value and cast to either [true] or [false]
         let containsNullVal = optionInputsVals.find(val => val === '') === '';
         // check for nulls
-        if (!title || containsNullVal) return;
+        if (!title || containsNullVal || optionInputs.length === 0 || optionInputs.length === 1) return; 
 
         setOptions([]); setOptionsCount(0);
 
@@ -167,7 +165,6 @@ export default function Polls() {
             // add created poll to array of poll instances
             if (data.polls) {
                 // sessionStorage.setItem('polls', data.polls)
-                console.log(data.polls)
                 setPolls(prev => [...data.polls.map((pollObj, index) => {
                     return (
                         <PollInstance key={index}
@@ -197,8 +194,6 @@ export default function Polls() {
     // end create poll
 
     async function deletePoll(pollId) {
-        console.log('poll id: ', pollId)
-        console.log('modal val: ', showModal)
         setShowLoadingToast(true);
         setShowModal(false);
 
@@ -218,14 +213,13 @@ export default function Polls() {
             const data = await response.json();
             if (data.successful) {
                 setShowLoadingToast(false);
-                setMessage('Successfully applied updates !');
+                setMessage('Poll deleted successfully !');
                 setToastVariant('success');
                 // if updates are successfully applied on the database, filter the local polls
                 setPolls(prevPolls => [...prevPolls.filter(poll => {
                     if (poll.props.pollId != pollId) { console.log('match'); return true; }
                     else { console.log('no match'); return false; }
                 })]);
-                // sessionStorage.setItem('polls', JSON.stringify({ ...tempPolls }));
             }
             else {
                 setMessage('Could not apply updates !')

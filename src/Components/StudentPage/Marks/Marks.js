@@ -25,8 +25,8 @@ export default function Marks() {
             const response = await fetch(`${URL}/fetchstudentmarks`, {
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },
-                body: JSON.stringify({ 
-                    courseCode: sessionStorage.getItem('courseCode') ,
+                body: JSON.stringify({
+                    courseCode: sessionStorage.getItem('courseCode'),
                     indexNumber: sessionStorage.getItem('indexNumber')
                 })
             });
@@ -64,9 +64,6 @@ export default function Marks() {
             setNoAvailableMarks(false);
         }
 
-        // console.log('marksSession: ', marks_session)
-
-
     }, [])
 
     return (
@@ -74,12 +71,12 @@ export default function Marks() {
             <div className='course-info'>
                 {sessionStorage.getItem('courseCode')}: {sessionStorage.getItem('courseName')}
             </div>
-            <div className='student_marks_container'>
+            <div className='marks_and_no_marks'>
                 {
                     noAvailableMarks ?
                         <div className="no_marks_message">No marks available for this course</div>
                         :
-                        <div className='student_group_card'>{marks}</div>
+                        <div className='student_marks_container'>{marks}</div>
                 }
             </div>
 

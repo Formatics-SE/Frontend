@@ -32,10 +32,10 @@
   overflow-y: auto;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(23.5%, 1fr))[auto-fill];
-      grid-template-columns: repeat(auto-fill, minmax(23.5%, 1fr));
-  -webkit-column-gap: 2%;
-          column-gap: 2%;
+  -ms-grid-columns: (minmax(32.3333%, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(32.3333%, 1fr));
+  -webkit-column-gap: 1%;
+          column-gap: 1%;
   row-gap: 0.1%;
 }
 

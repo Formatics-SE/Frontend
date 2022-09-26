@@ -21,8 +21,8 @@ export default function FloatingNav() {
 
     const [currentPage, setCurrentPage] = useState('');
 
-    // /* rewriting localStorage's setItem method in order to get current page 
-    //  * value whenever it changes */
+     /* rewriting localStorage's setItem method in order to get current page 
+      * value whenever it changes */
     localStorage.setItem = (key, value) => {
         const event = new Event('monitorItemChange');
         event.key = key;
@@ -37,6 +37,7 @@ export default function FloatingNav() {
     })
     // // end
 
+   
     // on refresh or page load, get the current page from session storage
     useEffect(() => {
         setCurrentPage(sessionStorage.getItem('currentPage'));

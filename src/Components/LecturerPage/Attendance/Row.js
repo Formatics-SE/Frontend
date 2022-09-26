@@ -45,9 +45,11 @@ export default function Row({ id, name, attendance, strikes, indexNumber, handle
                     >+</div>
                     <div className='btn'
                         onClick={() => {
-                            handleStrikesUpdate(indexNumber, strikes_s - 1);
+                            if (strikes_s >= 1) {
+                                handleStrikesUpdate(indexNumber, strikes_s - 1);
+                            }
                             setStrikes(prev => {
-                                if (prev === 0) return prev;
+                                if (prev == 0) return prev;
                                 else return (prev - 1);
                             })
                         }}
@@ -65,9 +67,11 @@ export default function Row({ id, name, attendance, strikes, indexNumber, handle
                     >+</div>
                     <div className='btn'
                         onClick={() => {
-                            handleAttendanceUpdate(indexNumber, attendance_s - 1);
+                            if (attendance_s >= 1) {
+                                handleAttendanceUpdate(indexNumber, attendance_s - 1);
+                            }
                             setAttendance(prev => {
-                                if (prev === 0) return prev;
+                                if (prev == 0) return prev;
                                 else return (prev - 1);
                             })
                         }}

@@ -18,7 +18,7 @@ const Courses = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    sessionStorage.setItem('currentPage', 'C');
+    localStorage.setItem('currentPage', 'C');
 
     const courses_session = JSON.parse(sessionStorage.getItem('registeredCourses'));
 

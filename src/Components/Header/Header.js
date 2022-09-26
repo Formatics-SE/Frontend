@@ -8,7 +8,7 @@ import './header.css'
 
 import bg from '../Login/bg.png'
 
-export default function Header() {
+export default function Header({ username }) {
 
     const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ export default function Header() {
             </div>
             <div className='name_and_signout'>
                 <div className='name d-none d-md-block'>
-                    username
+                   { username}
                 </div>
                 <div className='signout d-none d-md-block' onClick={() => navigate('/login')}>
                     <FaSignOutAlt className='signout_icon' />

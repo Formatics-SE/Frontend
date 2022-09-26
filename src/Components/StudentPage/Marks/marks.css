@@ -47,26 +47,28 @@
           box-shadow: 0 0 3px #bdbbbc;
 }
 
-.student_marks .student_marks_container {
+.student_marks .marks_and_no_marks {
   margin-top: 10px;
+}
+
+.student_marks .marks_and_no_marks .student_marks_container {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (minmax(19.2%, 1fr))[auto-fill];
       grid-template-columns: repeat(auto-fill, minmax(19.2%, 1fr));
   -webkit-column-gap: 1%;
           column-gap: 1%;
-  row-gap: 2%;
 }
 
 @media screen and (max-width: 1280px) {
-  .student_marks .student_marks_container {
+  .student_marks .marks_and_no_marks .student_marks_container {
     -ms-grid-columns: (minmax(24.25%, 1fr))[auto-fill];
         grid-template-columns: repeat(auto-fill, minmax(24.25%, 1fr));
   }
 }
 
 @media screen and (max-width: 768px) {
-  .student_marks .student_marks_container {
+  .student_marks .marks_and_no_marks .student_marks_container {
     -ms-grid-columns: (minmax(49.5%, 1fr))[auto-fill];
         grid-template-columns: repeat(auto-fill, minmax(49.5%, 1fr));
   }
