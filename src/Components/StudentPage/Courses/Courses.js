@@ -51,7 +51,7 @@ const Courses = () => {
     switch (path) {
       case 'marks':
         urlPath = 'fetchstudentmarks'; break;
-      case 'group':
+      case 'groups':
         console.log('path: ', path)
         urlPath = 'fetchstudentgroup'; break;
       case 'polls':
@@ -73,6 +73,8 @@ const Courses = () => {
       setShowToast(false);
 
       if (data.info) {
+        console.log('group data: ', data.info)
+
         sessionStorage.setItem('courseCode', data.info.courseCode);
         sessionStorage.setItem('courseName', data.info.courseName);
         // switch between the value of path to determine the storage key for sessionStorage
@@ -90,7 +92,7 @@ const Courses = () => {
             localStorage.setItem('currentPage', 'P');
             navigate('/student/polls');
             break;
-          case 'group':
+          case 'groups':
             console.log('path: ', path)
             // sessionStorage.setItem('polls', JSON.stringify(data?.polls));
             localStorage.setItem('currentPage', 'G')

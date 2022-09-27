@@ -31,13 +31,13 @@ $header_bg_color: rgb(134, 12, 114);
         height: 30px !important;
         margin-top: -8px;
         @media screen and (max-width: 768px) {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            margin-left: -10px;
         }
         span {
             font-size: 200%;
             color: white;
             text-align: center;
-            // text-shadow: 0 0 4px $shadow_color;
             font-family: 'tonsushi' !important;
             &.cl {
                 color: rgb(218, 221, 31);

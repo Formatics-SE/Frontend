@@ -32,7 +32,6 @@ export default function Accordion({ id, courseCode, courseName, year, semester, 
                             dropdown.classList.remove('active')
 
                     });
-
                 }}
             >
                 <div className='course_name'>{courseName}</div>
@@ -40,7 +39,7 @@ export default function Accordion({ id, courseCode, courseName, year, semester, 
             </div>
             <div className={`dropdown_menu dp${id}`}>
                 <div onClick={() => handleSubmit('marks', courseCode)}>Marks</div>
-                <div onClick={() => handleSubmit('group', courseCode)}>Group</div>
+                <div onClick={() => handleSubmit('groups', courseCode)}>Group</div>
                 <div onClick={() => handleSubmit('polls', courseCode)}>Polls</div>
             </div>
 
