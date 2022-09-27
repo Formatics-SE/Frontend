@@ -44,6 +44,7 @@ export default function App() {
         <Route path='marks' element={<Marks />} />
         <Route path='polls' element={<Polls />} />
       </Route>
+      <Route path='/*' element={<Navigate replace to='/login' />} />
     </Routes>
   )
 }
