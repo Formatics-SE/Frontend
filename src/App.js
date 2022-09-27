@@ -45,9 +45,5 @@ export default function App() {
         <Route path='polls' element={<Polls />} />
       </Route>
     </Routes>
-
-    //<Groups /> 
-
-    //<RandomGroup /> 
   )
 }

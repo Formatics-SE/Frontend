@@ -13,7 +13,7 @@ export default function PollInstance({ pollId, title, totalVotesCast, options, d
         if(votes === 0) return '0.00';
         // return ((votes / totalVotesCast) * 100).toFixed(2);
         return ((votes / totalVotesCast) * 100).toFixed(1).replace(/^(\d+)\.0$/, '$1');
-    }
+    } 
 
     useEffect(() => {
         const ops = options?.map((obj, index) => {

@@ -10,7 +10,8 @@ export default function PollInstance({ id, title, totalVotesCast, options, delet
     const [showModal, setShowModal] = useState(false);
 
     function percentage(votes) {
-        return ((votes / totalVotesCast) * 100).toFixed(2);
+        // return ((votes / totalVotesCast) * 100).toFixed(2);
+        return ((votes / totalVotesCast) * 100).toFixed(1).replace(/^(\d+)\.0$/, '$1');
     }
 
     useEffect(() => {

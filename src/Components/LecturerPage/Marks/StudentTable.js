@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import StudentsDetails from "./StudentDetails";
-import data from "../dummyDB";
 import "./StudentTable.css";
 import Toast from 'react-bootstrap/Toast'
 import Spinner from "react-bootstrap/Spinner"
@@ -209,7 +208,7 @@ export default function StudentsTable() {
             </div>
             <div className="input-container">
                 <div className="search">
-                    <Form.Control type="search"
+                    <Form.Control 
                         placeholder="Search by index number"
                         type="number"
                         name="search_sname"
