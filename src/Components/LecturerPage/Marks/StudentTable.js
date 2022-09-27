@@ -26,6 +26,7 @@ export default function StudentsTable() {
     const [showLoadingToast, setShowLoadingToast] = useState(false);
     const [message, setMessage] = useState('No match found !')
     const [toastVariant, setToastVariant] = useState('success')
+    const [messageToastDelay, setMessageToastDelay] = useState(3000)
 
     let student_list = students?.map((student, index) => {
         return (
@@ -53,62 +54,69 @@ export default function StudentsTable() {
         )
     })
 
-    useEffect(async () => {
-        setShowLoadingToast(true);
-        let marks_session;
-        try {
-            const response = await fetch(`${URL}/fetchlecturermarks`, {
-                method: 'POST',
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
-            });
+    useEffect(() => {
+        async function fetchData() {
+            setShowLoadingToast(true);
+            let marks_session;
+            try {
+                const response = await fetch(`${URL}/fetchlecturermarks`, {
+                    method: 'POST',
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
+                });
 
-            const data = await response.json();
-            setShowLoadingToast(false);
+                const data = await response.json();
+                setShowLoadingToast(false);
 
-            marks_session = data?.info;
-            sessionStorage.setItem('marks', JSON.stringify(data?.info));
-        }
-        catch (error) {
-            console.log(error.message)
-        }
-        // set the active page on the floating nav to the Marks page
-        localStorage.setItem('currentPage', 'M');
+                marks_session = data?.info;
+                sessionStorage.setItem('marks', JSON.stringify(data?.info));
+            }
+            catch (error) {
+                console.log(error.message)
+            }
+            // set the active page on the floating nav to the Marks page
+            localStorage.setItem('currentPage', 'M');
 
-        console.log('marks session groups: ', marks_session?.groups)
+            console.log('marks session groups: ', marks_session?.groups)
 
-        setCourseName(marks_session?.courseName)
-        setCourseCode(marks_session?.courseCode)
-        setStudents(marks_session?.registeredStudents.map((student, index) => {
-            let totalMarks = 0;
-            // calculate the total marks in the marksArray : [{marks: ..., date: ...}]
-            student.marksArray.map(marksObj => {
-                totalMarks += marksObj.marks;
-            })
-            console.log('total marks: ', totalMarks)
+            setCourseName(marks_session?.courseName)
+            setCourseCode(marks_session?.courseCode)
+            setStudents(marks_session?.registeredStudents.map((student, index) => {
+                let totalMarks = 0;
+                // calculate the total marks in the marksArray : [{marks: ..., date: ...}]
+                student.marksArray.map(marksObj => {
+                    totalMarks += marksObj.marks;
+                })
+                console.log('total marks: ', totalMarks)
 
 
-            let groupScore = 0;
-            if (marks_session.groups.length != 0) {
-                for (let i = 0; i < marks_session?.groups?.length; i++) {
-                    // console.log('student gn: ', student.groupNumber, 'ms number: ', marks_session?.groups[i].groupNumber)
-                    if (student.groupNumber === marks_session?.groups[i].groupNumber) {
-                        groupScore = marks_session?.groups[i].score;
-                        break;
+                let groupScore = 0;
+                if (marks_session.groups.length != 0) {
+                    for (let i = 0; i < marks_session?.groups?.length; i++) {
+                        // console.log('student gn: ', student.groupNumber, 'ms number: ', marks_session?.groups[i].groupNumber)
+                        if (student.groupNumber === marks_session?.groups[i].groupNumber) {
+                            groupScore = marks_session?.groups[i].score;
+                            break;
+                        }
                     }
                 }
-            }
 
-            return {
-                key: { index },
-                name: student.name,
-                indexNumber: student.indexNumber,
-                currentDayMarks: 0,
-                totalMarks: totalMarks,
-                groupScore: groupScore
-            }
-        }))
-        setGroups(marks_session?.groups)
+                return {
+                    key: { index },
+                    name: student.name,
+                    indexNumber: student.indexNumber,
+                    currentDayMarks: 0,
+                    totalMarks: totalMarks,
+                    groupScore: groupScore
+                }
+            }))
+            setGroups(marks_session?.groups);
+            setMessage('Search for a student by index number and click ASSIGN. ASSIGN TO ALL allocates marks to every student.');
+            setMessageToastDelay(8000);
+            setShowMessageToast(true);
+        }
+
+        fetchData();
 
     }, [])
 
@@ -208,7 +216,7 @@ export default function StudentsTable() {
             </div>
             <div className="input-container">
                 <div className="search">
-                    <Form.Control 
+                    <Form.Control
                         placeholder="Search by index number"
                         type="number"
                         name="search_sname"
@@ -284,7 +292,7 @@ export default function StudentsTable() {
                 onClose={() => setShowMessageToast(false)}
                 bg={toastVariant}
                 autohide
-                delay={3000}
+                delay={messageToastDelay}
                 className='toast-message'
             >
                 <Toast.Body>

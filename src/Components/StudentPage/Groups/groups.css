@@ -23,25 +23,6 @@
   }
 }
 
-.student_group_page .no_group_message {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 15px 25px;
-  background-color: #f2f2f7f3;
-  font-size: 140%;
-  text-align: center;
-  -webkit-box-shadow: 0 0 3px #bdbbbc;
-          box-shadow: 0 0 3px #bdbbbc;
-}
-
 .student_group_page .student_group_card {
   margin-top: 10px;
   display: -ms-grid;

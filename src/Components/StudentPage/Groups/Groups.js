@@ -77,7 +77,7 @@ export default function Groups() {
 
             {
                 noCreatedGroup ?
-                    <div className='no_group_message'>No groups have been created for this course</div>
+                    <div className='no_groups_message'>No groups have been created for this course</div>
                     :
                     <div className='student_group_card'>{studentGroup}</div>
             }
