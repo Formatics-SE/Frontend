@@ -1,21 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import Button from 'react-bootstrap/Button'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FaSignOutAlt, FaUser } from 'react-icons/fa'
-import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
+import { AiOutlineMenu } from 'react-icons/ai'
 
 import './header.css'
 
-import bg from '../Login/bg.png'
-
-export default function Header() {
+export default function Header({ username }) {
 
     const navigate = useNavigate();
 
     return (
         <div className='header'>
-            {/* <div className='filter1'></div> background design  */}
-            {/* <div className='filter2'></div> background design */}
             <div className='menu_icon d-block d-md-none'
                 onClick={() => { document.querySelector('.menu').classList.toggle('active') }}
             >
@@ -26,7 +21,7 @@ export default function Header() {
             </div>
             <div className='name_and_signout'>
                 <div className='name d-none d-md-block'>
-                    username
+                   { username}
                 </div>
                 <div className='signout d-none d-md-block' onClick={() => navigate('/login')}>
                     <FaSignOutAlt className='signout_icon' />

@@ -43,7 +43,8 @@ export default function PollInstancePending({
       const data = await response.json();
       setShowLoadingToast(false);
 
-      if (data.successful) {
+      if (data.info) {
+        sessionStorage.setItem('polls', JSON.stringify(data?.info.polls));
         setRefresh((prev) => !prev);
         window.location.reload(true);
       }

@@ -27,53 +27,56 @@ export default function Polls() {
 
     const [options, setOptions] = useState([])
 
-    useEffect(async () => {
-        setShowLoadingToast(true);
-        let polls_session;
-        try {
-            const response = await fetch(`${URL}/fetchpolls`, {
-                method: 'POST',
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
-            });
+    useEffect(() => {
+        async function fetchData() {
+            setShowLoadingToast(true);
+            let polls_session;
+            try {
+                const response = await fetch(`${URL}/fetchpolls`, {
+                    method: 'POST',
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
+                });
 
-            const data = await response.json();
-            setShowLoadingToast(false);
+                const data = await response.json();
+                setShowLoadingToast(false);
 
-            polls_session = data?.info.polls;
-            console.log('ata.pols: ', polls_session)
-            // save the fetched data in session
-            sessionStorage.setItem('polls', JSON.stringify(data?.info.polls));
-        }
-        catch (error) {
-            console.log(error.message)
-        }
-        // make sure the active page on  the floating nav is the Attendance page
-        localStorage.setItem('currentPage', 'P');
+                polls_session = data?.info.polls;
+                console.log('ata.pols: ', polls_session)
+                // save the fetched data in session
+                sessionStorage.setItem('polls', JSON.stringify(data?.info.polls));
+            }
+            catch (error) {
+                console.log(error.message)
+            }
+            // make sure the active page on  the floating nav is the Attendance page
+            localStorage.setItem('currentPage', 'P');
 
-        // if there are no created polls, set noCreatedPolls to true and display no polls message
-        if (polls_session?.length === 0) {
-            setNoCreatedPolls(true)
+            // if there are no created polls, set noCreatedPolls to true and display no polls message
+            if (polls_session?.length === 0) {
+                setNoCreatedPolls(true)
+            }
+            else {
+                setPolls(polls_session?.map((pollObj, index) => {
+                    return (
+                        <PollInstance key={index}
+                            pollId={pollObj._id}
+                            title={pollObj?.title}
+                            totalVotesCast={pollObj?.totalVotesCast}
+                            options={pollObj.options}
+                            deletePoll={deletePoll}
+                        />
+                    )
+                }))
+            }
         }
-        else {
-            setPolls(polls_session?.map((pollObj, index) => {
-                return (
-                    <PollInstance key={index}
-                        pollId={pollObj._id}
-                        title={pollObj?.title}
-                        totalVotesCast={pollObj?.totalVotesCast}
-                        options={pollObj.options}
-                        deletePoll={deletePoll}
-                    />
-                )
-            }))
-        }
+
+        fetchData();
 
     }, [])
 
     // do not display the no created polls message if a poll has been created
     useEffect(() => {
-        console.log('polls changed')
         if (polls?.length > 0) setNoCreatedPolls(false);
         else setNoCreatedPolls(true);
     }, [polls])
@@ -87,7 +90,6 @@ export default function Polls() {
         let tempOps = options;
         // initially add two options
         if (optionsCount === 0) {
-            console.log('zero')
             for (let i = 0; i < 2; i++) {
                 let keyVal = v4()
                 tempOps[i] = (
@@ -138,7 +140,7 @@ export default function Polls() {
         // find any field with a null value and cast to either [true] or [false]
         let containsNullVal = optionInputsVals.find(val => val === '') === '';
         // check for nulls
-        if (!title || containsNullVal) return;
+        if (!title || containsNullVal || optionInputs.length === 0 || optionInputs.length === 1) return;
 
         setOptions([]); setOptionsCount(0);
 
@@ -167,7 +169,6 @@ export default function Polls() {
             // add created poll to array of poll instances
             if (data.polls) {
                 // sessionStorage.setItem('polls', data.polls)
-                console.log(data.polls)
                 setPolls(prev => [...data.polls.map((pollObj, index) => {
                     return (
                         <PollInstance key={index}
@@ -197,8 +198,6 @@ export default function Polls() {
     // end create poll
 
     async function deletePoll(pollId) {
-        console.log('poll id: ', pollId)
-        console.log('modal val: ', showModal)
         setShowLoadingToast(true);
         setShowModal(false);
 
@@ -218,14 +217,13 @@ export default function Polls() {
             const data = await response.json();
             if (data.successful) {
                 setShowLoadingToast(false);
-                setMessage('Successfully applied updates !');
+                setMessage('Poll deleted successfully !');
                 setToastVariant('success');
                 // if updates are successfully applied on the database, filter the local polls
                 setPolls(prevPolls => [...prevPolls.filter(poll => {
                     if (poll.props.pollId != pollId) { console.log('match'); return true; }
                     else { console.log('no match'); return false; }
                 })]);
-                // sessionStorage.setItem('polls', JSON.stringify({ ...tempPolls }));
             }
             else {
                 setMessage('Could not apply updates !')

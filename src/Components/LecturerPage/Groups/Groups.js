@@ -8,7 +8,6 @@ import Button from "react-bootstrap/Button";
 import "./Group.css";
 
 import RandomGroup from './RandomGroup'
-import FloatingNav from '../../FloatingNav_Lect/FloatingNav_Lect'
 import { URL } from '../../URL'
 
 export default function Groups() {
@@ -27,39 +26,44 @@ export default function Groups() {
     setValue(event.target.value ? Number(event.target.value) : event.target.value)
   }
 
-  useEffect(async () => {
-    setShowLoadingToast(true);
-    let groups_session;
-    try {
-      const response = await fetch(`${URL}/fetchlecturergroups`, {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
-      });
+  useEffect(() => {
+    async function fetchData() {
+      setShowLoadingToast(true);
+      let groups_session;
+      try {
+        const response = await fetch(`${URL}/fetchlecturergroups`, {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
+        });
 
-      const data = await response.json();
-      setShowLoadingToast(false);
+        const data = await response.json();
+        setShowLoadingToast(false);
 
-      groups_session = data?.info;
-      // save the fetched data in session
-      sessionStorage.setItem('groups', JSON.stringify(data?.info));
-    }
-    catch (error) {
-      console.log(error.message)
-    }
-    // make sure the active page on  the floating nav is the Attendance page
-    localStorage.setItem('currentPage', 'G');
+        groups_session = data?.info;
+        // save the fetched data in session
+        sessionStorage.setItem('groups', JSON.stringify(data?.info));
+      }
+      catch (error) {
+        console.log(error.message)
+      }
+      // make sure the active page on  the floating nav is the Attendance page
+      localStorage.setItem('currentPage', 'G');
 
-    // display no groups page if there are no groups created for this course
-    if (groups_session?.groups?.length === 0) {
-      setNoCreatedGroups(true);
-    }
-    else {
-      setNoCreatedGroups(false);
+      // display no groups page if there are no groups created for this course
+      if (groups_session?.groups?.length === 0) {
+        setNoCreatedGroups(true);
+      }
+      else {
+        setNoCreatedGroups(false);
+      }
+
+      setCourseName(groups_session?.courseName)
+      setCourseCode(groups_session?.courseCode)
+
     }
 
-    setCourseName(groups_session?.courseName)
-    setCourseCode(groups_session?.courseCode)
+    fetchData();
 
   }, [])
   // end useEffect

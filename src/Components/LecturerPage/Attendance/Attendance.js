@@ -23,63 +23,66 @@ export default function Attendance() {
     const [message, setMessage] = useState('')
     const [toastVariant, setToastVariant] = useState('success')
 
-    useEffect(async () => {
-        setShowLoadingToast(true);
-        let attendanceInfo_session;
-        try {
-            const response = await fetch(`${URL}/fetchattendance`, {
-                method: 'POST',
-                headers: { 'content-type': 'application/json' },
-                body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
-            });
+    useEffect(() => {
+        async function fetchData() {
+            setShowLoadingToast(true);
+            let attendanceInfo_session;
+            try {
+                const response = await fetch(`${URL}/fetchattendance`, {
+                    method: 'POST',
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
+                });
 
-            const data = await response.json();
-            setShowLoadingToast(false);
+                const data = await response.json();
+                setShowLoadingToast(false);
 
-            attendanceInfo_session = data?.info;
-            // save the fetched data in session
-            sessionStorage.setItem('attendance', JSON.stringify(data?.info));
+                attendanceInfo_session = data?.info;
+                // save the fetched data in session
+                sessionStorage.setItem('attendance', JSON.stringify(data?.info));
+            }
+            catch (error) {
+                console.log(error.message)
+            }
+            // make sure the active page on  the floating nav is the Attendance page
+            localStorage.setItem('currentPage', 'R');
+
+            const students = attendanceInfo_session?.registeredStudents;
+            setCourseName(attendanceInfo_session?.courseName)
+            setCourseCode(attendanceInfo_session?.courseCode)
+            setMaxAbsentStrikes(attendanceInfo_session?.maxAbsentStrikes)
+
+            let temp_attendance_update = []
+
+            // create an array of Row components and store state in setAttendanceRows
+            setAttendanceRows(
+                students?.map((studentObj, index) => {
+                    // for each student object returned, create an object containing only the student information of interest
+                    // i.e index number, attendance record and strikes record. These values would be updated when attendance is taken
+                    temp_attendance_update.push(
+                        {
+                            indexNumber: studentObj.indexNumber,
+                            attendance: studentObj.attendance,
+                            strikes: studentObj.strikes
+                        }
+                    );
+                    return (
+                        <Row key={index}
+                            id={index}
+                            indexNumber={studentObj.indexNumber}
+                            name={studentObj.name}
+                            attendance={studentObj.attendance}
+                            strikes={studentObj.strikes}
+                            handleAttendanceUpdate={handleAttendanceUpdate}
+                            handleStrikesUpdate={handleStrikesUpdate}
+                        />
+                    )
+                })
+            );
+
+            setAttendanceUpdate(temp_attendance_update);
         }
-        catch (error) {
-            console.log(error.message)
-        }
-        // make sure the active page on  the floating nav is the Attendance page
-        localStorage.setItem('currentPage', 'R');
-
-        const students = attendanceInfo_session?.registeredStudents;
-        setCourseName(attendanceInfo_session?.courseName)
-        setCourseCode(attendanceInfo_session?.courseCode)
-        setMaxAbsentStrikes(attendanceInfo_session?.maxAbsentStrikes)
-
-        let temp_attendance_update = []
-
-        // create an array of Row components and store state in setAttendanceRows
-        setAttendanceRows(
-            students?.map((studentObj, index) => {
-                // for each student object returned, create an object containing only the student information of interest
-                // i.e index number, attendance record and strikes record. These values would be updated when attendance is taken
-                temp_attendance_update.push(
-                    {
-                        indexNumber: studentObj.indexNumber,
-                        attendance: studentObj.attendance,
-                        strikes: studentObj.strikes
-                    }
-                );
-                return (
-                    <Row key={index}
-                        id={index}
-                        indexNumber={studentObj.indexNumber}
-                        name={studentObj.name}
-                        attendance={studentObj.attendance}
-                        strikes={studentObj.strikes}
-                        handleAttendanceUpdate={handleAttendanceUpdate}
-                        handleStrikesUpdate={handleStrikesUpdate}
-                    />
-                )
-            })
-        );
-
-        setAttendanceUpdate(temp_attendance_update);
+        fetchData();
 
     }, [])
 

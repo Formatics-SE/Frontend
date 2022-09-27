@@ -36,7 +36,7 @@
 }
 
 .loading_toast {
-    position: absolute;
+    position: absolute; 
     width: fit-content;
     display: flex;
     justify-content: center;
@@ -48,4 +48,8 @@
     color: white;
     z-index: 50;
     opacity: 100%;
+
+    .spinner {
+        color: white !important;
+    }
 }

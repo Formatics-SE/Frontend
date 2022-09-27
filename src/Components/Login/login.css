@@ -7,9 +7,9 @@
 }
 .login_page .toast {
   position: absolute;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
   top: 20px;
   left: 50%;
   z-index: 1051;
@@ -17,7 +17,7 @@
   font-weight: 500;
   font-size: 110%;
   color: white;
-  padding: 5px 30px;
+  padding: 5px 15px;
   text-align: center;
 }
 @media screen and (max-width: 768px) {

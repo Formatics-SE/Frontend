@@ -28,6 +28,7 @@
   overflow-y: auto;
   display: grid;
 <<<<<<< HEAD
+<<<<<<< HEAD
   grid-template-columns: repeat(auto-fill, minmax(23.5%, 1fr));
   -moz-column-gap: 2%;
        column-gap: 2%;
@@ -36,6 +37,12 @@
       grid-template-columns: repeat(auto-fill, minmax(23.5%, 1fr));
   -webkit-column-gap: 2%;
           column-gap: 2%;
+=======
+  -ms-grid-columns: (minmax(32.3333%, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(32.3333%, 1fr));
+  -webkit-column-gap: 1%;
+          column-gap: 1%;
+>>>>>>> 4691d70afc77e889a33f527d795301b9d2627e4c
   row-gap: 0.1%;
 >>>>>>> fe155fd77c5507bc5c1f1cc85144843def3f8d90
 }

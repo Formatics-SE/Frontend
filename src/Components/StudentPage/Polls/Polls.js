@@ -18,62 +18,64 @@ export default function Polls() {
   const [noParticipatedPolls, setNoParticipatedPolls] = useState(false);
 
 
-  useEffect(async () => {
-    setShowLoadingToast(true);
-    let polls_session;
-    try {
-      const response = await fetch(`${URL}/fetchpolls`, {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
-      });
+  useEffect(() => {
+    async function fetchData() {
+      setShowLoadingToast(true);
+      let polls_session;
+      try {
+        const response = await fetch(`${URL}/fetchpolls`, {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
+        });
 
-      const data = await response.json();
-      setShowLoadingToast(false);
+        const data = await response.json();
+        setShowLoadingToast(false);
 
-      polls_session = data?.info.polls;
-      console.log('ata.pols: ', polls_session)
-      // save the fetched data in session
-      sessionStorage.setItem('polls', JSON.stringify(data?.info.polls));
-    }
-    catch (error) {
-      console.log(error.message)
-    }
-    // make sure the active page on  the floating nav is the Attendance page
-    localStorage.setItem('currentPage', 'P');
-
-    const indexNumber = JSON.parse(sessionStorage.getItem("indexNumber"));
-
-    let tempParticipatedPolls = [];
-    let tempPendingPolls = [];
-
-    polls_session?.map((pollObj) => {
-      let match = pollObj.participants.find((index) => index === indexNumber);
-      if (match) {
-        tempParticipatedPolls.push(
-          <PollInstance key={pollObj._id}
-            title={pollObj?.title}
-            totalVotesCast={pollObj?.totalVotesCast}
-            options={pollObj.options}
-          />
-        );
-        setParticipatedPolls(prev => [...tempParticipatedPolls]);
-
-      } else {
-        tempPendingPolls.push(
-          <PollInstancePending key={pollObj._id}
-            pollId={pollObj._id}
-            title={pollObj?.title}
-            totalVotesCast={pollObj?.totalVotesCast}
-            options={pollObj.options}
-            setRefresh={setRefresh}
-          />
-        );
-        setPendingPolls(prev => [...tempPendingPolls]);
-
+        polls_session = data?.info.polls;
+        // save the fetched data in session
+        sessionStorage.setItem('polls', JSON.stringify(data?.info.polls));
       }
-    });
+      catch (error) {
+        console.log(error.message)
+      }
+      // make sure the active page on  the floating nav is the Attendance page
+      localStorage.setItem('currentPage', 'P');
 
+      const indexNumber = JSON.parse(sessionStorage.getItem("indexNumber"));
+
+      let tempParticipatedPolls = [];
+      let tempPendingPolls = [];
+
+      polls_session?.map((pollObj) => {
+        let match = pollObj.participants.find((index) => index === indexNumber);
+        if (match) {
+          tempParticipatedPolls.push(
+            <PollInstance key={pollObj._id}
+              title={pollObj?.title}
+              totalVotesCast={pollObj?.totalVotesCast}
+              options={pollObj.options}
+            />
+          );
+          setParticipatedPolls(prev => [...tempParticipatedPolls]);
+
+        } else {
+          tempPendingPolls.push(
+            <PollInstancePending key={pollObj._id}
+              pollId={pollObj._id}
+              title={pollObj?.title}
+              totalVotesCast={pollObj?.totalVotesCast}
+              options={pollObj.options}
+              setRefresh={setRefresh}
+            />
+          );
+          setPendingPolls(prev => [...tempPendingPolls]);
+
+        }
+      });
+    }
+
+    fetchData();
 
   }, [refresh]);
 

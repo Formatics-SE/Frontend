@@ -1,13 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import './accordion.css'
 
 export default function Accordion({ id, courseCode, courseName, year, semester, credits, bg, handleSubmit }) {
-
-    useEffect(() => {
-        
-
-    }, [])
 
     return (
         <div className='accordion'>
