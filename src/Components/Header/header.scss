@@ -8,10 +8,10 @@ $header_bg_color: rgb(134, 12, 114);
     padding: 12px 30px;
     @media screen and (max-width: 768px) {
         padding: 8px 30px;
-    }
+    }  
     display: flex;
     justify-content: space-between;
-    font-size: 125%;
+    font-size: 125%;  
     color: white;
     background-color: $header_bg_color;
     box-shadow: 0 2px 2px rgb(187, 184, 184);

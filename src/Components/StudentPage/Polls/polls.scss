@@ -14,12 +14,12 @@ $btn_bg_color: rgb(163, 23, 140);
         padding: 10px 20px;
         @media screen and (max-width: 768px) {
             padding: 10px;
-        }
-    }
+        } 
+    }  
 
     .pending_and_participated_polls_container {
         width: 100%;
-        min-height: fit-content;
+        min-height: fit-content; 
         padding-bottom: 60px;
         max-height: calc(100% - 31px);
         overflow-y: auto;

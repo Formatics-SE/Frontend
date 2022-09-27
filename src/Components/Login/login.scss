@@ -40,11 +40,11 @@ $shadow_color: rgba(223, 62, 210, 0.664);
     .bg_img_shade {
         width: 100%;
         height: 100%;
-        position: fixed;
+        position: fixed; 
         top: 0;
         left: 0;
         background-color: rgba(0, 0, 0, 0.336);
-        z-index: -9;
+        z-index: -9; 
     }
     // form container
     .login_form {
