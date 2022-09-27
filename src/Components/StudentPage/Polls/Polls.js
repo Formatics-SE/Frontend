@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
+import Toast from 'react-bootstrap/Toast'
+import Spinner from 'react-bootstrap/Spinner'
 import "./polls.css";
+import { URL } from '../../URL'
 
 import PollInstance from './PollInstance'
 import PollInstancePending from './PollInstancePending'
@@ -9,57 +12,136 @@ export default function Polls() {
   const [participatedPolls, setParticipatedPolls] = useState([]);
   const [refresh, setRefresh] = useState(false);
 
-  useEffect(() => {
-    const polls_session = JSON.parse(sessionStorage.getItem("polls"));
+  const [showLoadingToast, setShowLoadingToast] = useState(false);
+
+  const [noPendingPolls, setNoPendingPolls] = useState(false);
+  const [noParticipatedPolls, setNoParticipatedPolls] = useState(false);
+
+
+  useEffect(async () => {
+    setShowLoadingToast(true);
+    let polls_session;
+    try {
+      const response = await fetch(`${URL}/fetchpolls`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
+      });
+
+      const data = await response.json();
+      setShowLoadingToast(false);
+
+      polls_session = data?.info.polls;
+      console.log('ata.pols: ', polls_session)
+      // save the fetched data in session
+      sessionStorage.setItem('polls', JSON.stringify(data?.info.polls));
+    }
+    catch (error) {
+      console.log(error.message)
+    }
+    // make sure the active page on  the floating nav is the Attendance page
+    localStorage.setItem('currentPage', 'P');
+
     const indexNumber = JSON.parse(sessionStorage.getItem("indexNumber"));
+
+    let tempParticipatedPolls = [];
+    let tempPendingPolls = [];
 
     polls_session?.map((pollObj) => {
       let match = pollObj.participants.find((index) => index === indexNumber);
       if (match) {
-        setParticipatedPolls((prev) => [
-          ...prev,
+        tempParticipatedPolls.push(
           <PollInstance key={pollObj._id}
             title={pollObj?.title}
             totalVotesCast={pollObj?.totalVotesCast}
             options={pollObj.options}
           />
-        ]);
+        );
+        setParticipatedPolls(prev => [...tempParticipatedPolls]);
+
       } else {
-        setPendingPolls((prev) => [
-          ...prev,
-          <PollInstancePending
-            key={pollObj._id}
-            id={pollObj._id}
+        tempPendingPolls.push(
+          <PollInstancePending key={pollObj._id}
+            pollId={pollObj._id}
             title={pollObj?.title}
             totalVotesCast={pollObj?.totalVotesCast}
             options={pollObj.options}
             setRefresh={setRefresh}
           />
-        ]);
+        );
+        setPendingPolls(prev => [...tempPendingPolls]);
+
       }
     });
 
-    // setPolls(polls_session?.map(obj => {
-    //     return (
-    //         <PollInstance
-    //             title={obj?.title}
-    //             totalVotesCast={obj?.totalVotesCast}
-    //             options={obj.options}
-    //         />
-    //     )
-    // }));
+
   }, [refresh]);
+
+  useEffect(() => {
+    console.log('pendingPolls: ', pendingPolls.length)
+    console.log('participatedPolls: ', participatedPolls.length)
+    if (pendingPolls.length === 0) {
+      setNoPendingPolls(true)
+    }
+    else {
+      setNoPendingPolls(false)
+    }
+    if (participatedPolls.length === 0) {
+      setNoParticipatedPolls(true)
+    }
+    else {
+      setNoParticipatedPolls(false)
+    }
+
+  }, [pendingPolls, participatedPolls])
 
   return (
     <div className="student_polls">
-      <div className="pending_polls">
-        <div className="pending_polls_title">Pending Polls</div>
-        <div className="pending_polls_body">{pendingPolls}</div>
+      <div className='course-info'>
+        {sessionStorage.getItem('courseCode')}: {sessionStorage.getItem('courseName')}
       </div>
-      <div className="participated_polls">
-        <div className="participated_polls_title">Participated Polls</div>
-        <div className="participated_polls_body">{participatedPolls}</div>
+
+      <div className='pending_and_participated_polls_container'>
+        <div className="pending_polls">
+          <div className="pending_polls_title">Pending Polls</div>
+          <div className="pending_polls_body">
+            {
+              noPendingPolls ?
+                <div className="no_pending_polls_message">You have no pending polls</div>
+                :
+                <div>{pendingPolls}</div>
+            }
+          </div>
+        </div>
+        <div className="participated_polls">
+          <div className="participated_polls_title">Participated Polls</div>
+          <div className="participated_polls_body">
+            {
+              noParticipatedPolls ?
+                <div className="no_participated_polls_message">You have no participated polls</div>
+                :
+                <div>{participatedPolls}</div>
+            }
+          </div>
+        </div>
       </div>
+
+      {/* loading toast */}
+      <Toast show={showLoadingToast}
+        onClose={() => setShowLoadingToast(false)}
+        bg='secondary'
+        autohide
+        delay={3000}
+        className='loading_toast'
+      >
+        <Toast.Body>
+          <Spinner className='spinner'
+            animation='border'
+            size='md'
+          />
+        </Toast.Body>
+      </Toast>
+
     </div>
   );
 }

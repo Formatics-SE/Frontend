@@ -17,6 +17,7 @@ export default function StudentsTable() {
     const [courseCode, setCourseCode] = useState('')
 
     const [students, setStudents] = useState([])
+    const [groups, setGroups] = useState([])
     const [match, setMatch] = useState('')
 
     const [individualMarksFieldValue, setIndividualMarksFieldValue] = useState(0)
@@ -24,13 +25,14 @@ export default function StudentsTable() {
 
     const [showMessageToast, setShowMessageToast] = useState(false);
     const [showLoadingToast, setShowLoadingToast] = useState(false);
-    const [message, setMessage] = useState('No match')
+    const [message, setMessage] = useState('No match found !')
     const [toastVariant, setToastVariant] = useState('success')
 
     let student_list = students?.map((student, index) => {
         return (
             <StudentsDetails
                 key={index}
+                id={index}
                 student={student}
             />
         )
@@ -72,8 +74,10 @@ export default function StudentsTable() {
         catch (error) {
             console.log(error.message)
         }
-        // make sure the active page on  the flaoting nav is the Marks page
+        // set the active page on the floating nav to the Marks page
         localStorage.setItem('currentPage', 'M');
+
+        console.log('marks session groups: ', marks_session?.groups)
 
         setCourseName(marks_session?.courseName)
         setCourseCode(marks_session?.courseCode)
@@ -83,14 +87,30 @@ export default function StudentsTable() {
             student.marksArray.map(marksObj => {
                 totalMarks += marksObj.marks;
             })
+            console.log('total marks: ', totalMarks)
+
+
+            let groupScore = 0;
+            if (marks_session.groups.length != 0) {
+                for (let i = 0; i < marks_session?.groups?.length; i++) {
+                    // console.log('student gn: ', student.groupNumber, 'ms number: ', marks_session?.groups[i].groupNumber)
+                    if (student.groupNumber === marks_session?.groups[i].groupNumber) {
+                        groupScore = marks_session?.groups[i].score;
+                        break;
+                    }
+                }
+            }
+
             return {
                 key: { index },
                 name: student.name,
                 indexNumber: student.indexNumber,
                 currentDayMarks: 0,
-                totalMarks: totalMarks
+                totalMarks: totalMarks,
+                groupScore: groupScore
             }
         }))
+        setGroups(marks_session?.groups)
 
     }, [])
 
@@ -120,31 +140,29 @@ export default function StudentsTable() {
     function handleIndividualMarks() {
         let studentName;
         let inputMarks = Number(document.querySelector('.individual_marks_field').value);
-        let foundMatch = false;
         setStudents(prev => {
             return prev.map(student => {
                 studentName = student.name;
-                if (student.indexNumber.toString() === match && (Number(inputMarks) > 0)) {
-                    foundMatch = true;
+                if (student.indexNumber == match && (parseInt(inputMarks) > 0)) {
                     student.currentDayMarks += inputMarks;
                     student.totalMarks += inputMarks;
                     return student;
                 }
                 else {
-                    foundMatch = false;
                     return student;
                 }
             })
         })
-        if (foundMatch) {
-            setMessage(`Assigned ${inputMarks} to ${studentName}`);
-            setToastVariant('success')
-        }
-        else {
-            setMessage("No match found !")
-            setToastVariant('danger')
-        }
-        setShowMessageToast(true)
+
+        // if () {
+        //     setMessage(`Assigned ${inputMarks} to ${studentName}`);
+        //     setToastVariant('success')
+        // }
+        // else {
+        //     setMessage("No match found !")
+        //     setToastVariant('danger')
+        // }
+        // setShowMessageToast(true)
     }
 
     async function handleSubmit() {
@@ -242,7 +260,9 @@ export default function StudentsTable() {
                             <tr>
                                 <th>Name</th>
                                 <th>Index Number</th>
-                                <th>Accumulated marks</th>
+                                <th>Individual Score</th>
+                                <th>Group Score</th>
+                                <th>Total</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -271,7 +291,7 @@ export default function StudentsTable() {
 
             <Toast show={showLoadingToast}
                 onClose={() => setShowLoadingToast(false)}
-                bg='secondary'
+                bg={toastVariant}
                 className='loading_toast'
             >
                 <Toast.Body>

@@ -1,1 +1,63 @@
+<<<<<<< HEAD
+=======
+.poll_instance_pending {
+  -webkit-box-shadow: 0px 0px 4px 1px #bbb8b8;
+          box-shadow: 0px 0px 4px 1px #bbb8b8;
+  margin-bottom: 15px;
+  -webkit-column-break-inside: avoid;
+          break-inside: avoid;
+}
+
+.poll_instance_pending .pending_poll_title {
+  position: relative;
+  padding: 5px 46px 5px 15px;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: #a3178c;
+  font-weight: bold;
+  background-color: #e1e1e2f3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: none;
+}
+
+.poll_instance_pending .options {
+  padding: 8px 5px;
+}
+
+.poll_instance_pending .options .option {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: nowrap;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.poll_instance_pending .options .option:hover {
+  cursor: pointer;
+  background-color: #e1e1e2f3;
+}
+
+.poll_instance_pending .options .option .option_mark {
+  width: 10px;
+  height: 10px;
+  border: 2px solid #5e57c0;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.poll_instance_pending .totalVotesCast {
+  border-width: 1px 0 0 0;
+  border-style: solid;
+  border-color: #a3178c;
+  padding: 5px 10px;
+  border-radius: 0 0 10px 10px;
+}
+>>>>>>> fe155fd77c5507bc5c1f1cc85144843def3f8d90
 /*# sourceMappingURL=poll_instance_pending.css.map */

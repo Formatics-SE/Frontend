@@ -7,34 +7,21 @@ import './poll_instance.css'
 export default function PollInstance({ id, title, totalVotesCast, options, deletePoll }) {
 
     const [options_s, setOptions_s] = useState([]);
-
     const [showModal, setShowModal] = useState(false);
 
     function percentage(votes) {
-        return ((votes / 74) * 100).toFixed(2);
+        return ((votes / totalVotesCast) * 100).toFixed(2);
     }
 
     useEffect(() => {
-        // const testData = [
-        //     {
-        //         option: 'Naruto',
-        //         votes: 24
-        //     },
-        //     {
-        //         option: 'Demon Slayer',
-        //         votes: 32
-        //     },
-        //     {
-        //         option: 'Voltron',
-        //         votes: 18
-        //     }
-        // ];
-
-        // const totalVotesCast = 74
         const ops = options?.map((obj, index) => {
+            let match = obj.taken.find(indexNumber => indexNumber === sessionStorage.getItem('indexNumber'));
+            console.log('op match')
+            // console..og()
+
             return (<>
                 <div className='option_and_percent_votes' key={index}>
-                    <div className='option'>
+                    <div className={`option ${match ? 'highlightedOption' : ''}`}>
                         {obj.option}
                     </div>
                     <div className='percent_votes'>
@@ -52,10 +39,7 @@ export default function PollInstance({ id, title, totalVotesCast, options, delet
     }, [])
     return (
         <div className='poll_instance'>
-            <div className='title_and_delete_container'>
-                <div className='title'>{title}</div>
-                <div><FaTrash className='delete_icon' onClick={() => setShowModal(true)} /></div>
-            </div>
+            <div className='participated_poll_title'>{title}</div>
             <div className='options'>
                 {options_s}
             </div>

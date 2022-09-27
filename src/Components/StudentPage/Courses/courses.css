@@ -27,9 +27,17 @@
   min-height: fit-content;
   overflow-y: auto;
   display: grid;
+<<<<<<< HEAD
   grid-template-columns: repeat(auto-fill, minmax(23.5%, 1fr));
   -moz-column-gap: 2%;
        column-gap: 2%;
+=======
+  -ms-grid-columns: (minmax(23.5%, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(23.5%, 1fr));
+  -webkit-column-gap: 2%;
+          column-gap: 2%;
+  row-gap: 0.1%;
+>>>>>>> fe155fd77c5507bc5c1f1cc85144843def3f8d90
 }
 @media screen and (max-width: 1024px) {
   .courses .course_accordion_container {

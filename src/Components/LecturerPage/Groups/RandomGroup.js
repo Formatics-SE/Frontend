@@ -88,10 +88,8 @@ export default function RandomGroup(props) {
 
     async function handleSubmitScores(e) {
         const courseCode = sessionStorage.getItem('courseCode');
-        // setShowLoadingToast(true);
-        // e.target.disabled = true;
-
-        console.log(createdGroups)
+        setShowLoadingToast(true);
+        e.target.disabled = true;
 
         try {
             const response = await fetch(`${URL}/groupsmarksupdate`, {
@@ -207,7 +205,7 @@ export default function RandomGroup(props) {
     }
     else {
         groupFormat = groups_session?.groups;
-        GroupWithScores = groupFormat.map(item => {
+        GroupWithScores = createdGroups.map(item => {
             return (
                 <Card className="cards-container"
                     onClick={() => {
@@ -325,7 +323,7 @@ export default function RandomGroup(props) {
 
             {/* loading toast */}
             <Toast show={showLoadingToast}
-                onClose={() => setShowMessageToast(false)}
+                onClose={() => setShowLoadingToast(false)}
                 bg='secondary'
                 autohide
                 delay={3000}

@@ -4,20 +4,30 @@
   -moz-column-break-inside: avoid;
        break-inside: avoid;
 }
+<<<<<<< HEAD
 .poll_instance .title_and_delete_container {
+=======
+
+.poll_instance .participated_poll_title {
+>>>>>>> fe155fd77c5507bc5c1f1cc85144843def3f8d90
   position: relative;
   padding: 5px 46px 5px 15px;
   border-width: 0 0 1px 0;
   border-style: solid;
   border-color: rgb(163, 23, 140);
   font-weight: bold;
+<<<<<<< HEAD
   background-color: rgba(225, 225, 226, 0.9529411765);
 }
 .poll_instance .title_and_delete_container .title {
+=======
+  background-color: #e1e1e2f3;
+>>>>>>> fe155fd77c5507bc5c1f1cc85144843def3f8d90
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: none;
 }
+<<<<<<< HEAD
 .poll_instance .title_and_delete_container .delete_icon {
   position: absolute;
   top: 50%;
@@ -26,6 +36,9 @@
   font-size: 95%;
   color: rgb(102, 13, 13);
 }
+=======
+
+>>>>>>> fe155fd77c5507bc5c1f1cc85144843def3f8d90
 .poll_instance .options {
   padding: 8px 10px;
 }
@@ -41,6 +54,14 @@
   text-overflow: ellipsis;
   word-wrap: nowrap;
 }
+<<<<<<< HEAD
+=======
+
+.poll_instance .options .option_and_percent_votes .highlightedOption {
+  color: red;
+}
+
+>>>>>>> fe155fd77c5507bc5c1f1cc85144843def3f8d90
 .poll_instance .options .progressbar {
   position: relative;
   width: 100%;

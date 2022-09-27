@@ -10,6 +10,7 @@
     margin-bottom: 5px !important;
     background-color: #e1e1e2f3 !important;
     font-weight: bold;
+    border-radius: 5px;
 }
 .heading-container {
     display: flex;
@@ -113,18 +114,6 @@ li {
     background-color: #e1e1e2f3;
 }
 
-.modal_header {
-    /* display: flex;
-    justify-content: flex-end; */
-}
-/* .close_btn {
-    background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
-    border-color: rgb(163, 23, 140);
-    padding: 7px 25px;
-    text-align: center;
-    border-radius: 30px;
-    font-size: 15px;
-} */
 .assign-marks-div {
     display: flex;
     align-items: center;

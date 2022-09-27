@@ -28,42 +28,35 @@ export default function Polls() {
     const [options, setOptions] = useState([])
 
     useEffect(async () => {
-        let polls_session = JSON.parse(sessionStorage.getItem('polls')) // array of poll objects
+        setShowLoadingToast(true);
+        let polls_session;
+        try {
+            const response = await fetch(`${URL}/fetchpolls`, {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
+            });
 
-        // console.log('polls_session: ', polls_session)
-        // if polls_session is null, the page was navigate to either by url or the floating nav, hence fetch the data 
-        if (!polls_session) {
-            setShowLoadingToast(true);
-            try {
-                const response = await fetch(`${URL}/fetchpolls`, {
-                    method: 'POST',
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
-                });
+            const data = await response.json();
+            setShowLoadingToast(false);
 
-                const data = await response.json();
-                setShowLoadingToast(false);
-
-                polls_session = data?.info.polls;
-                console.log('ata.pols: ', polls_session)
-                // save the fetched data in session
-                sessionStorage.setItem('polls', JSON.stringify(data?.info.polls));
-            }
-            catch (error) {
-                console.log(error.message)
-            }
+            polls_session = data?.info.polls;
+            console.log('ata.pols: ', polls_session)
+            // save the fetched data in session
+            sessionStorage.setItem('polls', JSON.stringify(data?.info.polls));
+        }
+        catch (error) {
+            console.log(error.message)
         }
         // make sure the active page on  the floating nav is the Attendance page
         localStorage.setItem('currentPage', 'P');
-
-        console.log(polls_session)
 
         // if there are no created polls, set noCreatedPolls to true and display no polls message
         if (polls_session?.length === 0) {
             setNoCreatedPolls(true)
         }
         else {
-            setPolls(polls_session.map((pollObj, index) => {
+            setPolls(polls_session?.map((pollObj, index) => {
                 return (
                     <PollInstance key={index}
                         pollId={pollObj._id}
@@ -259,18 +252,14 @@ export default function Polls() {
                     onClick={() => { addOption(); setShowModal(true) }}>Create Poll</Button></div>
                 <div className='total_polls'>Total Polls: {polls?.length}</div>
             </div>
-            {
-                noCreatedPolls ?
-                    <div className='no_polls_message'>No polls have been created for this course</div>
-                    :
-                    <div className='created_polls_container'>
-                        {polls}
-                        {/* <PollInstance />
-                        <PollInstance />
-                        <PollInstance />
-                        <PollInstance /> */}
-                    </div>
-            }
+            <div className='created_polls'>
+                {
+                    noCreatedPolls ?
+                        <div className='no_polls_message'>No polls have been created for this course</div>
+                        :
+                        <div className='created_polls_container'>{polls}</div>
+                }
+            </div>
 
             {/* loading toast */}
             <Toast show={showLoadingToast}
