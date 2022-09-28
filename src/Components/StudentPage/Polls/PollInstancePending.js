@@ -23,36 +23,47 @@ export default function PollInstancePending({
   const [message, setMessage] = useState('')
   const [toastVariant, setToastVariant] = useState('success')
 
-  const [optionClicked, setOpitonClicked] = useState(false)
+  const [optionClicked, setOptionClicked] = useState(false)
+
+  let tempOptionClicked = false;
 
   async function handleClick(e) {
-    setShowLoadingToast(true);
-    const pollOptionId = e.target.classList[1];
-    const courseCode = sessionStorage.getItem('courseCode');
+    if (!optionClicked) {
+      setOptionClicked(true);
 
-    try {
-      const response = await fetch(`${URL}/updatepolls`, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({
-          courseCode: courseCode,
-          pollId: pollId,
-          indexNumber: sessionStorage.getItem("indexNumber"),
-          optionId: pollOptionId,
-        }),
-      });
+      e.target.addEventListener('click', (e) => {
+        e.stopPropagation();
+      })
 
-      const data = await response.json();
-      setShowLoadingToast(false);
+      setShowLoadingToast(true);
+      const pollOptionId = e.target.classList[1];
+      const courseCode = sessionStorage.getItem('courseCode');
 
-      if (data.info) {
-        // sessionStorage.setItem('polls', JSON.stringify(data?.info.polls));
-        // setRefresh((prev) => !prev);
-        window.location.reload(true);
+      try {
+        const response = await fetch(`${URL}/updatepolls`, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            courseCode: courseCode,
+            pollId: pollId,
+            indexNumber: sessionStorage.getItem("indexNumber"),
+            optionId: pollOptionId,
+          }),
+        });
+
+        const data = await response.json();
+        setShowLoadingToast(false);
+
+        if (data.successful) {
+          // sessionStorage.setItem('polls', JSON.stringify(data?.info.polls));
+          // setRefresh((prev) => !prev);
+          window.location.reload(true);
+        }
+      } catch (error) {
+        console.log(error.message);
       }
-    } catch (error) {
-      console.log(error.message);
     }
+
 
   }
 
@@ -61,10 +72,7 @@ export default function PollInstancePending({
       return (
         <div key={index} className={`option ${obj._id}`}
           onClick={(e) => {
-            if (!optionClicked) {
-              setOpitonClicked(true);
-              handleClick(e);
-            }
+            if(!optionClicked) handleClick(e) 
           }}
         >
           <div className='option_mark'></div> {obj.option}
