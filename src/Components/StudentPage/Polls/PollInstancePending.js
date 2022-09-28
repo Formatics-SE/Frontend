@@ -12,7 +12,6 @@ export default function PollInstancePending({
   title,
   totalVotesCast,
   options,
-  setRefresh,
 }) {
 
 
@@ -30,11 +29,10 @@ export default function PollInstancePending({
   async function handleClick(e) {
     if (!optionClicked) {
       setOptionClicked(true);
-
+      // stop subsequent click events from reaching the target
       e.target.addEventListener('click', (e) => {
         e.stopPropagation();
-      })
-
+      });
       setShowLoadingToast(true);
       const pollOptionId = e.target.classList[1];
       const courseCode = sessionStorage.getItem('courseCode');
@@ -55,8 +53,6 @@ export default function PollInstancePending({
         setShowLoadingToast(false);
 
         if (data.successful) {
-          // sessionStorage.setItem('polls', JSON.stringify(data?.info.polls));
-          // setRefresh((prev) => !prev);
           window.location.reload(true);
         }
       } catch (error) {

@@ -10,7 +10,6 @@ import PollInstancePending from './PollInstancePending'
 export default function Polls() {
   const [pendingPolls, setPendingPolls] = useState([]);
   const [participatedPolls, setParticipatedPolls] = useState([]);
-  const [refresh, setRefresh] = useState(false);
 
   const [showLoadingToast, setShowLoadingToast] = useState(false);
 
@@ -39,7 +38,7 @@ export default function Polls() {
       catch (error) {
         console.log(error.message)
       }
-      // make sure the active page on  the floating nav is the Attendance page
+      // make sure the active page on the floating nav is the Attendance page
       localStorage.setItem('currentPage', 'P');
 
       const indexNumber = JSON.parse(sessionStorage.getItem("indexNumber"));
@@ -66,7 +65,6 @@ export default function Polls() {
               title={pollObj?.title}
               totalVotesCast={pollObj?.totalVotesCast}
               options={pollObj.options}
-              setRefresh={setRefresh}
             />
           );
           setPendingPolls(prev => [...tempPendingPolls]);
@@ -77,7 +75,7 @@ export default function Polls() {
 
     fetchData();
 
-  }, [refresh]);
+  }, []);
 
   useEffect(() => {
     if (pendingPolls.length === 0) {
