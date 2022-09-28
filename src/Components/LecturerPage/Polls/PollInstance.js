@@ -10,15 +10,15 @@ export default function PollInstance({ pollId, title, totalVotesCast, options, d
     const [showModal, setShowModal] = useState(false);
 
     function percentage(votes) {
-        if(votes === 0) return '0.00';
+        if (votes === 0) return '0.00';
         // return ((votes / totalVotesCast) * 100).toFixed(2);
         return ((votes / totalVotesCast) * 100).toFixed(1).replace(/^(\d+)\.0$/, '$1');
-    } 
+    }
 
     useEffect(() => {
         const ops = options?.map((obj, index) => {
             return (<>
-                <div className='option_and_percent_votes' key={index}> 
+                <div className='option_and_percent_votes' key={index}>
                     <div className='option'>
                         {obj.option}
                     </div>
@@ -61,15 +61,15 @@ export default function PollInstance({ pollId, title, totalVotesCast, options, d
                             onClick={() => { setShowModal(false) }}
                         >
                             &times;
-                    </Button>
+                        </Button>
                     </div>
                     <div id='confirm_text'>Do you want to delete this poll ?</div>
                 </Modal.Body>
                 <Modal.Footer id='modal_footer'>
-                    <Button id='confirm_btn_d' onClick={() => deletePoll(pollId)}>Confirm</Button>
+                    <Button id='confirm_btn_d' onClick={() => { setShowModal(false); deletePoll(pollId) }}>Confirm</Button>
                     <Button id='cancel_btn_d' onClick={() => setShowModal(false)}>Cancel</Button>
                 </Modal.Footer>
             </Modal>
-        </div>
+        </div >
     )
 }
