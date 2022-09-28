@@ -31,10 +31,11 @@
   font-size: 95%;
   color: #660d0d;
 }
-.poll_instance .title_and_delete_container .delete_icon:hover {
+
+/* .poll_instance .title_and_delete_container .delete_icon:hover {
   cursor: pointer;
   pointer-events: none;
-}
+} */
 
 
 .poll_instance .options {
