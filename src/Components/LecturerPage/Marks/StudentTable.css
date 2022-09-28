@@ -212,3 +212,13 @@ th {
         width: 90%;
     }
 }
+
+.toast_close_btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 120%;
+}
+.toast_close_btn:hover {
+    cursor: pointer;
+}

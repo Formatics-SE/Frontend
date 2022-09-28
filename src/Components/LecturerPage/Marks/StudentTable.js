@@ -294,6 +294,7 @@ export default function StudentsTable() {
                 className='toast-message'
             >
                 <Toast.Body>
+                    <div className='toast_close_btn' onClick={() => setShowMessageToast(false)}>&times;</div>
                     {message}
                 </Toast.Body>
             </Toast>
