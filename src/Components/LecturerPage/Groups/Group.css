@@ -73,16 +73,16 @@
 }
 
 .create_groups_btn:focus {
-    box-shadow: 0 0 0 black;
+    box-shadow: 0 0 0 black !important;
 }
 .create_groups_btn:hover {
-    background: white;
-    color: rgb(163, 23, 140);
-    border-color: rgb(163, 23, 140);
+    background: white !important;
+    color: rgb(163, 23, 140) !important;
+    border-color: rgb(163, 23, 140) !important;
 }
 .create_groups_btn:active {
-    background-color: rgb(163, 23, 140);
-    color: white;
+    background-color: rgb(163, 23, 140) !important;
+    color: white !important;
 }
 
 
