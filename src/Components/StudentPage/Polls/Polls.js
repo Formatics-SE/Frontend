@@ -80,8 +80,6 @@ export default function Polls() {
   }, [refresh]);
 
   useEffect(() => {
-    console.log('pendingPolls: ', pendingPolls.length)
-    console.log('participatedPolls: ', participatedPolls.length)
     if (pendingPolls.length === 0) {
       setNoPendingPolls(true)
     }
@@ -94,7 +92,6 @@ export default function Polls() {
     else {
       setNoParticipatedPolls(false)
     }
-
   }, [pendingPolls, participatedPolls])
 
   return (

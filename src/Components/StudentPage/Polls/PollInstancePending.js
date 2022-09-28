@@ -44,8 +44,8 @@ export default function PollInstancePending({
       setShowLoadingToast(false);
 
       if (data.info) {
-        sessionStorage.setItem('polls', JSON.stringify(data?.info.polls));
-        setRefresh((prev) => !prev);
+        // sessionStorage.setItem('polls', JSON.stringify(data?.info.polls));
+        // setRefresh((prev) => !prev);
         window.location.reload(true);
       }
     } catch (error) {
@@ -94,8 +94,6 @@ export default function PollInstancePending({
       <Toast show={showLoadingToast}
         onClose={() => setShowLoadingToast(false)}
         bg='secondary'
-        autohide
-        delay={3000}
         className='loading_toast'
       >
         <Toast.Body>
