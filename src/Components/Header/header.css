@@ -75,14 +75,20 @@
 .header .name_and_signout .name_sm {
   position: absolute;
   text-align: right;
-  right: 70px;
   top: 50%;
+  right: 145px;
   -webkit-transform: translateY(-44%);
           transform: translateY(-44%);
   width: 150px;
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: normal;
+}
+
+@media screen and (max-width: 768px) {
+  .header .name_and_signout .name_sm {
+    right: 70px;
+  }
 }
 
 .header .name_and_signout .signout {
