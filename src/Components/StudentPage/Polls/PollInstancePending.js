@@ -23,6 +23,8 @@ export default function PollInstancePending({
   const [message, setMessage] = useState('')
   const [toastVariant, setToastVariant] = useState('success')
 
+  const [optionClicked, setOpitonClicked] = useState(false)
+
   async function handleClick(e) {
     setShowLoadingToast(true);
     const pollOptionId = e.target.classList[1];
@@ -56,10 +58,15 @@ export default function PollInstancePending({
 
   useEffect(() => {
     const ops = options?.map((obj, index) => {
-      console.log('id: ', obj._id)
       return (
         <div key={index} className={`option ${obj._id}`}
-          onClick={(e) => handleClick(e)}>
+          onClick={(e) => {
+            if (!optionClicked) {
+              setOpitonClicked(true);
+              handleClick(e);
+            }
+          }}
+        >
           <div className='option_mark'></div> {obj.option}
         </div>
       )
