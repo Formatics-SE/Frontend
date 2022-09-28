@@ -20,8 +20,6 @@ export default function FloatingNav_Stud() {
 
     const [currentPage, setCurrentPage] = useState('');
 
-    const [theme, setTheme] = useState('light');
-
     // /* rewriting localStorage's setItem method in order to get current page 
     //  * value whenever it changes */
     localStorage.setItem = (key, value) => {
@@ -55,7 +53,7 @@ export default function FloatingNav_Stud() {
     }, [currentPage])
 
     return (
-        <div className={`floating_nav_stud ${theme}`}>
+        <div className='floating_nav_stud'>
             <div className='nav_marks' onClick={() => { setCurrentPage('M'); navigate('/student/marks') }}>
                 <div className='icon_div'><BsFileEarmarkDiffFill className={`icon marks_icon ${currentPage === 'M' ? 'active' : ''}`} /></div>
                 <span className={`d-none d-md-inline marks_span ${currentPage === 'M' ? 'active' : ''}`}>Marks</span>

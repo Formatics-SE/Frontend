@@ -3,14 +3,6 @@ $icon_color: #8b8a8d;
 $border_color: rgba(34, 23, 182, 0.897);
 $nav_bg_color: #e1e1e2f3;
 
-:root {
-    --bg: green;
-}
-
-.dark {
-    --bg: #2d2d30 !important;
-}
-
 .floating_nav_stud {
     position: fixed;
     left: 50%;
@@ -25,7 +17,7 @@ $nav_bg_color: #e1e1e2f3;
     color: $border_color;
     font-weight: bold; 
     letter-spacing: 0.02em;
-    background-color: var(--bg);
+    background-color: $nav_bg_color; 
     box-shadow: 0 0 3px 1px #666; 
     transition: 200ms bottom ease-in-out;
 

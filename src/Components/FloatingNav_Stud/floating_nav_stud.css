@@ -1,11 +1,3 @@
-:root {
-  --bg: green;
-}
-
-.dark {
-  --bg: #2d2d30 !important;
-}
-
 .floating_nav_stud {
   position: fixed;
   left: 50%;
@@ -25,7 +17,7 @@
   color: rgba(34, 23, 182, 0.897);
   font-weight: bold;
   letter-spacing: 0.02em;
-  background-color: var(--bg);
+  background-color: #e1e1e2f3;
   -webkit-box-shadow: 0 0 3px 1px #666;
           box-shadow: 0 0 3px 1px #666;
   -webkit-transition: 200ms bottom ease-in-out;
