@@ -199,8 +199,6 @@ export default function Attendance() {
             <Toast show={showLoadingToast}
                 onClose={() => setShowMessageToast(false)}
                 bg='secondary'
-                autohide
-                delay={3000}
                 className='loading_toast'
             >
                 <Toast.Body>

@@ -201,7 +201,7 @@ export default function Login() {
                 </Modal.Body>
             </Modal>
 
-            {/* loading animation toast */}
+            {/* loading toast */}
             <Toast show={showLoadingToast}
                 onClose={() => setShowLoadingToast(false)}
                 bg='secondary'

@@ -73,9 +73,3 @@ export default function PollInstance({ pollId, title, totalVotesCast, options, d
         </div>
     )
 }
-
-/**
- <div className='votes'>
-</div>
-<div className='percent_fill'></div>
- */
