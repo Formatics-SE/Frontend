@@ -16,20 +16,26 @@ export default function Groups() {
     useEffect(() => {
         async function fetchData() {
             setShowLoadingToast(true);
+            
             let group_session;
             try {
                 const response = await fetch(`${URL}/fetchstudentgroup`, {
                     method: 'POST',
                     headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify({ courseCode: sessionStorage.getItem('courseCode') })
+                    body: JSON.stringify({ 
+                        courseCode: sessionStorage.getItem('courseCode'),
+                        indexNumber: sessionStorage.getItem('indexNumber')
+                    })
                 });
 
                 const data = await response.json();
                 setShowLoadingToast(false);
 
-                group_session = data?.group;
+                console.log(data?.info?.group)
+
+                group_session = data?.info?.group;
                 // save the fetched data in session
-                sessionStorage.setItem('group', JSON.stringify(data?.group));
+                sessionStorage.setItem('group', JSON.stringify(data?.info?.group));
             }
             catch (error) {
                 console.log(error.message)
@@ -49,11 +55,11 @@ export default function Groups() {
                     <Card className="cards-container">
                         <Card.Body className="cards-body">
                             <Card.Title className="cards-title-score">
-                                <div>Group {group_session.groupNumber}</div>
-                                <div>Score: {group_session.score}</div>
+                                <div>Group {group_session?.groupNumber}</div>
+                                <div>Score: {group_session?.score}</div>
                             </Card.Title>
                             <Card.Text className="members">
-                                {group_session.members.map((student, index) => {
+                                {group_session?.members.map((student, index) => {
                                     return (
                                         <li key={index}>{student.name}: {student.indexNumber}</li>
                                     )

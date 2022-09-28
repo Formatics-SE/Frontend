@@ -130,23 +130,23 @@ li {
 .submit-button-group-score {
     background: linear-gradient(140deg, rgb(163, 23, 140), rgba(34, 23, 182, 0.726));
     border-color: rgb(163, 23, 140);
-    padding: 7px 25px;
+    padding: 5px 25px !important;
     border-radius: 7px;
 }
 .assign-marks-button:hover,
 .close_btn:hover,
 .submit-button-scores:hover,
 .submit-button-group-score:hover {
-    background: white;
-    border-color: rgb(163, 23, 140);
-    color: rgb(163, 23, 140);
+    background: white !important;
+    border-color: rgb(163, 23, 140) !important;
+    color: rgb(163, 23, 140) !important;
 }
 .assign-marks-button:focus,
 .close_btn:focus,
 .submit-button-scores:focus,
 .submit-button-group-score:focus {
-    border-color: rgb(163, 23, 140);
-    box-shadow: 0 0 0 rgb(163, 23, 140);
+    border-color: rgb(163, 23, 140) !important;
+    box-shadow: 0 0 0 rgb(163, 23, 140) !important;
 }
 .assign-marks-button {
     width: 95%;
