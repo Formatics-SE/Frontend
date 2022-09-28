@@ -87,8 +87,6 @@ export default function StudentsTable() {
                 student.marksArray.map(marksObj => {
                     totalMarks += marksObj.marks;
                 })
-                console.log('total marks: ', totalMarks)
-
 
                 let groupScore = 0;
                 if (marks_session.groups.length != 0) {

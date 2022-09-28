@@ -96,13 +96,15 @@ table {
     align-items: center;
 }
 .confirm-individual:focus,
-.confirm-group:focus {
+.confirm-group:focus,
+.submit-form:focus {
     border-color: rgb(163, 23, 140);
     box-shadow: 0 0 0 rgb(163, 23, 140);
     /* margin-left: 50px; */
 }
 .confirm-individual:hover,
-.confirm-group:hover {
+.confirm-group:hover,
+.submit-form:hover {
     background: white;
     border-color: rgb(163, 23, 140);
     color: rgb(163, 23, 140);
