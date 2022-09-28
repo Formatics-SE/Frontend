@@ -85,56 +85,7 @@
     color: white;
 }
 
-.inner-footer .options ul {
-    display: flex;
-}
 
-.inner-footer .options ul li {
-    list-style: none;
-    padding: 0 20px;
-}
-
-.outer-footer {
-    padding: 10px;
-    color: #bcc5ce;
-    text-align: center;
-}
-
-.footer {
-    position: absolute;
-    bottom: 100px;
-    height: 30px;
-    margin-top: 30px;
-    font-size: 12px;
-    width: 100%;
-}
-
-.links {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-.links li a {
-    text-decoration: none;
-    color: rgb(31, 29, 29);
-}
-
-.inner-footer .options ul {
-    display: flex;
-}
-
-.inner-footer .options ul li {
-    list-style: none;
-    padding: 0 10px;
-}
-
-.outer-footer {
-    padding: 5px;
-    color: #bcc5ce;
-    text-align: center;
-}
 
 /*modal styling*/
 #modal {
