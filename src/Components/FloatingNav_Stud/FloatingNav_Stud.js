@@ -64,7 +64,7 @@ export default function FloatingNav_Stud() {
             </div>
             <div className='nav_groups' onClick={() => { setCurrentPage('G'); navigate('/student/group') }}>
                 <div className='icon_div'><HiUserGroup className={`icon groups_icon ${currentPage === 'G' ? 'active' : ''}`} /></div>
-                <span className={`d-none d-md-inline group_span ${currentPage === 'G' ? 'active' : ''}`}>Groups</span>
+                <span className={`d-none d-md-inline group_span ${currentPage === 'G' ? 'active' : ''}`}>Group</span>
             </div>
             <div className='nav_poll' onClick={() => { setCurrentPage('P'); navigate('/student/polls') }}>
                 <div className='icon_div'><FaPoll className={`icon poll_icon ${currentPage === 'P' ? 'active' : ''}`} /></div>
