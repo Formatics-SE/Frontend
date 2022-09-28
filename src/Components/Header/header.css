@@ -72,6 +72,19 @@
   word-wrap: normal;
 }
 
+.header .name_and_signout .name_sm {
+  position: absolute;
+  text-align: right;
+  right: 70px;
+  top: 50%;
+  -webkit-transform: translateY(-44%);
+          transform: translateY(-44%);
+  width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: normal;
+}
+
 .header .name_and_signout .signout {
   padding: 0 7px;
 }

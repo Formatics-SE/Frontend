@@ -26,8 +26,6 @@ $header_bg_color: rgb(134, 12, 114);
     }
 
     .app_name {
-        // font-weight: bold;
-        // font-size: 110%;
         height: 30px !important;
         margin-top: -8px;
         @media screen and (max-width: 768px) {
@@ -55,6 +53,17 @@ $header_bg_color: rgb(134, 12, 114);
             text-overflow: ellipsis;
             word-wrap: normal;
         }
+        .name_sm {
+            position: absolute;
+            text-align: right;
+            right: 70px;
+            top: 50%;
+            transform: translateY(-44%);
+            width: 150px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: normal;
+        } 
         .signout {
             padding: 0 7px;
             // animate the signout icon on hover

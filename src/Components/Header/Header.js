@@ -20,7 +20,7 @@ export default function Header({ username }) {
                 <span className='cl'>CL</span><span>AIM</span>
             </div>
             <div className='name_and_signout'>
-                <div className='name d-none d-md-block'>
+                <div className='name_sm'>
                     {username}
                 </div>
                 <div className='signout d-none d-md-block' onClick={() => navigate('/login')}>
@@ -35,10 +35,10 @@ export default function Header({ username }) {
                     &times;
                 </div>
                 <div className='ul'>
-                    <div className='li'>
+                    {/* <div className='li'>
                         <FaUser className='user_icon' />
                         <span>{username}</span>
-                    </div>
+                    </div> */}
                     <div className='li'>
                         <div className='signout' onClick={() => navigate('/login')}>
                             <FaSignOutAlt className='signout_icon' />
