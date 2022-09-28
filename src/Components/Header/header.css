@@ -209,6 +209,7 @@
 
 .header .menu.menu .ul .li .signout:hover {
   cursor: pointer;
+  pointer-events: auto;
 }
 
 .header .menu.menu .ul .li .signout:hover .signout_icon {
