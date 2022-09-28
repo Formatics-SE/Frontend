@@ -73,7 +73,6 @@
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  color: #860c72;
   z-index: 30;
   opacity: 100%;
 }

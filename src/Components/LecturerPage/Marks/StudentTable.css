@@ -69,14 +69,8 @@ table {
 }
 
 .marks {
-    /* height: 25px !important; */
     width: 80px;
     margin-right: 5px;
-    /* margin-right: -8px; */
-    /* background-color: #bcc5ce; */
-    /* color: black; */
-    /* border-radius: 2px; */
-    /* transition: 0.4s; */
 }
 .marks {
     height: 35px;
@@ -98,16 +92,16 @@ table {
 .confirm-individual:focus,
 .confirm-group:focus,
 .submit-form:focus {
-    border-color: rgb(163, 23, 140);
-    box-shadow: 0 0 0 rgb(163, 23, 140);
+    border-color: rgb(163, 23, 140) !important;
+    box-shadow: 0 0 0 rgb(163, 23, 140) !important;
     /* margin-left: 50px; */
 }
 .confirm-individual:hover,
 .confirm-group:hover,
 .submit-form:hover {
-    background: white;
-    border-color: rgb(163, 23, 140);
-    color: rgb(163, 23, 140);
+    background: white !important;
+    border-color: rgb(163, 23, 140) !important;
+    color: rgb(163, 23, 140) !important;
 }
 
 .table-search:hover {

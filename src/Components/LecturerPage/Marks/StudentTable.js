@@ -301,7 +301,7 @@ export default function StudentsTable() {
 
             <Toast show={showLoadingToast}
                 onClose={() => setShowLoadingToast(false)}
-                bg={toastVariant}
+                bg='secondary'
                 className='loading_toast'
             >
                 <Toast.Body>

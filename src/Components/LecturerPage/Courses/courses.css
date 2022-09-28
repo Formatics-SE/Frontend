@@ -5,26 +5,32 @@
   margin: 0 auto;
   padding: 15px 15px 0 15px;
   padding: 15px 1% 0 1%;
-  box-shadow: 0 0 4px 2px rgb(187, 184, 184);
+  -webkit-box-shadow: 0 0 4px 2px #bbb8b8;
+          box-shadow: 0 0 4px 2px #bbb8b8;
 }
+
 @media screen and (max-width: 912px) {
   .courses {
     width: 100%;
-    box-shadow: 0 0 0 rgb(187, 184, 184);
+    -webkit-box-shadow: 0 0 0 #bbb8b8;
+            box-shadow: 0 0 0 #bbb8b8;
     padding: 10px 20px;
   }
 }
+
 @media screen and (max-width: 912px) and (max-width: 768px) {
   .courses {
     padding: 10px;
   }
 }
+
 .courses .course_accordion_container {
   width: 100%;
   min-height: -webkit-fit-content;
   min-height: -moz-fit-content;
   min-height: fit-content;
   overflow-y: auto;
+  display: -ms-grid;
   display: grid;
   -ms-grid-columns: (minmax(24.25%, 1fr))[auto-fill];
       grid-template-columns: repeat(auto-fill, minmax(24.25%, 1fr));
@@ -33,52 +39,42 @@
   row-gap: 2%;
 }
 
-@media screen and (max-width: 1024px) {
-  .courses .course_accordion_container {
-    grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
-
-
 @media screen and (max-width: 1280px) {
   .courses .course_accordion_container {
-
-    -ms-grid-columns: (minmax(32.6667%, 1fr))[auto-fill];
-        grid-template-columns: repeat(auto-fill, minmax(32.6667%, 1fr));
-
-
     -ms-grid-columns: (minmax(32.6667%, 1fr))[auto-fit];
         grid-template-columns: repeat(auto-fit, minmax(32.6667%, 1fr));
-
   }
 }
+
 @media screen and (max-width: 768px) {
   .courses .course_accordion_container {
     padding: 15px 2% 0 2%;
-    grid-template-columns: 1fr;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
   }
 }
-  }
-}
+
 .loading_toast {
   position: absolute;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 20px;
   top: 20px;
   left: 50%;
-
-  transform: translateX(-50%);
-  color: rgb(134, 12, 114);
-  z-index: 30;
-
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   color: white;
   z-index: 50;
-
   opacity: 100%;
 }
 
