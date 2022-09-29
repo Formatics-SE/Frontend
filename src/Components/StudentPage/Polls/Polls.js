@@ -42,6 +42,8 @@ export default function Polls() {
 
       const indexNumber = JSON.parse(sessionStorage.getItem("indexNumber"));
 
+      console.log('poll session: ', polls_session)
+
       let tempParticipatedPolls = [];
       let tempPendingPolls = [];
 

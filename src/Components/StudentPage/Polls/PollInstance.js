@@ -11,6 +11,7 @@ export default function PollInstance({ id, title, totalVotesCast, options, delet
 
     function percentage(votes) {
         if (votes === 0) return '0';
+        console.log('typeof votes: ', votes)
         return ((votes / totalVotesCast) * 100).toFixed(1).replace(/^(\d+)\.0$/, '$1');
     }
 
