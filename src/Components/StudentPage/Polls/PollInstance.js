@@ -11,7 +11,7 @@ export default function PollInstance({ id, title, totalVotesCast, options, delet
 
     function percentage(votes) {
         // return ((votes / totalVotesCast) * 100).toFixed(2);
-        return ((parseInt(votes) / totalVotesCast) * 100).toFixed(1).replace(/^(\d+)\.0$/, '$1');
+        return ((parseInt((votes)) / totalVotesCast) * 100).toFixed(1).replace(/^(\d+)\.0$/, '$1');
     }
 
     useEffect(() => {
