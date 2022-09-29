@@ -9,7 +9,7 @@
           justify-content: space-between;
   font-size: 125%;
   color: white;
-  background-color: #860c72;
+  background-color: #ad0e93;
   -webkit-box-shadow: 0 2px 2px #bbb8b8;
           box-shadow: 0 2px 2px #bbb8b8;
   border-width: 0 0 2px 0;
@@ -157,7 +157,7 @@
   top: 0;
   right: -170px;
   z-index: 30;
-  background-color: #860c72;
+  background-color: #ad0e93;
   padding: 15px 15px 15px 20px;
   -webkit-transition: 250ms;
   transition: 250ms;
@@ -209,7 +209,6 @@
 
 .header .menu.menu .ul .li .signout:hover {
   cursor: pointer;
-  pointer-events: auto;
 }
 
 .header .menu.menu .ul .li .signout:hover .signout_icon {

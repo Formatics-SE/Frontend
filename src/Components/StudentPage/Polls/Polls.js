@@ -47,7 +47,7 @@ export default function Polls() {
       let tempPendingPolls = [];
 
       polls_session?.map((pollObj) => {
-        let match = pollObj.participants.find((index) => index === indexNumber);
+        let match = pollObj.participants.find((index) => index == indexNumber);
         if (match) {
           tempParticipatedPolls.push(
             <PollInstance key={pollObj._id}

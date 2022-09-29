@@ -42,7 +42,7 @@
 }
 
 .poll_instance .options .option_and_percent_votes .highlightedOption {
-  color: red;
+  color: #0b940b;
 }
 
 .poll_instance .options .progressbar {

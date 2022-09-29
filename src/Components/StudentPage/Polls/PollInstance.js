@@ -11,14 +11,12 @@ export default function PollInstance({ id, title, totalVotesCast, options, delet
 
     function percentage(votes) {
         // return ((votes / totalVotesCast) * 100).toFixed(2);
-        return ((votes / totalVotesCast) * 100).toFixed(1).replace(/^(\d+)\.0$/, '$1');
+        return ((parseInt(votes) / totalVotesCast) * 100).toFixed(1).replace(/^(\d+)\.0$/, '$1');
     }
 
     useEffect(() => {
         const ops = options?.map((obj, index) => {
-            let match = obj.taken.find(indexNumber => indexNumber === sessionStorage.getItem('indexNumber'));
-            console.log('op match')
-            // console..og()
+            let match = obj.taken.find(indexNumber => indexNumber == sessionStorage.getItem('indexNumber'));
 
             return (<>
                 <div className='option_and_percent_votes' key={index}>
