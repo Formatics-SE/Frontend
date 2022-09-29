@@ -16,7 +16,6 @@ export default function Polls() {
   const [noPendingPolls, setNoPendingPolls] = useState(false);
   const [noParticipatedPolls, setNoParticipatedPolls] = useState(false);
 
-
   useEffect(() => {
     async function fetchData() {
       setShowLoadingToast(true);
