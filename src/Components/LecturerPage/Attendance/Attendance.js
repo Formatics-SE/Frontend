@@ -17,6 +17,7 @@ export default function Attendance() {
     const [courseName, setCourseName] = useState('')
     const [courseCode, setCourseCode] = useState('')
     const [maxAbsentStrikes, setMaxAbsentStrikes] = useState(0)
+    const [prevMaxAbsentStrikes, setPrevMaxAbsentStrikes] = useState(0)
 
     const [showMessageToast, setShowMessageToast] = useState(false);
     const [showLoadingToast, setShowLoadingToast] = useState(false);
@@ -98,7 +99,7 @@ export default function Attendance() {
                 body: JSON.stringify({
                     courseCode: courseCode,
                     attendanceData: attendanceUpdate,
-                    maxAbsentStrikes: maxAbsentStrikes
+                    maxAbsentStrikes: sessionStorage.getItem('maxStrikes')
                 })
             });
 
@@ -159,10 +160,16 @@ export default function Attendance() {
                         className='max-strikes-input'
                         value={maxAbsentStrikes}
                         onChange={(e) => {
-                            setMaxAbsentStrikes(prev => e.target.value < 1 ? prev : e.target.value);
-                            // set the new max absence strikes value in the rewritten localStorage's setItem method in order to get the
-                            // changed value in Row component
-                            if (e.target.value >= 1) localStorage.setItem('maxStrikes', e.target.value)
+                            setMaxAbsentStrikes(prev => {
+                                if(e.target.value != '' && e.target.value < 1) return 1;
+                                else return e.target.value;
+                            });
+                            /* set the new max absence strikes value in the rewritten localStorage's setItem method in order to get the
+                             * changed value in Row component */
+                            if (e.target.value >= 1) {
+                                localStorage.setItem('maxStrikes', e.target.value);
+                                sessionStorage.setItem('maxStrikes', e.target.value);
+                            }
                         }}
                     />
                 </div>
