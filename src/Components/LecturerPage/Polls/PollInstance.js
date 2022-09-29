@@ -10,9 +10,8 @@ export default function PollInstance({ pollId, title, totalVotesCast, options, d
     const [showModal, setShowModal] = useState(false);
 
     function percentage(votes) {
-        if (votes == 0) return '0';
+        if (votes === 0) return '0';
         // return ((votes / totalVotesCast) * 100).toFixed(2);
-        console.log('votes: ', votes)
         return ((votes / totalVotesCast) * 100).toFixed(1).replace(/^(\d+)\.0$/, '$1');
     }
 
